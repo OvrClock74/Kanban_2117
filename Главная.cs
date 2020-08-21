@@ -144,10 +144,38 @@ namespace Scrum
 
         public static void databaseFileRead(string varID, string varPathToNewLocation) // выгрузка любых файлов из БД
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+           /* NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
             con.Open();
             using (var sqlQuery = new NpgsqlCommand(@"SELECT dannie FROM test WHERE id = @varid", con))
             {
+                using (SqlDataReader dr = cmd.ExecuteReader(System.Data.CommandBehavior.Default))
+                {
+                    if (dr.Read())
+                    {
+                        // read in using GetValue and cast to byte array
+                        byte[] fileData = (byte[])dr.GetValue(0);
+
+
+                        // write bytes to disk as file
+                        using (System.IO.FileStream fs = new System.IO.FileStream(sPathToSaveFileTo, System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite))
+                        {
+                            // use a binary writer to write the bytes to disk
+                            using (System.IO.BinaryWriter bw = new System.IO.BinaryWriter(fs))
+                            {
+                                bw.Write(fileData);
+                                bw.Close();
+                            }
+                        }
+                    }
+
+
+                    // close reader to database
+                    dr.Close();
+                }
+
+
+
+                /*
                 sqlQuery.Parameters.AddWithValue("@varid", 1);
                 using (var sqlQueryResult = sqlQuery.ExecuteReader())
                     if (sqlQueryResult != null)
@@ -155,14 +183,14 @@ namespace Scrum
                         sqlQueryResult.Read();
                         var blob = new Byte[(sqlQueryResult.GetBytes(0, 0, null, 0, int.MaxValue))];
                         sqlQueryResult.GetBytes(0, 0, blob, 0, blob.Length);
-                        using (var fs = new System.IO.FileStream(varPathToNewLocation, System.IO.FileMode.Create, System.IO.FileAccess.Write))
+                        using (var fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.ReadWrite))
                             fs.Write(blob, 0, blob.Length);
                     }
             }
-            con.Close();
+            con.Close();*/
 
 
-
+            
 
 
         }
