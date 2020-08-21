@@ -19,12 +19,12 @@ namespace Scrum
             Show();
             Name1.Select();
         }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void Start_Load(object sender, EventArgs e)
         {
-
+            ActiveControl = null;
         }
 
+        #region ТекстБокс ЛОГИН и ПАРОЛЬ
         private void textBox1_Enter(object sender, EventArgs e)
         {
             if (textBox1.Text == "Логин")
@@ -41,11 +41,6 @@ namespace Scrum
                 textBox1.Text = "Логин";
                 textBox1.ForeColor = Color.Gray;
             }
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox2_Enter(object sender, EventArgs e)
@@ -71,32 +66,28 @@ namespace Scrum
                 textBox2.ForeColor = Color.Black;
                 textBox2.PasswordChar = '•';
             }
-            
         }
+        #endregion
 
-        private void Start_Load(object sender, EventArgs e)
-        {
-            ActiveControl = null;
-        }
-
+        #region Цвет кнопки ВХОД
         private void button1_MouseMove(object sender, MouseEventArgs e)
         {
-            pictureBox1.BackColor = Color.FromArgb(3,171,255);
+            pictureBox1.BackColor = Color.FromArgb(3,171,255); // голубой
         }
 
         private void button1_MouseLeave(object sender, EventArgs e)
         {
-            pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
+            pictureBox1.BackColor = Color.FromArgb(3, 143, 244);  // синий
         }
 
         private void button1_MouseDown(object sender, MouseEventArgs e)
         {
-            pictureBox1.BackColor = Color.FromArgb(112, 179, 227);
+            pictureBox1.BackColor = Color.FromArgb(112, 179, 227); // серый
         }
 
         private void button1_MouseUp(object sender, MouseEventArgs e)
         {
-            pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
+            pictureBox1.BackColor = Color.FromArgb(3, 143, 244); // синий
         }
 
 
@@ -123,29 +114,30 @@ namespace Scrum
             button1.BackColor = Color.FromArgb(3, 143, 244);
             pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
         }
+        #endregion
 
-
-        private void button1_Click_1(object sender, EventArgs e)
+        #region Авторизация на кнопку
+        private void button1_Click_1(object sender, EventArgs e) // Авторизация
         {
                 var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
                 using NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
-            NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
+                NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
                 Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
-                Totalf.ExecuteNonQuery();
+                //Totalf.ExecuteNonQuery();
                 int id = (int)Totalf.ExecuteScalar();
-                con.Close();
-
-            Главная obj = new Главная // передача id в форму Главная
-            {
-                ID = id 
-            };
-            Hide();
-            obj.Show();
+                
+                Главная obj = new Главная // передача id в форму Главная
+                {
+                    ID = id
+                };
+                Hide();
+                obj.Show();
+            con.Close();
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
@@ -169,5 +161,6 @@ namespace Scrum
             Hide();
             obj.Show();
         }
+        #endregion
     }
 }
