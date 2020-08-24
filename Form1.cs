@@ -119,7 +119,7 @@ namespace Scrum
         #region Авторизация на кнопку
         private void button1_Click_1(object sender, EventArgs e) // Авторизация
         {
-                var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+                var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=postgres";
                 using NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
                 NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
@@ -142,7 +142,7 @@ namespace Scrum
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=postgres";
             using NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("login", con)

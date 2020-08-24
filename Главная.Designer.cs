@@ -42,6 +42,8 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.task_form = new System.Windows.Forms.Panel();
+            this.AddFTask = new System.Windows.Forms.Label();
+            this.dataGridView9 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -69,6 +71,7 @@
             this.panelCT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.task_form.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -118,7 +121,7 @@
             this.panelCT.Controls.Add(this.namT);
             this.panelCT.Controls.Add(this.textBox2);
             this.panelCT.Controls.Add(this.Срок_исполнения);
-            this.panelCT.Location = new System.Drawing.Point(331, 293);
+            this.panelCT.Location = new System.Drawing.Point(308, 249);
             this.panelCT.Name = "panelCT";
             this.panelCT.Size = new System.Drawing.Size(241, 271);
             this.panelCT.TabIndex = 9;
@@ -307,6 +310,8 @@
             // task_form
             // 
             this.task_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.task_form.Controls.Add(this.AddFTask);
+            this.task_form.Controls.Add(this.dataGridView9);
             this.task_form.Controls.Add(this.button1);
             this.task_form.Controls.Add(this.label6);
             this.task_form.Controls.Add(this.label2);
@@ -314,18 +319,49 @@
             this.task_form.Controls.Add(this.label5);
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
-            this.task_form.Location = new System.Drawing.Point(821, 335);
+            this.task_form.Location = new System.Drawing.Point(674, 223);
             this.task_form.Name = "task_form";
-            this.task_form.Size = new System.Drawing.Size(220, 212);
+            this.task_form.Size = new System.Drawing.Size(220, 248);
             this.task_form.TabIndex = 9;
             this.task_form.Visible = false;
             this.task_form.VisibleChanged += new System.EventHandler(this.task_form_VisibleChanged);
             this.task_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.task_form_MouseDown);
             this.task_form.MouseMove += new System.Windows.Forms.MouseEventHandler(this.task_form_MouseMove);
             // 
+            // AddFTask
+            // 
+            this.AddFTask.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.AddFTask.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AddFTask.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.AddFTask.ForeColor = System.Drawing.Color.Black;
+            this.AddFTask.Location = new System.Drawing.Point(185, 175);
+            this.AddFTask.Name = "AddFTask";
+            this.AddFTask.Size = new System.Drawing.Size(31, 31);
+            this.AddFTask.TabIndex = 1;
+            this.AddFTask.Text = "#";
+            this.AddFTask.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.AddFTask.Click += new System.EventHandler(this.AddFTask_Click);
+            this.AddFTask.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EnterB_MouseMove);
+            this.AddFTask.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EnterB_MouseUp);
+            // 
+            // dataGridView9
+            // 
+            this.dataGridView9.AllowUserToAddRows = false;
+            this.dataGridView9.AllowUserToDeleteRows = false;
+            this.dataGridView9.AllowUserToResizeColumns = false;
+            this.dataGridView9.AllowUserToResizeRows = false;
+            this.dataGridView9.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView9.Location = new System.Drawing.Point(13, 175);
+            this.dataGridView9.Name = "dataGridView9";
+            this.dataGridView9.ReadOnly = true;
+            this.dataGridView9.Size = new System.Drawing.Size(166, 31);
+            this.dataGridView9.TabIndex = 12;
+            this.dataGridView9.Text = "dataGridView9";
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(67, 189);
+            this.button1.Location = new System.Drawing.Point(133, 66);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 11;
@@ -414,7 +450,6 @@
             this.dataGridView2.Text = "dataGridView2";
             this.dataGridView2.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellClick);
             this.dataGridView2.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellMouseEnter);
-            this.dataGridView2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView2_MouseClick);
             // 
             // dataGridView3
             // 
@@ -446,7 +481,6 @@
             this.dataGridView3.Text = "dataGridView3";
             this.dataGridView3.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView3.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView3.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // dataGridView4
             // 
@@ -478,7 +512,6 @@
             this.dataGridView4.Text = "dataGridView4";
             this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView4.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView4.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // dataGridView5
             // 
@@ -510,7 +543,6 @@
             this.dataGridView5.Text = "dataGridView5";
             this.dataGridView5.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView5.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView5.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // dataGridView6
             // 
@@ -542,7 +574,6 @@
             this.dataGridView6.Text = "dataGridView6";
             this.dataGridView6.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView6.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView6.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // dataGridView7
             // 
@@ -574,7 +605,6 @@
             this.dataGridView7.Text = "dataGridView7";
             this.dataGridView7.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView7.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView7.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // dataGridView8
             // 
@@ -606,7 +636,6 @@
             this.dataGridView8.Text = "dataGridView8";
             this.dataGridView8.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView8.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView8.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // label7
             // 
@@ -698,6 +727,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1192, 590);
+            this.Controls.Add(this.task_form);
             this.Controls.Add(this.panelCT);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label14);
@@ -715,7 +745,6 @@
             this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.task_form);
             this.Controls.Add(this.dataGridView1);
             this.Name = "Главная";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Главная_FormClosed);
@@ -725,6 +754,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.task_form.ResumeLayout(false);
             this.task_form.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -777,5 +807,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.DataGridView dataGridView9;
+        private System.Windows.Forms.Label AddFTask;
     }
 }

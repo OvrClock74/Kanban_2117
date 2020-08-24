@@ -19,9 +19,14 @@ namespace Scrum
         { set { ID_Main = value; } }
         public static int ID_Main;
 
-        public bool clc = false;
-        //public bool btn = false;
+        public bool clc = false; // зачем - хз но находится в "Таск из таблиц"
+        public string C; // Значение, что находится в выбираемой ячейке
+
+        ///////Переменные для добавления файла в БД//////
+        public string PathToFile; 
         public string filename;
+        public string TypeFile;
+        public string name_fillee;
 
         #region DataSet и DataTable 
         ///////////////////ТАБЛИЦА 1///////////////////
@@ -55,7 +60,7 @@ namespace Scrum
         {
             InitializeComponent();       
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=postgres");
             con.Open();
 
             #region Заполнение таблиц данными 
@@ -122,21 +127,26 @@ namespace Scrum
         }
 
         #region Загрузка и выгрузка файлов в и из БД
-        public static void databaseFilePut(string varFilePath) // загрузка любых файлов в БД
+        public static void databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
         {
             byte[] file;
-            using (var stream = new System.IO.FileStream(varFilePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+            using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read))
             {
-                using (var reader = new System.IO.BinaryReader(stream))
+                using (var reader = new BinaryReader(stream))
                 {
                     file = reader.ReadBytes((int)stream.Length);
                 }
             }
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=postgres");
             con.Open();
-            using (var sqlWrite = new NpgsqlCommand("INSERT INTO test Values(@File)", con))
+            using (var sqlWrite = new NpgsqlCommand("add_fille", con)) //public.add_fille(id_task integer, name_f character varying, type_f character varying, file_c bytea)
             {
-                sqlWrite.Parameters.Add("@File", NpgsqlTypes.NpgsqlDbType.Bytea, file.Length).Value = file;
+                sqlWrite.CommandType = CommandType.StoredProcedure;
+                sqlWrite.Parameters.Add("id_task", NpgsqlTypes.NpgsqlDbType.Integer, file.Length).Value = id_T;
+                sqlWrite.Parameters.Add("name_f", NpgsqlTypes.NpgsqlDbType.Varchar, file.Length).Value = name_fille;
+                sqlWrite.Parameters.Add("type_f", NpgsqlTypes.NpgsqlDbType.Varchar, file.Length).Value = type_fille;
+                sqlWrite.Parameters.Add("file_c", NpgsqlTypes.NpgsqlDbType.Bytea, file.Length).Value = file;
                 sqlWrite.ExecuteNonQuery();
             }
             con.Close();
@@ -144,55 +154,33 @@ namespace Scrum
 
         public static void databaseFileRead(string varID, string varPathToNewLocation) // выгрузка любых файлов из БД
         {
-           /* NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=postgres");
             con.Open();
-            using (var sqlQuery = new NpgsqlCommand(@"SELECT dannie FROM test WHERE id = @varid", con))
+            using (var sqlQuery = new NpgsqlCommand(@"SELECT dannie FROM test WHERE id = 3", con))
             {
-                using (SqlDataReader dr = cmd.ExecuteReader(System.Data.CommandBehavior.Default))
+                using (NpgsqlDataReader dr = sqlQuery.ExecuteReader(System.Data.CommandBehavior.Default))
                 {
                     if (dr.Read())
                     {
                         // read in using GetValue and cast to byte array
                         byte[] fileData = (byte[])dr.GetValue(0);
 
-
                         // write bytes to disk as file
-                        using (System.IO.FileStream fs = new System.IO.FileStream(sPathToSaveFileTo, System.IO.FileMode.Create, System.IO.FileAccess.ReadWrite))
+                        using (FileStream fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.ReadWrite))
                         {
                             // use a binary writer to write the bytes to disk
-                            using (System.IO.BinaryWriter bw = new System.IO.BinaryWriter(fs))
+                            using (BinaryWriter bw = new BinaryWriter(fs))
                             {
                                 bw.Write(fileData);
                                 bw.Close();
                             }
                         }
                     }
-
-
                     // close reader to database
                     dr.Close();
                 }
-
-
-
-                /*
-                sqlQuery.Parameters.AddWithValue("@varid", 1);
-                using (var sqlQueryResult = sqlQuery.ExecuteReader())
-                    if (sqlQueryResult != null)
-                    {
-                        sqlQueryResult.Read();
-                        var blob = new Byte[(sqlQueryResult.GetBytes(0, 0, null, 0, int.MaxValue))];
-                        sqlQueryResult.GetBytes(0, 0, blob, 0, blob.Length);
-                        using (var fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.ReadWrite))
-                            fs.Write(blob, 0, blob.Length);
-                    }
             }
-            con.Close();*/
-
-
-            
-
-
+            con.Close();
         }
         #endregion
 
@@ -200,9 +188,10 @@ namespace Scrum
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             clc = true;
-            string C = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
+            task_form.Visible = true;
+            C = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=postgres");
             con.Open();
 
             NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
@@ -222,6 +211,7 @@ namespace Scrum
                     else label6.Text = "Не оплачено";
 
                 }
+                reader.Close();
             }
             con.Close();
         }
@@ -244,7 +234,7 @@ namespace Scrum
                 if (b.RowIndex != -1)
                 {
                     dataGridView1.CurrentCell = dataGridView1.Rows[b.RowIndex].Cells[0];
-                    dataGridView1.Rows[b.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 143, 244);
+                    dataGridView1.Rows[b.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(0, 100, 200);
                     dataGridView1.Rows[b.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
                 }
             };
@@ -280,16 +270,6 @@ namespace Scrum
             }
             con.Close();
         }
-
-        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Visible = true;
-                task_form.Top = (e.Y + dataGridView1.Location.Y);
-                task_form.Left = (e.X + dataGridView1.Location.X);
-            }
-        }
         private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView1.CellMouseEnter += (a, b) =>
@@ -308,6 +288,7 @@ namespace Scrum
         private void label1_Click(object sender, EventArgs e)
         {
             task_form.Visible = false;
+            clc = false;
         }
 
         private void label1_MouseEnter(object sender, EventArgs e)
@@ -342,7 +323,8 @@ namespace Scrum
         }
         #endregion
 
-        ////////////////////////////////////////////////////////ДОБАВИТЬ ТАСК/////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////ДОБАВИТЬ ТАСК//////////////////////////////////////////////////////
+        #region ДОБАВИТЬ ТАСК
 
         #region Цвет кнопки СоздатьТаск
         private void CreateTaskB_MouseMove(object sender, MouseEventArgs e)
@@ -506,7 +488,7 @@ namespace Scrum
 
         private void EnterB_MouseMove(object sender, MouseEventArgs e)
         {
-            EnterB.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
+           EnterB.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
         }
 
         private void EnterB_MouseLeave(object sender, EventArgs e)
@@ -525,94 +507,21 @@ namespace Scrum
         }
         #endregion
 
-        private void AddF_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            filename = openFileDialog1.FileName; // получаем путь к выбранному файлу
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog
-            {
-                InitialDirectory = "c:\\",
-                Title = "Сохранить",
-                Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
-                FilterIndex = 2,
-                RestoreDirectory = true
-            };
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    string path = Path.GetFullPath(saveFileDialog1.FileName);
-                    string path2 = Path.GetDirectoryName(saveFileDialog1.FileName);
-                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-                    con.Open();
-
-                    string cmd_str;
-                    NpgsqlDataAdapter Da_Obj = new NpgsqlDataAdapter();
-                    NpgsqlCommand Cm_Obj = new NpgsqlCommand();
-                    DataSet Ds_Obj = new DataSet();
-
-                    cmd_str = "SELECT dannie FROM test WHERE id = 1";
-                    Da_Obj = new NpgsqlDataAdapter(cmd_str, con);
-                    if (Ds_Obj.Tables.Contains("a1")) 
-                        Ds_Obj.Tables.Remove("a1");
-                    Da_Obj.Fill(Ds_Obj, "a1");
-
-                    Cm_Obj = new NpgsqlCommand(cmd_str, con);
-                    NpgsqlDataReader reader = Cm_Obj.ExecuteReader();
-                    if (reader.Read() && reader != null)
-                    {
-                        Byte[] bytes;
-                        bytes = Encoding.UTF8.GetBytes(String.Empty);
-                        bytes = (Byte[])reader["data"];
-                        FileStream fs = new FileStream(path + @"\" + Ds_Obj.Tables["a1"].Rows[0]["FileName"].ToString(), FileMode.OpenOrCreate);
-                        fs.Write(bytes, 0, bytes.Length);
-                        fs.Close();
-                    }
-                    con.Close();
-                    myStream.Close();
-                }
-            }
-           
-          
-
-
-
-
-            /*
-            System.IO.Stream myStream;
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog
-            {
-                InitialDirectory = "c:\\",
-                Title = "Сохранить",
-            Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*",
-            FilterIndex = 2,
-            RestoreDirectory = true
-            };
-
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                if ((myStream = saveFileDialog1.OpenFile()) != null)
-                {
-                    string path = System.IO.Path.GetFullPath(saveFileDialog1.FileName);
-                    string path2 = System.IO.Path.GetDirectoryName(saveFileDialog1.FileName);
-                    databaseFileRead("231", path);
-                    myStream.Close();
-                }
-            }*/
-        }
-
         private void CreateTaskB_Click(object sender, EventArgs e)
         {
             panel1.Select();
             panelCT.Location = CreateTaskB.Location;
             panelCT.Visible = true;            
+        }
+
+        private void AddF_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            PathToFile = openFileDialog1.FileName; // получаем путь к выбранному файлу
+            TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
+            name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
+            // databaseFilePut(int id_T, string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
         }
 
         private void OtmenaB_Click(object sender, EventArgs e) // цвет кнопки Отмена
@@ -641,7 +550,7 @@ namespace Scrum
             if ((namT.Text != "Заголовок") && (Срок_исполнения.MaskFull) && (textBox1.Text != "Стоимость") && (namT.Text != "")  && (textBox1.Text != ""))
             {
                 
-                NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=postgres");
                  con.Open();
 
 
@@ -663,11 +572,11 @@ namespace Scrum
                     da3.Parameters.Add("namet", NpgsqlDbType.Varchar, 250).Value = namT.Text;
                     da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
                     da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Срок_исполнения.Text;
-                    da3.Parameters.Add("costt", NpgsqlDbType.Integer).Value = textBox1.Text;
-                    int new_task_id = (int)da3.ExecuteScalar();
+                    da3.Parameters.Add("costt", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox1.Text);
+                    Int32 new_task_id = Convert.ToInt32(da3.ExecuteScalar());
                     if (new_task_id != -1) // на всякий случай проверяем добавлена ли задача 
                     {
-                        databaseFilePut(filename);
+                        databaseFilePut(new_task_id, name_fillee, TypeFile, PathToFile); // databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
                     }
                     else MessageBox.Show("Задача не добавлена!");
                     con.Close();
@@ -696,9 +605,51 @@ namespace Scrum
                 }
             }
         }
-
+        #endregion
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        private void AddFTask_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
+                return;
+            PathToFile = openFileDialog1.FileName; // получаем путь к выбранному файлу
+            TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
+            name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
 
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=postgres");
+            con.Open();
+            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
+            Totalf.Parameters.AddWithValue("@name_T", C);
+            Int32 new_task_id = Convert.ToInt32(Totalf.ExecuteScalar());
+            databaseFilePut(new_task_id, name_fillee, TypeFile, PathToFile); // databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД 
+            con.Close();
+            MessageBox.Show("Файл успешно загружен");
+        }
+
+        private void button1_Click(object sender, EventArgs e) // ЗАГРУЗИТЬ ФАЙЛ
+        {
+            Stream myStream;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog
+            {
+                InitialDirectory = "c:\\",
+                Title = "Сохранить как...",
+                Filter = "PDF files (*.pdf)|*.pdf|" + "Word files (*.doc)|*.doc|" + "Exel files (*.xlsx)|*.xlsx|" + "TXT files (*.txt)|*.txt|" + "All files (*.*)|*.*|",
+                FilterIndex = 1,
+                RestoreDirectory = true
+            };
+
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                if ((myStream = saveFileDialog1.OpenFile()) != null)
+                {
+                    string path = Path.GetFullPath(saveFileDialog1.FileName);
+                    string path2 = Path.GetDirectoryName(saveFileDialog1.FileName);
+                    myStream.Close();
+                    databaseFileRead("231", path);
+                }
+            }
+        }
+
+     
     }
 }
