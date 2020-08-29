@@ -70,96 +70,128 @@ namespace Scrum
         #endregion
 
         #region Цвет кнопки ВХОД
-        private void button1_MouseMove(object sender, MouseEventArgs e)
+        private void Вход_MouseMove(object sender, MouseEventArgs e)
         {
+            Вход.BackColor = Color.FromArgb(3, 171, 255);
             pictureBox1.BackColor = Color.FromArgb(3,171,255); // голубой
         }
 
-        private void button1_MouseLeave(object sender, EventArgs e)
+        private void Вход_MouseLeave(object sender, EventArgs e)
         {
+            Вход.BackColor = Color.FromArgb(3, 143, 244);
             pictureBox1.BackColor = Color.FromArgb(3, 143, 244);  // синий
         }
 
-        private void button1_MouseDown(object sender, MouseEventArgs e)
+        private void Вход_MouseDown(object sender, MouseEventArgs e)
         {
+            Вход.BackColor = Color.FromArgb(112, 179, 227);
             pictureBox1.BackColor = Color.FromArgb(112, 179, 227); // серый
         }
 
-        private void button1_MouseUp(object sender, MouseEventArgs e)
+        private void Вход_MouseUp(object sender, MouseEventArgs e)
         {
+            Вход.BackColor = Color.FromArgb(3, 143, 244);
             pictureBox1.BackColor = Color.FromArgb(3, 143, 244); // синий
         }
 
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            button1.BackColor = Color.FromArgb(112, 179, 227);
+            Вход.BackColor = Color.FromArgb(112, 179, 227);
             pictureBox1.BackColor = Color.FromArgb(112, 179, 227);
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            button1.BackColor = Color.FromArgb(3, 143, 244);
+            Вход.BackColor = Color.FromArgb(3, 143, 244);
             pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            button1.BackColor = Color.FromArgb(3, 171, 255);
+            Вход.BackColor = Color.FromArgb(3, 171, 255);
             pictureBox1.BackColor = Color.FromArgb(3, 171, 255);
         }
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            button1.BackColor = Color.FromArgb(3, 143, 244);
+            Вход.BackColor = Color.FromArgb(3, 143, 244);
             pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
         }
         #endregion
 
         #region Авторизация на кнопку
-        private void button1_Click_1(object sender, EventArgs e) // Авторизация
+        private void Вход_Click(object sender, EventArgs e) // Авторизация
         {
-                var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=postgres";
-                using NpgsqlConnection con = new NpgsqlConnection(cs);
-                con.Open();
-                NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
-                Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
-                //Totalf.ExecuteNonQuery();
-                int id = (int)Totalf.ExecuteScalar();
-                
-                Главная obj = new Главная // передача id в форму Главная
-                {
-                    ID = id
-                };
-                Hide();
-                obj.Show();
-            con.Close();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=postgres";
+            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
             using NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
             {
                 CommandType = CommandType.StoredProcedure
             };
-            Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
-            Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
-            Totalf.ExecuteNonQuery();
-            int id = (int)Totalf.ExecuteScalar();
-            con.Close();
-            Главная obj = new Главная // передача id в форму Главная
+            try
             {
-                ID = id
+                Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
+                Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
+                int id = (int)Totalf.ExecuteScalar();
+                Главная obj = new Главная(id); // передача id в форму Главная
+                Hide();
+                obj.Show();
+            }
+            catch (NpgsqlException)
+            {
+                MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.");
+            }
+            con.Close();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+            using NpgsqlConnection con = new NpgsqlConnection(cs);
+            con.Open();
+            NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
+            {
+                CommandType = CommandType.StoredProcedure
             };
-            Hide();
-            obj.Show();
+            try
+            {
+                Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
+                Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
+                Totalf.ExecuteNonQuery();
+                int id = (int)Totalf.ExecuteScalar();
+                Главная obj = new Главная(id); // передача id в форму Главная
+                Hide();
+                obj.Show();
+            }
+            catch (NpgsqlException)
+            {
+                MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.");
+            }
+            con.Close();
+        }
+        #endregion
+
+        #region Цвет кнопки ВХОД
+        private void Start_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel1.Select();
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel1.Select();
+        }
+
+        private void Name1_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel1.Select();
+        }
+
+        private void Start_Deactivate(object sender, EventArgs e)
+        {
+            panel1.Select();
         }
         #endregion
     }
