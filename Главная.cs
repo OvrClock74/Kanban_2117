@@ -10,6 +10,7 @@ using NPOI.Util;
 using NpgsqlTypes;
 using System.IO;
 using System.Media;
+using System.Globalization;
 
 namespace Scrum
 {
@@ -20,6 +21,8 @@ namespace Scrum
         public int ID_Main; 
         public bool clc = false; // если нажали на таблицу - перемещение таска к концу мышки
         public bool clcU = false; // если нажали на добавить пользователя
+        public bool clcUd = false; // если нажали на удалить пользователя
+        public bool clcUs = false; // если нажали на все пользователи
         public string C; // Значение, что находится в выбираемой ячейке
         public int stage_t; // стадия на которой находится выбранный таск
 
@@ -72,8 +75,13 @@ namespace Scrum
             da2.Parameters.AddWithValue("@id", ID_Main);
             Int32 access_now_user = Convert.ToInt32(da2.ExecuteScalar());
             con.Close();
-            if ((access_now_user == 0) || (access_now_user == 1))
-            {            
+            if ((access_now_user == 1))
+            {
+                CreateTaskB.Visible = true;
+                users_button.Visible = false;
+            }
+            else if (access_now_user == 0)
+            {
                 CreateTaskB.Visible = true;
                 users_button.Visible = true;
             }
@@ -83,10 +91,10 @@ namespace Scrum
                 users_button.Visible = false;
             }
             #endregion
-            ToolTip t = new ToolTip();
+            ToolTip t = new ToolTip(); // всплывающая подсказка
             t.SetToolTip(reload_tables, "Обновить");
         }
-
+        
         private void Главная_FormClosed(object sender, FormClosedEventArgs e) // крестик - зыкрыть приложение
         {
             Application.Exit();
@@ -286,19 +294,17 @@ namespace Scrum
             con.Close();
         }
 
-        #region Цвет в таблице прикрепленных файлов
+        #region Цвет ячеек в таблице прикрепленных файлов
         private void dataGridView_Task_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 255, 130);
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView_Task.CurrentCell = dataGridView_Task.Rows[e.RowIndex].Cells[0];
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 255, 50);
         }
-
-        private void dataGridView_Task_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridView_Task_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
-            dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView_Task.CurrentCell = dataGridView_Task.Rows[e.RowIndex].Cells[0];
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
         }
         #endregion
 
@@ -311,10 +317,15 @@ namespace Scrum
                 height += dr.Height;
             }
             int Y = dataGridView_Task.Height;
+
             dataGridView_Task.Height = height + 3;
+
             panel3.Height = dataGridView_Task.Height;
+
             AddFTask.Location = new Point(AddFTask.Location.X, (panel3.Height/2) - (AddFTask.Height/2));
-            task_form.Height = dataGridView_Task.Location.Y + label16.Height + dataGridView_Task.Height + (label16.Location.Y - (dataGridView_Task.Location.Y + Y));
+
+            task_form.Height = dataGridView_Task.Location.Y + dataGridView_Task.Height 
+                + label16.Height + label16.Height/4;
         }
         #endregion
 
@@ -402,6 +413,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView1.Location.Y);
                 task_form.Left = (e.X + +dataGridView1.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -474,6 +487,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView2.Location.Y);
                 task_form.Left = (e.X + +dataGridView2.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -546,6 +561,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView3.Location.Y);
                 task_form.Left = (e.X + +dataGridView3.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -617,6 +634,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView4.Location.Y);
                 task_form.Left = (e.X + +dataGridView4.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -688,6 +707,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView5.Location.Y);
                 task_form.Left = (e.X + +dataGridView5.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -759,6 +780,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView6.Location.Y);
                 task_form.Left = (e.X + +dataGridView6.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -830,6 +853,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView7.Location.Y);
                 task_form.Left = (e.X + +dataGridView7.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -901,6 +926,8 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView8.Location.Y);
                 task_form.Left = (e.X + +dataGridView8.Location.X);
+                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
+                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -1097,6 +1124,8 @@ namespace Scrum
         } 
         private void namT_Leave(object sender, EventArgs e)
         {
+            namT.Text = namT.Text.TrimStart(); // удаляем пробелы
+            namT.Text = namT.Text.TrimEnd();
             if (namT.Text == "")
             {
                 namT.Text = "Заголовок";
@@ -1112,14 +1141,33 @@ namespace Scrum
             }
         }
         ///////////////////////////////////////////////Срок_исполнения///////////////////////////////////////////////////
-        private void Срок_исполнения_Leave(object sender, EventArgs e)
+        private void Срок_исполнения_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
         {
-            if (Срок_исполнения.Text == "  .  .")
+            if (!e.IsValidInput)
             {
-                textBox2.Visible = true;
-                textBox2.BringToFront();
+                MessageBox.Show("Неверный формат даты!\nПроверьте вводимую дату.");
                 Срок_исполнения.Text = "";
             }
+            else
+            {
+                DateTime userDate = (DateTime)e.ReturnValue;
+                if (userDate < DateTime.Now)
+                {
+                    MessageBox.Show("Срок исполнения меньше сегодняшней даты!\nПроверьте вводимую дату.");
+                    Срок_исполнения.Text = "";
+                }
+            }
+        }
+        
+        private void Срок_исполнения_Leave(object sender, EventArgs e)
+        {
+            if (!Срок_исполнения.MaskFull)
+            {
+                    textBox2.Visible = true;
+                    textBox2.BringToFront();
+                    Срок_исполнения.Text = "";
+            }
+            else Срок_исполнения.ValidatingType = typeof(DateTime);
         }
         private void Срок_исполнения_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1266,8 +1314,8 @@ namespace Scrum
         private void CreateTaskB_Click(object sender, EventArgs e)
         {
             panel1.Select();
-            panelCT.Location = CreateTaskB.Location;
-            panelCT.Visible = true;            
+            panelCT.Location = new Point (100, 100);
+            panelCT.Visible = true;
         }
 
         private void AddF_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
@@ -1277,15 +1325,14 @@ namespace Scrum
             PathToFile = openFileDialog1.FileName; // получаем путь к выбранному файлу
             TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
             name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
-            AddF.Text = "Файл прикреплен";
+            AddF.Text = "файл прикреплен";
+            AddF.Font = new Font("Segoe UI Semibold", 13, FontStyle.Regular); //Segoe UI Semibold; 12,75pt; style=Bold, Underline
             AddF.ForeColor = Color.Gray;
         }
 
         private void OtmenaB_Click(object sender, EventArgs e) // Кнопка Отмена
         {
             CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
-            AddF.Text = "Прикрепить файл";
-            AddF.ForeColor = Color.Black;
             OtmenaB.BackColor = Color.FromArgb(3, 171, 255);
             textBox2.Visible = true;
             panelCT.Visible = false;
@@ -1305,6 +1352,10 @@ namespace Scrum
             textBox1.Text = "Стоимость";
             textBox1.ForeColor = Color.Gray; 
             textBox1.BackColor = Color.White;
+
+            AddF.Text = "Прикрепить файл";
+            AddF.Font = new Font("Segoe UI Semibold", 13, FontStyle.Underline);
+            AddF.ForeColor = Color.Black;
         }
 
         private void EnterB_Click(object sender, EventArgs e) // добавить задачу
@@ -1312,7 +1363,6 @@ namespace Scrum
             panel1.Select();
             if ((namT.Text != "Заголовок") && (Срок_исполнения.MaskFull) && (textBox1.Text != "Стоимость") && (namT.Text != "")  && (textBox1.Text != ""))
             {
-                
                 NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
                  con.Open();
 
@@ -1335,6 +1385,7 @@ namespace Scrum
                         da3.Parameters.Add("namet", NpgsqlDbType.Varchar, 250).Value = namT.Text;
                         da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
                         da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Срок_исполнения.Text;
+                        textBox1.Text = textBox1.Text.Trim(new char [] {'\u20BD'});
                         da3.Parameters.Add("costt", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox1.Text);
                         Int32 new_task_id = Convert.ToInt32(da3.ExecuteScalar());
                         if (new_task_id != -1) // на всякий случай проверяем добавлена ли задача 
@@ -1343,8 +1394,6 @@ namespace Scrum
 
                             //////////////////////////////КАК КНОПКА ОТМЕНА/////////////////////////////////
                             CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
-                            AddF.Text = "Прикрепить файл";
-                            AddF.ForeColor = Color.Black;
                             textBox2.Visible = true;
                             panelCT.Visible = false;
                             EnterB.BackColor = Color.FromArgb(3, 171, 255);
@@ -1363,15 +1412,20 @@ namespace Scrum
                             textBox1.Text = "Стоимость";
                             textBox1.ForeColor = Color.Gray;
                             textBox1.BackColor = Color.White;
+
+                            AddF.Text = "Прикрепить файл";
+                            AddF.Font = new Font("Segoe UI Semibold", 13, FontStyle.Underline);
+                            AddF.ForeColor = Color.Black;
                             /////////////////////////////////////////////////////////////////////////////////////
-                            
+
                             MessageBox.Show("Заявка добавлена!");
                         }
                         else MessageBox.Show("Заявка не добавлена!");
                     }
-                    catch (NpgsqlException)
+                    catch (NpgsqlException ex) 
                     {
-                        MessageBox.Show("Нет разрешения на добавление задач!");
+                        if (Convert.ToString(ex.Message) == "P0001: Нет разрешения на добавление задач.")
+                            MessageBox.Show("Нет разрешения на добавление задач!");
                     }
                     con.Close();
                 }    
@@ -1460,7 +1514,20 @@ namespace Scrum
         private void AddFTask_MouseMove(object sender, MouseEventArgs e)
         {
             panel3.BackColor = Color.FromArgb(255, 255, 50);
+            //DrawEllipseRectangle()
         }
+        private void DrawEllipseRectangle(PaintEventArgs e)
+        {
+            // Create pen.\\
+            Pen blackPen = new Pen(Color.Black, 3);
+
+            // Create rectangle for ellipse.
+            Rectangle rect = new Rectangle(0, 0, 200, 100);
+
+            // Draw ellipse to screen.
+            e.Graphics.DrawEllipse(blackPen, rect);
+        }
+
         private void label16_Click(object sender, EventArgs e) // переместить таск
         {
             NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
@@ -1559,6 +1626,71 @@ namespace Scrum
         #endregion
 
         ////////////////////////////////////////////////////УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ//////////////////////////////////////////////
+        #region Управление пользователями
+        
+        #region Кнопка НАЗАД
+        //////////////////////////////КНОПКА НАЗАД///////////////////////////////////////
+        private void panel_connect_1_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel_connect_1.BackColor = Color.FromArgb(112, 179, 227); // серый
+        }
+        private void panel_connect_1_MouseLeave(object sender, EventArgs e)
+        {
+            panel_connect_1.BackColor = Color.FromArgb(0, 100, 200); // синий
+        }
+        private void panel_connect_1_MouseMove(object sender, MouseEventArgs e)
+        {
+            panel_connect_1.BackColor = Color.FromArgb(3, 171, 255); // голубой
+        }
+        private void panel_connect_1_Click(object sender, EventArgs e)
+        {
+            label22_Click(sender, e);
+        }
+        ////////////////////////////////КНОПКА НАЗАД (ТЕКСТ)/////////////////////////////
+        private void label22_MouseMove(object sender, MouseEventArgs e)
+        {
+            panel_connect_1_MouseMove(sender, e);
+        }
+        private void label22_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel_connect_1_MouseDown(sender, e);
+        }
+        private void label22_MouseLeave(object sender, EventArgs e)
+        {
+            panel_connect_1_MouseLeave(sender, e);
+        }
+        private void label22_Click(object sender, EventArgs e)
+        {
+            panel1.Select();
+
+            new_id_for_user.Text = "Логин";
+            new_id_for_user.ForeColor = Color.Gray;
+
+            new_pass_for_user.Text = "Пароль";
+            new_pass_for_user.ForeColor = Color.Gray;
+
+            new_access_for_user.Text = "Уровень доступа";
+            new_access_for_user.ForeColor = Color.Gray;
+
+            add_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
+            panel_connect_1.Visible = false;
+            New_user_form.Visible = false;
+            clcU = false;
+            //////////////////////////////////////////////////////////////////////////////
+            login_user.Text = "Логин пользователя";
+            login_user.ForeColor = Color.Gray;
+
+            admin_pass.Text = "Ваш пароль";
+            admin_pass.ForeColor = Color.Gray;
+
+            delete_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
+            panel_connect_1.Visible = false;
+            Del_user_form.Visible = false;
+            clcUd = false;
+
+        }
+        #endregion
+
         #region Кнопка УправлениеПользователями
         private void users_button_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1609,13 +1741,18 @@ namespace Scrum
         private void label18_Click(object sender, EventArgs e)
         {
             add_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
-            panel_connect_1.Visible = false;
-            New_user_form.Visible = false;
+            label22_Click(sender, e); // кнопка назад на добавлении нового юзера
+            if (clcUs == true) // панель для ввода пароля админа для показа всей таблицы пользователей
+            {
+                clcUs = false;
+                paas.Text = "";
+                admin_pass_enter.Visible = false;
+            }
             control_users_panel.Visible = false;
-            clcU = false;
         }
         #endregion
 
+        /////////////////////////////////////////////////////////////////////////////////////////////
         #region Кнопка Добавить пользователя
         private void add_user_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1651,6 +1788,16 @@ namespace Scrum
         }
         private void add_user_Click(object sender, EventArgs e)
         {
+            if (clcUd == true)
+            {
+                label22_Click(sender, e);
+            }
+            if (clcUs == true)
+            {
+                clcUs = false;
+                paas.Text = "";
+                admin_pass_enter.Visible = false;
+            }
             if (clcU != true) // если нажали на ЭТУ кнопку, то показывать
             {
                 clcU = true;
@@ -1663,58 +1810,12 @@ namespace Scrum
             }
             else // иначе закрыть
             {
-                panel1.Select();
-                clcU = false;
-                panel_connect_1.Visible = false;
-                New_user_form.Visible = false;
+                label22_Click(sender, e);
             } 
         }
         #endregion
 
-        #region Кнопка Удалить пользователя
-        private void delete_user_MouseDown(object sender, MouseEventArgs e)
-        {
-            delete_user.BackColor = Color.FromArgb(0, 100, 200); // синий
-        }
-
-        private void delete_user_MouseLeave(object sender, EventArgs e)
-        {
-            delete_user.BorderStyle = BorderStyle.FixedSingle;
-            delete_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
-        }
-
-        private void delete_user_MouseMove(object sender, MouseEventArgs e)
-        {
-            delete_user.BorderStyle = BorderStyle.Fixed3D;
-            delete_user.BackColor = Color.FromArgb(3, 140, 255); // темнее, чем голубой
-        }
-
-        private void delete_user_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region Кнопка Принять Нового пользователя
-        private void label23_MouseLeave(object sender, EventArgs e) 
-        {
-            label23.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
-        }
-        private void label23_MouseMove(object sender, MouseEventArgs e)
-        {
-            label23.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
-        }
-        private void label23_MouseDown(object sender, MouseEventArgs e)
-        {
-            label23.BackColor = Color.FromArgb(112, 179, 227); // серый
-        }
-        private void label23_Click(object sender, EventArgs e)
-        {
-
-        }
-        #endregion
-
-        #region Серый текст в Добавить пользователя (таблица всех юзеров без паролей)
+        #region new_id_for_user
         private void new_id_for_user_MouseMove(object sender, MouseEventArgs e)
         {
             if (new_id_for_user.BackColor == Color.LightCoral)
@@ -1753,6 +1854,9 @@ namespace Scrum
                 else if (str == "accs")
                     table_users.Columns[i].HeaderText = "Доступ";
             }
+            table_users.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            table_users.DefaultCellStyle.SelectionBackColor = Color.White;
+            table_users.DefaultCellStyle.SelectionForeColor = Color.Black;
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             panel_for_table_users.Location = new Point(New_user_form.Location.X - 9 - panel_for_table_users.Width, New_user_form.Location.Y + new_id_for_user.Location.Y + 1);
             panel_connect_2.Location = new Point(panel_for_table_users.Location.X + panel_for_table_users.Size.Width, New_user_form.Location.Y + new_id_for_user.Location.Y + 2);
@@ -1772,27 +1876,24 @@ namespace Scrum
             }
             table_users.Height = height;
         }
+
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         private void new_id_for_user_Leave(object sender, EventArgs e)
         {
+            new_id_for_user.Text = new_id_for_user.Text.TrimStart(); // удаляем пробелы
+            new_id_for_user.Text = new_id_for_user.Text.TrimEnd();
             if (new_id_for_user.Text == "")
             {
                 new_id_for_user.Text = "Логин";
                 new_id_for_user.ForeColor = Color.Gray;
             }
-            panel_connect_2.Visible = false;
-            panel_for_table_users.Visible = false;
+                panel_connect_2.Visible = false;
+                panel_for_table_users.Visible = false;
         }
-        /////////////////////////////////////////////////////////////////////
-        private void new_pass_for_user_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (new_pass_for_user.BackColor == Color.LightCoral)
-            {
-                new_pass_for_user.ForeColor = Color.Gray;
-                new_pass_for_user.BackColor = Color.White;
-            }
-        }
+        #endregion
+
+        #region new_pass_for_user
         private void new_pass_for_user_Enter(object sender, EventArgs e)
         {
             new_pass_for_user.ForeColor = Color.Black;
@@ -1803,13 +1904,44 @@ namespace Scrum
         }
         private void new_pass_for_user_Leave(object sender, EventArgs e)
         {
+            new_pass_for_user.Text = new_pass_for_user.Text.TrimStart(); // удаляем пробелы
+            new_pass_for_user.Text = new_pass_for_user.Text.TrimEnd();
             if (new_pass_for_user.Text == "")
             {
                 new_pass_for_user.Text = "Пароль";
                 new_pass_for_user.ForeColor = Color.Gray;
             }
         }
-        /////////////////////////////////////////////////////////////////////
+        private void new_pass_for_user_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (new_pass_for_user.BackColor == Color.LightCoral)
+            {
+                new_pass_for_user.ForeColor = Color.Gray;
+                new_pass_for_user.BackColor = Color.White;
+            }
+        }
+        #endregion
+
+        #region new_access_for_user
+        private void new_access_for_user_KeyPress(object sender, KeyPressEventArgs e) // нельзя нажимать любую клавишу
+        {
+            e.Handled = true;
+            SystemSounds.Beep.Play();
+        }
+        private void new_access_for_user_TextChanged(object sender, EventArgs e)
+        {
+            new_access_for_user.ForeColor = Color.Black;
+        }
+        private void new_access_for_user_Leave(object sender, EventArgs e)
+        {
+            new_access_for_user.Text = new_access_for_user.Text.TrimStart(); // удаляем пробелы
+            new_access_for_user.Text = new_access_for_user.Text.TrimEnd();
+            if (new_access_for_user.Text == "")
+            {
+                new_access_for_user.Text = "Уровень доступа";
+                new_access_for_user.ForeColor = Color.Gray;
+            }
+        }
         private void new_access_for_user_MouseMove(object sender, MouseEventArgs e)
         {
             if (new_access_for_user.BackColor == Color.LightCoral)
@@ -1818,66 +1950,427 @@ namespace Scrum
                 new_access_for_user.BackColor = Color.White;
             }
         }
-        private void new_access_for_user_Enter(object sender, EventArgs e)
+        private void new_access_for_user_DropDown(object sender, EventArgs e)
         {
             new_access_for_user.ForeColor = Color.Black;
+        }
+        private void new_access_for_user_DropDownClosed(object sender, EventArgs e)
+        {
             if (new_access_for_user.Text == "Уровень доступа")
             {
-                new_access_for_user.Text = "";
-            }
-        }
-        private void new_access_for_user_Leave(object sender, EventArgs e)
-        {
-            if (new_access_for_user.Text == "")
-            {
-                new_access_for_user.Text = "Уровень доступа";
                 new_access_for_user.ForeColor = Color.Gray;
             }
         }
-        //////////////////////////////КНОПКА НАЗАД///////////////////////////////////////
-        private void panel_connect_1_MouseDown(object sender, MouseEventArgs e)
+        #endregion
+
+        #region Кнопка Принять Нового пользователя 
+        private void label23_MouseLeave(object sender, EventArgs e)
         {
-            panel_connect_1.BackColor = Color.FromArgb(112, 179, 227); // серый
+            add_new_user_button.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
         }
-        private void panel_connect_1_MouseLeave(object sender, EventArgs e)
+        private void label23_MouseMove(object sender, MouseEventArgs e)
         {
-            panel_connect_1.BackColor = Color.FromArgb(0, 100, 200); // синий
+            add_new_user_button.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
         }
-        private void panel_connect_1_MouseMove(object sender, MouseEventArgs e)
+        private void label23_MouseDown(object sender, MouseEventArgs e)
         {
-            panel_connect_1.BackColor = Color.FromArgb(3, 171, 255); // голубой
+            add_new_user_button.BackColor = Color.FromArgb(112, 179, 227); // серый
         }
-        private void panel_connect_1_Click(object sender, EventArgs e)
-        {
-            label22_Click(sender, e);
-        }
-        ////////////////////////////////КНОПКА НАЗАД (ТЕКСТ)/////////////////////////////
-        private void label22_MouseMove(object sender, MouseEventArgs e)
-        {
-            panel_connect_1_MouseMove(sender, e);
-        }
-        private void label22_MouseDown(object sender, MouseEventArgs e)
-        {
-            panel_connect_1_MouseDown(sender, e);
-        }
-        private void label22_MouseLeave(object sender, EventArgs e)
-        {
-            panel_connect_1_MouseLeave(sender, e);
-        }
-        private void label22_Click(object sender, EventArgs e)
+        private void label23_Click(object sender, EventArgs e) // ДОБАВИТЬ НОВОГО ПОЛЬЗОВАТЕЛЯ
         {
             panel1.Select();
-            add_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
-            panel_connect_1.Visible = false;
-            New_user_form.Visible = false;
-            clcU = false;
+            if ((new_id_for_user.Text != "Логин") && (new_pass_for_user.Text != "Пароль") && (new_access_for_user.Text != "Уровень доступа"))
+            {
+                NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                con.Open();
+
+
+                NpgsqlCommand da2 = new NpgsqlCommand("select id_u from users where login = @logn", con); // уникально ли имя
+                da2.Parameters.AddWithValue("@logn", login_user.Text);
+                if (da2.ExecuteScalar() != null)
+                {
+                    MessageBox.Show("Введённый логин уже существует!\nПросмотрите таблицу всех пользователей.");
+                }
+
+                else
+                {
+                    NpgsqlCommand da3 = new NpgsqlCommand("add_usr", con) //add_usr(logn character varying, pas character varying, aces integer, auser integer)
+                    {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    try
+                    {
+                        da3.Parameters.Add("logn", NpgsqlDbType.Varchar, 250).Value = new_id_for_user.Text;
+                        da3.Parameters.Add("pas", NpgsqlDbType.Varchar, 250).Value = new_pass_for_user.Text;
+                        int access = 4;
+                        switch (new_access_for_user.Text)
+                        {
+                            case "Истец":
+                                access = 1;
+                                break;
+                            case "Оператор":
+                                access = 2;
+                                break;
+                            case "Бухгалтерия":
+                                access = 3;
+                                break;
+                        }
+                        da3.Parameters.Add("aces", NpgsqlDbType.Integer).Value = access;
+                        da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
+                        da3.ExecuteNonQuery();
+
+                        //////////////////////////////КАК КНОПКА НАЗАД/////////////////////////////////
+                        label22_Click(sender, e);
+                        ///////////////////////////////////////////////////////////////////////////////
+                        MessageBox.Show("Пользователь добавлен!");
+                    }
+                    catch (NpgsqlException ex)
+                    {
+                        if (Convert.ToString(ex.Message) == "P0001: Нельзя добавить пользователя!")
+                            MessageBox.Show("Нет прав на добавление пользователей!");
+                    }
+                    con.Close();
+                }
+            }
+            else
+            {
+                if (new_id_for_user.Text == "Логин")
+                {
+                    new_id_for_user.ForeColor = Color.Red;
+                    new_id_for_user.BackColor = Color.LightCoral;
+                }
+                if (new_pass_for_user.Text == "Пароль")
+                {
+                    new_pass_for_user.ForeColor = Color.Red;
+                    new_pass_for_user.BackColor = Color.LightCoral;
+                }
+                if (new_access_for_user.Text == "Уровень доступа")
+                {
+                    new_pass_for_user.ForeColor = Color.Red;
+                    new_pass_for_user.BackColor = Color.LightCoral;
+                }
+            }
+        }
+        #endregion
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        #region Кнопка Удалить пользователя
+        private void delete_user_MouseDown(object sender, MouseEventArgs e)
+        {
+            delete_user.BackColor = Color.FromArgb(0, 100, 200); // синий
         }
 
-        
+        private void delete_user_MouseLeave(object sender, EventArgs e)
+        {
+            if (clcUd != true)
+            {
+                delete_user.BorderStyle = BorderStyle.FixedSingle;
+                delete_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
+            }
+            else
+            {
+                delete_user.BackColor = Color.FromArgb(0, 100, 200); // синий
+                delete_user.BorderStyle = BorderStyle.FixedSingle;
+            }
+        }
+
+        private void delete_user_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (clcUd != true)
+            {
+                delete_user.BorderStyle = BorderStyle.Fixed3D;
+                delete_user.BackColor = Color.FromArgb(3, 140, 255); // темнее, чем голубой
+            }
+            else
+            {
+                delete_user.BackColor = Color.FromArgb(0, 100, 200); // синий
+                delete_user.BorderStyle = BorderStyle.FixedSingle;
+            }
+        }
+
+        private void delete_user_Click(object sender, EventArgs e)
+        {
+            if (clcU == true)
+            {
+                label22_Click(sender, e);
+            }
+            if (clcUs == true)
+            {
+                clcUs = false;
+                paas.Text = "";
+                admin_pass_enter.Visible = false;
+            }
+            if (clcUd != true) // если нажали на ЭТУ кнопку, то показывать
+            {
+                clcUd = true;
+                Del_user_form.Location = new Point(control_users_panel.Location.X - 9 - Del_user_form.Width, control_users_panel.Location.Y + delete_user.Location.Y + 1);
+                panel_connect_1.Location = Del_user_form.Location;
+                panel_connect_1.Width = control_users_panel.Location.X - Del_user_form.Location.X + delete_user.Location.X + 2;
+                panel_connect_1.BringToFront(); // на переднем плане
+                panel_connect_1.Visible = true;
+                Del_user_form.Visible = true;
+            }
+            else // иначе закрыть
+            {
+                label22_Click(sender, e);
+            }
+        }
+        #endregion
+
+        #region login_user
+        private void login_user_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (login_user.BackColor == Color.LightCoral)
+            {
+                login_user.ForeColor = Color.Gray;
+                login_user.BackColor = Color.White;
+            }
+        }
+        private void login_user_Enter(object sender, EventArgs e)
+        {
+            login_user.ForeColor = Color.Black;
+            if (login_user.Text == "Логин пользователя")
+            {
+                login_user.Text = "";
+            }
+            //////////////////////////////////////////ТАБЛИЦА ВСЕХ ЮЗЕРОВ//////////////////////////////////////////////
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            con.Open();
+            NpgsqlDataReader reader;
+            NpgsqlCommand daT = new NpgsqlCommand("Select * from all_users_without_pass(@auser)", con);
+            daT.Parameters.Add("@auser", NpgsqlDbType.Integer).Value = ID_Main;
+            DataTable dt = new DataTable();
+            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
+            dt.Load(reader);
+            table_users.DataSource = dt;
+            reader.Close();
+            con.Close();
+
+            for (int i = 0; i < table_users.Columns.Count; i++) // переименование столбцов
+            {
+                string str = table_users.Columns[i].HeaderText;
+                if (str == "logn")
+                {
+                    table_users.Columns[i].HeaderText = "Логин";
+                }
+                else if (str == "accs")
+                    table_users.Columns[i].HeaderText = "Доступ";
+            }
+            table_users.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.White;
+            table_users.DefaultCellStyle.SelectionBackColor = Color.White;
+            table_users.DefaultCellStyle.SelectionForeColor = Color.Black;
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            panel_for_table_users.Location = new Point(Del_user_form.Location.X - 9 - panel_for_table_users.Width, Del_user_form.Location.Y + login_user.Location.Y + 1);
+            panel_connect_2.Location = new Point(panel_for_table_users.Location.X + panel_for_table_users.Size.Width, Del_user_form.Location.Y + login_user.Location.Y + 2);
+            panel_connect_2.Width = Del_user_form.Location.X - panel_for_table_users.Location.X - panel_for_table_users.Width + login_user.Location.X + 1;
+            panel_connect_2.BringToFront(); // на переднем плане
+            panel_connect_2.Visible = true;
+            panel_for_table_users.Visible = true;
+        }
+        private void login_user_Leave(object sender, EventArgs e)
+        {
+            login_user.Text = login_user.Text.TrimStart(); // удаляем пробелы
+            login_user.Text = login_user.Text.TrimEnd();
+            if (login_user.Text == "")
+            {
+                login_user.Text = "Логин пользователя";
+                login_user.ForeColor = Color.Gray;
+            }
+            panel_connect_2.Visible = false;
+            panel_for_table_users.Visible = false;
+        }
+        #endregion
+
+        #region admin_pass
+        private void admin_pass_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (admin_pass.BackColor == Color.LightCoral)
+            {
+                admin_pass.ForeColor = Color.Gray;
+                admin_pass.BackColor = Color.White;
+            }
+        }
+        private void admin_pass_Enter(object sender, EventArgs e)
+        {
+            if (admin_pass.Text == "Ваш пароль")
+            {
+                admin_pass.Text = "";
+                admin_pass.ForeColor = Color.Black;
+                admin_pass.PasswordChar = '•';
+            }
+        }
+        private void admin_pass_Leave(object sender, EventArgs e)
+        {
+            admin_pass.Text = admin_pass.Text.TrimStart(); // удаляем пробелы
+            admin_pass.Text = admin_pass.Text.TrimEnd();
+            if (admin_pass.Text == "")
+            {
+                admin_pass.PasswordChar = (char)0;
+                admin_pass.Text = "Ваш пароль";
+                admin_pass.ForeColor = Color.Gray;
+            }
+        }
+        #endregion
+
+        #region Кнопка Принять Удаление пользователя
+        private void del_user_button_MouseLeave(object sender, EventArgs e)
+        {
+            del_user_button.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
+        }
+        private void del_user_button_MouseMove(object sender, MouseEventArgs e)
+        {
+            del_user_button.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
+        }
+        private void del_user_button_MouseDown(object sender, MouseEventArgs e)
+        {
+            del_user_button.BackColor = Color.FromArgb(112, 179, 227); // серый
+        }
+        private void del_user_button_Click(object sender, EventArgs e) // УДАЛИТЬ ПОЛЬЗОВАТЕЛЯ
+        {
+            DialogResult result = MessageBox.Show(
+        "Удаление пользователя - необратимый процесс! Это приведет к потере автора у задач, созданных им.\n\nВы уверены?\n\n",
+        "Внимание!",
+        MessageBoxButtons.OKCancel,
+        MessageBoxIcon.Warning,
+        MessageBoxDefaultButton.Button2,
+        MessageBoxOptions.DefaultDesktopOnly);
+            if (result == DialogResult.OK)
+            {
+                panel1.Select();
+                if ((login_user.Text != "Логин пользователя") && (admin_pass.Text != "Ваш пароль") && (login_user.Text != "") && (admin_pass.Text != ""))
+                {
+                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                    con.Open();
 
 
+                    NpgsqlCommand da2 = new NpgsqlCommand("select id_u from users where login = @logn", con); // уникально ли имя
+                    da2.Parameters.AddWithValue("@logn", login_user.Text);
 
-        ////////////////////////////////////////////////////////////////////////////////
+                    if (da2.ExecuteScalar() == null)
+                    {
+                        MessageBox.Show("Введённого пользователя не существует!\nПросмотрите таблицу всех пользователей.");
+                    }
+                    else
+                    {
+                        int id_User = (int)da2.ExecuteScalar(); // если введенный логин существует, то берём его айди
+                        NpgsqlCommand da3 = new NpgsqlCommand("del_usr", con) //del_usr(id integer, auser integer)
+                        {
+                            CommandType = CommandType.StoredProcedure
+                        };
+                        try
+                        {
+                            da3.Parameters.Add("id", NpgsqlDbType.Integer).Value = id_User;
+                            da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
+                            da3.ExecuteNonQuery();
+
+                            //////////////////////////////КАК КНОПКА НАЗАД/////////////////////////////////
+                            label22_Click(sender, e);
+                            ///////////////////////////////////////////////////////////////////////////////
+                            MessageBox.Show("Пользователь удален!");
+                        }
+                        catch (NpgsqlException ex)
+                        {
+                            if (Convert.ToString(ex.Message) == "P0001: Удалить нельзя")
+                                MessageBox.Show("Нет прав на удаление пользователей!");
+                        }
+                        con.Close();
+                    }
+                }
+                else
+                {
+                    if (login_user.Text == "Логин пользователя")
+                    {
+                        login_user.ForeColor = Color.Red;
+                        login_user.BackColor = Color.LightCoral;
+                    }
+                    if (admin_pass.Text == "Ваш пароль")
+                    {
+                        admin_pass.ForeColor = Color.Red;
+                        admin_pass.BackColor = Color.LightCoral;
+                    }
+                }
+            }
+            
+        }
+
+
+        #endregion
+        /////////////////////////////////////////////////////////////////////////////////////////////
+        #region Кнопка Все пользователи
+        private void show_user_MouseDown(object sender, MouseEventArgs e)
+        {
+            show_user.BackColor = Color.FromArgb(112, 179, 227); // синий
+        }
+
+        private void show_user_MouseLeave(object sender, EventArgs e)
+        {
+                show_user.BorderStyle = BorderStyle.FixedSingle;
+                show_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
+        }
+
+        private void show_user_MouseMove(object sender, MouseEventArgs e)
+        {
+                show_user.BorderStyle = BorderStyle.Fixed3D;
+                show_user.BackColor = Color.FromArgb(3, 140, 255); // темнее, чем голубой
+        }
+
+        private void show_user_Click(object sender, EventArgs e)
+        {
+            if (clcU == true || clcUd == true)
+            {
+                label22_Click(sender, e);
+            }
+            if (clcUs != true) // если нажали на ЭТУ кнопку, то показывать
+            {
+                clcUs = true;
+                admin_pass_enter.Location = new Point(control_users_panel.Location.X, control_users_panel.Location.Y + control_users_panel.Height);
+                admin_pass_enter.BringToFront();
+                admin_pass_enter.Visible = true;
+            }
+            else // иначе закрыть
+            {
+                clcUs = false;
+                paas.Text = "";
+                admin_pass_enter.Visible = false;
+            }
+        }
+        #endregion
+
+        #region Кнопка для перехода на таблицу всех юзеров
+        private void button_for_pass_admin_MouseDown(object sender, MouseEventArgs e)
+        {
+            button_for_pass_admin.BackColor = Color.FromArgb(112, 179, 227); // серый
+        }
+
+        private void button_for_pass_admin_MouseLeave(object sender, EventArgs e)
+        {
+            button_for_pass_admin.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
+        }
+
+        private void button_for_pass_admin_MouseMove(object sender, MouseEventArgs e)
+        {
+            button_for_pass_admin.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
+        }
+
+        private void button_for_pass_admin_Click(object sender, EventArgs e)
+        {
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            con.Open();
+            NpgsqlCommand da2 = new NpgsqlCommand("select login from users where (id_u = @id) and (pass = @pass) and (acces = 0)", con); // получаем уровень доступа
+            da2.Parameters.Add("@pass", NpgsqlDbType.Varchar, 250).Value = paas.Text;
+            da2.Parameters.Add("@id", NpgsqlDbType.Integer).Value = ID_Main;
+            if (da2.ExecuteScalar() == null)
+            {
+                MessageBox.Show("Неверный пароль!\nПовторите попытку.");
+            }
+            else
+            {
+                TableAllUsers obj2 = new TableAllUsers(ID_Main); // передача id в форму Главная
+                obj2.Show();
+            }
+            con.Close();
+        }
+        #endregion
+
         #endregion
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

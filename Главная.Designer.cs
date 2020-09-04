@@ -74,22 +74,27 @@
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.reload_tables = new System.Windows.Forms.PictureBox();
             this.control_users_panel = new System.Windows.Forms.Panel();
+            this.show_user = new System.Windows.Forms.Label();
             this.delete_user = new System.Windows.Forms.Label();
             this.add_user = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.New_user_form = new System.Windows.Forms.Panel();
             this.new_access_for_user = new System.Windows.Forms.ComboBox();
-            this.label23 = new System.Windows.Forms.Label();
-            this.panel_connect_1 = new System.Windows.Forms.Panel();
-            this.label22 = new System.Windows.Forms.Label();
+            this.add_new_user_button = new System.Windows.Forms.Label();
             this.new_pass_for_user = new System.Windows.Forms.TextBox();
             this.new_id_for_user = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel_connect_1 = new System.Windows.Forms.Panel();
+            this.label22 = new System.Windows.Forms.Label();
             this.panel_for_table_users = new System.Windows.Forms.Panel();
             this.table_users = new System.Windows.Forms.DataGridView();
             this.panel_connect_2 = new System.Windows.Forms.Panel();
+            this.Del_user_form = new System.Windows.Forms.Panel();
+            this.del_user_button = new System.Windows.Forms.Label();
+            this.admin_pass = new System.Windows.Forms.TextBox();
+            this.login_user = new System.Windows.Forms.TextBox();
+            this.button_for_pass_admin = new System.Windows.Forms.Label();
+            this.admin_pass_enter = new System.Windows.Forms.Panel();
+            this.paas = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panelCT.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -108,14 +113,15 @@
             this.control_users_panel.SuspendLayout();
             this.New_user_form.SuspendLayout();
             this.panel_connect_1.SuspendLayout();
-            this.panel2.SuspendLayout();
             this.panel_for_table_users.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).BeginInit();
+            this.Del_user_form.SuspendLayout();
+            this.admin_pass_enter.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(39)))), ((int)(((byte)(42)))));
             this.panel1.Controls.Add(this.users_button);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label15);
@@ -130,11 +136,11 @@
             // 
             this.users_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.users_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.users_button.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.users_button.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.users_button.ForeColor = System.Drawing.Color.White;
-            this.users_button.Location = new System.Drawing.Point(948, 20);
+            this.users_button.Location = new System.Drawing.Point(907, 20);
             this.users_button.Name = "users_button";
-            this.users_button.Size = new System.Drawing.Size(268, 38);
+            this.users_button.Size = new System.Drawing.Size(330, 38);
             this.users_button.TabIndex = 11;
             this.users_button.Text = "Управление пользователями";
             this.users_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -148,10 +154,10 @@
             // 
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(542, -16);
+            this.label17.Location = new System.Drawing.Point(538, -14);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(148, 85);
             this.label17.TabIndex = 2;
@@ -177,9 +183,9 @@
             // 
             this.CreateTaskB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.CreateTaskB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateTaskB.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CreateTaskB.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.CreateTaskB.ForeColor = System.Drawing.Color.White;
-            this.CreateTaskB.Location = new System.Drawing.Point(18, 20);
+            this.CreateTaskB.Location = new System.Drawing.Point(-1, 20);
             this.CreateTaskB.Name = "CreateTaskB";
             this.CreateTaskB.Size = new System.Drawing.Size(241, 38);
             this.CreateTaskB.TabIndex = 11;
@@ -203,7 +209,7 @@
             this.panelCT.Controls.Add(this.namT);
             this.panelCT.Controls.Add(this.textBox2);
             this.panelCT.Controls.Add(this.Срок_исполнения);
-            this.panelCT.Location = new System.Drawing.Point(243, 500);
+            this.panelCT.Location = new System.Drawing.Point(15, 177);
             this.panelCT.Name = "panelCT";
             this.panelCT.Size = new System.Drawing.Size(241, 277);
             this.panelCT.TabIndex = 9;
@@ -238,7 +244,7 @@
             this.AddF.Location = new System.Drawing.Point(13, 195);
             this.AddF.Name = "AddF";
             this.AddF.Size = new System.Drawing.Size(215, 32);
-            this.AddF.TabIndex = 11;
+            this.AddF.TabIndex = 3;
             this.AddF.Text = "Прикрепить файл";
             this.AddF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.AddF.Click += new System.EventHandler(this.AddF_Click);
@@ -327,7 +333,6 @@
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(214, 33);
             this.textBox2.TabIndex = 1;
-            this.textBox2.TabStop = false;
             this.textBox2.Text = "Срок исполнения";
             this.textBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseDown);
             this.textBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseMove);
@@ -342,6 +347,8 @@
             this.Срок_исполнения.Name = "Срок_исполнения";
             this.Срок_исполнения.Size = new System.Drawing.Size(214, 33);
             this.Срок_исполнения.TabIndex = 1;
+            this.Срок_исполнения.TabStop = false;
+            this.Срок_исполнения.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.Срок_исполнения_TypeValidationCompleted);
             this.Срок_исполнения.Leave += new System.EventHandler(this.Срок_исполнения_Leave);
             this.Срок_исполнения.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Срок_исполнения_MouseMove);
             // 
@@ -361,7 +368,6 @@
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
             this.dataGridView1.Location = new System.Drawing.Point(37, 123);
-            this.dataGridView1.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -383,9 +389,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(201, -1);
+            this.label1.Location = new System.Drawing.Point(923, 421);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(23, 22);
             this.label1.TabIndex = 9;
@@ -403,13 +409,12 @@
             this.task_form.Controls.Add(this.dataGridView_Task);
             this.task_form.Controls.Add(this.label6);
             this.task_form.Controls.Add(this.label2);
-            this.task_form.Controls.Add(this.label1);
             this.task_form.Controls.Add(this.label5);
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
-            this.task_form.Location = new System.Drawing.Point(12, 500);
+            this.task_form.Location = new System.Drawing.Point(448, 173);
             this.task_form.Name = "task_form";
-            this.task_form.Size = new System.Drawing.Size(225, 254);
+            this.task_form.Size = new System.Drawing.Size(381, 343);
             this.task_form.TabIndex = 9;
             this.task_form.Visible = false;
             this.task_form.VisibleChanged += new System.EventHandler(this.task_form_VisibleChanged);
@@ -450,9 +455,9 @@
             // 
             this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(1, 218);
+            this.label16.Location = new System.Drawing.Point(79, 307);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(220, 35);
+            this.label16.Size = new System.Drawing.Size(223, 35);
             this.label16.TabIndex = 14;
             this.label16.Text = "На согласование";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -487,14 +492,14 @@
             this.dataGridView_Task.Text = "dataGridView9";
             this.dataGridView_Task.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_Task_CellMouseClick);
             this.dataGridView_Task.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Task_CellMouseEnter);
-            this.dataGridView_Task.CellMouseMove += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_Task_CellMouseMove);
+            this.dataGridView_Task.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Task_CellMouseLeave);
             this.dataGridView_Task.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView_Task_DataBindingComplete);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(13, 150);
+            this.label6.Location = new System.Drawing.Point(148, 150);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(80, 20);
             this.label6.TabIndex = 10;
@@ -503,10 +508,10 @@
             // label2
             // 
             this.label2.AutoEllipsis = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(13, 26);
+            this.label2.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(125, 28);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 25);
+            this.label2.Size = new System.Drawing.Size(129, 31);
             this.label2.TabIndex = 10;
             this.label2.Text = "Название";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -515,7 +520,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(13, 124);
+            this.label5.Location = new System.Drawing.Point(148, 124);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(46, 20);
             this.label5.TabIndex = 10;
@@ -524,20 +529,21 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(13, 69);
+            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(314, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
+            this.label3.Size = new System.Drawing.Size(65, 26);
             this.label3.TabIndex = 10;
             this.label3.Text = "Автор";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(13, 97);
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(24, 98);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(203, 20);
+            this.label4.Size = new System.Drawing.Size(257, 26);
             this.label4.TabIndex = 10;
             this.label4.Text = "Дата создания - Дата завер";
             // 
@@ -557,14 +563,13 @@
             this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView2.GridColor = System.Drawing.Color.White;
             this.dataGridView2.Location = new System.Drawing.Point(183, 123);
-            this.dataGridView2.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView2.RowHeadersVisible = false;
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView2.Size = new System.Drawing.Size(139, 216);
             this.dataGridView2.TabIndex = 6;
@@ -592,14 +597,13 @@
             this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView3.GridColor = System.Drawing.Color.White;
             this.dataGridView3.Location = new System.Drawing.Point(328, 123);
-            this.dataGridView3.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
             this.dataGridView3.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView3.RowHeadersVisible = false;
             this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView3.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView3.Size = new System.Drawing.Size(139, 216);
             this.dataGridView3.TabIndex = 6;
@@ -627,14 +631,13 @@
             this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView4.GridColor = System.Drawing.Color.White;
             this.dataGridView4.Location = new System.Drawing.Point(473, 123);
-            this.dataGridView4.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
             this.dataGridView4.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView4.RowHeadersVisible = false;
             this.dataGridView4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView4.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView4.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView4.Size = new System.Drawing.Size(139, 216);
             this.dataGridView4.TabIndex = 6;
@@ -662,14 +665,13 @@
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView5.GridColor = System.Drawing.Color.White;
             this.dataGridView5.Location = new System.Drawing.Point(618, 123);
-            this.dataGridView5.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
             this.dataGridView5.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView5.RowHeadersVisible = false;
             this.dataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView5.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView5.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView5.Size = new System.Drawing.Size(139, 216);
             this.dataGridView5.TabIndex = 6;
@@ -697,14 +699,13 @@
             this.dataGridView6.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView6.GridColor = System.Drawing.Color.White;
             this.dataGridView6.Location = new System.Drawing.Point(763, 123);
-            this.dataGridView6.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView6.MultiSelect = false;
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.ReadOnly = true;
             this.dataGridView6.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView6.RowHeadersVisible = false;
             this.dataGridView6.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView6.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView6.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView6.Size = new System.Drawing.Size(139, 216);
             this.dataGridView6.TabIndex = 6;
@@ -732,14 +733,13 @@
             this.dataGridView7.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView7.GridColor = System.Drawing.Color.White;
             this.dataGridView7.Location = new System.Drawing.Point(908, 123);
-            this.dataGridView7.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView7.MultiSelect = false;
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
             this.dataGridView7.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView7.RowHeadersVisible = false;
             this.dataGridView7.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView7.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView7.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView7.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView7.Size = new System.Drawing.Size(139, 216);
             this.dataGridView7.TabIndex = 6;
@@ -767,14 +767,13 @@
             this.dataGridView8.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView8.GridColor = System.Drawing.Color.White;
             this.dataGridView8.Location = new System.Drawing.Point(1053, 123);
-            this.dataGridView8.MinimumSize = new System.Drawing.Size(139, 216);
             this.dataGridView8.MultiSelect = false;
             this.dataGridView8.Name = "dataGridView8";
             this.dataGridView8.ReadOnly = true;
             this.dataGridView8.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dataGridView8.RowHeadersVisible = false;
             this.dataGridView8.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView8.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.dataGridView8.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView8.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView8.Size = new System.Drawing.Size(139, 216);
             this.dataGridView8.TabIndex = 6;
@@ -789,80 +788,88 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label7.Location = new System.Drawing.Point(75, 99);
+            this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(70, 95);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(61, 21);
+            this.label7.Size = new System.Drawing.Size(72, 26);
             this.label7.TabIndex = 10;
             this.label7.Text = "Заявка";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(194, 99);
+            this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(184, 94);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(115, 21);
+            this.label8.Size = new System.Drawing.Size(135, 26);
             this.label8.TabIndex = 10;
             this.label8.Text = "Согласование";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(340, 99);
+            this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(328, 94);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(113, 21);
+            this.label9.Size = new System.Drawing.Size(136, 26);
             this.label9.TabIndex = 10;
             this.label9.Text = "Утверждение";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(504, 99);
+            this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(494, 94);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 21);
+            this.label10.Size = new System.Drawing.Size(91, 26);
             this.label10.TabIndex = 10;
             this.label10.Text = "В работе";
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label11.Location = new System.Drawing.Point(624, 99);
+            this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(611, 94);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(129, 21);
+            this.label11.Size = new System.Drawing.Size(152, 26);
             this.label11.TabIndex = 10;
             this.label11.Text = "Формирование";
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(780, 99);
+            this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label12.ForeColor = System.Drawing.Color.White;
+            this.label12.Location = new System.Drawing.Point(769, 94);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(104, 21);
+            this.label12.Size = new System.Drawing.Size(124, 26);
             this.label12.TabIndex = 10;
             this.label12.Text = "Заключение";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(923, 99);
+            this.label13.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(915, 94);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(104, 21);
+            this.label13.Size = new System.Drawing.Size(124, 26);
             this.label13.TabIndex = 10;
             this.label13.Text = "Исполнение";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(1089, 99);
+            this.label14.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label14.ForeColor = System.Drawing.Color.White;
+            this.label14.Location = new System.Drawing.Point(1081, 94);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(63, 21);
+            this.label14.Size = new System.Drawing.Size(76, 26);
             this.label14.TabIndex = 10;
             this.label14.Text = "Оплата";
             // 
@@ -887,27 +894,41 @@
             // control_users_panel
             // 
             this.control_users_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.control_users_panel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
             this.control_users_panel.Controls.Add(this.label18);
-            this.control_users_panel.Location = new System.Drawing.Point(490, 500);
+            this.control_users_panel.Location = new System.Drawing.Point(54, 345);
             this.control_users_panel.Name = "control_users_panel";
-            this.control_users_panel.Size = new System.Drawing.Size(268, 147);
+            this.control_users_panel.Size = new System.Drawing.Size(330, 171);
             this.control_users_panel.TabIndex = 12;
             this.control_users_panel.Visible = false;
             // 
+            // show_user
+            // 
+            this.show_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.show_user.ForeColor = System.Drawing.Color.White;
+            this.show_user.Location = new System.Drawing.Point(-1, 124);
+            this.show_user.Name = "show_user";
+            this.show_user.Size = new System.Drawing.Size(330, 45);
+            this.show_user.TabIndex = 13;
+            this.show_user.Text = "Все пользователи      ";
+            this.show_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.show_user.Click += new System.EventHandler(this.show_user_Click);
+            this.show_user.MouseDown += new System.Windows.Forms.MouseEventHandler(this.show_user_MouseDown);
+            this.show_user.MouseLeave += new System.EventHandler(this.show_user_MouseLeave);
+            this.show_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.show_user_MouseMove);
+            // 
             // delete_user
             // 
-            this.delete_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.delete_user.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.delete_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delete_user.ForeColor = System.Drawing.Color.White;
-            this.delete_user.Location = new System.Drawing.Point(11, 97);
+            this.delete_user.Location = new System.Drawing.Point(-1, 81);
             this.delete_user.Name = "delete_user";
-            this.delete_user.Size = new System.Drawing.Size(246, 33);
+            this.delete_user.Size = new System.Drawing.Size(330, 45);
             this.delete_user.TabIndex = 13;
-            this.delete_user.Text = "Удалить";
-            this.delete_user.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.delete_user.Text = "Удалить      ";
+            this.delete_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.delete_user.Click += new System.EventHandler(this.delete_user_Click);
             this.delete_user.MouseDown += new System.Windows.Forms.MouseEventHandler(this.delete_user_MouseDown);
             this.delete_user.MouseLeave += new System.EventHandler(this.delete_user_MouseLeave);
@@ -915,15 +936,14 @@
             // 
             // add_user
             // 
-            this.add_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.add_user.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.add_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.add_user.ForeColor = System.Drawing.Color.White;
-            this.add_user.Location = new System.Drawing.Point(11, 49);
+            this.add_user.Location = new System.Drawing.Point(-1, 37);
             this.add_user.Name = "add_user";
-            this.add_user.Size = new System.Drawing.Size(246, 33);
+            this.add_user.Size = new System.Drawing.Size(330, 45);
             this.add_user.TabIndex = 13;
-            this.add_user.Text = "Добавить ";
-            this.add_user.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.add_user.Text = "Добавить      ";
+            this.add_user.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.add_user.Click += new System.EventHandler(this.add_user_Click);
             this.add_user.MouseDown += new System.Windows.Forms.MouseEventHandler(this.add_user_MouseDown);
             this.add_user.MouseLeave += new System.EventHandler(this.add_user_MouseLeave);
@@ -932,12 +952,11 @@
             // label18
             // 
             this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.label18.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label18.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label18.ForeColor = System.Drawing.Color.White;
             this.label18.Location = new System.Drawing.Point(-1, -1);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(268, 38);
+            this.label18.Size = new System.Drawing.Size(330, 38);
             this.label18.TabIndex = 12;
             this.label18.Text = "Управление пользователями";
             this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -952,11 +971,10 @@
             this.New_user_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
             this.New_user_form.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.New_user_form.Controls.Add(this.new_access_for_user);
-            this.New_user_form.Controls.Add(this.label23);
-            this.New_user_form.Controls.Add(this.panel_connect_1);
+            this.New_user_form.Controls.Add(this.add_new_user_button);
             this.New_user_form.Controls.Add(this.new_pass_for_user);
             this.New_user_form.Controls.Add(this.new_id_for_user);
-            this.New_user_form.Location = new System.Drawing.Point(767, 482);
+            this.New_user_form.Location = new System.Drawing.Point(780, 521);
             this.New_user_form.Name = "New_user_form";
             this.New_user_form.Size = new System.Drawing.Size(268, 246);
             this.New_user_form.TabIndex = 13;
@@ -967,33 +985,73 @@
             this.new_access_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.new_access_for_user.ForeColor = System.Drawing.Color.Gray;
             this.new_access_for_user.FormattingEnabled = true;
+            this.new_access_for_user.Items.AddRange(new object[] {
+            "Истец",
+            "Оператор",
+            "Бухгалтерия"});
             this.new_access_for_user.Location = new System.Drawing.Point(15, 147);
             this.new_access_for_user.Name = "new_access_for_user";
             this.new_access_for_user.Size = new System.Drawing.Size(235, 33);
             this.new_access_for_user.TabIndex = 14;
             this.new_access_for_user.Text = "Уровень доступа";
+            this.new_access_for_user.DropDown += new System.EventHandler(this.new_access_for_user_DropDown);
+            this.new_access_for_user.DropDownClosed += new System.EventHandler(this.new_access_for_user_DropDownClosed);
+            this.new_access_for_user.TextChanged += new System.EventHandler(this.new_access_for_user_TextChanged);
+            this.new_access_for_user.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.new_access_for_user_KeyPress);
+            this.new_access_for_user.Leave += new System.EventHandler(this.new_access_for_user_Leave);
+            this.new_access_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_access_for_user_MouseMove);
             // 
-            // label23
+            // add_new_user_button
             // 
-            this.label23.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label23.ForeColor = System.Drawing.Color.White;
-            this.label23.Location = new System.Drawing.Point(-1, 200);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(268, 45);
-            this.label23.TabIndex = 1;
-            this.label23.Text = "Принять";
-            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label23.Click += new System.EventHandler(this.label23_Click);
-            this.label23.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label23_MouseDown);
-            this.label23.MouseLeave += new System.EventHandler(this.label23_MouseLeave);
-            this.label23.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label23_MouseMove);
+            this.add_new_user_button.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.add_new_user_button.ForeColor = System.Drawing.Color.White;
+            this.add_new_user_button.Location = new System.Drawing.Point(-1, 200);
+            this.add_new_user_button.Name = "add_new_user_button";
+            this.add_new_user_button.Size = new System.Drawing.Size(268, 45);
+            this.add_new_user_button.TabIndex = 1;
+            this.add_new_user_button.Text = "Принять";
+            this.add_new_user_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.add_new_user_button.Click += new System.EventHandler(this.label23_Click);
+            this.add_new_user_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label23_MouseDown);
+            this.add_new_user_button.MouseLeave += new System.EventHandler(this.label23_MouseLeave);
+            this.add_new_user_button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label23_MouseMove);
+            // 
+            // new_pass_for_user
+            // 
+            this.new_pass_for_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.new_pass_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_pass_for_user.ForeColor = System.Drawing.Color.Gray;
+            this.new_pass_for_user.Location = new System.Drawing.Point(15, 98);
+            this.new_pass_for_user.MaxLength = 22;
+            this.new_pass_for_user.Name = "new_pass_for_user";
+            this.new_pass_for_user.Size = new System.Drawing.Size(235, 33);
+            this.new_pass_for_user.TabIndex = 1;
+            this.new_pass_for_user.Text = "Пароль";
+            this.new_pass_for_user.Enter += new System.EventHandler(this.new_pass_for_user_Enter);
+            this.new_pass_for_user.Leave += new System.EventHandler(this.new_pass_for_user_Leave);
+            this.new_pass_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_pass_for_user_MouseMove);
+            // 
+            // new_id_for_user
+            // 
+            this.new_id_for_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.new_id_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_id_for_user.ForeColor = System.Drawing.Color.Gray;
+            this.new_id_for_user.Location = new System.Drawing.Point(15, 47);
+            this.new_id_for_user.MaxLength = 22;
+            this.new_id_for_user.Name = "new_id_for_user";
+            this.new_id_for_user.Size = new System.Drawing.Size(235, 33);
+            this.new_id_for_user.TabIndex = 0;
+            this.new_id_for_user.Text = "Логин";
+            this.new_id_for_user.Enter += new System.EventHandler(this.new_id_for_user_Enter);
+            this.new_id_for_user.Leave += new System.EventHandler(this.new_id_for_user_Leave);
+            this.new_id_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_id_for_user_MouseMove);
             // 
             // panel_connect_1
             // 
             this.panel_connect_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.panel_connect_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_connect_1.Controls.Add(this.label22);
-            this.panel_connect_1.Location = new System.Drawing.Point(-1, -1);
+            this.panel_connect_1.Location = new System.Drawing.Point(767, 345);
             this.panel_connect_1.Name = "panel_connect_1";
             this.panel_connect_1.Size = new System.Drawing.Size(289, 33);
             this.panel_connect_1.TabIndex = 13;
@@ -1019,81 +1077,15 @@
             this.label22.MouseLeave += new System.EventHandler(this.label22_MouseLeave);
             this.label22.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label22_MouseMove);
             // 
-            // new_pass_for_user
-            // 
-            this.new_pass_for_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.new_pass_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_pass_for_user.ForeColor = System.Drawing.Color.Gray;
-            this.new_pass_for_user.Location = new System.Drawing.Point(15, 98);
-            this.new_pass_for_user.MaxLength = 22;
-            this.new_pass_for_user.Name = "new_pass_for_user";
-            this.new_pass_for_user.Size = new System.Drawing.Size(235, 33);
-            this.new_pass_for_user.TabIndex = 0;
-            this.new_pass_for_user.Text = "Пароль";
-            this.new_pass_for_user.Enter += new System.EventHandler(this.new_pass_for_user_Enter);
-            this.new_pass_for_user.Leave += new System.EventHandler(this.new_pass_for_user_Leave);
-            this.new_pass_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_pass_for_user_MouseMove);
-            // 
-            // new_id_for_user
-            // 
-            this.new_id_for_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.new_id_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_id_for_user.ForeColor = System.Drawing.Color.Gray;
-            this.new_id_for_user.Location = new System.Drawing.Point(15, 47);
-            this.new_id_for_user.MaxLength = 22;
-            this.new_id_for_user.Name = "new_id_for_user";
-            this.new_id_for_user.Size = new System.Drawing.Size(235, 33);
-            this.new_id_for_user.TabIndex = 0;
-            this.new_id_for_user.Text = "Логин";
-            this.new_id_for_user.Enter += new System.EventHandler(this.new_id_for_user_Enter);
-            this.new_id_for_user.Leave += new System.EventHandler(this.new_id_for_user_Leave);
-            this.new_id_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_id_for_user_MouseMove);
-            // 
-            // label20
-            // 
-            this.label20.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(10, 60);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(246, 33);
-            this.label20.TabIndex = 13;
-            this.label20.Text = "Удалить";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label21
-            // 
-            this.label21.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(10, 12);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(246, 33);
-            this.label21.TabIndex = 13;
-            this.label21.Text = "Добавить ";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel2.Controls.Add(this.label20);
-            this.panel2.Controls.Add(this.label21);
-            this.panel2.Location = new System.Drawing.Point(175, 384);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(268, 110);
-            this.panel2.TabIndex = 12;
-            this.panel2.Visible = false;
-            // 
             // panel_for_table_users
             // 
             this.panel_for_table_users.AutoSize = true;
             this.panel_for_table_users.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
             this.panel_for_table_users.Controls.Add(this.table_users);
-            this.panel_for_table_users.Location = new System.Drawing.Point(490, 361);
+            this.panel_for_table_users.Location = new System.Drawing.Point(1073, 356);
             this.panel_for_table_users.Name = "panel_for_table_users";
-            this.panel_for_table_users.Size = new System.Drawing.Size(271, 136);
+            this.panel_for_table_users.Size = new System.Drawing.Size(271, 47);
             this.panel_for_table_users.TabIndex = 13;
             this.panel_for_table_users.Visible = false;
             // 
@@ -1110,6 +1102,7 @@
             this.table_users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.table_users.GridColor = System.Drawing.Color.Black;
             this.table_users.Location = new System.Drawing.Point(4, 4);
+            this.table_users.MaximumSize = new System.Drawing.Size(264, 315);
             this.table_users.MultiSelect = false;
             this.table_users.Name = "table_users";
             this.table_users.ReadOnly = true;
@@ -1117,7 +1110,7 @@
             this.table_users.RowHeadersVisible = false;
             this.table_users.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.table_users.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.table_users.Size = new System.Drawing.Size(264, 129);
+            this.table_users.Size = new System.Drawing.Size(264, 40);
             this.table_users.TabIndex = 0;
             this.table_users.Text = "dataGridView9";
             this.table_users.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.table_users_DataBindingComplete);
@@ -1125,27 +1118,129 @@
             // panel_connect_2
             // 
             this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(456, 401);
+            this.panel_connect_2.Location = new System.Drawing.Point(1153, 421);
             this.panel_connect_2.Name = "panel_connect_2";
             this.panel_connect_2.Size = new System.Drawing.Size(28, 31);
             this.panel_connect_2.TabIndex = 13;
             this.panel_connect_2.Visible = false;
             // 
+            // Del_user_form
+            // 
+            this.Del_user_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.Del_user_form.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.Del_user_form.Controls.Add(this.del_user_button);
+            this.Del_user_form.Controls.Add(this.admin_pass);
+            this.Del_user_form.Controls.Add(this.login_user);
+            this.Del_user_form.Location = new System.Drawing.Point(409, 457);
+            this.Del_user_form.Name = "Del_user_form";
+            this.Del_user_form.Size = new System.Drawing.Size(268, 196);
+            this.Del_user_form.TabIndex = 14;
+            this.Del_user_form.Visible = false;
+            // 
+            // del_user_button
+            // 
+            this.del_user_button.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.del_user_button.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.del_user_button.ForeColor = System.Drawing.Color.White;
+            this.del_user_button.Location = new System.Drawing.Point(-1, 150);
+            this.del_user_button.Name = "del_user_button";
+            this.del_user_button.Size = new System.Drawing.Size(268, 45);
+            this.del_user_button.TabIndex = 1;
+            this.del_user_button.Text = "Принять";
+            this.del_user_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.del_user_button.Click += new System.EventHandler(this.del_user_button_Click);
+            this.del_user_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.del_user_button_MouseDown);
+            this.del_user_button.MouseLeave += new System.EventHandler(this.del_user_button_MouseLeave);
+            this.del_user_button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.del_user_button_MouseMove);
+            // 
+            // admin_pass
+            // 
+            this.admin_pass.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.admin_pass.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.admin_pass.ForeColor = System.Drawing.Color.Gray;
+            this.admin_pass.Location = new System.Drawing.Point(15, 98);
+            this.admin_pass.MaxLength = 22;
+            this.admin_pass.Name = "admin_pass";
+            this.admin_pass.Size = new System.Drawing.Size(235, 33);
+            this.admin_pass.TabIndex = 1;
+            this.admin_pass.Text = "Ваш пароль";
+            this.admin_pass.Enter += new System.EventHandler(this.admin_pass_Enter);
+            this.admin_pass.Leave += new System.EventHandler(this.admin_pass_Leave);
+            this.admin_pass.MouseMove += new System.Windows.Forms.MouseEventHandler(this.admin_pass_MouseMove);
+            // 
+            // login_user
+            // 
+            this.login_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.login_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.login_user.ForeColor = System.Drawing.Color.Gray;
+            this.login_user.Location = new System.Drawing.Point(15, 47);
+            this.login_user.MaxLength = 22;
+            this.login_user.Name = "login_user";
+            this.login_user.Size = new System.Drawing.Size(235, 33);
+            this.login_user.TabIndex = 0;
+            this.login_user.Text = "Логин пользователя";
+            this.login_user.Enter += new System.EventHandler(this.login_user_Enter);
+            this.login_user.Leave += new System.EventHandler(this.login_user_Leave);
+            this.login_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.login_user_MouseMove);
+            // 
+            // button_for_pass_admin
+            // 
+            this.button_for_pass_admin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_for_pass_admin.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_for_pass_admin.ForeColor = System.Drawing.Color.White;
+            this.button_for_pass_admin.Location = new System.Drawing.Point(-1, 28);
+            this.button_for_pass_admin.Name = "button_for_pass_admin";
+            this.button_for_pass_admin.Size = new System.Drawing.Size(330, 45);
+            this.button_for_pass_admin.TabIndex = 1;
+            this.button_for_pass_admin.Text = "Открыть таблицу";
+            this.button_for_pass_admin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button_for_pass_admin.Click += new System.EventHandler(this.button_for_pass_admin_Click);
+            this.button_for_pass_admin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_for_pass_admin_MouseDown);
+            this.button_for_pass_admin.MouseLeave += new System.EventHandler(this.button_for_pass_admin_MouseLeave);
+            this.button_for_pass_admin.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_for_pass_admin_MouseMove);
+            // 
+            // admin_pass_enter
+            // 
+            this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.admin_pass_enter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.admin_pass_enter.Controls.Add(this.paas);
+            this.admin_pass_enter.Controls.Add(this.panelCT);
+            this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
+            this.admin_pass_enter.Location = new System.Drawing.Point(54, 522);
+            this.admin_pass_enter.Name = "admin_pass_enter";
+            this.admin_pass_enter.Size = new System.Drawing.Size(330, 74);
+            this.admin_pass_enter.TabIndex = 14;
+            this.admin_pass_enter.Visible = false;
+            // 
+            // paas
+            // 
+            this.paas.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.paas.ForeColor = System.Drawing.Color.DarkGray;
+            this.paas.Location = new System.Drawing.Point(-1, -1);
+            this.paas.MaxLength = 22;
+            this.paas.Name = "paas";
+            this.paas.Size = new System.Drawing.Size(330, 33);
+            this.paas.TabIndex = 3;
+            this.paas.Text = "введите пароль";
+            this.paas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.ClientSize = new System.Drawing.Size(1238, 590);
+            this.Controls.Add(this.task_form);
+            this.Controls.Add(this.admin_pass_enter);
+            this.Controls.Add(this.Del_user_form);
+            this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_for_table_users);
-            this.Controls.Add(this.panel2);
             this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.New_user_form);
-            this.Controls.Add(this.panelCT);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.reload_tables);
-            this.Controls.Add(this.task_form);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -1188,9 +1283,12 @@
             this.New_user_form.ResumeLayout(false);
             this.New_user_form.PerformLayout();
             this.panel_connect_1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.panel_for_table_users.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).EndInit();
+            this.Del_user_form.ResumeLayout(false);
+            this.Del_user_form.PerformLayout();
+            this.admin_pass_enter.ResumeLayout(false);
+            this.admin_pass_enter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1246,18 +1344,28 @@
         private System.Windows.Forms.Label delete_user;
         private System.Windows.Forms.Label add_user;
         private System.Windows.Forms.Panel New_user_form;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel_connect_1;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.TextBox new_id_for_user;
-        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label add_new_user_button;
         private System.Windows.Forms.TextBox new_pass_for_user;
         private System.Windows.Forms.Panel panel_for_table_users;
         private System.Windows.Forms.DataGridView table_users;
         private System.Windows.Forms.Panel panel_connect_2;
         private System.Windows.Forms.ComboBox new_access_for_user;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel Del_user_form;
+        private System.Windows.Forms.Label del_user_button;
+        private System.Windows.Forms.TextBox admin_pass;
+        private System.Windows.Forms.TextBox login_user;
+        private System.Windows.Forms.Label del_u;
+        private System.Windows.Forms.Label ewq;
+        private System.Windows.Forms.Label show_user;
+        private System.Windows.Forms.Label button_for_pass_admin;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.TextBox pass;
+        private System.Windows.Forms.Panel admin_pass_enter;
+        private System.Windows.Forms.TextBox p;
+        private System.Windows.Forms.TextBox paas;
     }
 }

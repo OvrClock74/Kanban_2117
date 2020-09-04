@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Npgsql;
 using System.Windows.Forms;
+using NPOI.SS.Formula.Functions;
 
 namespace Scrum
 {
@@ -22,101 +23,86 @@ namespace Scrum
         private void Start_Load(object sender, EventArgs e)
         {
             ActiveControl = null;
+           
         }
 
         #region ТекстБокс ЛОГИН и ПАРОЛЬ
+        public bool clcT = false;
+        //
+        //textBox1
+        //
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            if (textBox1.Text == "Логин")
-            {
-                textBox1.Text = "";
-                textBox1.ForeColor = Color.Black;
-            }
+            clcT = true;
+            border_background_panel2.BackColor = Color.FromArgb(120, 136, 214);
         }
-
+        private void textBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (clcT ==false)
+            border_background_panel2.BackColor = Color.Black;  
+        }
+        private void textBox1_MouseLeave(object sender, EventArgs e)
+        {
+            if (clcT == false)
+                border_background_panel2.BackColor = Color.FromArgb(40,41,44);
+        }
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            clcT = false;
+            border_background_panel2.BackColor = Color.FromArgb(40, 41, 44);
+            textBox1.Text = textBox1.Text.TrimStart(); // удаляем пробелы
+            textBox1.Text = textBox1.Text.TrimEnd();
+        }
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.Enter)
             {
-                textBox1.Text = "Логин";
-                textBox1.ForeColor = Color.Gray;
+                e.SuppressKeyPress = true;
+                SelectNextControl(ActiveControl, true, true, true, true);
             }
         }
-
+        //
+        //textBox2
+        //
         private void textBox2_Enter(object sender, EventArgs e)
         {
-            if (textBox2.Text == "Пароль")
-            {
-                textBox2.Text = "";
-                textBox2.ForeColor = Color.Black;
-                textBox2.PasswordChar = '•';
-            }
+            clcT = true;
+            border_background_panel.BackColor = Color.FromArgb(120, 136, 214);
+        }
+        private void textBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (clcT == false)
+                border_background_panel.BackColor = Color.Black;
         }
 
+        private void textBox2_MouseLeave(object sender, EventArgs e)
+        {
+            if (clcT == false)
+                border_background_panel.BackColor = Color.FromArgb(40, 41, 44);
+        }
         private void textBox2_Leave(object sender, EventArgs e)
         {
-            if (textBox2.Text == "")
-            {
-                textBox2.PasswordChar = (char)0;
-                textBox2.Text = "Пароль";
-                textBox2.ForeColor = Color.Gray;
-            }
-            if (textBox2.Text != "Пароль" && textBox2.Text != "")
-            {
-                textBox2.ForeColor = Color.Black;
-                textBox2.PasswordChar = '•';
-            }
+            clcT = false;
+            border_background_panel.BackColor = Color.FromArgb(40, 41, 44);
+            textBox2.Text = textBox2.Text.TrimStart(); // удаляем пробелы
+            textBox2.Text = textBox2.Text.TrimEnd();
         }
         #endregion
 
         #region Цвет кнопки ВХОД
         private void Вход_MouseMove(object sender, MouseEventArgs e)
         {
-            Вход.BackColor = Color.FromArgb(3, 171, 255);
-            pictureBox1.BackColor = Color.FromArgb(3,171,255); // голубой
+            Вход.BackColor = Color.FromArgb(109,122,193);
         }
 
         private void Вход_MouseLeave(object sender, EventArgs e)
         {
-            Вход.BackColor = Color.FromArgb(3, 143, 244);
-            pictureBox1.BackColor = Color.FromArgb(3, 143, 244);  // синий
+            Вход.BackColor = Color.FromArgb(120,136,214);
         }
 
         private void Вход_MouseDown(object sender, MouseEventArgs e)
         {
-            Вход.BackColor = Color.FromArgb(112, 179, 227);
-            pictureBox1.BackColor = Color.FromArgb(112, 179, 227); // серый
-        }
-
-        private void Вход_MouseUp(object sender, MouseEventArgs e)
-        {
-            Вход.BackColor = Color.FromArgb(3, 143, 244);
-            pictureBox1.BackColor = Color.FromArgb(3, 143, 244); // синий
-        }
-
-
-        private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
-        {
-            Вход.BackColor = Color.FromArgb(112, 179, 227);
-            pictureBox1.BackColor = Color.FromArgb(112, 179, 227);
-        }
-
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
-        {
-            Вход.BackColor = Color.FromArgb(3, 143, 244);
-            pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
-        }
-
-        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
-        {
-            Вход.BackColor = Color.FromArgb(3, 171, 255);
-            pictureBox1.BackColor = Color.FromArgb(3, 171, 255);
-        }
-
-        private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
-        {
-            Вход.BackColor = Color.FromArgb(3, 143, 244);
-            pictureBox1.BackColor = Color.FromArgb(3, 143, 244);
+            Вход.BackColor = Color.FromArgb(97,110,171);
         }
         #endregion
 
@@ -173,17 +159,15 @@ namespace Scrum
         }
         #endregion
 
-        #region Цвет кнопки ВХОД
-        private void Start_MouseDown(object sender, MouseEventArgs e)
+        private void Start_MouseDown(object sender, MouseEventArgs e) // перетаскивание формы без рамки
         {
             panel1.Select();
+            base.Capture = false;
+            Message m = Message.Create(base.Handle, 161, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref m);
         }
 
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            panel1.Select();
-        }
-
+        #region Фокус на другой элемент
         private void Name1_MouseDown(object sender, MouseEventArgs e)
         {
             panel1.Select();
@@ -193,6 +177,65 @@ namespace Scrum
         {
             panel1.Select();
         }
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel1.Select();
+        }
         #endregion
+        
+        private void border_background_panel_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_close2.BackColor = Color.Black;
+        }
+        #region Крест, свернуть, развернуть
+        private void butn_close_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_close2.Visible = true;
+        }
+        private void butn_plus_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_plus2.Visible = true;
+        }
+        private void butn_minus_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_minus2.Visible = true;
+        }
+        private void butn_close2_MouseLeave(object sender, EventArgs e)
+        {
+            butn_close2.Visible = false;
+        }
+        private void butn_plus2_MouseLeave(object sender, EventArgs e)
+        {
+            butn_plus2.Visible = false;
+        }
+        private void butn_minus2_MouseLeave(object sender, EventArgs e)
+        {
+            butn_minus2.Visible = false;
+        }
+
+        private void butn_close2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void butn_plus2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
+
+        private void butn_minus2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+
+        /*butn_close.Location = new Point(this.Size.Width - butn_close2.Width, 0);
+        butn_close2.Location = new Point(this.Size.Width - butn_close2.Width, 0);
+        butn_plus.Location = new Point(this.Size.Width - (butn_close2.Width* 2), 0);
+            butn_plus2.Location = new Point(this.Size.Width - (butn_close2.Width* 2), 0);
+            butn_minus.Location = new Point(this.Size.Width - (butn_close2.Width* 3), 0);
+            butn_minus2.Location = new Point(this.Size.Width - (butn_close2.Width* 3), 0);*/
+        #endregion
+
+        
     }
 }

@@ -7,8 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.11.3" />
     <PackageReference Include="Npgsql" Version="4.1.4" />
     <PackageReference Include="NPOI" Version="2.5.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
   </ItemGroup>
 
   <ItemGroup>
