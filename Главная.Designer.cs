@@ -34,27 +34,15 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.CreateTaskB = new System.Windows.Forms.Label();
-            this.panelCT = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
+            this.butn_minus2 = new System.Windows.Forms.PictureBox();
+            this.butn_minus = new System.Windows.Forms.PictureBox();
+            this.butn_plus2 = new System.Windows.Forms.PictureBox();
+            this.butn_plus = new System.Windows.Forms.PictureBox();
+            this.butn_close = new System.Windows.Forms.PictureBox();
             this.AddF = new System.Windows.Forms.Label();
             this.OtmenaB = new System.Windows.Forms.Label();
             this.EnterB = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.namT = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.Срок_исполнения = new System.Windows.Forms.MaskedTextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.task_form = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.AddFTask = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.dataGridView_Task = new System.Windows.Forms.DataGridView();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -72,7 +60,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.reload_tables = new System.Windows.Forms.PictureBox();
             this.control_users_panel = new System.Windows.Forms.Panel();
             this.show_user = new System.Windows.Forms.Label();
             this.delete_user = new System.Windows.Forms.Label();
@@ -87,21 +74,53 @@
             this.label22 = new System.Windows.Forms.Label();
             this.panel_for_table_users = new System.Windows.Forms.Panel();
             this.table_users = new System.Windows.Forms.DataGridView();
+            this.button_for_pass_admin = new System.Windows.Forms.Label();
+            this.admin_pass_enter = new System.Windows.Forms.Panel();
+            this.paas = new System.Windows.Forms.TextBox();
+            this.butn_close2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_connect_2 = new System.Windows.Forms.Panel();
+            this.reload_tables = new System.Windows.Forms.PictureBox();
+            this.task_form = new System.Windows.Forms.Panel();
+            this.AddFTask = new System.Windows.Forms.PictureBox();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label16 = new System.Windows.Forms.Label();
+            this.dataGridView_Task = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.Del_user_form = new System.Windows.Forms.Panel();
             this.del_user_button = new System.Windows.Forms.Label();
             this.admin_pass = new System.Windows.Forms.TextBox();
             this.login_user = new System.Windows.Forms.TextBox();
-            this.button_for_pass_admin = new System.Windows.Forms.Label();
-            this.admin_pass_enter = new System.Windows.Forms.Panel();
-            this.paas = new System.Windows.Forms.TextBox();
+            this.panelCT = new System.Windows.Forms.Panel();
+            this.background_textbox_panel3 = new System.Windows.Forms.Panel();
+            this.border_background_panel3 = new System.Windows.Forms.Panel();
+            this.label24 = new System.Windows.Forms.Label();
+            this.border_background_panel2 = new System.Windows.Forms.Panel();
+            this.background_textbox_panel2 = new System.Windows.Forms.Panel();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.border_background_panel = new System.Windows.Forms.Panel();
+            this.background_textbox_panel = new System.Windows.Forms.Panel();
+            this.namT = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.panel1.SuspendLayout();
-            this.panelCT.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_plus)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_close)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.task_form.SuspendLayout();
-            this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Task)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -109,14 +128,26 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reload_tables)).BeginInit();
             this.control_users_panel.SuspendLayout();
             this.New_user_form.SuspendLayout();
             this.panel_connect_1.SuspendLayout();
             this.panel_for_table_users.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).BeginInit();
-            this.Del_user_form.SuspendLayout();
             this.admin_pass_enter.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_close2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reload_tables)).BeginInit();
+            this.task_form.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Task)).BeginInit();
+            this.Del_user_form.SuspendLayout();
+            this.panelCT.SuspendLayout();
+            this.background_textbox_panel3.SuspendLayout();
+            this.border_background_panel3.SuspendLayout();
+            this.border_background_panel2.SuspendLayout();
+            this.background_textbox_panel2.SuspendLayout();
+            this.border_background_panel.SuspendLayout();
+            this.background_textbox_panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -126,24 +157,23 @@
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.label15);
             this.panel1.Controls.Add(this.CreateTaskB);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(0, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 58);
+            this.panel1.Size = new System.Drawing.Size(1238, 30);
             this.panel1.TabIndex = 5;
             // 
             // users_button
             // 
-            this.users_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.users_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(39)))), ((int)(((byte)(42)))));
             this.users_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.users_button.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.users_button.ForeColor = System.Drawing.Color.White;
-            this.users_button.Location = new System.Drawing.Point(907, 20);
+            this.users_button.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.users_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.users_button.Location = new System.Drawing.Point(363, 0);
             this.users_button.Name = "users_button";
-            this.users_button.Size = new System.Drawing.Size(330, 38);
+            this.users_button.Size = new System.Drawing.Size(313, 30);
             this.users_button.TabIndex = 11;
-            this.users_button.Text = "Управление пользователями";
-            this.users_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.users_button.Text = "  Управление пользователями";
+            this.users_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.users_button.Click += new System.EventHandler(this.users_button_Click);
             this.users_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.users_button_MouseDown);
             this.users_button.MouseLeave += new System.EventHandler(this.users_button_MouseLeave);
@@ -155,13 +185,13 @@
             this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label17.AutoSize = true;
             this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.White;
-            this.label17.Location = new System.Drawing.Point(538, -14);
+            this.label17.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label17.Location = new System.Drawing.Point(1109, -5);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(148, 85);
+            this.label17.Size = new System.Drawing.Size(135, 37);
             this.label17.TabIndex = 2;
-            this.label17.Text = "Desk";
+            this.label17.Text = "Desk Name";
             // 
             // label15
             // 
@@ -181,57 +211,74 @@
             // 
             // CreateTaskB
             // 
-            this.CreateTaskB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.CreateTaskB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(39)))), ((int)(((byte)(42)))));
             this.CreateTaskB.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CreateTaskB.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.CreateTaskB.ForeColor = System.Drawing.Color.White;
-            this.CreateTaskB.Location = new System.Drawing.Point(-1, 20);
+            this.CreateTaskB.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.CreateTaskB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.CreateTaskB.Location = new System.Drawing.Point(0, 0);
             this.CreateTaskB.Name = "CreateTaskB";
-            this.CreateTaskB.Size = new System.Drawing.Size(241, 38);
+            this.CreateTaskB.Size = new System.Drawing.Size(313, 30);
             this.CreateTaskB.TabIndex = 11;
-            this.CreateTaskB.Text = "Создать заявку";
-            this.CreateTaskB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.CreateTaskB.Text = "    Создать заявку";
+            this.CreateTaskB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.CreateTaskB.Click += new System.EventHandler(this.CreateTaskB_Click);
             this.CreateTaskB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CreateTaskB_MouseDown);
             this.CreateTaskB.MouseLeave += new System.EventHandler(this.CreateTaskB_MouseLeave);
             this.CreateTaskB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CreateTaskB_MouseMove);
-            this.CreateTaskB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.CreateTaskB_MouseUp);
             // 
-            // panelCT
+            // butn_minus2
             // 
-            this.panelCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.panelCT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCT.Controls.Add(this.label19);
-            this.panelCT.Controls.Add(this.AddF);
-            this.panelCT.Controls.Add(this.OtmenaB);
-            this.panelCT.Controls.Add(this.EnterB);
-            this.panelCT.Controls.Add(this.textBox1);
-            this.panelCT.Controls.Add(this.namT);
-            this.panelCT.Controls.Add(this.textBox2);
-            this.panelCT.Controls.Add(this.Срок_исполнения);
-            this.panelCT.Location = new System.Drawing.Point(15, 177);
-            this.panelCT.Name = "panelCT";
-            this.panelCT.Size = new System.Drawing.Size(241, 277);
-            this.panelCT.TabIndex = 9;
-            this.panelCT.Visible = false;
+            this.butn_minus2.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus2.Image")));
+            this.butn_minus2.Location = new System.Drawing.Point(1137, 0);
+            this.butn_minus2.Name = "butn_minus2";
+            this.butn_minus2.Size = new System.Drawing.Size(34, 22);
+            this.butn_minus2.TabIndex = 4;
+            this.butn_minus2.TabStop = false;
+            this.butn_minus2.Visible = false;
+            this.butn_minus2.Click += new System.EventHandler(this.butn_minus2_Click);
+            this.butn_minus2.MouseLeave += new System.EventHandler(this.butn_minus2_MouseLeave);
             // 
-            // label19
+            // butn_minus
             // 
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.label19.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label19.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label19.ForeColor = System.Drawing.Color.White;
-            this.label19.Location = new System.Drawing.Point(-1, -1);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(241, 38);
-            this.label19.TabIndex = 12;
-            this.label19.Text = "Создать заявку";
-            this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label19.Click += new System.EventHandler(this.label19_Click);
-            this.label19.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label19_MouseDown);
-            this.label19.MouseLeave += new System.EventHandler(this.label19_MouseLeave);
-            this.label19.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label19_MouseMove);
-            this.label19.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label19_MouseUp);
+            this.butn_minus.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus.Image")));
+            this.butn_minus.Location = new System.Drawing.Point(1137, 0);
+            this.butn_minus.Name = "butn_minus";
+            this.butn_minus.Size = new System.Drawing.Size(34, 22);
+            this.butn_minus.TabIndex = 3;
+            this.butn_minus.TabStop = false;
+            this.butn_minus.MouseMove += new System.Windows.Forms.MouseEventHandler(this.butn_minus_MouseMove);
+            // 
+            // butn_plus2
+            // 
+            this.butn_plus2.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus2.Image")));
+            this.butn_plus2.Location = new System.Drawing.Point(1170, 0);
+            this.butn_plus2.Name = "butn_plus2";
+            this.butn_plus2.Size = new System.Drawing.Size(34, 22);
+            this.butn_plus2.TabIndex = 2;
+            this.butn_plus2.TabStop = false;
+            this.butn_plus2.Visible = false;
+            this.butn_plus2.Click += new System.EventHandler(this.butn_plus2_Click);
+            this.butn_plus2.MouseLeave += new System.EventHandler(this.butn_plus2_MouseLeave);
+            // 
+            // butn_plus
+            // 
+            this.butn_plus.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus.Image")));
+            this.butn_plus.Location = new System.Drawing.Point(1170, 0);
+            this.butn_plus.Name = "butn_plus";
+            this.butn_plus.Size = new System.Drawing.Size(34, 22);
+            this.butn_plus.TabIndex = 1;
+            this.butn_plus.TabStop = false;
+            this.butn_plus.MouseMove += new System.Windows.Forms.MouseEventHandler(this.butn_plus_MouseMove);
+            // 
+            // butn_close
+            // 
+            this.butn_close.Image = ((System.Drawing.Image)(resources.GetObject("butn_close.Image")));
+            this.butn_close.Location = new System.Drawing.Point(1204, 0);
+            this.butn_close.Name = "butn_close";
+            this.butn_close.Size = new System.Drawing.Size(34, 22);
+            this.butn_close.TabIndex = 0;
+            this.butn_close.TabStop = false;
+            this.butn_close.MouseMove += new System.Windows.Forms.MouseEventHandler(this.butn_close_MouseMove);
             // 
             // AddF
             // 
@@ -291,67 +338,6 @@
             this.EnterB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EnterB_MouseMove);
             this.EnterB.MouseUp += new System.Windows.Forms.MouseEventHandler(this.EnterB_MouseUp);
             // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.Gray;
-            this.textBox1.Location = new System.Drawing.Point(14, 148);
-            this.textBox1.MaxLength = 21;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(214, 33);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "Стоимость";
-            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
-            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
-            this.textBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseMove);
-            // 
-            // namT
-            // 
-            this.namT.BackColor = System.Drawing.Color.White;
-            this.namT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.namT.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.namT.ForeColor = System.Drawing.Color.Gray;
-            this.namT.Location = new System.Drawing.Point(14, 52);
-            this.namT.MaxLength = 21;
-            this.namT.Name = "namT";
-            this.namT.Size = new System.Drawing.Size(214, 33);
-            this.namT.TabIndex = 0;
-            this.namT.Text = "Заголовок";
-            this.namT.Enter += new System.EventHandler(this.namT_Enter);
-            this.namT.Leave += new System.EventHandler(this.namT_Leave);
-            this.namT.MouseMove += new System.Windows.Forms.MouseEventHandler(this.namT_MouseMove);
-            // 
-            // textBox2
-            // 
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox2.ForeColor = System.Drawing.Color.Gray;
-            this.textBox2.Location = new System.Drawing.Point(14, 100);
-            this.textBox2.MaxLength = 21;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(214, 33);
-            this.textBox2.TabIndex = 1;
-            this.textBox2.Text = "Срок исполнения";
-            this.textBox2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseDown);
-            this.textBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseMove);
-            // 
-            // Срок_исполнения
-            // 
-            this.Срок_исполнения.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Срок_исполнения.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Срок_исполнения.ForeColor = System.Drawing.Color.Black;
-            this.Срок_исполнения.Location = new System.Drawing.Point(14, 100);
-            this.Срок_исполнения.Mask = "00/00/0000";
-            this.Срок_исполнения.Name = "Срок_исполнения";
-            this.Срок_исполнения.Size = new System.Drawing.Size(214, 33);
-            this.Срок_исполнения.TabIndex = 1;
-            this.Срок_исполнения.TabStop = false;
-            this.Срок_исполнения.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.Срок_исполнения_TypeValidationCompleted);
-            this.Срок_исполнения.Leave += new System.EventHandler(this.Срок_исполнения_Leave);
-            this.Срок_исполнения.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Срок_исполнения_MouseMove);
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -367,7 +353,7 @@
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(37, 123);
+            this.dataGridView1.Location = new System.Drawing.Point(37, 142);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -386,167 +372,6 @@
             this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             this.dataGridView1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(923, 421);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(23, 22);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "X";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            this.label1.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
-            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
-            // 
-            // task_form
-            // 
-            this.task_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
-            this.task_form.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.task_form.Controls.Add(this.panel3);
-            this.task_form.Controls.Add(this.label16);
-            this.task_form.Controls.Add(this.dataGridView_Task);
-            this.task_form.Controls.Add(this.label6);
-            this.task_form.Controls.Add(this.label2);
-            this.task_form.Controls.Add(this.label5);
-            this.task_form.Controls.Add(this.label3);
-            this.task_form.Controls.Add(this.label4);
-            this.task_form.Location = new System.Drawing.Point(448, 173);
-            this.task_form.Name = "task_form";
-            this.task_form.Size = new System.Drawing.Size(381, 343);
-            this.task_form.TabIndex = 9;
-            this.task_form.Visible = false;
-            this.task_form.VisibleChanged += new System.EventHandler(this.task_form_VisibleChanged);
-            this.task_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.task_form_MouseDown);
-            this.task_form.MouseMove += new System.Windows.Forms.MouseEventHandler(this.task_form_MouseMove);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.AddFTask);
-            this.panel3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel3.Location = new System.Drawing.Point(187, 175);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(31, 31);
-            this.panel3.TabIndex = 15;
-            this.panel3.Click += new System.EventHandler(this.panel3_Click);
-            this.panel3.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseDown);
-            this.panel3.MouseLeave += new System.EventHandler(this.panel3_MouseLeave);
-            this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel3_MouseMove);
-            // 
-            // AddFTask
-            // 
-            this.AddFTask.BackColor = System.Drawing.Color.Transparent;
-            this.AddFTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.AddFTask.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddFTask.Image = ((System.Drawing.Image)(resources.GetObject("AddFTask.Image")));
-            this.AddFTask.Location = new System.Drawing.Point(0, 0);
-            this.AddFTask.Name = "AddFTask";
-            this.AddFTask.Size = new System.Drawing.Size(31, 31);
-            this.AddFTask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.AddFTask.TabIndex = 13;
-            this.AddFTask.TabStop = false;
-            this.AddFTask.Click += new System.EventHandler(this.AddFTask_Click);
-            this.AddFTask.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddFTask_MouseDown);
-            this.AddFTask.MouseLeave += new System.EventHandler(this.AddFTask_MouseLeave);
-            this.AddFTask.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddFTask_MouseMove);
-            // 
-            // label16
-            // 
-            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label16.Location = new System.Drawing.Point(79, 307);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(223, 35);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "На согласование";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label16.Click += new System.EventHandler(this.label16_Click);
-            this.label16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label16_MouseDown);
-            this.label16.MouseLeave += new System.EventHandler(this.label16_MouseLeave);
-            this.label16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label16_MouseMove);
-            this.label16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label16_MouseUp);
-            // 
-            // dataGridView_Task
-            // 
-            this.dataGridView_Task.AllowUserToAddRows = false;
-            this.dataGridView_Task.AllowUserToDeleteRows = false;
-            this.dataGridView_Task.AllowUserToResizeColumns = false;
-            this.dataGridView_Task.AllowUserToResizeRows = false;
-            this.dataGridView_Task.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView_Task.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView_Task.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView_Task.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.dataGridView_Task.ColumnHeadersVisible = false;
-            this.dataGridView_Task.GridColor = System.Drawing.Color.White;
-            this.dataGridView_Task.Location = new System.Drawing.Point(13, 175);
-            this.dataGridView_Task.MinimumSize = new System.Drawing.Size(166, 31);
-            this.dataGridView_Task.MultiSelect = false;
-            this.dataGridView_Task.Name = "dataGridView_Task";
-            this.dataGridView_Task.ReadOnly = true;
-            this.dataGridView_Task.RowHeadersVisible = false;
-            this.dataGridView_Task.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
-            this.dataGridView_Task.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Task.Size = new System.Drawing.Size(166, 31);
-            this.dataGridView_Task.TabIndex = 12;
-            this.dataGridView_Task.Text = "dataGridView9";
-            this.dataGridView_Task.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_Task_CellMouseClick);
-            this.dataGridView_Task.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Task_CellMouseEnter);
-            this.dataGridView_Task.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Task_CellMouseLeave);
-            this.dataGridView_Task.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView_Task_DataBindingComplete);
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.Location = new System.Drawing.Point(148, 150);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(80, 20);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Оплачено";
-            // 
-            // label2
-            // 
-            this.label2.AutoEllipsis = true;
-            this.label2.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(125, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(129, 31);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Название";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(148, 124);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(46, 20);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Цена";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(314, 61);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 26);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Автор";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(24, 98);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(257, 26);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Дата создания - Дата завер";
-            // 
             // dataGridView2
             // 
             this.dataGridView2.AllowUserToAddRows = false;
@@ -562,7 +387,7 @@
             this.dataGridView2.ColumnHeadersVisible = false;
             this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView2.GridColor = System.Drawing.Color.White;
-            this.dataGridView2.Location = new System.Drawing.Point(183, 123);
+            this.dataGridView2.Location = new System.Drawing.Point(183, 142);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -596,7 +421,7 @@
             this.dataGridView3.ColumnHeadersVisible = false;
             this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView3.GridColor = System.Drawing.Color.White;
-            this.dataGridView3.Location = new System.Drawing.Point(328, 123);
+            this.dataGridView3.Location = new System.Drawing.Point(328, 142);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
@@ -630,7 +455,7 @@
             this.dataGridView4.ColumnHeadersVisible = false;
             this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView4.GridColor = System.Drawing.Color.White;
-            this.dataGridView4.Location = new System.Drawing.Point(473, 123);
+            this.dataGridView4.Location = new System.Drawing.Point(473, 142);
             this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
@@ -664,7 +489,7 @@
             this.dataGridView5.ColumnHeadersVisible = false;
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView5.GridColor = System.Drawing.Color.White;
-            this.dataGridView5.Location = new System.Drawing.Point(618, 123);
+            this.dataGridView5.Location = new System.Drawing.Point(618, 142);
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
@@ -698,7 +523,7 @@
             this.dataGridView6.ColumnHeadersVisible = false;
             this.dataGridView6.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView6.GridColor = System.Drawing.Color.White;
-            this.dataGridView6.Location = new System.Drawing.Point(763, 123);
+            this.dataGridView6.Location = new System.Drawing.Point(763, 142);
             this.dataGridView6.MultiSelect = false;
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.ReadOnly = true;
@@ -732,7 +557,7 @@
             this.dataGridView7.ColumnHeadersVisible = false;
             this.dataGridView7.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView7.GridColor = System.Drawing.Color.White;
-            this.dataGridView7.Location = new System.Drawing.Point(908, 123);
+            this.dataGridView7.Location = new System.Drawing.Point(908, 142);
             this.dataGridView7.MultiSelect = false;
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
@@ -766,7 +591,7 @@
             this.dataGridView8.ColumnHeadersVisible = false;
             this.dataGridView8.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView8.GridColor = System.Drawing.Color.White;
-            this.dataGridView8.Location = new System.Drawing.Point(1053, 123);
+            this.dataGridView8.Location = new System.Drawing.Point(1053, 142);
             this.dataGridView8.MultiSelect = false;
             this.dataGridView8.Name = "dataGridView8";
             this.dataGridView8.ReadOnly = true;
@@ -788,6 +613,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
             this.label7.Location = new System.Drawing.Point(70, 95);
@@ -799,6 +625,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
             this.label8.Location = new System.Drawing.Point(184, 94);
@@ -810,6 +637,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
             this.label9.Location = new System.Drawing.Point(328, 94);
@@ -821,6 +649,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
             this.label10.Location = new System.Drawing.Point(494, 94);
@@ -832,6 +661,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(611, 94);
@@ -843,6 +673,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(769, 94);
@@ -854,6 +685,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.ForeColor = System.Drawing.Color.White;
             this.label13.Location = new System.Drawing.Point(915, 94);
@@ -865,6 +697,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
+            this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label14.ForeColor = System.Drawing.Color.White;
             this.label14.Location = new System.Drawing.Point(1081, 94);
@@ -876,20 +709,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // reload_tables
-            // 
-            this.reload_tables.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.reload_tables.BackColor = System.Drawing.Color.Transparent;
-            this.reload_tables.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.reload_tables.Image = ((System.Drawing.Image)(resources.GetObject("reload_tables.Image")));
-            this.reload_tables.Location = new System.Drawing.Point(1200, 58);
-            this.reload_tables.Name = "reload_tables";
-            this.reload_tables.Size = new System.Drawing.Size(38, 36);
-            this.reload_tables.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.reload_tables.TabIndex = 11;
-            this.reload_tables.TabStop = false;
-            this.reload_tables.Click += new System.EventHandler(this.reload_tables_Click);
             // 
             // control_users_panel
             // 
@@ -1115,14 +934,250 @@
             this.table_users.Text = "dataGridView9";
             this.table_users.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.table_users_DataBindingComplete);
             // 
+            // button_for_pass_admin
+            // 
+            this.button_for_pass_admin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button_for_pass_admin.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.button_for_pass_admin.ForeColor = System.Drawing.Color.White;
+            this.button_for_pass_admin.Location = new System.Drawing.Point(-1, 28);
+            this.button_for_pass_admin.Name = "button_for_pass_admin";
+            this.button_for_pass_admin.Size = new System.Drawing.Size(330, 45);
+            this.button_for_pass_admin.TabIndex = 1;
+            this.button_for_pass_admin.Text = "Открыть таблицу";
+            this.button_for_pass_admin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.button_for_pass_admin.Click += new System.EventHandler(this.button_for_pass_admin_Click);
+            this.button_for_pass_admin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_for_pass_admin_MouseDown);
+            this.button_for_pass_admin.MouseLeave += new System.EventHandler(this.button_for_pass_admin_MouseLeave);
+            this.button_for_pass_admin.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_for_pass_admin_MouseMove);
+            // 
+            // admin_pass_enter
+            // 
+            this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.admin_pass_enter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.admin_pass_enter.Controls.Add(this.paas);
+            this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
+            this.admin_pass_enter.Location = new System.Drawing.Point(54, 522);
+            this.admin_pass_enter.Name = "admin_pass_enter";
+            this.admin_pass_enter.Size = new System.Drawing.Size(330, 74);
+            this.admin_pass_enter.TabIndex = 14;
+            this.admin_pass_enter.Visible = false;
+            // 
+            // paas
+            // 
+            this.paas.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.paas.ForeColor = System.Drawing.Color.DarkGray;
+            this.paas.Location = new System.Drawing.Point(-1, -1);
+            this.paas.MaxLength = 22;
+            this.paas.Name = "paas";
+            this.paas.Size = new System.Drawing.Size(330, 33);
+            this.paas.TabIndex = 3;
+            this.paas.Text = "введите пароль";
+            this.paas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // butn_close2
+            // 
+            this.butn_close2.Image = ((System.Drawing.Image)(resources.GetObject("butn_close2.Image")));
+            this.butn_close2.Location = new System.Drawing.Point(1204, 0);
+            this.butn_close2.Name = "butn_close2";
+            this.butn_close2.Size = new System.Drawing.Size(34, 22);
+            this.butn_close2.TabIndex = 0;
+            this.butn_close2.TabStop = false;
+            this.butn_close2.Visible = false;
+            this.butn_close2.Click += new System.EventHandler(this.butn_close2_Click);
+            this.butn_close2.MouseLeave += new System.EventHandler(this.butn_close2_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1200, 53);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(38, 36);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.reload_tables_Click);
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
+            // 
             // panel_connect_2
             // 
             this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(1153, 421);
+            this.panel_connect_2.Location = new System.Drawing.Point(1137, 440);
             this.panel_connect_2.Name = "panel_connect_2";
             this.panel_connect_2.Size = new System.Drawing.Size(28, 31);
             this.panel_connect_2.TabIndex = 13;
             this.panel_connect_2.Visible = false;
+            // 
+            // reload_tables
+            // 
+            this.reload_tables.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.reload_tables.BackColor = System.Drawing.Color.Transparent;
+            this.reload_tables.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.reload_tables.Image = ((System.Drawing.Image)(resources.GetObject("reload_tables.Image")));
+            this.reload_tables.Location = new System.Drawing.Point(1200, 53);
+            this.reload_tables.Name = "reload_tables";
+            this.reload_tables.Size = new System.Drawing.Size(38, 36);
+            this.reload_tables.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.reload_tables.TabIndex = 11;
+            this.reload_tables.TabStop = false;
+            this.reload_tables.Visible = false;
+            this.reload_tables.Click += new System.EventHandler(this.reload_tables_Click);
+            this.reload_tables.MouseLeave += new System.EventHandler(this.reload_tables_MouseLeave);
+            // 
+            // task_form
+            // 
+            this.task_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.task_form.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.task_form.Controls.Add(this.AddFTask);
+            this.task_form.Controls.Add(this.panel2);
+            this.task_form.Controls.Add(this.label16);
+            this.task_form.Controls.Add(this.dataGridView_Task);
+            this.task_form.Controls.Add(this.label1);
+            this.task_form.Controls.Add(this.label6);
+            this.task_form.Controls.Add(this.label2);
+            this.task_form.Controls.Add(this.label5);
+            this.task_form.Controls.Add(this.label3);
+            this.task_form.Controls.Add(this.label4);
+            this.task_form.Location = new System.Drawing.Point(1073, 583);
+            this.task_form.Name = "task_form";
+            this.task_form.Size = new System.Drawing.Size(381, 343);
+            this.task_form.TabIndex = 9;
+            this.task_form.Visible = false;
+            this.task_form.VisibleChanged += new System.EventHandler(this.task_form_VisibleChanged);
+            this.task_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.task_form_MouseDown);
+            this.task_form.MouseMove += new System.Windows.Forms.MouseEventHandler(this.task_form_MouseMove);
+            // 
+            // AddFTask
+            // 
+            this.AddFTask.BackColor = System.Drawing.Color.Transparent;
+            this.AddFTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.AddFTask.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddFTask.Location = new System.Drawing.Point(298, 156);
+            this.AddFTask.Name = "AddFTask";
+            this.AddFTask.Size = new System.Drawing.Size(31, 31);
+            this.AddFTask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AddFTask.TabIndex = 13;
+            this.AddFTask.TabStop = false;
+            this.AddFTask.Click += new System.EventHandler(this.AddFTask_Click);
+            // 
+            // panel2
+            // 
+            this.panel2.Location = new System.Drawing.Point(25, -83);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(200, 100);
+            this.panel2.TabIndex = 16;
+            // 
+            // label16
+            // 
+            this.label16.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.label16.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label16.Location = new System.Drawing.Point(79, 307);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(223, 35);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "На согласование";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label16.Click += new System.EventHandler(this.label16_Click);
+            this.label16.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label16_MouseDown);
+            this.label16.MouseLeave += new System.EventHandler(this.label16_MouseLeave);
+            this.label16.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label16_MouseMove);
+            this.label16.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label16_MouseUp);
+            // 
+            // dataGridView_Task
+            // 
+            this.dataGridView_Task.AllowUserToAddRows = false;
+            this.dataGridView_Task.AllowUserToDeleteRows = false;
+            this.dataGridView_Task.AllowUserToResizeColumns = false;
+            this.dataGridView_Task.AllowUserToResizeRows = false;
+            this.dataGridView_Task.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_Task.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView_Task.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView_Task.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dataGridView_Task.ColumnHeadersVisible = false;
+            this.dataGridView_Task.GridColor = System.Drawing.Color.White;
+            this.dataGridView_Task.Location = new System.Drawing.Point(13, 175);
+            this.dataGridView_Task.MinimumSize = new System.Drawing.Size(166, 31);
+            this.dataGridView_Task.MultiSelect = false;
+            this.dataGridView_Task.Name = "dataGridView_Task";
+            this.dataGridView_Task.ReadOnly = true;
+            this.dataGridView_Task.RowHeadersVisible = false;
+            this.dataGridView_Task.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dataGridView_Task.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_Task.Size = new System.Drawing.Size(166, 31);
+            this.dataGridView_Task.TabIndex = 12;
+            this.dataGridView_Task.Text = "dataGridView9";
+            this.dataGridView_Task.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView_Task_CellMouseClick);
+            this.dataGridView_Task.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Task_CellMouseEnter);
+            this.dataGridView_Task.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Task_CellMouseLeave);
+            this.dataGridView_Task.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView_Task_DataBindingComplete);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label1.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.Location = new System.Drawing.Point(324, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(23, 22);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "X";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.label1.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.Location = new System.Drawing.Point(151, 144);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(80, 20);
+            this.label6.TabIndex = 10;
+            this.label6.Text = "Оплачено";
+            // 
+            // label2
+            // 
+            this.label2.AutoEllipsis = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(125, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(129, 31);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Название";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.Location = new System.Drawing.Point(148, 124);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(46, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Цена";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.Location = new System.Drawing.Point(314, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 26);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Автор";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.Location = new System.Drawing.Point(24, 98);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(257, 26);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Дата создания - Дата завер";
             // 
             // Del_user_form
             // 
@@ -1131,7 +1186,7 @@
             this.Del_user_form.Controls.Add(this.del_user_button);
             this.Del_user_form.Controls.Add(this.admin_pass);
             this.Del_user_form.Controls.Add(this.login_user);
-            this.Del_user_form.Location = new System.Drawing.Point(409, 457);
+            this.Del_user_form.Location = new System.Drawing.Point(444, 601);
             this.Del_user_form.Name = "Del_user_form";
             this.Del_user_form.Size = new System.Drawing.Size(268, 196);
             this.Del_user_form.TabIndex = 14;
@@ -1183,64 +1238,231 @@
             this.login_user.Leave += new System.EventHandler(this.login_user_Leave);
             this.login_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.login_user_MouseMove);
             // 
-            // button_for_pass_admin
+            // panelCT
             // 
-            this.button_for_pass_admin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button_for_pass_admin.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.button_for_pass_admin.ForeColor = System.Drawing.Color.White;
-            this.button_for_pass_admin.Location = new System.Drawing.Point(-1, 28);
-            this.button_for_pass_admin.Name = "button_for_pass_admin";
-            this.button_for_pass_admin.Size = new System.Drawing.Size(330, 45);
-            this.button_for_pass_admin.TabIndex = 1;
-            this.button_for_pass_admin.Text = "Открыть таблицу";
-            this.button_for_pass_admin.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.button_for_pass_admin.Click += new System.EventHandler(this.button_for_pass_admin_Click);
-            this.button_for_pass_admin.MouseDown += new System.Windows.Forms.MouseEventHandler(this.button_for_pass_admin_MouseDown);
-            this.button_for_pass_admin.MouseLeave += new System.EventHandler(this.button_for_pass_admin_MouseLeave);
-            this.button_for_pass_admin.MouseMove += new System.Windows.Forms.MouseEventHandler(this.button_for_pass_admin_MouseMove);
+            this.panelCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            this.panelCT.Controls.Add(this.border_background_panel3);
+            this.panelCT.Controls.Add(this.label24);
+            this.panelCT.Controls.Add(this.border_background_panel2);
+            this.panelCT.Controls.Add(this.label23);
+            this.panelCT.Controls.Add(this.label21);
+            this.panelCT.Controls.Add(this.label20);
+            this.panelCT.Controls.Add(this.border_background_panel);
+            this.panelCT.Controls.Add(this.label19);
+            this.panelCT.Location = new System.Drawing.Point(0, 53);
+            this.panelCT.Name = "panelCT";
+            this.panelCT.Size = new System.Drawing.Size(442, 441);
+            this.panelCT.TabIndex = 14;
             // 
-            // admin_pass_enter
+            // background_textbox_panel3
             // 
-            this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.admin_pass_enter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.admin_pass_enter.Controls.Add(this.paas);
-            this.admin_pass_enter.Controls.Add(this.panelCT);
-            this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
-            this.admin_pass_enter.Location = new System.Drawing.Point(54, 522);
-            this.admin_pass_enter.Name = "admin_pass_enter";
-            this.admin_pass_enter.Size = new System.Drawing.Size(330, 74);
-            this.admin_pass_enter.TabIndex = 14;
-            this.admin_pass_enter.Visible = false;
+            this.background_textbox_panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.background_textbox_panel3.Controls.Add(this.textBox3);
+            this.background_textbox_panel3.Location = new System.Drawing.Point(1, 1);
+            this.background_textbox_panel3.Name = "background_textbox_panel3";
+            this.background_textbox_panel3.Size = new System.Drawing.Size(397, 37);
+            this.background_textbox_panel3.TabIndex = 4;
             // 
-            // paas
+            // border_background_panel3
             // 
-            this.paas.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.paas.ForeColor = System.Drawing.Color.DarkGray;
-            this.paas.Location = new System.Drawing.Point(-1, -1);
-            this.paas.MaxLength = 22;
-            this.paas.Name = "paas";
-            this.paas.Size = new System.Drawing.Size(330, 33);
-            this.paas.TabIndex = 3;
-            this.paas.Text = "введите пароль";
-            this.paas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.border_background_panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(44)))));
+            this.border_background_panel3.Controls.Add(this.background_textbox_panel3);
+            this.border_background_panel3.Location = new System.Drawing.Point(22, 286);
+            this.border_background_panel3.Name = "border_background_panel3";
+            this.border_background_panel3.Size = new System.Drawing.Size(399, 39);
+            this.border_background_panel3.TabIndex = 5;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label24.Location = new System.Drawing.Point(18, 263);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(89, 18);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "СТОИМОСТЬ";
+            // 
+            // border_background_panel2
+            // 
+            this.border_background_panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(44)))));
+            this.border_background_panel2.Controls.Add(this.background_textbox_panel2);
+            this.border_background_panel2.Location = new System.Drawing.Point(22, 199);
+            this.border_background_panel2.Name = "border_background_panel2";
+            this.border_background_panel2.Size = new System.Drawing.Size(399, 39);
+            this.border_background_panel2.TabIndex = 5;
+            // 
+            // background_textbox_panel2
+            // 
+            this.background_textbox_panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.background_textbox_panel2.Controls.Add(this.maskedTextBox1);
+            this.background_textbox_panel2.Location = new System.Drawing.Point(1, 1);
+            this.background_textbox_panel2.Name = "background_textbox_panel2";
+            this.background_textbox_panel2.Size = new System.Drawing.Size(397, 37);
+            this.background_textbox_panel2.TabIndex = 4;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox3.Location = new System.Drawing.Point(15, 4);
+            this.textBox3.MaxLength = 22;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(371, 29);
+            this.textBox3.TabIndex = 2;
+            this.textBox3.Text = "12345678912345678912345678";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label23.Location = new System.Drawing.Point(18, 176);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(135, 18);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "СРОК ИСПОЛНЕНИЯ";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(127, 38);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(189, 26);
+            this.label21.TabIndex = 7;
+            this.label21.Text = "заполните все поля";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label20.ForeColor = System.Drawing.Color.White;
+            this.label20.Location = new System.Drawing.Point(109, 15);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(227, 26);
+            this.label20.TabIndex = 7;
+            this.label20.Text = "Для добавления заявки";
+            // 
+            // border_background_panel
+            // 
+            this.border_background_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(41)))), ((int)(((byte)(44)))));
+            this.border_background_panel.Controls.Add(this.background_textbox_panel);
+            this.border_background_panel.Location = new System.Drawing.Point(22, 112);
+            this.border_background_panel.Name = "border_background_panel";
+            this.border_background_panel.Size = new System.Drawing.Size(399, 39);
+            this.border_background_panel.TabIndex = 5;
+            // 
+            // background_textbox_panel
+            // 
+            this.background_textbox_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.background_textbox_panel.Controls.Add(this.namT);
+            this.background_textbox_panel.Location = new System.Drawing.Point(1, 1);
+            this.background_textbox_panel.Name = "background_textbox_panel";
+            this.background_textbox_panel.Size = new System.Drawing.Size(397, 37);
+            this.background_textbox_panel.TabIndex = 4;
+            // 
+            // namT
+            // 
+            this.namT.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.namT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.namT.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.namT.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.namT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.namT.Location = new System.Drawing.Point(15, 4);
+            this.namT.MaxLength = 22;
+            this.namT.Name = "namT";
+            this.namT.Size = new System.Drawing.Size(371, 29);
+            this.namT.TabIndex = 2;
+            this.namT.Text = "12345678912345678912345678";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label19.Location = new System.Drawing.Point(18, 89);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(85, 18);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "ЗАГОЛОВОК";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox1.Location = new System.Drawing.Point(15, 4);
+            this.textBox1.MaxLength = 22;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(269, 29);
+            this.textBox1.TabIndex = 2;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox2.Location = new System.Drawing.Point(15, 4);
+            this.textBox2.MaxLength = 22;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(382, 29);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.Text = "12345678912345678912345678";
+            // 
+            // textBox4
+            // 
+            this.textBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox4.Location = new System.Drawing.Point(15, 4);
+            this.textBox4.MaxLength = 22;
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(371, 29);
+            this.textBox4.TabIndex = 2;
+            this.textBox4.Text = "12345678912345678912345678";
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maskedTextBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.maskedTextBox1.Location = new System.Drawing.Point(15, 4);
+            this.maskedTextBox1.Mask = "00/00/0000";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(371, 29);
+            this.maskedTextBox1.TabIndex = 8;
             // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
-            this.ClientSize = new System.Drawing.Size(1238, 590);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1238, 629);
+            this.Controls.Add(this.reload_tables);
+            this.Controls.Add(this.panelCT);
+            this.Controls.Add(this.panel_connect_2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.task_form);
             this.Controls.Add(this.admin_pass_enter);
             this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.panel_connect_1);
-            this.Controls.Add(this.panel_connect_2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.New_user_form);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.reload_tables);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -1248,7 +1470,6 @@
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView8);
             this.Controls.Add(this.dataGridView7);
             this.Controls.Add(this.dataGridView6);
@@ -1256,21 +1477,28 @@
             this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.butn_close2);
+            this.Controls.Add(this.butn_plus2);
+            this.Controls.Add(this.butn_minus2);
+            this.Controls.Add(this.butn_minus);
+            this.Controls.Add(this.butn_plus);
+            this.Controls.Add(this.butn_close);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1212, 629);
             this.Name = "Главная";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Главная_FormClosed);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Главная_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.panelCT.ResumeLayout(false);
-            this.panelCT.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_plus)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_close)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.task_form.ResumeLayout(false);
-            this.task_form.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Task)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -1278,17 +1506,34 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView6)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.reload_tables)).EndInit();
             this.control_users_panel.ResumeLayout(false);
             this.New_user_form.ResumeLayout(false);
             this.New_user_form.PerformLayout();
             this.panel_connect_1.ResumeLayout(false);
             this.panel_for_table_users.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).EndInit();
-            this.Del_user_form.ResumeLayout(false);
-            this.Del_user_form.PerformLayout();
             this.admin_pass_enter.ResumeLayout(false);
             this.admin_pass_enter.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.butn_close2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.reload_tables)).EndInit();
+            this.task_form.ResumeLayout(false);
+            this.task_form.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Task)).EndInit();
+            this.Del_user_form.ResumeLayout(false);
+            this.Del_user_form.PerformLayout();
+            this.panelCT.ResumeLayout(false);
+            this.panelCT.PerformLayout();
+            this.background_textbox_panel3.ResumeLayout(false);
+            this.background_textbox_panel3.PerformLayout();
+            this.border_background_panel3.ResumeLayout(false);
+            this.border_background_panel2.ResumeLayout(false);
+            this.background_textbox_panel2.ResumeLayout(false);
+            this.background_textbox_panel2.PerformLayout();
+            this.border_background_panel.ResumeLayout(false);
+            this.background_textbox_panel.ResumeLayout(false);
+            this.background_textbox_panel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1298,13 +1543,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel task_form;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.DataGridView dataGridView3;
         private System.Windows.Forms.DataGridView dataGridView4;
@@ -1321,24 +1559,14 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label CreateTaskB;
-        private System.Windows.Forms.TextBox namT;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label OtmenaB;
         private System.Windows.Forms.Label EnterB;
-        private System.Windows.Forms.Panel panelCT;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.MaskedTextBox Срок_исполнения;
         private System.Windows.Forms.Label AddF;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
-        private System.Windows.Forms.DataGridView dataGridView_Task;
-        private System.Windows.Forms.PictureBox AddFTask;
-        private System.Windows.Forms.PictureBox reload_tables;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label users_button;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Panel control_users_panel;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label delete_user;
@@ -1351,21 +1579,57 @@
         private System.Windows.Forms.TextBox new_pass_for_user;
         private System.Windows.Forms.Panel panel_for_table_users;
         private System.Windows.Forms.DataGridView table_users;
-        private System.Windows.Forms.Panel panel_connect_2;
         private System.Windows.Forms.ComboBox new_access_for_user;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel Del_user_form;
-        private System.Windows.Forms.Label del_user_button;
-        private System.Windows.Forms.TextBox admin_pass;
-        private System.Windows.Forms.TextBox login_user;
         private System.Windows.Forms.Label del_u;
         private System.Windows.Forms.Label ewq;
         private System.Windows.Forms.Label show_user;
         private System.Windows.Forms.Label button_for_pass_admin;
-        private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.TextBox pass;
         private System.Windows.Forms.Panel admin_pass_enter;
         private System.Windows.Forms.TextBox p;
         private System.Windows.Forms.TextBox paas;
+        private System.Windows.Forms.PictureBox butn_close;
+        private System.Windows.Forms.PictureBox butn_minus2;
+        private System.Windows.Forms.PictureBox butn_minus;
+        private System.Windows.Forms.PictureBox butn_plus2;
+        private System.Windows.Forms.PictureBox butn_plus;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox butn_close2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panel_connect_2;
+        private System.Windows.Forms.PictureBox reload_tables;
+        private System.Windows.Forms.Panel task_form;
+        private System.Windows.Forms.PictureBox AddFTask;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.DataGridView dataGridView_Task;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Panel Del_user_form;
+        private System.Windows.Forms.Label del_user_button;
+        private System.Windows.Forms.TextBox admin_pass;
+        private System.Windows.Forms.TextBox login_user;
+        private System.Windows.Forms.Panel panelCT;
+        private System.Windows.Forms.Panel background_textbox_panel;
+        private System.Windows.Forms.Panel border_background_panel;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox namT;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Panel border_background_panel2;
+        private System.Windows.Forms.Panel background_textbox_panel2;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Panel background_textbox_panel3;
+        private System.Windows.Forms.Panel border_background_panel3;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }

@@ -94,10 +94,12 @@ namespace Scrum
             ToolTip t = new ToolTip(); // всплывающая подсказка
             t.SetToolTip(reload_tables, "Обновить");
         }
-        
-        private void Главная_FormClosed(object sender, FormClosedEventArgs e) // крестик - зыкрыть приложение
+        private void Главная_MouseDown(object sender, MouseEventArgs e) // перемещение окна
         {
-            Application.Exit();
+            panel1.Select();
+            base.Capture = false;
+            Message m = Message.Create(base.Handle, 161, new IntPtr(2), IntPtr.Zero);
+            this.WndProc(ref m);
         }
         private void task_form_VisibleChanged(object sender, EventArgs e) 
         {
@@ -198,6 +200,18 @@ namespace Scrum
              ds6, dt6, dataGridView6,
              ds7, dt7, dataGridView7,
              ds8, dt8, dataGridView8);
+        }
+        #endregion
+
+        #region Обновить
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            reload_tables.Visible = true;
+        }
+
+        private void reload_tables_MouseLeave(object sender, EventArgs e)
+        {
+            reload_tables.Visible = false; ;
         }
         #endregion
 
@@ -320,9 +334,9 @@ namespace Scrum
 
             dataGridView_Task.Height = height + 3;
 
-            panel3.Height = dataGridView_Task.Height;
+            background_textbox_panel.Height = dataGridView_Task.Height;
 
-            AddFTask.Location = new Point(AddFTask.Location.X, (panel3.Height/2) - (AddFTask.Height/2));
+            AddFTask.Location = new Point(AddFTask.Location.X, (background_textbox_panel.Height/2) - (AddFTask.Height/2));
 
             task_form.Height = dataGridView_Task.Location.Y + dataGridView_Task.Height 
                 + label16.Height + label16.Height/4;
@@ -1070,45 +1084,21 @@ namespace Scrum
         ////////////////////////////////////////////////////////ДОБАВИТЬ ТАСК//////////////////////////////////////////////////////
         #region Добавить таск
 
-        #region Цвет кнопки СоздатьТаск
+        #region Цвет кнопки CreateTaskB
         private void CreateTaskB_MouseMove(object sender, MouseEventArgs e)
         {
-            CreateTaskB.BackColor = Color.FromArgb(3, 171, 255); // голубой
+            CreateTaskB.BackColor = Color.FromArgb(56, 58, 63);
+            CreateTaskB.ForeColor = Color.FromArgb(219, 220, 221);
         }
         private void CreateTaskB_MouseLeave(object sender, EventArgs e)
         {
-            CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
-        }
-        private void CreateTaskB_MouseUp(object sender, MouseEventArgs e)
-        {
-            CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
+            CreateTaskB.BackColor = Color.FromArgb(37, 39, 42); 
+            CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
         }
         private void CreateTaskB_MouseDown(object sender, MouseEventArgs e)
         {
-            CreateTaskB.BackColor = Color.FromArgb(112, 179, 227); // серый
-        }
-        #endregion
-
-        #region Кнопка СоздатьТаск КОТОРАЯ НАХОДИТСЯ НА ВЫСКАКИВАЮЩЕЙ ПАНЕЛИ С ДОБАВЛЕНИЕМ ТАСКА
-        private void label19_Click(object sender, EventArgs e)
-        {
-            OtmenaB_Click(sender, e);
-        }
-        private void label19_MouseMove(object sender, MouseEventArgs e)
-        {
-            label19.BackColor = Color.FromArgb(3, 171, 255); // голубой
-        }
-        private void label19_MouseLeave(object sender, EventArgs e)
-        {
-            label19.BackColor = Color.FromArgb(0, 100, 200); // синий
-        }
-        private void label19_MouseDown(object sender, MouseEventArgs e)
-        {
-            label19.BackColor = Color.FromArgb(112, 179, 227); // серый
-        }
-        private void label19_MouseUp(object sender, MouseEventArgs e)
-        {
-            label19.BackColor = Color.FromArgb(0, 100, 200); // синий
+            CreateTaskB.BackColor = Color.FromArgb(58, 60, 65);
+            CreateTaskB.ForeColor = Color.FromArgb(255, 255, 255);
         }
         #endregion
 
@@ -1141,7 +1131,7 @@ namespace Scrum
             }
         }
         ///////////////////////////////////////////////Срок_исполнения///////////////////////////////////////////////////
-        private void Срок_исполнения_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
+        /*private void Срок_исполнения_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
         {
             if (!e.IsValidInput)
             {
@@ -1163,8 +1153,8 @@ namespace Scrum
         {
             if (!Срок_исполнения.MaskFull)
             {
-                    textBox2.Visible = true;
-                    textBox2.BringToFront();
+                    namT.Visible = true;
+                    namT.BringToFront();
                     Срок_исполнения.Text = "";
             }
             else Срок_исполнения.ValidatingType = typeof(DateTime);
@@ -1180,16 +1170,16 @@ namespace Scrum
         ///////////////////////////////////////////textBox2.Срок исполнения///////////////////////////////////////////////
         private void textBox2_MouseDown(object sender, MouseEventArgs e)
         {
-            textBox2.Visible = false;
+            namT.Visible = false;
             //Срок_исполнения.BringToFront();
             Срок_исполнения.Select();
         }
         private void textBox2_MouseMove(object sender, MouseEventArgs e)
         {
-            if (textBox2.BackColor == Color.LightCoral)
+            if (namT.BackColor == Color.LightCoral)
             {
-                textBox2.ForeColor = Color.Gray;
-                textBox2.BackColor = Color.White;
+                namT.ForeColor = Color.Gray;
+                namT.BackColor = Color.White;
             }
         }
         ///////////////////////////////////////////textBox1.Стоимость///////////////////////////////////////////////////
@@ -1237,7 +1227,7 @@ namespace Scrum
 
                 textBox1.ScrollToCaret();
             }
-        }
+        }*/
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #endregion
 
@@ -1314,7 +1304,7 @@ namespace Scrum
         private void CreateTaskB_Click(object sender, EventArgs e)
         {
             panel1.Select();
-            panelCT.Location = new Point (100, 100);
+            panelCT.Location = new Point (0, panel1.Location.Y + panel1.Height);
             panelCT.Visible = true;
         }
 
@@ -1334,20 +1324,16 @@ namespace Scrum
         {
             CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
             OtmenaB.BackColor = Color.FromArgb(3, 171, 255);
-            textBox2.Visible = true;
+            namT.Visible = true;
             panelCT.Visible = false;
 
             namT.Text = "Заголовок";
             namT.ForeColor = Color.Gray;
             namT.BackColor = Color.White;
 
-            textBox2.Text = "Срок исполнения";
-            textBox2.ForeColor = Color.Gray;
-            textBox2.BackColor = Color.White;
-
-            Срок_исполнения.ForeColor = Color.Black;
-            Срок_исполнения.BackColor = Color.White;
-            Срок_исполнения.Text = "";
+            namT.Text = "Срок исполнения";
+            namT.ForeColor = Color.Gray;
+            namT.BackColor = Color.White;
 
             textBox1.Text = "Стоимость";
             textBox1.ForeColor = Color.Gray; 
@@ -1361,7 +1347,7 @@ namespace Scrum
         private void EnterB_Click(object sender, EventArgs e) // добавить задачу
         {
             panel1.Select();
-            if ((namT.Text != "Заголовок") && (Срок_исполнения.MaskFull) && (textBox1.Text != "Стоимость") && (namT.Text != "")  && (textBox1.Text != ""))
+            if ((namT.Text != "Заголовок") && /*(Срок_исполнения.MaskFull) &&*/ (textBox1.Text != "Стоимость") && (namT.Text != "")  && (textBox1.Text != ""))
             {
                 NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
                  con.Open();
@@ -1384,7 +1370,7 @@ namespace Scrum
                     {
                         da3.Parameters.Add("namet", NpgsqlDbType.Varchar, 250).Value = namT.Text;
                         da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                        da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Срок_исполнения.Text;
+                       // da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Срок_исполнения.Text;
                         textBox1.Text = textBox1.Text.Trim(new char [] {'\u20BD'});
                         da3.Parameters.Add("costt", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox1.Text);
                         Int32 new_task_id = Convert.ToInt32(da3.ExecuteScalar());
@@ -1394,7 +1380,7 @@ namespace Scrum
 
                             //////////////////////////////КАК КНОПКА ОТМЕНА/////////////////////////////////
                             CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
-                            textBox2.Visible = true;
+                            namT.Visible = true;
                             panelCT.Visible = false;
                             EnterB.BackColor = Color.FromArgb(3, 171, 255);
 
@@ -1402,12 +1388,12 @@ namespace Scrum
                             namT.ForeColor = Color.Gray;
                             namT.BackColor = Color.White;
 
-                            textBox2.Text = "Срок исполнения";
-                            textBox2.ForeColor = Color.Gray;
-                            textBox2.BackColor = Color.White;
+                            namT.Text = "Срок исполнения";
+                            namT.ForeColor = Color.Gray;
+                            namT.BackColor = Color.White;
 
-                            Срок_исполнения.ForeColor = Color.Black;
-                            Срок_исполнения.BackColor = Color.White;
+                            //Срок_исполнения.ForeColor = Color.Black;
+                            //Срок_исполнения.BackColor = Color.White;
 
                             textBox1.Text = "Стоимость";
                             textBox1.ForeColor = Color.Gray;
@@ -1437,16 +1423,16 @@ namespace Scrum
                     namT.ForeColor = Color.Red;
                     namT.BackColor = Color.LightCoral;
                 }
-                if (textBox2.Text == "Срок исполнения" || (textBox2.Text == ""))
+                if (namT.Text == "Срок исполнения" || (namT.Text == ""))
                 {
-                    textBox2.ForeColor = Color.Red;
-                    textBox2.BackColor = Color.LightCoral;
+                    namT.ForeColor = Color.Red;
+                    namT.BackColor = Color.LightCoral;
                 }
-                if (!Срок_исполнения.MaskFull)
+                /*if (!Срок_исполнения.MaskFull)
                 {
-                    textBox2.Visible = true;
+                    namT.Visible = true;
                     //textBox2.BringToFront();
-                }
+                }*/
                 if (textBox1.Text == "Стоимость" || (textBox1.Text == ""))
                 {
                     textBox1.ForeColor = Color.Red;
@@ -1481,53 +1467,10 @@ namespace Scrum
         #endregion
 
         #region Плюсик и панель за плюсиком, добавляющим таск
-        private void panel3_MouseDown(object sender, MouseEventArgs e)
-        {
-            panel3.BackColor = Color.FromArgb(255, 255, 0);
-        }
-
-        private void panel3_MouseLeave(object sender, EventArgs e)
-        {
-            panel3.BackColor = Color.FromArgb(255, 255, 192);
-        }
-
-        private void panel3_MouseMove(object sender, MouseEventArgs e)
-        {
-            panel3.BackColor = Color.FromArgb(255, 255, 50);
-        }
-
         private void panel3_Click(object sender, EventArgs e)
         {
             AddFTask_Click(sender, e);
         }
-        
-        private void AddFTask_MouseDown(object sender, MouseEventArgs e)
-        {
-            panel3.BackColor = Color.FromArgb(255, 255, 0);
-        }
-
-        private void AddFTask_MouseLeave(object sender, EventArgs e)
-        {
-            panel3.BackColor = Color.FromArgb(255, 255, 192);
-        }
-
-        private void AddFTask_MouseMove(object sender, MouseEventArgs e)
-        {
-            panel3.BackColor = Color.FromArgb(255, 255, 50);
-            //DrawEllipseRectangle()
-        }
-        private void DrawEllipseRectangle(PaintEventArgs e)
-        {
-            // Create pen.\\
-            Pen blackPen = new Pen(Color.Black, 3);
-
-            // Create rectangle for ellipse.
-            Rectangle rect = new Rectangle(0, 0, 200, 100);
-
-            // Draw ellipse to screen.
-            e.Graphics.DrawEllipse(blackPen, rect);
-        }
-
         private void label16_Click(object sender, EventArgs e) // переместить таск
         {
             NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
@@ -2369,11 +2312,55 @@ namespace Scrum
             }
             con.Close();
         }
-        #endregion
 
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+        #endregion
         #endregion
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        #region кнопки Закрыть, развернуть, свернуть
+        private void butn_close2_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+        private void butn_plus2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Maximized;
+        }
 
+        private void butn_minus2_Click(object sender, EventArgs e)
+        {
+            WindowState = FormWindowState.Minimized;
+        }
+        private void butn_close_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_close2.Visible = true;
+        }
+        private void butn_plus_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_plus2.Visible = true;
+        }
+        private void butn_minus_MouseMove(object sender, MouseEventArgs e)
+        {
+            butn_minus2.Visible = true;
+        }
+        private void butn_close2_MouseLeave(object sender, EventArgs e)
+        {
+            butn_close2.Visible = false;
+        }
+        private void butn_plus2_MouseLeave(object sender, EventArgs e)
+        {
+            butn_plus2.Visible = false;
+        }
+        private void butn_minus2_MouseLeave(object sender, EventArgs e)
+        {
+            butn_minus2.Visible = false;
+        }
+        #endregion
+
+        
     }
 }

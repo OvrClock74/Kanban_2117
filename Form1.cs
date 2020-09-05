@@ -183,10 +183,7 @@ namespace Scrum
         }
         #endregion
         
-        private void border_background_panel_MouseMove(object sender, MouseEventArgs e)
-        {
-            butn_close2.BackColor = Color.Black;
-        }
+
         #region Крест, свернуть, развернуть
         private void butn_close_MouseMove(object sender, MouseEventArgs e)
         {
@@ -227,13 +224,6 @@ namespace Scrum
         {
             WindowState = FormWindowState.Minimized;
         }
-
-        /*butn_close.Location = new Point(this.Size.Width - butn_close2.Width, 0);
-        butn_close2.Location = new Point(this.Size.Width - butn_close2.Width, 0);
-        butn_plus.Location = new Point(this.Size.Width - (butn_close2.Width* 2), 0);
-            butn_plus2.Location = new Point(this.Size.Width - (butn_close2.Width* 2), 0);
-            butn_minus.Location = new Point(this.Size.Width - (butn_close2.Width* 3), 0);
-            butn_minus2.Location = new Point(this.Size.Width - (butn_close2.Width* 3), 0);*/
         #endregion
 
         

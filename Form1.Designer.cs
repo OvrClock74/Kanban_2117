@@ -84,7 +84,7 @@
             this.textBox2.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.textBox2.Location = new System.Drawing.Point(15, 4);
-            this.textBox2.MaxLength = 22;
+            this.textBox2.MaxLength = 26;
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '•';
             this.textBox2.Size = new System.Drawing.Size(333, 29);
@@ -278,7 +278,7 @@
             this.textBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.textBox1.Location = new System.Drawing.Point(15, 4);
-            this.textBox1.MaxLength = 22;
+            this.textBox1.MaxLength = 26;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(333, 29);
             this.textBox1.TabIndex = 2;
@@ -349,6 +349,7 @@
         }
 
         #endregion
+
         private System.Windows.Forms.ColorDialog colorDialog1;
         private System.Windows.Forms.Label Name1;
         private System.Windows.Forms.TextBox textBox2;
