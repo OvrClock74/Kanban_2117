@@ -18,7 +18,7 @@ namespace Scrum
     {
         //////////////////PUBLIC ПЕРЕМЕННЫЕ////////////////
 
-        public int ID_Main; 
+        public int ID_Main;
         public bool clc = false; // если нажали на таблицу - перемещение таска к концу мышки
         public bool clcU = false; // если нажали на добавить пользователя
         public bool clcUd = false; // если нажали на удалить пользователя
@@ -66,6 +66,7 @@ namespace Scrum
         public Главная(int id)
         {
             InitializeComponent();
+            panel1.Select();
             loadTables( ds1,  dt1,  dataGridView1, ds2,  dt2,  dataGridView2,ds3,  dt3,  dataGridView3,ds4,  dt4,  dataGridView4,ds5,  dt5,  dataGridView5,ds6,  dt6,  dataGridView6,ds7,  dt7,  dataGridView7,ds8,  dt8,  dataGridView8);
             ID_Main = id;
             #region Зашел админ или кто
@@ -91,8 +92,18 @@ namespace Scrum
                 users_button.Visible = false;
             }
             #endregion
-            ToolTip t = new ToolTip(); // всплывающая подсказка
+            ToolTip t = new ToolTip(); // всплывающая подсказкa
             t.SetToolTip(reload_tables, "Обновить");
+            t.Dispose();
+        }
+        private void panelCT_Paint(object sender, PaintEventArgs e) // рисуем линию на форме создания таска
+        {
+            base.OnPaint(e);
+            using (Graphics g = e.Graphics)
+            {
+                var p = new Pen(Color.FromArgb(63, 64, 68), 1);
+                g.DrawLine(p, new Point(22, 471), new Point(421, 471));
+            }
         }
         private void Главная_MouseDown(object sender, MouseEventArgs e) // перемещение окна
         {
@@ -1083,56 +1094,86 @@ namespace Scrum
 
         ////////////////////////////////////////////////////////ДОБАВИТЬ ТАСК//////////////////////////////////////////////////////
         #region Добавить таск
+        private void panelCT_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel1.Select(); // убрать фокус с текст боксов
+        }
+        private void CreateTaskB_Click(object sender, EventArgs e)
+        {
+            if (panelCT.Visible == false)
+            {
+                panel1.Select();
+                panelCT.Location = new Point(0, panel1.Location.Y + panel1.Height);
+                CreateTaskB.ForeColor = Color.FromArgb(255, 255, 255);
+                CreateTaskB.BackColor = Color.FromArgb(45, 47, 51);
+                panelCT.Visible = true;
+            }
+            else
+            {
+                OtmenaB_Click(sender, e);
+            }
+        }
 
         #region Цвет кнопки CreateTaskB
         private void CreateTaskB_MouseMove(object sender, MouseEventArgs e)
         {
-            CreateTaskB.BackColor = Color.FromArgb(56, 58, 63);
-            CreateTaskB.ForeColor = Color.FromArgb(219, 220, 221);
+            if (panelCT.Visible == false)
+            {
+                CreateTaskB.BackColor = Color.FromArgb(56, 58, 63);
+                CreateTaskB.ForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         private void CreateTaskB_MouseLeave(object sender, EventArgs e)
         {
-            CreateTaskB.BackColor = Color.FromArgb(37, 39, 42); 
-            CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
+            if (panelCT.Visible == false)
+            {
+                CreateTaskB.BackColor = Color.FromArgb(37, 39, 42);
+                CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
+            }
         }
         private void CreateTaskB_MouseDown(object sender, MouseEventArgs e)
         {
-            CreateTaskB.BackColor = Color.FromArgb(58, 60, 65);
-            CreateTaskB.ForeColor = Color.FromArgb(255, 255, 255);
+            if (panelCT.Visible == false)
+            {
+                CreateTaskB.BackColor = Color.FromArgb(58, 60, 65);
+                CreateTaskB.ForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         #endregion
 
-        #region Серый текст в Добавить Таск
+        #region namT, Срок_исполнения, textBox1
         /////////////////////////////////////////////////namT.Заголовок/////////////////////////////////////////////////////
+        public bool clcT1 = false; // если пишем текст в создании новой заявки
+        public bool clcT2 = false;
+        public bool clcT3 = false;
         private void namT_Enter(object sender, EventArgs e)
         {
-            namT.ForeColor = Color.Black;
-            if (namT.Text == "Заголовок")
-            {
-                namT.Text = "";
-            }
+            clcT1 = true;
+            border_background_panel.BackColor = Color.FromArgb(120, 136, 214);
         } 
         private void namT_Leave(object sender, EventArgs e)
         {
-            namT.Text = namT.Text.TrimStart(); // удаляем пробелы
-            namT.Text = namT.Text.TrimEnd();
-            if (namT.Text == "")
-            {
-                namT.Text = "Заголовок";
-                namT.ForeColor = Color.Gray;
-            }
+            clcT1 = false;
+            border_background_panel.BackColor = Color.FromArgb(36, 36, 39);
+            textBox1.Text = textBox1.Text.TrimStart(); // удаляем пробелы
+            textBox1.Text = textBox1.Text.TrimEnd();
         }
         private void namT_MouseMove(object sender, MouseEventArgs e)
         {
-            if (namT.BackColor == Color.LightCoral)
-            {
-                namT.ForeColor = Color.Gray;
-                namT.BackColor = Color.White;
-            }
+            if (border_background_panel.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT1 == false)
+                border_background_panel.BackColor = Color.Black;
+        }
+        private void namT_MouseLeave(object sender, EventArgs e)
+        {
+            if (border_background_panel.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT1 == false)
+                border_background_panel.BackColor = Color.FromArgb(36, 36, 39);
         }
         ///////////////////////////////////////////////Срок_исполнения///////////////////////////////////////////////////
-        /*private void Срок_исполнения_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
+        private void Срок_исполнения_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
         {
+            if (Срок_исполнения.MaskFull)
             if (!e.IsValidInput)
             {
                 MessageBox.Show("Неверный формат даты!\nПроверьте вводимую дату.");
@@ -1143,73 +1184,67 @@ namespace Scrum
                 DateTime userDate = (DateTime)e.ReturnValue;
                 if (userDate < DateTime.Now)
                 {
-                    MessageBox.Show("Срок исполнения меньше сегодняшней даты!\nПроверьте вводимую дату.");
+                    MessageBox.Show("Срок исполнения меньше или равен сегодняшней дате!\nПроверьте вводимую дату.");
                     Срок_исполнения.Text = "";
                 }
             }
         }
-        
+        private void Срок_исполнения_MouseLeave(object sender, EventArgs e)
+        {
+            if (border_background_panel2.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT2 == false)
+                border_background_panel2.BackColor = Color.FromArgb(36, 36, 39);
+        }
+
+        private void Срок_исполнения_Enter(object sender, EventArgs e)
+        {
+            clcT2 = true;
+            border_background_panel2.BackColor = Color.FromArgb(120, 136, 214);
+        }
         private void Срок_исполнения_Leave(object sender, EventArgs e)
         {
             if (!Срок_исполнения.MaskFull)
             {
-                    namT.Visible = true;
-                    namT.BringToFront();
                     Срок_исполнения.Text = "";
             }
             else Срок_исполнения.ValidatingType = typeof(DateTime);
+            clcT2 = false;
+            border_background_panel2.BackColor = Color.FromArgb(36, 36, 39);
         }
         private void Срок_исполнения_MouseMove(object sender, MouseEventArgs e)
         {
-            if (Срок_исполнения.BackColor == Color.LightCoral)
-            {
-                Срок_исполнения.ForeColor = Color.Black;
-                Срок_исполнения.BackColor = Color.White;
-            }
-        }
-        ///////////////////////////////////////////textBox2.Срок исполнения///////////////////////////////////////////////
-        private void textBox2_MouseDown(object sender, MouseEventArgs e)
-        {
-            namT.Visible = false;
-            //Срок_исполнения.BringToFront();
-            Срок_исполнения.Select();
-        }
-        private void textBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (namT.BackColor == Color.LightCoral)
-            {
-                namT.ForeColor = Color.Gray;
-                namT.BackColor = Color.White;
-            }
+            if (border_background_panel2.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT2 == false)
+                border_background_panel2.BackColor = Color.Black;
         }
         ///////////////////////////////////////////textBox1.Стоимость///////////////////////////////////////////////////
         private void textBox1_Enter(object sender, EventArgs e)
         {
-
-            textBox1.ForeColor = Color.Black;
-            if (textBox1.Text == "Стоимость")
-            {
-                textBox1.Text = "\u20BD";
-                
-            }
+            clcT3 = true;
+            border_background_panel3.BackColor = Color.FromArgb(120, 136, 214);
+            textBox1.Text = "\u20BD"; 
         }
         private void textBox1_Leave(object sender, EventArgs e)
         {
             textBox1.Text = textBox1.Text.TrimStart(); // удаляем пробелы
             textBox1.Text = textBox1.Text.TrimEnd();
-            if (textBox1.Text == "" || textBox1.Text == "\u20BD")
-            {
-                textBox1.Text = "Стоимость";
-                textBox1.ForeColor = Color.Gray;
-            }
+            if (textBox1.Text == "\u20BD") 
+            textBox1.Text = "";
+            clcT3 = false;
+            border_background_panel3.BackColor = Color.FromArgb(36, 36, 39);
         }
         private void textBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (textBox1.BackColor == Color.LightCoral)
-            {
-                textBox1.ForeColor = Color.Gray;
-                textBox1.BackColor = Color.White;
-            }
+            if (border_background_panel3.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT3 == false)
+                border_background_panel3.BackColor = Color.Black;
+
+        }
+        private void textBox1_MouseLeave(object sender, EventArgs e)
+        {
+            if (border_background_panel3.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT3 == false)
+                border_background_panel3.BackColor = Color.FromArgb(36, 36, 39);
         }
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e) // только цифры
         {
@@ -1227,86 +1262,27 @@ namespace Scrum
 
                 textBox1.ScrollToCaret();
             }
-        }*/
+        }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         #endregion
 
         #region Цвет кнопки ПрикрепитьФайл
         private void AddF_MouseMove(object sender, MouseEventArgs e)
         {
-            AddF.BackColor = Color.LightGray; 
+            AddF.BackColor = Color.FromArgb(109,122,193); 
         }
         private void AddF_MouseLeave(object sender, EventArgs e)
         {
-            AddF.BackColor = Color.White; 
-        }
-
-        private void AddF_MouseUp(object sender, MouseEventArgs e)
-        {
-            if (AddF.ForeColor == Color.White)
-            {
-                AddF.BackColor = Color.White;
-                AddF.ForeColor = Color.Black;
-            }
+            AddF.BackColor = Color.FromArgb(120,136,214); 
         }
 
         private void AddF_MouseDown(object sender, MouseEventArgs e)
         {
-            AddF.BackColor = Color.FromArgb(0, 100, 200);
-            AddF.ForeColor = Color.White;
+            AddF.BackColor = Color.FromArgb(97, 110, 171);
         }
         #endregion
 
-        #region Цвета кнопок Отмена и Добавить
-        private void OtmenaB_MouseMove(object sender, MouseEventArgs e)
-        {
-            OtmenaB.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
-        }
-
-        private void OtmenaB_MouseLeave(object sender, EventArgs e)
-        {
-            OtmenaB.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
-        }
-
-        private void OtmenaB_MouseDown(object sender, MouseEventArgs e)
-        {
-            OtmenaB.BackColor = Color.FromArgb(112, 179, 227); // серый
-        }
-
-        private void OtmenaB_MouseUp(object sender, MouseEventArgs e)
-        {
-            OtmenaB.BackColor = Color.FromArgb(3, 216, 255); //синий как на стартовой
-        }
-
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        private void EnterB_MouseMove(object sender, MouseEventArgs e)
-        {
-           EnterB.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
-        }
-
-        private void EnterB_MouseLeave(object sender, EventArgs e)
-        {
-            EnterB.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
-        }
-
-        private void EnterB_MouseDown(object sender, MouseEventArgs e)
-        {
-            EnterB.BackColor = Color.FromArgb(112, 179, 227); // серый
-        }
-
-        private void EnterB_MouseUp(object sender, MouseEventArgs e)
-        {
-            EnterB.BackColor = Color.FromArgb(3, 216, 255); //синий как на стартовой
-        }
-        #endregion
-
-        private void CreateTaskB_Click(object sender, EventArgs e)
-        {
-            panel1.Select();
-            panelCT.Location = new Point (0, panel1.Location.Y + panel1.Height);
-            panelCT.Visible = true;
-        }
+        
 
         private void AddF_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
         {
@@ -1315,43 +1291,63 @@ namespace Scrum
             PathToFile = openFileDialog1.FileName; // получаем путь к выбранному файлу
             TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
             name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
-            AddF.Text = "файл прикреплен";
-            AddF.Font = new Font("Segoe UI Semibold", 13, FontStyle.Regular); //Segoe UI Semibold; 12,75pt; style=Bold, Underline
-            AddF.ForeColor = Color.Gray;
+            if (name_fillee != "" && name_fillee != null)
+            {
+                AddF.Text = Path.GetFileName(openFileDialog1.FileName);
+                AddF.ForeColor = Color.FromArgb(185, 186, 189);
+                AddF.BackColor = Color.FromArgb(114, 128, 198);
+            }
         }
+
+        #region Цвета кнопок Отмена и Добавить
+        private void OtmenaB_MouseMove(object sender, MouseEventArgs e)
+        {
+            OtmenaB.Font = new Font(OtmenaB.Font.Name, 14, FontStyle.Bold | FontStyle.Underline);
+        }
+
+        private void OtmenaB_MouseLeave(object sender, EventArgs e)
+        {
+            OtmenaB.Font = new Font(OtmenaB.Font.Name, 14, FontStyle.Bold | FontStyle.Regular);
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+        private void EnterB_MouseMove(object sender, MouseEventArgs e)
+        {
+            EnterB.BackColor = Color.FromArgb(104, 162, 118);
+        }
+
+        private void EnterB_MouseLeave(object sender, EventArgs e)
+        {
+            EnterB.BackColor = Color.FromArgb(67, 181, 129);
+        }
+
+        private void EnterB_MouseDown(object sender, MouseEventArgs e)
+        {
+            EnterB.BackColor = Color.FromArgb(92, 144, 105);
+        }
+        #endregion
 
         private void OtmenaB_Click(object sender, EventArgs e) // Кнопка Отмена
         {
-            CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
-            OtmenaB.BackColor = Color.FromArgb(3, 171, 255);
-            namT.Visible = true;
             panelCT.Visible = false;
-
-            namT.Text = "Заголовок";
-            namT.ForeColor = Color.Gray;
-            namT.BackColor = Color.White;
-
-            namT.Text = "Срок исполнения";
-            namT.ForeColor = Color.Gray;
-            namT.BackColor = Color.White;
-
-            textBox1.Text = "Стоимость";
-            textBox1.ForeColor = Color.Gray; 
-            textBox1.BackColor = Color.White;
-
+            CreateTaskB.BackColor = Color.FromArgb(37, 39, 42);
+            CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
+            panelCT.Visible = false;
+            namT.Text = "";
+            Срок_исполнения.Text = "";
+            textBox1.Text = "";
             AddF.Text = "Прикрепить файл";
-            AddF.Font = new Font("Segoe UI Semibold", 13, FontStyle.Underline);
-            AddF.ForeColor = Color.Black;
+            AddF.ForeColor = Color.FromArgb(219,220,221); // белый текст
+            AddF.BackColor = Color.FromArgb(120, 136, 214); // фиолетовый фон
         }
 
         private void EnterB_Click(object sender, EventArgs e) // добавить задачу
         {
             panel1.Select();
-            if ((namT.Text != "Заголовок") && /*(Срок_исполнения.MaskFull) &&*/ (textBox1.Text != "Стоимость") && (namT.Text != "")  && (textBox1.Text != ""))
+            if ((namT.Text != "")  && (textBox1.Text != "") && (Срок_исполнения.MaskFull) && (AddF.Text != "Прикрепить файл"))
             {
-                NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                 NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
                  con.Open();
-
 
                  NpgsqlCommand da2 = new NpgsqlCommand("select null from tasks where name_t = @name_T", con); // уникально ли имя
                  da2.Parameters.AddWithValue("@name_T", namT.Text);
@@ -1370,7 +1366,7 @@ namespace Scrum
                     {
                         da3.Parameters.Add("namet", NpgsqlDbType.Varchar, 250).Value = namT.Text;
                         da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                       // da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Срок_исполнения.Text;
+                        da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Convert.ToString(Срок_исполнения.Text);
                         textBox1.Text = textBox1.Text.Trim(new char [] {'\u20BD'});
                         da3.Parameters.Add("costt", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox1.Text);
                         Int32 new_task_id = Convert.ToInt32(da3.ExecuteScalar());
@@ -1378,31 +1374,7 @@ namespace Scrum
                         {
                             databaseFilePut(new_task_id, name_fillee, TypeFile, PathToFile); // databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
 
-                            //////////////////////////////КАК КНОПКА ОТМЕНА/////////////////////////////////
-                            CreateTaskB.BackColor = Color.FromArgb(0, 100, 200); // синий
-                            namT.Visible = true;
-                            panelCT.Visible = false;
-                            EnterB.BackColor = Color.FromArgb(3, 171, 255);
-
-                            namT.Text = "Заголовок";
-                            namT.ForeColor = Color.Gray;
-                            namT.BackColor = Color.White;
-
-                            namT.Text = "Срок исполнения";
-                            namT.ForeColor = Color.Gray;
-                            namT.BackColor = Color.White;
-
-                            //Срок_исполнения.ForeColor = Color.Black;
-                            //Срок_исполнения.BackColor = Color.White;
-
-                            textBox1.Text = "Стоимость";
-                            textBox1.ForeColor = Color.Gray;
-                            textBox1.BackColor = Color.White;
-
-                            AddF.Text = "Прикрепить файл";
-                            AddF.Font = new Font("Segoe UI Semibold", 13, FontStyle.Underline);
-                            AddF.ForeColor = Color.Black;
-                            /////////////////////////////////////////////////////////////////////////////////////
+                            OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
 
                             MessageBox.Show("Заявка добавлена!");
                         }
@@ -1418,25 +1390,18 @@ namespace Scrum
             }
             else
             {
-                if (namT.Text == "Заголовок" || (namT.Text == ""))
+                if ((namT.Text == ""))
                 {
-                    namT.ForeColor = Color.Red;
-                    namT.BackColor = Color.LightCoral;
+                    border_background_panel.BackColor = Color.FromArgb(209,73,73);
                 }
-                if (namT.Text == "Срок исполнения" || (namT.Text == ""))
+
+                if (!Срок_исполнения.MaskFull)
                 {
-                    namT.ForeColor = Color.Red;
-                    namT.BackColor = Color.LightCoral;
+                    border_background_panel2.BackColor = Color.FromArgb(209, 73, 73);
                 }
-                /*if (!Срок_исполнения.MaskFull)
+                if ((textBox1.Text == ""))
                 {
-                    namT.Visible = true;
-                    //textBox2.BringToFront();
-                }*/
-                if (textBox1.Text == "Стоимость" || (textBox1.Text == ""))
-                {
-                    textBox1.ForeColor = Color.Red;
-                    textBox1.BackColor = Color.LightCoral;
+                    border_background_panel3.BackColor = Color.FromArgb(209, 73, 73);
                 }
             }
         }
@@ -2359,8 +2324,13 @@ namespace Scrum
         {
             butn_minus2.Visible = false;
         }
+
+
+
+
+
+
         #endregion
 
-        
     }
 }

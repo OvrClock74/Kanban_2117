@@ -27,28 +27,29 @@ namespace Scrum
         }
 
         #region ТекстБокс ЛОГИН и ПАРОЛЬ
-        public bool clcT = false;
+        public bool clcT1 = false;
+        public bool clcT2 = false;
         //
         //textBox1
         //
         private void textBox1_Enter(object sender, EventArgs e)
         {
-            clcT = true;
+            clcT1 = true;
             border_background_panel2.BackColor = Color.FromArgb(120, 136, 214);
         }
         private void textBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (clcT ==false)
+            if (clcT1 ==false)
             border_background_panel2.BackColor = Color.Black;  
         }
         private void textBox1_MouseLeave(object sender, EventArgs e)
         {
-            if (clcT == false)
+            if (clcT1 == false)
                 border_background_panel2.BackColor = Color.FromArgb(40,41,44);
         }
         private void textBox1_Leave(object sender, EventArgs e)
         {
-            clcT = false;
+            clcT1 = false;
             border_background_panel2.BackColor = Color.FromArgb(40, 41, 44);
             textBox1.Text = textBox1.Text.TrimStart(); // удаляем пробелы
             textBox1.Text = textBox1.Text.TrimEnd();
@@ -66,23 +67,23 @@ namespace Scrum
         //
         private void textBox2_Enter(object sender, EventArgs e)
         {
-            clcT = true;
+            clcT2 = true;
             border_background_panel.BackColor = Color.FromArgb(120, 136, 214);
         }
         private void textBox2_MouseMove(object sender, MouseEventArgs e)
         {
-            if (clcT == false)
+            if (clcT2 == false)
                 border_background_panel.BackColor = Color.Black;
         }
 
         private void textBox2_MouseLeave(object sender, EventArgs e)
         {
-            if (clcT == false)
+            if (clcT2 == false)
                 border_background_panel.BackColor = Color.FromArgb(40, 41, 44);
         }
         private void textBox2_Leave(object sender, EventArgs e)
         {
-            clcT = false;
+            clcT2 = false;
             border_background_panel.BackColor = Color.FromArgb(40, 41, 44);
             textBox2.Text = textBox2.Text.TrimStart(); // удаляем пробелы
             textBox2.Text = textBox2.Text.TrimEnd();
@@ -182,7 +183,6 @@ namespace Scrum
             panel1.Select();
         }
         #endregion
-        
 
         #region Крест, свернуть, развернуть
         private void butn_close_MouseMove(object sender, MouseEventArgs e)
