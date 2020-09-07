@@ -60,14 +60,22 @@
             this.show_user = new System.Windows.Forms.Label();
             this.delete_user = new System.Windows.Forms.Label();
             this.add_user = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.New_user_form = new System.Windows.Forms.Panel();
-            this.new_access_for_user = new System.Windows.Forms.ComboBox();
-            this.add_new_user_button = new System.Windows.Forms.Label();
+            this.border_background_new_access_for_user = new System.Windows.Forms.Panel();
+            this.background_access_for_user = new System.Windows.Forms.Panel();
+            this.new_access_for_user = new System.Windows.Forms.TextBox();
+            this.label25 = new System.Windows.Forms.Label();
+            this.border_background_new_pass_for_user = new System.Windows.Forms.Panel();
+            this.background_pass_for_user = new System.Windows.Forms.Panel();
             this.new_pass_for_user = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.border_background_new_id_for_user = new System.Windows.Forms.Panel();
+            this.background_id_for_user = new System.Windows.Forms.Panel();
             this.new_id_for_user = new System.Windows.Forms.TextBox();
-            this.panel_connect_1 = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
+            this.add_new_user_button = new System.Windows.Forms.Label();
+            this.panel_connect_1 = new System.Windows.Forms.Panel();
             this.panel_for_table_users = new System.Windows.Forms.Panel();
             this.table_users = new System.Windows.Forms.DataGridView();
             this.button_for_pass_admin = new System.Windows.Forms.Label();
@@ -111,6 +119,9 @@
             this.namT = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
@@ -127,7 +138,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             this.control_users_panel.SuspendLayout();
             this.New_user_form.SuspendLayout();
-            this.panel_connect_1.SuspendLayout();
+            this.border_background_new_access_for_user.SuspendLayout();
+            this.background_access_for_user.SuspendLayout();
+            this.border_background_new_pass_for_user.SuspendLayout();
+            this.background_pass_for_user.SuspendLayout();
+            this.border_background_new_id_for_user.SuspendLayout();
+            this.background_id_for_user.SuspendLayout();
             this.panel_for_table_users.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).BeginInit();
             this.admin_pass_enter.SuspendLayout();
@@ -167,15 +183,14 @@
             this.users_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
             this.users_button.Location = new System.Drawing.Point(444, 0);
             this.users_button.Name = "users_button";
-            this.users_button.Size = new System.Drawing.Size(313, 30);
+            this.users_button.Size = new System.Drawing.Size(330, 30);
             this.users_button.TabIndex = 11;
             this.users_button.Text = "  Управление пользователями";
-            this.users_button.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.users_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.users_button.Click += new System.EventHandler(this.users_button_Click);
             this.users_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.users_button_MouseDown);
             this.users_button.MouseLeave += new System.EventHandler(this.users_button_MouseLeave);
             this.users_button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.users_button_MouseMove);
-            this.users_button.MouseUp += new System.Windows.Forms.MouseEventHandler(this.users_button_MouseUp);
             // 
             // label17
             // 
@@ -638,22 +653,22 @@
             // 
             // control_users_panel
             // 
-            this.control_users_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
+            this.control_users_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
-            this.control_users_panel.Controls.Add(this.label18);
-            this.control_users_panel.Location = new System.Drawing.Point(54, 345);
+            this.control_users_panel.Location = new System.Drawing.Point(444, 53);
             this.control_users_panel.Name = "control_users_panel";
-            this.control_users_panel.Size = new System.Drawing.Size(330, 171);
+            this.control_users_panel.Size = new System.Drawing.Size(330, 135);
             this.control_users_panel.TabIndex = 12;
             this.control_users_panel.Visible = false;
             // 
             // show_user
             // 
+            this.show_user.Cursor = System.Windows.Forms.Cursors.Hand;
             this.show_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.show_user.ForeColor = System.Drawing.Color.White;
-            this.show_user.Location = new System.Drawing.Point(-1, 124);
+            this.show_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.show_user.Location = new System.Drawing.Point(0, 87);
             this.show_user.Name = "show_user";
             this.show_user.Size = new System.Drawing.Size(330, 45);
             this.show_user.TabIndex = 13;
@@ -666,9 +681,10 @@
             // 
             // delete_user
             // 
+            this.delete_user.Cursor = System.Windows.Forms.Cursors.Hand;
             this.delete_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.delete_user.ForeColor = System.Drawing.Color.White;
-            this.delete_user.Location = new System.Drawing.Point(-1, 81);
+            this.delete_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.delete_user.Location = new System.Drawing.Point(0, 44);
             this.delete_user.Name = "delete_user";
             this.delete_user.Size = new System.Drawing.Size(330, 45);
             this.delete_user.TabIndex = 13;
@@ -681,9 +697,10 @@
             // 
             // add_user
             // 
+            this.add_user.Cursor = System.Windows.Forms.Cursors.Hand;
             this.add_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.add_user.ForeColor = System.Drawing.Color.White;
-            this.add_user.Location = new System.Drawing.Point(-1, 37);
+            this.add_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.add_user.Location = new System.Drawing.Point(0, 0);
             this.add_user.Name = "add_user";
             this.add_user.Size = new System.Drawing.Size(330, 45);
             this.add_user.TabIndex = 13;
@@ -694,65 +711,186 @@
             this.add_user.MouseLeave += new System.EventHandler(this.add_user_MouseLeave);
             this.add_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.add_user_MouseMove);
             // 
-            // label18
-            // 
-            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.label18.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label18.ForeColor = System.Drawing.Color.White;
-            this.label18.Location = new System.Drawing.Point(-1, -1);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(330, 38);
-            this.label18.TabIndex = 12;
-            this.label18.Text = "Управление пользователями";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label18.Click += new System.EventHandler(this.label18_Click);
-            this.label18.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label18_MouseDown);
-            this.label18.MouseLeave += new System.EventHandler(this.label18_MouseLeave);
-            this.label18.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label18_MouseMove);
-            this.label18.MouseUp += new System.Windows.Forms.MouseEventHandler(this.label18_MouseUp);
-            // 
             // New_user_form
             // 
-            this.New_user_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(171)))), ((int)(((byte)(255)))));
-            this.New_user_form.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.New_user_form.Controls.Add(this.new_access_for_user);
+            this.New_user_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            this.New_user_form.Controls.Add(this.border_background_new_access_for_user);
+            this.New_user_form.Controls.Add(this.label25);
+            this.New_user_form.Controls.Add(this.border_background_new_pass_for_user);
+            this.New_user_form.Controls.Add(this.label18);
+            this.New_user_form.Controls.Add(this.border_background_new_id_for_user);
+            this.New_user_form.Controls.Add(this.label15);
+            this.New_user_form.Controls.Add(this.label22);
             this.New_user_form.Controls.Add(this.add_new_user_button);
-            this.New_user_form.Controls.Add(this.new_pass_for_user);
-            this.New_user_form.Controls.Add(this.new_id_for_user);
-            this.New_user_form.Location = new System.Drawing.Point(780, 521);
+            this.New_user_form.Location = new System.Drawing.Point(0, 53);
             this.New_user_form.Name = "New_user_form";
-            this.New_user_form.Size = new System.Drawing.Size(268, 246);
+            this.New_user_form.Size = new System.Drawing.Size(442, 462);
             this.New_user_form.TabIndex = 13;
             this.New_user_form.Visible = false;
+            this.New_user_form.Paint += new System.Windows.Forms.PaintEventHandler(this.New_user_form_Paint);
+            this.New_user_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.New_user_form_MouseDown);
+            // 
+            // border_background_new_access_for_user
+            // 
+            this.border_background_new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.border_background_new_access_for_user.Controls.Add(this.background_access_for_user);
+            this.border_background_new_access_for_user.Location = new System.Drawing.Point(22, 292);
+            this.border_background_new_access_for_user.Name = "border_background_new_access_for_user";
+            this.border_background_new_access_for_user.Size = new System.Drawing.Size(399, 39);
+            this.border_background_new_access_for_user.TabIndex = 5;
+            // 
+            // background_access_for_user
+            // 
+            this.background_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.background_access_for_user.Controls.Add(this.new_access_for_user);
+            this.background_access_for_user.Location = new System.Drawing.Point(1, 1);
+            this.background_access_for_user.Name = "background_access_for_user";
+            this.background_access_for_user.Size = new System.Drawing.Size(397, 37);
+            this.background_access_for_user.TabIndex = 4;
             // 
             // new_access_for_user
             // 
-            this.new_access_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_access_for_user.ForeColor = System.Drawing.Color.Gray;
-            this.new_access_for_user.FormattingEnabled = true;
-            this.new_access_for_user.Items.AddRange(new object[] {
-            "Истец",
-            "Оператор",
-            "Бухгалтерия"});
-            this.new_access_for_user.Location = new System.Drawing.Point(15, 147);
+            this.new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.new_access_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.new_access_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_access_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.new_access_for_user.Location = new System.Drawing.Point(15, 6);
+            this.new_access_for_user.MaxLength = 22;
             this.new_access_for_user.Name = "new_access_for_user";
-            this.new_access_for_user.Size = new System.Drawing.Size(235, 33);
-            this.new_access_for_user.TabIndex = 14;
-            this.new_access_for_user.Text = "Уровень доступа";
-            this.new_access_for_user.DropDown += new System.EventHandler(this.new_access_for_user_DropDown);
-            this.new_access_for_user.DropDownClosed += new System.EventHandler(this.new_access_for_user_DropDownClosed);
-            this.new_access_for_user.TextChanged += new System.EventHandler(this.new_access_for_user_TextChanged);
-            this.new_access_for_user.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.new_access_for_user_KeyPress);
+            this.new_access_for_user.Size = new System.Drawing.Size(371, 26);
+            this.new_access_for_user.TabIndex = 6;
+            this.new_access_for_user.Enter += new System.EventHandler(this.new_access_for_user_Enter);
             this.new_access_for_user.Leave += new System.EventHandler(this.new_access_for_user_Leave);
+            this.new_access_for_user.MouseLeave += new System.EventHandler(this.new_access_for_user_MouseLeave);
             this.new_access_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_access_for_user_MouseMove);
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label25.Location = new System.Drawing.Point(18, 265);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(130, 18);
+            this.label25.TabIndex = 6;
+            this.label25.Text = "УРОВЕНЬ ДОСТУПА";
+            // 
+            // border_background_new_pass_for_user
+            // 
+            this.border_background_new_pass_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.border_background_new_pass_for_user.Controls.Add(this.background_pass_for_user);
+            this.border_background_new_pass_for_user.Location = new System.Drawing.Point(22, 193);
+            this.border_background_new_pass_for_user.Name = "border_background_new_pass_for_user";
+            this.border_background_new_pass_for_user.Size = new System.Drawing.Size(399, 39);
+            this.border_background_new_pass_for_user.TabIndex = 5;
+            // 
+            // background_pass_for_user
+            // 
+            this.background_pass_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.background_pass_for_user.Controls.Add(this.new_pass_for_user);
+            this.background_pass_for_user.Location = new System.Drawing.Point(1, 1);
+            this.background_pass_for_user.Name = "background_pass_for_user";
+            this.background_pass_for_user.Size = new System.Drawing.Size(397, 37);
+            this.background_pass_for_user.TabIndex = 4;
+            // 
+            // new_pass_for_user
+            // 
+            this.new_pass_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.new_pass_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.new_pass_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_pass_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.new_pass_for_user.Location = new System.Drawing.Point(15, 6);
+            this.new_pass_for_user.MaxLength = 32;
+            this.new_pass_for_user.Name = "new_pass_for_user";
+            this.new_pass_for_user.Size = new System.Drawing.Size(371, 26);
+            this.new_pass_for_user.TabIndex = 5;
+            this.new_pass_for_user.Enter += new System.EventHandler(this.new_pass_for_user_Enter);
+            this.new_pass_for_user.Leave += new System.EventHandler(this.new_pass_for_user_Leave);
+            this.new_pass_for_user.MouseLeave += new System.EventHandler(this.new_pass_for_user_MouseLeave);
+            this.new_pass_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_pass_for_user_MouseMove);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label18.Location = new System.Drawing.Point(18, 166);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(61, 18);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "ПАРОЛЬ";
+            // 
+            // border_background_new_id_for_user
+            // 
+            this.border_background_new_id_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.border_background_new_id_for_user.Controls.Add(this.background_id_for_user);
+            this.border_background_new_id_for_user.Location = new System.Drawing.Point(22, 94);
+            this.border_background_new_id_for_user.Name = "border_background_new_id_for_user";
+            this.border_background_new_id_for_user.Size = new System.Drawing.Size(399, 39);
+            this.border_background_new_id_for_user.TabIndex = 5;
+            // 
+            // background_id_for_user
+            // 
+            this.background_id_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.background_id_for_user.Controls.Add(this.new_id_for_user);
+            this.background_id_for_user.Location = new System.Drawing.Point(1, 1);
+            this.background_id_for_user.Name = "background_id_for_user";
+            this.background_id_for_user.Size = new System.Drawing.Size(397, 37);
+            this.background_id_for_user.TabIndex = 4;
+            // 
+            // new_id_for_user
+            // 
+            this.new_id_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.new_id_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.new_id_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_id_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.new_id_for_user.Location = new System.Drawing.Point(15, 6);
+            this.new_id_for_user.MaxLength = 64;
+            this.new_id_for_user.Name = "new_id_for_user";
+            this.new_id_for_user.Size = new System.Drawing.Size(371, 26);
+            this.new_id_for_user.TabIndex = 4;
+            this.new_id_for_user.Enter += new System.EventHandler(this.new_id_for_user_Enter);
+            this.new_id_for_user.Leave += new System.EventHandler(this.new_id_for_user_Leave);
+            this.new_id_for_user.MouseLeave += new System.EventHandler(this.new_id_for_user_MouseLeave);
+            this.new_id_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_id_for_user_MouseMove);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label15.Location = new System.Drawing.Point(18, 67);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(104, 18);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "НОВЫЙ ЛОГИН";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.Transparent;
+            this.label22.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label22.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label22.ForeColor = System.Drawing.Color.White;
+            this.label22.Location = new System.Drawing.Point(70, 412);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(73, 23);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Отмена";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label22.Click += new System.EventHandler(this.label22_Click);
+            this.label22.MouseLeave += new System.EventHandler(this.label22_MouseLeave);
+            this.label22.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label22_MouseMove);
             // 
             // add_new_user_button
             // 
-            this.add_new_user_button.Font = new System.Drawing.Font("Segoe UI Semibold", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.add_new_user_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(181)))), ((int)(((byte)(129)))));
+            this.add_new_user_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.add_new_user_button.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.add_new_user_button.ForeColor = System.Drawing.Color.White;
-            this.add_new_user_button.Location = new System.Drawing.Point(-1, 200);
+            this.add_new_user_button.Location = new System.Drawing.Point(266, 405);
             this.add_new_user_button.Name = "add_new_user_button";
-            this.add_new_user_button.Size = new System.Drawing.Size(268, 45);
+            this.add_new_user_button.Size = new System.Drawing.Size(126, 37);
             this.add_new_user_button.TabIndex = 1;
             this.add_new_user_button.Text = "Принять";
             this.add_new_user_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -761,44 +899,12 @@
             this.add_new_user_button.MouseLeave += new System.EventHandler(this.label23_MouseLeave);
             this.add_new_user_button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label23_MouseMove);
             // 
-            // new_pass_for_user
-            // 
-            this.new_pass_for_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.new_pass_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_pass_for_user.ForeColor = System.Drawing.Color.Gray;
-            this.new_pass_for_user.Location = new System.Drawing.Point(15, 98);
-            this.new_pass_for_user.MaxLength = 22;
-            this.new_pass_for_user.Name = "new_pass_for_user";
-            this.new_pass_for_user.Size = new System.Drawing.Size(235, 33);
-            this.new_pass_for_user.TabIndex = 1;
-            this.new_pass_for_user.Text = "Пароль";
-            this.new_pass_for_user.Enter += new System.EventHandler(this.new_pass_for_user_Enter);
-            this.new_pass_for_user.Leave += new System.EventHandler(this.new_pass_for_user_Leave);
-            this.new_pass_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_pass_for_user_MouseMove);
-            // 
-            // new_id_for_user
-            // 
-            this.new_id_for_user.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.new_id_for_user.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_id_for_user.ForeColor = System.Drawing.Color.Gray;
-            this.new_id_for_user.Location = new System.Drawing.Point(15, 47);
-            this.new_id_for_user.MaxLength = 22;
-            this.new_id_for_user.Name = "new_id_for_user";
-            this.new_id_for_user.Size = new System.Drawing.Size(235, 33);
-            this.new_id_for_user.TabIndex = 0;
-            this.new_id_for_user.Text = "Логин";
-            this.new_id_for_user.Enter += new System.EventHandler(this.new_id_for_user_Enter);
-            this.new_id_for_user.Leave += new System.EventHandler(this.new_id_for_user_Leave);
-            this.new_id_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_id_for_user_MouseMove);
-            // 
             // panel_connect_1
             // 
-            this.panel_connect_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
-            this.panel_connect_1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_connect_1.Controls.Add(this.label22);
-            this.panel_connect_1.Location = new System.Drawing.Point(767, 345);
+            this.panel_connect_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(46)))), ((int)(((byte)(50)))));
+            this.panel_connect_1.Location = new System.Drawing.Point(449, 409);
             this.panel_connect_1.Name = "panel_connect_1";
-            this.panel_connect_1.Size = new System.Drawing.Size(289, 33);
+            this.panel_connect_1.Size = new System.Drawing.Size(442, 45);
             this.panel_connect_1.TabIndex = 13;
             this.panel_connect_1.Visible = false;
             this.panel_connect_1.Click += new System.EventHandler(this.panel_connect_1_Click);
@@ -806,27 +912,11 @@
             this.panel_connect_1.MouseLeave += new System.EventHandler(this.panel_connect_1_MouseLeave);
             this.panel_connect_1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel_connect_1_MouseMove);
             // 
-            // label22
-            // 
-            this.label22.BackColor = System.Drawing.Color.Transparent;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(57, 1);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(147, 31);
-            this.label22.TabIndex = 0;
-            this.label22.Text = "Назад";
-            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label22.Click += new System.EventHandler(this.label22_Click);
-            this.label22.MouseDown += new System.Windows.Forms.MouseEventHandler(this.label22_MouseDown);
-            this.label22.MouseLeave += new System.EventHandler(this.label22_MouseLeave);
-            this.label22.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label22_MouseMove);
-            // 
             // panel_for_table_users
             // 
             this.panel_for_table_users.AutoSize = true;
             this.panel_for_table_users.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel_for_table_users.Controls.Add(this.table_users);
             this.panel_for_table_users.Location = new System.Drawing.Point(1073, 356);
             this.panel_for_table_users.Name = "panel_for_table_users";
@@ -842,10 +932,12 @@
             this.table_users.AllowUserToResizeRows = false;
             this.table_users.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.table_users.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.table_users.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
+            this.table_users.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.table_users.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.table_users.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.table_users.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.table_users.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.table_users.GridColor = System.Drawing.Color.Black;
+            this.table_users.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.table_users.Location = new System.Drawing.Point(4, 4);
             this.table_users.MaximumSize = new System.Drawing.Size(264, 315);
             this.table_users.MultiSelect = false;
@@ -859,6 +951,7 @@
             this.table_users.TabIndex = 0;
             this.table_users.Text = "dataGridView9";
             this.table_users.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.table_users_DataBindingComplete);
+            this.table_users.Paint += new System.Windows.Forms.PaintEventHandler(this.table_users_Paint);
             // 
             // button_for_pass_admin
             // 
@@ -882,7 +975,7 @@
             this.admin_pass_enter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.admin_pass_enter.Controls.Add(this.paas);
             this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
-            this.admin_pass_enter.Location = new System.Drawing.Point(54, 522);
+            this.admin_pass_enter.Location = new System.Drawing.Point(1073, 499);
             this.admin_pass_enter.Name = "admin_pass_enter";
             this.admin_pass_enter.Size = new System.Drawing.Size(330, 74);
             this.admin_pass_enter.TabIndex = 14;
@@ -930,10 +1023,10 @@
             // 
             // panel_connect_2
             // 
-            this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(235)))), ((int)(((byte)(235)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(1137, 440);
+            this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
+            this.panel_connect_2.Location = new System.Drawing.Point(746, 521);
             this.panel_connect_2.Name = "panel_connect_2";
-            this.panel_connect_2.Size = new System.Drawing.Size(28, 31);
+            this.panel_connect_2.Size = new System.Drawing.Size(39, 39);
             this.panel_connect_2.TabIndex = 13;
             this.panel_connect_2.Visible = false;
             // 
@@ -1113,7 +1206,7 @@
             this.Del_user_form.Controls.Add(this.del_user_button);
             this.Del_user_form.Controls.Add(this.admin_pass);
             this.Del_user_form.Controls.Add(this.login_user);
-            this.Del_user_form.Location = new System.Drawing.Point(444, 601);
+            this.Del_user_form.Location = new System.Drawing.Point(460, 579);
             this.Del_user_form.Name = "Del_user_form";
             this.Del_user_form.Size = new System.Drawing.Size(268, 196);
             this.Del_user_form.TabIndex = 14;
@@ -1179,7 +1272,7 @@
             this.panelCT.Controls.Add(this.label20);
             this.panelCT.Controls.Add(this.border_background_panel);
             this.panelCT.Controls.Add(this.label19);
-            this.panelCT.Location = new System.Drawing.Point(0, 53);
+            this.panelCT.Location = new System.Drawing.Point(12, 521);
             this.panelCT.Name = "panelCT";
             this.panelCT.Size = new System.Drawing.Size(442, 577);
             this.panelCT.TabIndex = 14;
@@ -1267,7 +1360,7 @@
             this.textBox1.MaxLength = 22;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(371, 26);
-            this.textBox1.TabIndex = 2;
+            this.textBox1.TabIndex = 3;
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
@@ -1313,7 +1406,7 @@
             this.Срок_исполнения.Mask = "00/00/0000";
             this.Срок_исполнения.Name = "Срок_исполнения";
             this.Срок_исполнения.Size = new System.Drawing.Size(371, 26);
-            this.Срок_исполнения.TabIndex = 8;
+            this.Срок_исполнения.TabIndex = 2;
             this.Срок_исполнения.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.Срок_исполнения_TypeValidationCompleted);
             this.Срок_исполнения.Enter += new System.EventHandler(this.Срок_исполнения_Enter);
             this.Срок_исполнения.Leave += new System.EventHandler(this.Срок_исполнения_Leave);
@@ -1379,10 +1472,10 @@
             this.namT.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.namT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.namT.Location = new System.Drawing.Point(6, 4);
-            this.namT.MaxLength = 64;
+            this.namT.MaxLength = 32;
             this.namT.Name = "namT";
             this.namT.Size = new System.Drawing.Size(386, 29);
-            this.namT.TabIndex = 2;
+            this.namT.TabIndex = 1;
             this.namT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.namT.Enter += new System.EventHandler(this.namT_Enter);
             this.namT.Leave += new System.EventHandler(this.namT_Leave);
@@ -1414,6 +1507,44 @@
             this.textBox4.TabIndex = 2;
             this.textBox4.Text = "12345678912345678912345678";
             // 
+            // textBox2
+            // 
+            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox2.Location = new System.Drawing.Point(6, 4);
+            this.textBox2.MaxLength = 64;
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(386, 29);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox3.Location = new System.Drawing.Point(15, -5);
+            this.textBox3.MaxLength = 22;
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(235, 26);
+            this.textBox3.TabIndex = 0;
+            // 
+            // textBox5
+            // 
+            this.textBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox5.ForeColor = System.Drawing.Color.Gray;
+            this.textBox5.Location = new System.Drawing.Point(15, 6);
+            this.textBox5.MaxLength = 22;
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(371, 26);
+            this.textBox5.TabIndex = 1;
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1421,17 +1552,17 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1238, 629);
-            this.Controls.Add(this.reload_tables);
             this.Controls.Add(this.panelCT);
+            this.Controls.Add(this.reload_tables);
             this.Controls.Add(this.panel_connect_2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.New_user_form);
+            this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.task_form);
+            this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.admin_pass_enter);
             this.Controls.Add(this.Del_user_form);
-            this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_for_table_users);
-            this.Controls.Add(this.control_users_panel);
-            this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
@@ -1478,7 +1609,15 @@
             this.control_users_panel.ResumeLayout(false);
             this.New_user_form.ResumeLayout(false);
             this.New_user_form.PerformLayout();
-            this.panel_connect_1.ResumeLayout(false);
+            this.border_background_new_access_for_user.ResumeLayout(false);
+            this.background_access_for_user.ResumeLayout(false);
+            this.background_access_for_user.PerformLayout();
+            this.border_background_new_pass_for_user.ResumeLayout(false);
+            this.background_pass_for_user.ResumeLayout(false);
+            this.background_pass_for_user.PerformLayout();
+            this.border_background_new_id_for_user.ResumeLayout(false);
+            this.background_id_for_user.ResumeLayout(false);
+            this.background_id_for_user.PerformLayout();
             this.panel_for_table_users.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).EndInit();
             this.admin_pass_enter.ResumeLayout(false);
@@ -1533,7 +1672,6 @@
         private System.Windows.Forms.Label users_button;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel control_users_panel;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label delete_user;
         private System.Windows.Forms.Label add_user;
         private System.Windows.Forms.Panel New_user_form;
@@ -1544,7 +1682,6 @@
         private System.Windows.Forms.TextBox new_pass_for_user;
         private System.Windows.Forms.Panel panel_for_table_users;
         private System.Windows.Forms.DataGridView table_users;
-        private System.Windows.Forms.ComboBox new_access_for_user;
         private System.Windows.Forms.Label del_u;
         private System.Windows.Forms.Label ewq;
         private System.Windows.Forms.Label show_user;
@@ -1588,7 +1725,6 @@
         private System.Windows.Forms.Panel background_textbox_panel2;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label21;
-        private System.Windows.Forms.TextBox cost;
         private System.Windows.Forms.Panel background_textbox_panel3;
         private System.Windows.Forms.Panel border_background_panel3;
         private System.Windows.Forms.Label label24;
@@ -1597,8 +1733,19 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label AddF;
         private System.Windows.Forms.Label EnterB;
-        private System.Windows.Forms.Label label25;
         private System.Windows.Forms.Label OtmenaB;
-        private System.Windows.Forms.Label Otmen;
+        private System.Windows.Forms.Panel background_id_for_user;
+        private System.Windows.Forms.Panel border_background_new_id_for_user;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Panel border_background_new_pass_for_user;
+        private System.Windows.Forms.Panel background_pass_for_user;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Panel border_background_new_access_for_user;
+        private System.Windows.Forms.Panel background_access_for_user;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox new_access_for_user;
     }
 }
