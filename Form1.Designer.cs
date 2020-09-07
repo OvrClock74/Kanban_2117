@@ -278,7 +278,7 @@
             this.textBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.textBox1.Location = new System.Drawing.Point(15, 4);
-            this.textBox1.MaxLength = 26;
+            this.textBox1.MaxLength = 64;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(333, 29);
             this.textBox1.TabIndex = 2;
