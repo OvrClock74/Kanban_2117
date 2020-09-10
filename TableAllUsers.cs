@@ -41,5 +41,15 @@ namespace Scrum
             }
            
         }
+
+        private void dataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Calibri", 15);
+            this.dataGridView1.DefaultCellStyle.Font = new Font("Calibri", 12);
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(109, 122, 193);//выбранная ячейка фон
+            this.dataGridView1.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);//выбранная ячейка текст
+            this.dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);//выбранная ячейка фон
+            this.dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);//выбранная ячейка текст
+        }
     }
 }

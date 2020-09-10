@@ -27,7 +27,7 @@ namespace Scrum
         public int stage_t; // стадия на которой находится выбранный таск
 
         ///////Переменные для добавления файла в БД//////
-        public string PathToFile; 
+        public string PathToFile;
         public string filename;
         public string TypeFile;
         public string name_fillee;
@@ -96,6 +96,7 @@ namespace Scrum
             t.SetToolTip(reload_tables, "Обновить");
             t.Dispose();
         }
+
         #region Graphics рисуем линии на панелях
         private void panelCT_Paint(object sender, PaintEventArgs e) // рисуем линию на форме создания таска
         {
@@ -130,6 +131,18 @@ namespace Scrum
                 g.Dispose(); // очищаем память
             }
         }
+        private void task_form_Paint(object sender, PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            using (Graphics g = e.Graphics)
+            {
+                var p = new Pen(Color.FromArgb(63, 64, 68), 1);
+                g.DrawLine(p, new Point(18, 167), new Point(362, 167));
+                g.DrawLine(p, new Point(18, 236), new Point(362, 236));
+                p.Dispose();
+                g.Dispose(); // очищаем память
+            }
+        }
         #endregion
 
         private void Главная_MouseDown(object sender, MouseEventArgs e) // перемещение окна
@@ -139,7 +152,7 @@ namespace Scrum
             Message m = Message.Create(base.Handle, 161, new IntPtr(2), IntPtr.Zero);
             this.WndProc(ref m);
         }
-        private void task_form_VisibleChanged(object sender, EventArgs e) 
+        private void task_form_VisibleChanged(object sender, EventArgs e)
         {
             task_form.BringToFront(); // Таск на переднем плане
         }
@@ -165,69 +178,71 @@ namespace Scrum
             da1.Fill(ds1);
             dt1 = ds1.Tables[0];
             dataGridView1.DataSource = dt1;
-            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 2/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da2 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 2", con);
             ds2.Reset();
             da2.Fill(ds2);
             dt2 = ds2.Tables[0];
             dataGridView2.DataSource = dt2;
-            dataGridView2.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView2.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 3/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da3 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 3", con);
             ds3.Reset();
             da3.Fill(ds3);
             dt3 = ds3.Tables[0];
             dataGridView3.DataSource = dt3;
-            dataGridView3.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView3.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView3.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView3.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 4/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da4 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 4", con);
             ds4.Reset();
             da4.Fill(ds4);
             dt4 = ds4.Tables[0];
             dataGridView4.DataSource = dt4;
-            dataGridView4.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView4.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView4.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView4.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 5/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da5 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 5", con);
             ds5.Reset();
             da5.Fill(ds5);
             dt5 = ds5.Tables[0];
             dataGridView5.DataSource = dt5;
-            dataGridView5.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView5.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView5.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView5.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 6/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da6 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 6", con);
             ds6.Reset();
             da6.Fill(ds6);
             dt6 = ds6.Tables[0];
             dataGridView6.DataSource = dt6;
-            dataGridView6.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView6.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView6.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView6.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 7/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da7 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 7", con);
             ds7.Reset();
             da7.Fill(ds7);
             dt7 = ds7.Tables[0];
             dataGridView7.DataSource = dt7;
-            dataGridView7.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView7.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView7.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView7.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 8/////////////////////////////////////////////////////////////////////
             NpgsqlDataAdapter da8 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 8", con);
             ds8.Reset();
             da8.Fill(ds8);
             dt8 = ds8.Tables[0];
             dataGridView8.DataSource = dt8;
-            dataGridView8.DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView8.DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView8.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView8.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             #endregion
 
             con.Close();
         }
+        #endregion
 
+        #region reload_tables - Обновить
         private void reload_tables_Click(object sender, EventArgs e) // кнопка обновить таблицы
         {
             loadTables(ds1, dt1, dataGridView1,
@@ -239,14 +254,10 @@ namespace Scrum
              ds7, dt7, dataGridView7,
              ds8, dt8, dataGridView8);
         }
-        #endregion
-
-        #region Обновить
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
             reload_tables.Visible = true;
         }
-
         private void reload_tables_MouseLeave(object sender, EventArgs e)
         {
             reload_tables.Visible = false; ;
@@ -254,7 +265,7 @@ namespace Scrum
         #endregion
 
         #region Загрузка и выгрузка файлов в и из БД
-        public static void databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
+        public static void databaseFilePut(int id_T, string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
         {
             byte[] file;
             using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read))
@@ -346,23 +357,26 @@ namespace Scrum
             con.Close();
         }
 
-        #region Цвет ячеек в таблице прикрепленных файлов
+        #region dataGridView_Task
         private void dataGridView_Task_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView_Task.CurrentCell = dataGridView_Task.Rows[e.RowIndex].Cells[0];
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(255, 255, 50);
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView_Task_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView_Task.CurrentCell = dataGridView_Task.Rows[e.RowIndex].Cells[0];
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
-        #endregion
-
-        #region Размер таблицы прикрепленный файлов
-        private void dataGridView_Task_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dataGridView_Task_Paint(object sender, PaintEventArgs e)
         {
+            dataGridView_Task.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView_Task.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView_Task.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек 
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView_Task.Rows)
             {
@@ -374,12 +388,85 @@ namespace Scrum
 
             background_textbox_panel.Height = dataGridView_Task.Height;
 
-            AddFTask.Location = new Point(AddFTask.Location.X, (background_textbox_panel.Height/2) - (AddFTask.Height/2));
-
-            task_form.Height = dataGridView_Task.Location.Y + dataGridView_Task.Height 
-                + label16.Height + label16.Height/4;
+            task_form.Height = dataGridView_Task.Location.Y + dataGridView_Task.Height
+                + label16.Height + label16.Height / 2;
         }
         #endregion
+
+        void task_filling(string name_stage)
+        {
+            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            con.Open();
+
+            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
+            Totalf.Parameters.AddWithValue("@name_T", C);
+            NpgsqlDataReader reader;
+            using (reader = Totalf.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    label2.Text = C; // название
+
+                    if (reader["autor"] is DBNull)
+                    {
+                        label3.Text = "!пользователь удалён!";
+                    }
+                    else
+                    {
+                        NpgsqlConnection con2 = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                        con2.Open();
+                        NpgsqlCommand loginA = new NpgsqlCommand("SELECT login FROM users WHERE id_u = @id", con2); // логин вместо id
+                        loginA.Parameters.AddWithValue("@id", Convert.ToInt32(reader["autor"]));
+                        NpgsqlDataReader reader2;
+                        using (reader2 = loginA.ExecuteReader())
+                        {
+                            if (reader2.Read())
+                            {
+                                label3.Text = String.Format("{0}", reader2["login"]); ;
+                            }
+                            reader2.Close();
+                        }
+                        con2.Close();
+                    }
+
+                    DateTime date = Convert.ToDateTime(reader["date_create"]);
+                    label4.Text = String.Format("{0}", date.ToShortDateString());
+                    date = Convert.ToDateTime(reader["date_complete"]);
+                    label33.Text = String.Format("{0}", date.ToShortDateString());
+
+                    int i = Convert.ToInt32(reader["cost_t"]);
+                    label5.Text = i.ToString("C0", new System.Globalization.CultureInfo("ru-RU"));
+                    if ((bool)reader["payment"])
+                    {
+                        label6.ForeColor = Color.FromArgb(67, 181, 129);
+                        label6.Text = "Оплачено";
+                    }
+                    else
+                    {
+                        label6.ForeColor = Color.FromArgb(209, 73, 73);
+                        label6.Text = "Не оплачено";
+                    }
+
+                    label16.Text = name_stage;
+                }
+                reader.Close();
+            }
+            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
+            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
+            Totalf2.Parameters.AddWithValue("@name_T", C);
+            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
+
+            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
+            daT.Parameters.AddWithValue("@idtask", new_task_id);
+
+            DataTable dt = new DataTable();
+            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
+            dt.Load(reader);
+            dataGridView_Task.DataSource = dt;
+            reader.Close();
+            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            con.Close();
+        }
 
         private void AddFTask_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
         {
@@ -418,55 +505,15 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 1;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "На согласование";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("На согласование");
         }
-        
+
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
             if (clc == true)
             {
                 task_form.Top = (e.Y + dataGridView1.Location.Y);
                 task_form.Left = (e.X + +dataGridView1.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -475,14 +522,14 @@ namespace Scrum
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -492,45 +539,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView2.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 2;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "На утверждение";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("На утверждение");
         }
 
         private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
@@ -539,8 +548,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView2.Location.Y);
                 task_form.Left = (e.X + +dataGridView2.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -549,14 +556,14 @@ namespace Scrum
         private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[0];
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[0];
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -566,45 +573,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView3.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 3;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "В работу";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("В работу");
         }
 
         private void dataGridView3_MouseClick(object sender, MouseEventArgs e)
@@ -613,8 +582,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView3.Location.Y);
                 task_form.Left = (e.X + +dataGridView3.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -622,14 +589,14 @@ namespace Scrum
         private void dataGridView3_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[0];
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView3_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[0];
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -639,45 +606,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView4.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 4;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "На формирование";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("На формирование");
         }
 
         private void dataGridView4_MouseClick(object sender, MouseEventArgs e)
@@ -686,8 +615,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView4.Location.Y);
                 task_form.Left = (e.X + +dataGridView4.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -695,14 +622,14 @@ namespace Scrum
         private void dataGridView4_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView4.CurrentCell = dataGridView4.Rows[e.RowIndex].Cells[0];
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView4_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView4.CurrentCell = dataGridView4.Rows[e.RowIndex].Cells[0];
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -712,45 +639,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView5.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 5;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "На заключение";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("На заключение");
         }
 
         private void dataGridView5_MouseClick(object sender, MouseEventArgs e)
@@ -759,8 +648,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView5.Location.Y);
                 task_form.Left = (e.X + +dataGridView5.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -768,14 +655,14 @@ namespace Scrum
         private void dataGridView5_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView5.CurrentCell = dataGridView5.Rows[e.RowIndex].Cells[0];
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView5_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView5.CurrentCell = dataGridView5.Rows[e.RowIndex].Cells[0];
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -785,45 +672,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView6.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 6;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "На исполнение";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("На исполнение");
         }
 
         private void dataGridView6_MouseClick(object sender, MouseEventArgs e)
@@ -832,8 +681,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView6.Location.Y);
                 task_form.Left = (e.X + +dataGridView6.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -841,14 +688,14 @@ namespace Scrum
         private void dataGridView6_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView6.CurrentCell = dataGridView6.Rows[e.RowIndex].Cells[0];
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView6_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView6.CurrentCell = dataGridView6.Rows[e.RowIndex].Cells[0];
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -858,45 +705,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView7.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 7;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "На оплату";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("На оплату");
         }
 
         private void dataGridView7_MouseClick(object sender, MouseEventArgs e)
@@ -905,8 +714,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView7.Location.Y);
                 task_form.Left = (e.X + +dataGridView7.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -914,14 +721,14 @@ namespace Scrum
         private void dataGridView7_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView7.CurrentCell = dataGridView7.Rows[e.RowIndex].Cells[0];
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView7_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView7.CurrentCell = dataGridView7.Rows[e.RowIndex].Cells[0];
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
 
@@ -931,45 +738,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView8.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 8;
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C;
-                    label3.Text = (String.Format("Добавил(а) {0}", reader["autor"]));
-                    label4.Text = (String.Format("{0:d} — {1:d}", reader["date_create"], reader["date_complete"]));
-                    label5.Text = (String.Format("Стоимость: {0}", reader["cost_t"]));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.Text = "Оплачено";
-                    }
-                    else label6.Text = "Не оплачено";
-                    label16.Text = "Оплачено";
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
+            task_filling("В архив");
         }
 
         private void dataGridView8_MouseClick(object sender, MouseEventArgs e)
@@ -978,8 +747,6 @@ namespace Scrum
             {
                 task_form.Top = (e.Y + dataGridView8.Location.Y);
                 task_form.Left = (e.X + +dataGridView8.Location.X);
-                dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.White;
-                dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.Black;
                 task_form.Visible = true;
                 clc = false;
             }
@@ -987,14 +754,14 @@ namespace Scrum
         private void dataGridView8_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView8.CurrentCell = dataGridView8.Rows[e.RowIndex].Cells[0];
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(3, 150, 240);
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.White;
+            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView8_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView8.CurrentCell = dataGridView8.Rows[e.RowIndex].Cells[0];
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.White;
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.Black;
+            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
         #endregion 
@@ -1002,6 +769,11 @@ namespace Scrum
         #region Размеры таблиц стадий
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView1.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView1.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView1.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView1.Rows)
             {
@@ -1011,72 +783,107 @@ namespace Scrum
         }
         private void dataGridView2_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView2.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView2.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView2.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView2.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView2.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView2.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView2.Height = height + 3;
+            dataGridView2.Height = height + 4;
         }
 
         private void dataGridView3_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView3.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView3.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView3.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView3.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView3.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView3.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView3.Height = height + 3;
+            dataGridView3.Height = height + 4;
         }
 
         private void dataGridView4_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView4.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView4.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView4.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView4.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView4.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView4.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView4.Height = height + 3;
+            dataGridView4.Height = height + 4;
         }
 
         private void dataGridView5_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView5.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView5.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView5.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView5.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView5.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView5.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView5.Height = height + 3;
+            dataGridView5.Height = height + 4;
         }
 
         private void dataGridView6_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView6.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView6.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView6.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView6.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView6.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView6.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView6.Height = height + 3;
+            dataGridView6.Height = height + 4;
         }
 
         private void dataGridView7_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView7.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView7.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView7.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView7.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView7.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView7.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView7.Height = height + 3;
+            dataGridView7.Height = height + 4;
         }
 
         private void dataGridView8_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
+            dataGridView8.DefaultCellStyle.Font = new Font("Calibri", 13);
+            dataGridView8.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView8.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            dataGridView8.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
+            dataGridView8.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView8.Rows)
             {
                 height += dr.Height;
             }
-            dataGridView8.Height = height + 3;
+            dataGridView8.Height = height + 4;
         }
         #endregion
 
@@ -1089,14 +896,12 @@ namespace Scrum
 
         private void label1_MouseEnter(object sender, EventArgs e)
         {
-            label1.ForeColor = Color.FromArgb(255, 255, 255);
-            label1.BackColor = Color.FromArgb(255, 25, 0);
+            close_task.BackColor = Color.FromArgb(187, 66,67);
         }
 
         private void label1_MouseLeave(object sender, EventArgs e)
         {
-            label1.ForeColor = Color.FromArgb(0, 0, 0);
-            label1.BackColor = Color.FromArgb(255, 255, 192);
+            close_task.BackColor = Color.FromArgb(209, 73, 73);
         }
         #endregion
 
@@ -1123,6 +928,16 @@ namespace Scrum
         #region Добавить таск
         private void CreateTaskB_Click(object sender, EventArgs e)
         {
+            // закрыть Управление пользователями
+            label22_Click(sender, e); // кнопка назад на добавлении нового юзера
+            if (clcUs == true) // панель для ввода пароля админа для показа всей таблицы пользователей
+            {
+                clcUs = false;
+                paas.Text = "";
+                admin_pass_enter.Visible = false;
+            }
+            control_users_panel.Visible = false;
+            //
             if (panelCT.Visible == false)
             {
                 panel1.Select();
@@ -1150,7 +965,7 @@ namespace Scrum
         {
             if (panelCT.Visible == false)
             {
-                CreateTaskB.BackColor = Color.FromArgb(37, 39, 42);
+                CreateTaskB.BackColor = Color.FromArgb(32, 34, 37);
                 CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
             }
         }
@@ -1351,7 +1166,8 @@ namespace Scrum
         private void OtmenaB_Click(object sender, EventArgs e) // Кнопка Отмена
         {
             panelCT.Visible = false;
-            CreateTaskB.BackColor = Color.FromArgb(37, 39, 42);
+            //border_background_panel.BackColor = 
+            CreateTaskB.BackColor = Color.FromArgb(32, 34, 37);
             CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
             panelCT.Visible = false;
             namT.Text = "";
@@ -1397,6 +1213,7 @@ namespace Scrum
 
                             OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
 
+                            reload_tables_Click(sender, e);
                             MessageBox.Show("Заявка добавлена!");
                         }
                         else MessageBox.Show("Заявка не добавлена!");
@@ -1433,30 +1250,19 @@ namespace Scrum
         #region Цвет кнопки Переместить таск
         private void label16_MouseMove(object sender, MouseEventArgs e)
         {
-            label16.BackColor = Color.FromArgb(255, 255, 50);
+            label16.BackColor = Color.FromArgb(109, 122, 193);
         }
-
         private void label16_MouseLeave(object sender, EventArgs e)
         {
-            label16.BackColor = Color.FromArgb(255, 255, 192);
+            label16.BackColor = Color.FromArgb(120, 136, 214);
         }
-
         private void label16_MouseDown(object sender, MouseEventArgs e)
         {
-            label16.BackColor = Color.FromArgb(255, 255, 0);
-        }
-
-        private void label16_MouseUp(object sender, MouseEventArgs e)
-        {
-            label16.BackColor = Color.FromArgb(255, 255, 192);
+            label16.BackColor = Color.FromArgb(97, 110, 171);
         }
         #endregion
 
         #region Плюсик и панель за плюсиком, добавляющим таск
-        private void panel3_Click(object sender, EventArgs e)
-        {
-            AddFTask_Click(sender, e);
-        }
         private void label16_Click(object sender, EventArgs e) // переместить таск
         {
             NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
@@ -1568,11 +1374,11 @@ namespace Scrum
         }
         private void panel_connect_1_MouseLeave(object sender, EventArgs e)
         {
-            panel_connect_1.BackColor = Color.FromArgb(45, 46, 50);
+            panel_connect_1.BackColor = Color.FromArgb(41, 43, 47);
             if (New_user_form.Visible == true)
-                add_user.BackColor = Color.FromArgb(45, 46, 50);
+                add_user.BackColor = Color.FromArgb(41, 43, 47);
             if (Del_user_form.Visible == true)
-                delete_user.BackColor = Color.FromArgb(45, 46, 50);
+                delete_user.BackColor = Color.FromArgb(41, 43, 47);
         }
         private void panel_connect_1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1634,7 +1440,7 @@ namespace Scrum
         {
             if (control_users_panel.Visible == false)
             {
-                users_button.BackColor = Color.FromArgb(37, 39, 42);
+                users_button.BackColor = Color.FromArgb(32, 34, 37);
                 users_button.ForeColor = Color.FromArgb(185, 186, 189);
             }
         }
@@ -1648,9 +1454,10 @@ namespace Scrum
         }
         private void users_button_Click(object sender, EventArgs e)
         {
+            OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
             if (control_users_panel.Visible == false)
             {
-                users_button.BackColor = Color.FromArgb(45, 47, 51);
+                users_button.BackColor = Color.FromArgb(32, 34, 37);
                 control_users_panel.Location = new Point(users_button.Location.X, panel1.Location.Y + users_button.Height);
                 control_users_panel.Visible = true;
             }
@@ -1701,17 +1508,19 @@ namespace Scrum
             }
             if (clcUs == true)
             {
+                show_user.BackColor = Color.FromArgb(51, 52, 57);
+                show_user.ForeColor = Color.FromArgb(185, 186, 189);
                 clcUs = false;
                 paas.Text = "";
                 admin_pass_enter.Visible = false;
             }
             if (clcU != true) // если нажали на ЭТУ кнопку, то показывать
             {
-                add_user.BackColor = Color.FromArgb(45, 46, 50);
+                add_user.BackColor = Color.FromArgb(41, 43, 47);
                 add_user.ForeColor = Color.FromArgb(255, 255, 255);
 
                 clcU = true;
-                New_user_form.Location = new Point(control_users_panel.Location.X - 5 - New_user_form.Width, control_users_panel.Location.Y + add_user.Location.Y);
+                New_user_form.Location = new Point(control_users_panel.Location.X - 5 - New_user_form.Width, control_users_panel.Location.Y);
                 panel_connect_1.Location = New_user_form.Location;
                 panel_connect_1.Width = control_users_panel.Location.X - New_user_form.Location.X + add_user.Location.X + 2;
                 panel_connect_1.BringToFront(); // на переднем плане
@@ -1960,10 +1769,11 @@ namespace Scrum
         }
         #endregion
         /////////////////////////////////////////////////////////////////////////////////////////////
-        #region Кнопка Удалить пользователя
+
+        #region delete_user
         private void delete_user_MouseDown(object sender, MouseEventArgs e)
         {
-            add_user.BackColor = Color.FromArgb(58, 60, 65);
+            delete_user.BackColor = Color.FromArgb(58, 60, 65);
         }
 
         private void delete_user_MouseLeave(object sender, EventArgs e)
@@ -1992,13 +1802,15 @@ namespace Scrum
             }
             if (clcUs == true)
             {
+                show_user.BackColor = Color.FromArgb(51, 52, 57);
+                show_user.ForeColor = Color.FromArgb(185, 186, 189);
                 clcUs = false;
                 paas.Text = "";
                 admin_pass_enter.Visible = false;
             }
             if (clcUd != true) // если нажали на ЭТУ кнопку, то показывать
             {
-                delete_user.BackColor = Color.FromArgb(45, 46, 50);
+                delete_user.BackColor = Color.FromArgb(41, 43, 47);
                 delete_user.ForeColor = Color.FromArgb(255, 255, 255);
 
                 clcUd = true;
@@ -2016,7 +1828,7 @@ namespace Scrum
         }
         #endregion
 
-        // нажали?
+        // если пишем текст в нижних текстбоксах
         public bool clcT3_1 = false;
         public bool clcT3_2 = false;
         //
@@ -2061,7 +1873,7 @@ namespace Scrum
                     table_users.Columns[i].HeaderText = "Доступ";
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
+
             panel_connect_2.Location = new Point(border_background_login_user.Location.X + border_background_login_user.Width - 3, Del_user_form.Location.Y + border_background_login_user.Location.Y);
             panel_connect_2.BringToFront(); // на переднем плане
             panel_for_table_users.BringToFront();
@@ -2203,22 +2015,29 @@ namespace Scrum
         }
         #endregion
         /////////////////////////////////////////////////////////////////////////////////////////////
+        
         #region Кнопка Все пользователи
         private void show_user_MouseDown(object sender, MouseEventArgs e)
         {
-            show_user.BackColor = Color.FromArgb(112, 179, 227); // синий
+            show_user.BackColor = Color.FromArgb(58, 60, 65);
         }
 
         private void show_user_MouseLeave(object sender, EventArgs e)
         {
-                show_user.BorderStyle = BorderStyle.FixedSingle;
-                show_user.BackColor = Color.FromArgb(3, 171, 255); // голубой
+            if (clcUs == false)
+            {
+                show_user.BackColor = Color.FromArgb(51, 52, 57);
+                show_user.ForeColor = Color.FromArgb(185, 186, 189);
+            }
         }
 
         private void show_user_MouseMove(object sender, MouseEventArgs e)
         {
-                show_user.BorderStyle = BorderStyle.Fixed3D;
-                show_user.BackColor = Color.FromArgb(3, 140, 255); // темнее, чем голубой
+            if (clcUs == false)
+            {
+                show_user.BackColor = Color.FromArgb(56, 58, 63);
+                show_user.ForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
 
         private void show_user_Click(object sender, EventArgs e)
@@ -2229,6 +2048,9 @@ namespace Scrum
             }
             if (clcUs != true) // если нажали на ЭТУ кнопку, то показывать
             {
+                show_user.BackColor = Color.FromArgb(41, 43, 47);
+                show_user.ForeColor = Color.FromArgb(255, 255, 255);
+
                 clcUs = true;
                 admin_pass_enter.Location = new Point(control_users_panel.Location.X, control_users_panel.Location.Y + control_users_panel.Height);
                 admin_pass_enter.BringToFront();
@@ -2246,17 +2068,17 @@ namespace Scrum
         #region Кнопка для перехода на таблицу всех юзеров
         private void button_for_pass_admin_MouseDown(object sender, MouseEventArgs e)
         {
-            button_for_pass_admin.BackColor = Color.FromArgb(112, 179, 227); // серый
+            button_for_pass_admin.BackColor = Color.FromArgb(97, 110, 171); 
         }
 
         private void button_for_pass_admin_MouseLeave(object sender, EventArgs e)
         {
-            button_for_pass_admin.BackColor = Color.FromArgb(3, 171, 244); //синий как на стартовой
+            button_for_pass_admin.BackColor = Color.FromArgb(120, 136, 214); 
         }
 
         private void button_for_pass_admin_MouseMove(object sender, MouseEventArgs e)
         {
-            button_for_pass_admin.BackColor = Color.FromArgb(3, 216, 255); // голубой ПРИ НАВЕДЕНИИ
+            button_for_pass_admin.BackColor = Color.FromArgb(109, 122, 193); 
         }
 
         private void button_for_pass_admin_Click(object sender, EventArgs e)
@@ -2276,11 +2098,6 @@ namespace Scrum
                 obj2.Show();
             }
             con.Close();
-        }
-
-        private void panel4_Paint(object sender, PaintEventArgs e)
-        {
-
         }
         #endregion
         #endregion
@@ -2335,8 +2152,10 @@ namespace Scrum
         {
             panel1.Select();
         }
+
+
         #endregion
 
-       
+        
     }
 }
