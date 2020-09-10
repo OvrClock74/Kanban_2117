@@ -80,8 +80,9 @@ namespace Scrum
             {
                 CreateTaskB.Visible = true;
                 users_button.Visible = false;
+                archive_button.Location = new Point(CreateTaskB.Width, 0);
             }
-            else if (access_now_user == 0)
+            else if (access_now_user == 0) 
             {
                 CreateTaskB.Visible = true;
                 users_button.Visible = true;
@@ -90,6 +91,7 @@ namespace Scrum
             {
                 CreateTaskB.Visible = false;
                 users_button.Visible = false;
+                archive_button.Location = new Point(0, 0);
             }
             #endregion
             ToolTip t = new ToolTip(); // всплывающая подсказкa
@@ -98,6 +100,12 @@ namespace Scrum
         }
 
         #region Graphics рисуем линии на панелях
+        private void Главная_Paint(object sender, PaintEventArgs e)
+        {
+            /*Pen blackPen = new Pen(Color.Black, 1);
+            Rectangle rect = new Rectangle(0, 0, 200, 200);
+            e.Graphics.DrawRectangle(blackPen, rect);*/
+        }
         private void panelCT_Paint(object sender, PaintEventArgs e) // рисуем линию на форме создания таска
         {
             base.OnPaint(e);
@@ -1435,6 +1443,7 @@ namespace Scrum
                 users_button.BackColor = Color.FromArgb(56, 58, 63);
                 users_button.ForeColor = Color.FromArgb(219, 220, 221);
             }
+            
         }
         private void users_button_MouseLeave(object sender, EventArgs e)
         {
@@ -1443,6 +1452,7 @@ namespace Scrum
                 users_button.BackColor = Color.FromArgb(32, 34, 37);
                 users_button.ForeColor = Color.FromArgb(185, 186, 189);
             }
+            
         }
         private void users_button_MouseDown(object sender, MouseEventArgs e)
         {
@@ -1451,6 +1461,7 @@ namespace Scrum
                 users_button.BackColor = Color.FromArgb(58, 60, 65);
                 users_button.ForeColor = Color.FromArgb(255, 255, 255);
             }
+            
         }
         private void users_button_Click(object sender, EventArgs e)
         {
@@ -1490,6 +1501,12 @@ namespace Scrum
                 add_user.BackColor = Color.FromArgb(51, 52, 57); 
                 add_user.ForeColor = Color.FromArgb(185, 186, 189);
             }
+            else
+            {
+                panel_connect_1.BackColor = Color.FromArgb(41, 43, 47);
+                if (New_user_form.Visible == true)
+                    add_user.BackColor = Color.FromArgb(41, 43, 47);
+            }
         }
 
         private void add_user_MouseMove(object sender, MouseEventArgs e)
@@ -1498,6 +1515,12 @@ namespace Scrum
             {
                 add_user.BackColor = Color.FromArgb(56, 58, 63);
                 add_user.ForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else
+            {
+                panel_connect_1.BackColor = Color.FromArgb(56, 58, 63);
+                if (New_user_form.Visible == true)
+                    add_user.BackColor = Color.FromArgb(56, 58, 63);
             }
         }
         private void add_user_Click(object sender, EventArgs e)
@@ -1783,6 +1806,12 @@ namespace Scrum
                 delete_user.BackColor = Color.FromArgb(51, 52, 57);
                 delete_user.ForeColor = Color.FromArgb(185, 186, 189);
             }
+            else
+            {
+                panel_connect_1.BackColor = Color.FromArgb(41, 43, 47);
+                if (Del_user_form.Visible == true)
+                    delete_user.BackColor = Color.FromArgb(41, 43, 47);
+            }
         }
 
         private void delete_user_MouseMove(object sender, MouseEventArgs e)
@@ -1792,6 +1821,13 @@ namespace Scrum
                 delete_user.BackColor = Color.FromArgb(56, 58, 63);
                 delete_user.ForeColor = Color.FromArgb(219, 220, 221);
             }
+            else
+            {
+                panel_connect_1.BackColor = Color.FromArgb(56, 58, 63);
+                if (Del_user_form.Visible == true)
+                    delete_user.BackColor = Color.FromArgb(56, 58, 63);
+            }
+            
         }
 
         private void delete_user_Click(object sender, EventArgs e)
@@ -2029,15 +2065,16 @@ namespace Scrum
                 show_user.BackColor = Color.FromArgb(51, 52, 57);
                 show_user.ForeColor = Color.FromArgb(185, 186, 189);
             }
+            else
+            {
+                show_user.BackColor = Color.FromArgb(41, 43, 47);
+            }
         }
 
         private void show_user_MouseMove(object sender, MouseEventArgs e)
         {
-            if (clcUs == false)
-            {
-                show_user.BackColor = Color.FromArgb(56, 58, 63);
-                show_user.ForeColor = Color.FromArgb(219, 220, 221);
-            }
+             show_user.BackColor = Color.FromArgb(56, 58, 63);
+             show_user.ForeColor = Color.FromArgb(219, 220, 221);
         }
 
         private void show_user_Click(object sender, EventArgs e)
@@ -2094,8 +2131,26 @@ namespace Scrum
             }
             else
             {
-                TableAllUsers obj2 = new TableAllUsers(ID_Main); // передача id в форму Главная
-                obj2.Show();
+                bool check_open = false;
+                FormCollection fc = Application.OpenForms;
+                foreach (Form frm in fc) // открыта уже форма или нет, чтоб повторно не открывалась
+                {
+                    //iterate through
+                    if (frm.Name == "TableAllUsers")
+                    {
+                        check_open = false;
+                    }
+                    else
+                    {
+                        check_open = true;
+                    }
+                }
+                if (check_open == true)
+                {
+                    paas.Text = "";
+                    TableAllUsers obj2 = new TableAllUsers(ID_Main); // передача id в форму Главная
+                    obj2.Show();
+                } 
             }
             con.Close();
         }
@@ -2154,8 +2209,51 @@ namespace Scrum
         }
 
 
+
+
         #endregion
 
-        
+        #region archive_button
+        private void archive_button_Click(object sender, EventArgs e)
+        {
+            bool check_open = false;
+            FormCollection fc = Application.OpenForms;
+            foreach (Form frm in fc) // открыта уже форма или нет, чтоб повторно не открывалась
+            {
+                //iterate through
+                if (frm.Name == "Archive_tasks")
+                {
+                    check_open = false;
+                }
+                else
+                {
+                    check_open = true;
+                }
+            }
+            if(check_open == true)
+            {
+                Archive_tasks obj1 = new Archive_tasks();
+                obj1.Show();
+            }
+        }
+
+        private void archive_button_MouseMove(object sender, MouseEventArgs e)
+        {
+            archive_button.BackColor = Color.FromArgb(56, 58, 63);
+            archive_button.ForeColor = Color.FromArgb(219, 220, 221);
+        }
+
+        private void archive_button_MouseLeave(object sender, EventArgs e)
+        {
+            archive_button.BackColor = Color.FromArgb(32, 34, 37);
+            archive_button.ForeColor = Color.FromArgb(185, 186, 189);
+        }
+
+        private void archive_button_MouseDown(object sender, MouseEventArgs e)
+        {
+            archive_button.BackColor = Color.FromArgb(58, 60, 65);
+            archive_button.ForeColor = Color.FromArgb(255, 255, 255);
+        }
+        #endregion
     }
 }

@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Главная));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.archive_button = new System.Windows.Forms.Label();
             this.users_button = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.CreateTaskB = new System.Windows.Forms.Label();
@@ -192,6 +193,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.panel1.Controls.Add(this.archive_button);
             this.panel1.Controls.Add(this.users_button);
             this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.CreateTaskB);
@@ -199,6 +201,24 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1238, 30);
             this.panel1.TabIndex = 5;
+            // 
+            // archive_button
+            // 
+            this.archive_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
+            this.archive_button.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.archive_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.archive_button.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.archive_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.archive_button.Location = new System.Drawing.Point(925, 0);
+            this.archive_button.Name = "archive_button";
+            this.archive_button.Size = new System.Drawing.Size(183, 30);
+            this.archive_button.TabIndex = 11;
+            this.archive_button.Text = "Архив";
+            this.archive_button.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.archive_button.Click += new System.EventHandler(this.archive_button_Click);
+            this.archive_button.MouseDown += new System.Windows.Forms.MouseEventHandler(this.archive_button_MouseDown);
+            this.archive_button.MouseLeave += new System.EventHandler(this.archive_button_MouseLeave);
+            this.archive_button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.archive_button_MouseMove);
             // 
             // users_button
             // 
@@ -751,7 +771,7 @@
             this.New_user_form.Controls.Add(this.label15);
             this.New_user_form.Controls.Add(this.label22);
             this.New_user_form.Controls.Add(this.add_new_user_button);
-            this.New_user_form.Location = new System.Drawing.Point(763, 520);
+            this.New_user_form.Location = new System.Drawing.Point(643, 67);
             this.New_user_form.Name = "New_user_form";
             this.New_user_form.Size = new System.Drawing.Size(442, 523);
             this.New_user_form.TabIndex = 13;
@@ -801,6 +821,7 @@
             // 
             // new_access_for_user
             // 
+            this.new_access_for_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.new_access_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.new_access_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -1123,7 +1144,7 @@
             this.task_form.Controls.Add(this.label5);
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
-            this.task_form.Location = new System.Drawing.Point(407, 176);
+            this.task_form.Location = new System.Drawing.Point(494, 472);
             this.task_form.Name = "task_form";
             this.task_form.Size = new System.Drawing.Size(381, 369);
             this.task_form.TabIndex = 9;
@@ -1882,6 +1903,7 @@
             this.MinimumSize = new System.Drawing.Size(1212, 629);
             this.Name = "Главная";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Главная_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Главная_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -2068,5 +2090,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
+        private System.Windows.Forms.Label archive_button;
     }
 }

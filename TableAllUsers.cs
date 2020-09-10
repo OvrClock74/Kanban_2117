@@ -12,6 +12,7 @@ namespace Scrum
 {
     public partial class TableAllUsers : Form
     {
+        public bool closing = false;
         public int ID_for_show_users;
         public TableAllUsers(int id)
         {
@@ -39,7 +40,6 @@ namespace Scrum
                 else if (str == "pas")
                     dataGridView1.Columns[i].HeaderText = "Пароль";
             }
-           
         }
 
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
@@ -50,6 +50,49 @@ namespace Scrum
             this.dataGridView1.ColumnHeadersDefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);//выбранная ячейка текст
             this.dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);//выбранная ячейка фон
             this.dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);//выбранная ячейка текст
+        }
+
+        private void TableAllUsers_Leave(object sender, EventArgs e) // если убрали фокус с формы
+        {
+            DialogResult result = MessageBox.Show(
+                            "Рекомендуется закрыть окно с таблицей пользователей, так как эта информация может быть использована злоумышленниками! " +
+                            "Даже если Вы уверены, что этим компьютером не будет никто пользоваться в ближайшее время, закройте и при необходимости заново откройте." +
+                            "\n\nЗакрыть?\n\n",
+                            "Внимание!",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning,
+                            MessageBoxDefaultButton.Button2,
+                            MessageBoxOptions.DefaultDesktopOnly);
+            if (result == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void TableAllUsers_Deactivate(object sender, EventArgs e)
+        {
+            if (closing == false)
+            {
+                DialogResult result = MessageBox.Show(
+                            "Рекомендуется закрыть окно с таблицей пользователей, так как эта информация может быть использована злоумышленниками! " +
+                            "\nДаже если Вы уверены, что этим компьютером не будет никто пользоваться в ближайшее время, закройте и при необходимости заново откройте." +
+                            "\n\nЗакрыть?\n\n",
+                            "Внимание!",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning,
+                            MessageBoxDefaultButton.Button1,
+                            MessageBoxOptions.DefaultDesktopOnly);
+                if (result == DialogResult.Yes)
+                {
+                    this.Close();
+                }
+            }
+            else closing = false;
+        }
+
+        private void TableAllUsers_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            closing = true;
         }
     }
 }
