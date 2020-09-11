@@ -95,17 +95,12 @@ namespace Scrum
             }
             #endregion
             ToolTip t = new ToolTip(); // всплывающая подсказкa
+            ToolTip t2 = new ToolTip();
             t.SetToolTip(reload_tables, "Обновить");
-            t.Dispose();
+            t2.SetToolTip(AddFTask, "Прикрепить файл");
         }
 
         #region Graphics рисуем линии на панелях
-        private void Главная_Paint(object sender, PaintEventArgs e)
-        {
-            /*Pen blackPen = new Pen(Color.Black, 1);
-            Rectangle rect = new Rectangle(0, 0, 200, 200);
-            e.Graphics.DrawRectangle(blackPen, rect);*/
-        }
         private void panelCT_Paint(object sender, PaintEventArgs e) // рисуем линию на форме создания таска
         {
             base.OnPaint(e);
@@ -145,9 +140,12 @@ namespace Scrum
             using (Graphics g = e.Graphics)
             {
                 var p = new Pen(Color.FromArgb(63, 64, 68), 1);
+                var p2 = new Pen(Color.FromArgb(115, 117, 125), 1);
+                g.DrawLine(p2, new Point(9, 70), new Point(371, 70));
                 g.DrawLine(p, new Point(18, 167), new Point(362, 167));
                 g.DrawLine(p, new Point(18, 236), new Point(362, 236));
                 p.Dispose();
+                p2.Dispose();
                 g.Dispose(); // очищаем память
             }
         }
@@ -476,6 +474,17 @@ namespace Scrum
             con.Close();
         }
 
+        #region AddFTask видимость
+        private void AddFTask_MouseLeave(object sender, EventArgs e)
+        {
+            AddFTask.Visible = false;
+        }
+
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            AddFTask.Visible = true;
+        }
+        #endregion
         private void AddFTask_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -932,6 +941,28 @@ namespace Scrum
         }
         #endregion
 
+        #region VisibleChanged - убирать красные границы
+        private void New_user_form_VisibleChanged(object sender, EventArgs e)
+        {
+            border_background_new_id_for_user.BackColor = Color.FromArgb(36, 36, 39);
+            border_background_new_pass_for_user.BackColor = Color.FromArgb(36, 36, 39);
+            border_background_new_access_for_user.BackColor = Color.FromArgb(36, 36, 39);
+        }
+
+        private void Del_user_form_VisibleChanged(object sender, EventArgs e)
+        {
+            border_background_login_user.BackColor = Color.FromArgb(36, 36, 39);
+            border_background_admin_pass.BackColor = Color.FromArgb(36, 36, 39);
+        }
+
+        private void panelCT_VisibleChanged(object sender, EventArgs e)
+        {
+            border_background_panel.BackColor = Color.FromArgb(36, 36, 39);
+            border_background_panel2.BackColor = Color.FromArgb(36, 36, 39);
+            border_background_panel3.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        #endregion
+
         ////////////////////////////////////////////////////////ДОБАВИТЬ ТАСК//////////////////////////////////////////////////////
         #region Добавить таск
         private void CreateTaskB_Click(object sender, EventArgs e)
@@ -1270,7 +1301,7 @@ namespace Scrum
         }
         #endregion
 
-        #region Плюсик и панель за плюсиком, добавляющим таск
+        #region Переместить таск
         private void label16_Click(object sender, EventArgs e) // переместить таск
         {
             NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
@@ -1702,6 +1733,36 @@ namespace Scrum
         {
             clcT2_3 = true;
             border_background_new_access_for_user.BackColor = Color.FromArgb(120, 136, 214);
+            comboBox1_DropDown(sender, e);
+        }
+        private void comboBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (border_background_new_access_for_user.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT2_3 == false)
+                    border_background_new_access_for_user.BackColor = Color.Black;
+        }
+
+        private void comboBox1_MouseLeave(object sender, EventArgs e)
+        {
+            if (border_background_new_access_for_user.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT2_3 == false)
+                    border_background_new_access_for_user.BackColor = Color.FromArgb(36, 36, 39);
+        }
+
+        private void comboBox1_DropDown(object sender, EventArgs e)
+        {
+            clcT2_3 = true;
+            border_background_new_access_for_user.BackColor = Color.FromArgb(120, 136, 214);
+        }
+
+        private void comboBox1_DropDownClosed(object sender, EventArgs e)
+        {
+            clcT2_3 = false;
+            border_background_new_access_for_user.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        private void comboBox1_TextChanged(object sender, EventArgs e)
+        {
+            new_access_for_user.Text = comboBox1.Text;
         }
         #endregion
 
@@ -2254,6 +2315,13 @@ namespace Scrum
             archive_button.BackColor = Color.FromArgb(58, 60, 65);
             archive_button.ForeColor = Color.FromArgb(255, 255, 255);
         }
+
+
+
+
+
         #endregion
+
+        
     }
 }

@@ -67,6 +67,7 @@
             this.border_background_new_access_for_user = new System.Windows.Forms.Panel();
             this.background_access_for_user = new System.Windows.Forms.Panel();
             this.new_access_for_user = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.border_background_new_pass_for_user = new System.Windows.Forms.Panel();
             this.background_pass_for_user = new System.Windows.Forms.Panel();
@@ -105,6 +106,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Del_user_form = new System.Windows.Forms.Panel();
             this.otmena_udaleniya = new System.Windows.Forms.Label();
             this.label30 = new System.Windows.Forms.Label();
@@ -176,6 +178,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.close_task)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Task)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.Del_user_form.SuspendLayout();
             this.border_background_admin_pass.SuspendLayout();
             this.background_admin_pass.SuspendLayout();
@@ -284,7 +287,7 @@
             // 
             // butn_minus
             // 
-            this.butn_minus.BackColor = System.Drawing.Color.Transparent;
+            this.butn_minus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_minus.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus.Image")));
             this.butn_minus.Location = new System.Drawing.Point(1137, 0);
             this.butn_minus.Name = "butn_minus";
@@ -308,6 +311,7 @@
             // 
             // butn_plus
             // 
+            this.butn_plus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_plus.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus.Image")));
             this.butn_plus.Location = new System.Drawing.Point(1170, 0);
             this.butn_plus.Name = "butn_plus";
@@ -318,6 +322,7 @@
             // 
             // butn_close
             // 
+            this.butn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_close.Image = ((System.Drawing.Image)(resources.GetObject("butn_close.Image")));
             this.butn_close.Location = new System.Drawing.Point(1204, 0);
             this.butn_close.Name = "butn_close";
@@ -771,11 +776,12 @@
             this.New_user_form.Controls.Add(this.label15);
             this.New_user_form.Controls.Add(this.label22);
             this.New_user_form.Controls.Add(this.add_new_user_button);
-            this.New_user_form.Location = new System.Drawing.Point(643, 67);
+            this.New_user_form.Location = new System.Drawing.Point(627, 545);
             this.New_user_form.Name = "New_user_form";
             this.New_user_form.Size = new System.Drawing.Size(442, 523);
             this.New_user_form.TabIndex = 13;
             this.New_user_form.Visible = false;
+            this.New_user_form.VisibleChanged += new System.EventHandler(this.New_user_form_VisibleChanged);
             this.New_user_form.Paint += new System.Windows.Forms.PaintEventHandler(this.New_user_form_Paint);
             this.New_user_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.New_user_form_MouseDown);
             // 
@@ -805,6 +811,7 @@
             // 
             this.border_background_new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
             this.border_background_new_access_for_user.Controls.Add(this.background_access_for_user);
+            this.border_background_new_access_for_user.Controls.Add(this.comboBox1);
             this.border_background_new_access_for_user.Location = new System.Drawing.Point(22, 366);
             this.border_background_new_access_for_user.Name = "border_background_new_access_for_user";
             this.border_background_new_access_for_user.Size = new System.Drawing.Size(399, 39);
@@ -816,12 +823,15 @@
             this.background_access_for_user.Controls.Add(this.new_access_for_user);
             this.background_access_for_user.Location = new System.Drawing.Point(1, 1);
             this.background_access_for_user.Name = "background_access_for_user";
-            this.background_access_for_user.Size = new System.Drawing.Size(397, 37);
+            this.background_access_for_user.Size = new System.Drawing.Size(381, 37);
             this.background_access_for_user.TabIndex = 4;
             // 
             // new_access_for_user
             // 
-            this.new_access_for_user.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.new_access_for_user.AutoCompleteCustomSource.AddRange(new string[] {
+            "Истец",
+            "Бухгалтерия",
+            "Оператор"});
             this.new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.new_access_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.new_access_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -829,12 +839,34 @@
             this.new_access_for_user.Location = new System.Drawing.Point(15, 6);
             this.new_access_for_user.MaxLength = 22;
             this.new_access_for_user.Name = "new_access_for_user";
-            this.new_access_for_user.Size = new System.Drawing.Size(371, 26);
+            this.new_access_for_user.Size = new System.Drawing.Size(362, 26);
             this.new_access_for_user.TabIndex = 6;
             this.new_access_for_user.Enter += new System.EventHandler(this.new_access_for_user_Enter);
             this.new_access_for_user.Leave += new System.EventHandler(this.new_access_for_user_Leave);
             this.new_access_for_user.MouseLeave += new System.EventHandler(this.new_access_for_user_MouseLeave);
             this.new_access_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_access_for_user_MouseMove);
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.Font = new System.Drawing.Font("Calibri", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Истец",
+            "Бухгалтерия",
+            "Оператор"});
+            this.comboBox1.Location = new System.Drawing.Point(1, 1);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(397, 37);
+            this.comboBox1.TabIndex = 16;
+            this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
+            this.comboBox1.DropDownClosed += new System.EventHandler(this.comboBox1_DropDownClosed);
+            this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            this.comboBox1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
+            this.comboBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.comboBox1_MouseMove);
             // 
             // label25
             // 
@@ -991,7 +1023,7 @@
             this.panel_for_table_users.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel_for_table_users.Controls.Add(this.table_users);
-            this.panel_for_table_users.Location = new System.Drawing.Point(921, 449);
+            this.panel_for_table_users.Location = new System.Drawing.Point(921, 428);
             this.panel_for_table_users.Name = "panel_for_table_users";
             this.panel_for_table_users.Size = new System.Drawing.Size(271, 47);
             this.panel_for_table_users.TabIndex = 13;
@@ -1048,7 +1080,7 @@
             this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.admin_pass_enter.Controls.Add(this.paas);
             this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
-            this.admin_pass_enter.Location = new System.Drawing.Point(26, 364);
+            this.admin_pass_enter.Location = new System.Drawing.Point(925, 481);
             this.admin_pass_enter.Name = "admin_pass_enter";
             this.admin_pass_enter.Size = new System.Drawing.Size(330, 86);
             this.admin_pass_enter.TabIndex = 14;
@@ -1086,7 +1118,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1200, 53);
@@ -1101,7 +1133,7 @@
             // panel_connect_2
             // 
             this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(1199, 454);
+            this.panel_connect_2.Location = new System.Drawing.Point(1199, 433);
             this.panel_connect_2.Name = "panel_connect_2";
             this.panel_connect_2.Size = new System.Drawing.Size(39, 39);
             this.panel_connect_2.TabIndex = 13;
@@ -1110,7 +1142,7 @@
             // reload_tables
             // 
             this.reload_tables.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.reload_tables.BackColor = System.Drawing.Color.Transparent;
+            this.reload_tables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.reload_tables.Cursor = System.Windows.Forms.Cursors.Hand;
             this.reload_tables.Image = ((System.Drawing.Image)(resources.GetObject("reload_tables.Image")));
             this.reload_tables.Location = new System.Drawing.Point(1200, 53);
@@ -1144,7 +1176,8 @@
             this.task_form.Controls.Add(this.label5);
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
-            this.task_form.Location = new System.Drawing.Point(494, 472);
+            this.task_form.Controls.Add(this.pictureBox2);
+            this.task_form.Location = new System.Drawing.Point(393, 170);
             this.task_form.Name = "task_form";
             this.task_form.Size = new System.Drawing.Size(381, 369);
             this.task_form.TabIndex = 9;
@@ -1255,13 +1288,15 @@
             this.AddFTask.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.AddFTask.Cursor = System.Windows.Forms.Cursors.Hand;
             this.AddFTask.Image = ((System.Drawing.Image)(resources.GetObject("AddFTask.Image")));
-            this.AddFTask.Location = new System.Drawing.Point(330, 279);
+            this.AddFTask.Location = new System.Drawing.Point(329, 279);
             this.AddFTask.Name = "AddFTask";
             this.AddFTask.Size = new System.Drawing.Size(31, 31);
             this.AddFTask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AddFTask.TabIndex = 13;
             this.AddFTask.TabStop = false;
+            this.AddFTask.Visible = false;
             this.AddFTask.Click += new System.EventHandler(this.AddFTask_Click);
+            this.AddFTask.MouseLeave += new System.EventHandler(this.AddFTask_MouseLeave);
             // 
             // label16
             // 
@@ -1328,7 +1363,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(-1, 23);
+            this.label2.Location = new System.Drawing.Point(-1, 31);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(380, 31);
             this.label2.TabIndex = 10;
@@ -1352,7 +1387,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.label3.Location = new System.Drawing.Point(-1, 77);
+            this.label3.Location = new System.Drawing.Point(-1, 72);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(380, 26);
             this.label3.TabIndex = 10;
@@ -1371,6 +1406,18 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "30.07.7777";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(329, 279);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 18;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            // 
             // Del_user_form
             // 
             this.Del_user_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
@@ -1388,6 +1435,7 @@
             this.Del_user_form.Size = new System.Drawing.Size(442, 446);
             this.Del_user_form.TabIndex = 14;
             this.Del_user_form.Visible = false;
+            this.Del_user_form.VisibleChanged += new System.EventHandler(this.Del_user_form_VisibleChanged);
             this.Del_user_form.Paint += new System.Windows.Forms.PaintEventHandler(this.Del_user_form_Paint);
             // 
             // otmena_udaleniya
@@ -1566,6 +1614,7 @@
             this.panelCT.Size = new System.Drawing.Size(444, 577);
             this.panelCT.TabIndex = 14;
             this.panelCT.Visible = false;
+            this.panelCT.VisibleChanged += new System.EventHandler(this.panelCT_VisibleChanged);
             this.panelCT.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCT_Paint);
             this.panelCT.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelCT_MouseDown);
             // 
@@ -1868,7 +1917,6 @@
             this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.panelCT);
-            this.Controls.Add(this.reload_tables);
             this.Controls.Add(this.panel_connect_2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.control_users_panel);
@@ -1890,20 +1938,20 @@
             this.Controls.Add(this.dataGridView4);
             this.Controls.Add(this.dataGridView3);
             this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.butn_close2);
-            this.Controls.Add(this.butn_plus2);
-            this.Controls.Add(this.butn_minus2);
-            this.Controls.Add(this.butn_minus);
-            this.Controls.Add(this.butn_plus);
-            this.Controls.Add(this.butn_close);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.butn_minus2);
+            this.Controls.Add(this.butn_minus);
+            this.Controls.Add(this.butn_plus2);
+            this.Controls.Add(this.butn_close2);
+            this.Controls.Add(this.butn_close);
+            this.Controls.Add(this.butn_plus);
+            this.Controls.Add(this.reload_tables);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1212, 629);
             this.Name = "Главная";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.Главная_Paint);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Главная_MouseDown);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -1945,6 +1993,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.close_task)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Task)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.Del_user_form.ResumeLayout(false);
             this.Del_user_form.PerformLayout();
             this.border_background_admin_pass.ResumeLayout(false);
@@ -2091,5 +2140,7 @@
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;
         private System.Windows.Forms.Label archive_button;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
