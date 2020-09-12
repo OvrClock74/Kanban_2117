@@ -1,5 +1,16 @@
-﻿namespace Scrum
+﻿using System.Windows.Forms;
+
+namespace Scrum
 {
+    public class DoubleBufferedPanel : System.Windows.Forms.Panel
+    {
+        public DoubleBufferedPanel()
+        {
+            this.SetStyle(ControlStyles.AllPaintingInWmPaint |
+                ControlStyles.OptimizedDoubleBuffer |
+                ControlStyles.UserPaint, true);
+        }
+    }
     partial class Главная
     {
         /// <summary>
@@ -32,8 +43,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.archive_button = new System.Windows.Forms.Label();
             this.users_button = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.CreateTaskB = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
             this.butn_minus2 = new System.Windows.Forms.PictureBox();
             this.butn_minus = new System.Windows.Forms.PictureBox();
             this.butn_plus2 = new System.Windows.Forms.PictureBox();
@@ -145,6 +156,8 @@
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
+            this.background_form = new System.Windows.Forms.Panel();
+            this.panel2 = new Scrum.DoubleBufferedPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
@@ -191,28 +204,32 @@
             this.background_textbox_panel2.SuspendLayout();
             this.border_background_panel.SuspendLayout();
             this.background_textbox_panel.SuspendLayout();
+            this.background_form.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.panel1.Controls.Add(this.archive_button);
             this.panel1.Controls.Add(this.users_button);
-            this.panel1.Controls.Add(this.label17);
             this.panel1.Controls.Add(this.CreateTaskB);
             this.panel1.Location = new System.Drawing.Point(0, 22);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1238, 30);
+            this.panel1.Size = new System.Drawing.Size(1664, 30);
             this.panel1.TabIndex = 5;
             // 
             // archive_button
             // 
+            this.archive_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.archive_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
             this.archive_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.archive_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.archive_button.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.archive_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
-            this.archive_button.Location = new System.Drawing.Point(925, 0);
+            this.archive_button.Location = new System.Drawing.Point(1481, 0);
             this.archive_button.Name = "archive_button";
             this.archive_button.Size = new System.Drawing.Size(183, 30);
             this.archive_button.TabIndex = 11;
@@ -241,19 +258,6 @@
             this.users_button.MouseLeave += new System.EventHandler(this.users_button_MouseLeave);
             this.users_button.MouseMove += new System.Windows.Forms.MouseEventHandler(this.users_button_MouseMove);
             // 
-            // label17
-            // 
-            this.label17.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe Print", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label17.Location = new System.Drawing.Point(1109, -5);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(135, 37);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Desk Name";
-            // 
             // CreateTaskB
             // 
             this.CreateTaskB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(32)))), ((int)(((byte)(34)))), ((int)(((byte)(37)))));
@@ -272,11 +276,24 @@
             this.CreateTaskB.MouseLeave += new System.EventHandler(this.CreateTaskB_MouseLeave);
             this.CreateTaskB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CreateTaskB_MouseMove);
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.BackColor = System.Drawing.Color.Transparent;
+            this.label17.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
+            this.label17.Location = new System.Drawing.Point(-4, -7);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(122, 33);
+            this.label17.TabIndex = 2;
+            this.label17.Text = "Desk Name";
+            // 
             // butn_minus2
             // 
+            this.butn_minus2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_minus2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_minus2.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus2.Image")));
-            this.butn_minus2.Location = new System.Drawing.Point(1137, 0);
+            this.butn_minus2.Location = new System.Drawing.Point(1564, 0);
             this.butn_minus2.Name = "butn_minus2";
             this.butn_minus2.Size = new System.Drawing.Size(34, 22);
             this.butn_minus2.TabIndex = 4;
@@ -287,9 +304,10 @@
             // 
             // butn_minus
             // 
+            this.butn_minus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_minus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_minus.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus.Image")));
-            this.butn_minus.Location = new System.Drawing.Point(1137, 0);
+            this.butn_minus.Location = new System.Drawing.Point(1564, 0);
             this.butn_minus.Name = "butn_minus";
             this.butn_minus.Size = new System.Drawing.Size(34, 22);
             this.butn_minus.TabIndex = 3;
@@ -298,9 +316,10 @@
             // 
             // butn_plus2
             // 
+            this.butn_plus2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_plus2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_plus2.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus2.Image")));
-            this.butn_plus2.Location = new System.Drawing.Point(1170, 0);
+            this.butn_plus2.Location = new System.Drawing.Point(1597, 0);
             this.butn_plus2.Name = "butn_plus2";
             this.butn_plus2.Size = new System.Drawing.Size(34, 22);
             this.butn_plus2.TabIndex = 2;
@@ -311,9 +330,10 @@
             // 
             // butn_plus
             // 
+            this.butn_plus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_plus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_plus.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus.Image")));
-            this.butn_plus.Location = new System.Drawing.Point(1170, 0);
+            this.butn_plus.Location = new System.Drawing.Point(1597, 0);
             this.butn_plus.Name = "butn_plus";
             this.butn_plus.Size = new System.Drawing.Size(34, 22);
             this.butn_plus.TabIndex = 1;
@@ -322,9 +342,10 @@
             // 
             // butn_close
             // 
+            this.butn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_close.Image = ((System.Drawing.Image)(resources.GetObject("butn_close.Image")));
-            this.butn_close.Location = new System.Drawing.Point(1204, 0);
+            this.butn_close.Location = new System.Drawing.Point(1631, 0);
             this.butn_close.Name = "butn_close";
             this.butn_close.Size = new System.Drawing.Size(34, 22);
             this.butn_close.TabIndex = 0;
@@ -337,7 +358,7 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -346,7 +367,7 @@
             this.dataGridView1.ColumnHeadersVisible = false;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView1.Location = new System.Drawing.Point(37, 142);
+            this.dataGridView1.Location = new System.Drawing.Point(11, 11);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -355,7 +376,7 @@
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView1.Size = new System.Drawing.Size(195, 237);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.TabStop = false;
             this.dataGridView1.Text = "dataGridView1";
@@ -371,7 +392,7 @@
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToResizeColumns = false;
             this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -380,7 +401,7 @@
             this.dataGridView2.ColumnHeadersVisible = false;
             this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView2.Location = new System.Drawing.Point(183, 142);
+            this.dataGridView2.Location = new System.Drawing.Point(212, 11);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -389,7 +410,7 @@
             this.dataGridView2.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView2.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView2.Size = new System.Drawing.Size(195, 237);
             this.dataGridView2.TabIndex = 6;
             this.dataGridView2.TabStop = false;
             this.dataGridView2.Text = "dataGridView2";
@@ -405,7 +426,7 @@
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.AllowUserToResizeColumns = false;
             this.dataGridView3.AllowUserToResizeRows = false;
-            this.dataGridView3.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -414,7 +435,7 @@
             this.dataGridView3.ColumnHeadersVisible = false;
             this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView3.Location = new System.Drawing.Point(328, 142);
+            this.dataGridView3.Location = new System.Drawing.Point(413, 11);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
@@ -423,7 +444,7 @@
             this.dataGridView3.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView3.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView3.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView3.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView3.Size = new System.Drawing.Size(195, 237);
             this.dataGridView3.TabIndex = 6;
             this.dataGridView3.TabStop = false;
             this.dataGridView3.Text = "dataGridView3";
@@ -439,7 +460,7 @@
             this.dataGridView4.AllowUserToDeleteRows = false;
             this.dataGridView4.AllowUserToResizeColumns = false;
             this.dataGridView4.AllowUserToResizeRows = false;
-            this.dataGridView4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -448,7 +469,7 @@
             this.dataGridView4.ColumnHeadersVisible = false;
             this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView4.Location = new System.Drawing.Point(473, 142);
+            this.dataGridView4.Location = new System.Drawing.Point(614, 11);
             this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
@@ -457,7 +478,7 @@
             this.dataGridView4.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView4.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView4.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView4.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView4.Size = new System.Drawing.Size(195, 237);
             this.dataGridView4.TabIndex = 6;
             this.dataGridView4.TabStop = false;
             this.dataGridView4.Text = "dataGridView4";
@@ -473,7 +494,7 @@
             this.dataGridView5.AllowUserToDeleteRows = false;
             this.dataGridView5.AllowUserToResizeColumns = false;
             this.dataGridView5.AllowUserToResizeRows = false;
-            this.dataGridView5.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -482,7 +503,7 @@
             this.dataGridView5.ColumnHeadersVisible = false;
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView5.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView5.Location = new System.Drawing.Point(618, 142);
+            this.dataGridView5.Location = new System.Drawing.Point(815, 11);
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
@@ -491,7 +512,7 @@
             this.dataGridView5.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView5.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView5.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView5.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView5.Size = new System.Drawing.Size(195, 237);
             this.dataGridView5.TabIndex = 6;
             this.dataGridView5.TabStop = false;
             this.dataGridView5.Text = "dataGridView5";
@@ -507,7 +528,7 @@
             this.dataGridView6.AllowUserToDeleteRows = false;
             this.dataGridView6.AllowUserToResizeColumns = false;
             this.dataGridView6.AllowUserToResizeRows = false;
-            this.dataGridView6.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView6.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -516,7 +537,7 @@
             this.dataGridView6.ColumnHeadersVisible = false;
             this.dataGridView6.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView6.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView6.Location = new System.Drawing.Point(763, 142);
+            this.dataGridView6.Location = new System.Drawing.Point(1016, 11);
             this.dataGridView6.MultiSelect = false;
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.ReadOnly = true;
@@ -525,7 +546,7 @@
             this.dataGridView6.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView6.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView6.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView6.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView6.Size = new System.Drawing.Size(195, 237);
             this.dataGridView6.TabIndex = 6;
             this.dataGridView6.TabStop = false;
             this.dataGridView6.Text = "dataGridView6";
@@ -541,7 +562,7 @@
             this.dataGridView7.AllowUserToDeleteRows = false;
             this.dataGridView7.AllowUserToResizeColumns = false;
             this.dataGridView7.AllowUserToResizeRows = false;
-            this.dataGridView7.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView7.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView7.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView7.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -550,7 +571,7 @@
             this.dataGridView7.ColumnHeadersVisible = false;
             this.dataGridView7.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView7.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView7.Location = new System.Drawing.Point(908, 142);
+            this.dataGridView7.Location = new System.Drawing.Point(1217, 11);
             this.dataGridView7.MultiSelect = false;
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
@@ -559,7 +580,7 @@
             this.dataGridView7.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView7.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView7.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView7.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView7.Size = new System.Drawing.Size(195, 237);
             this.dataGridView7.TabIndex = 6;
             this.dataGridView7.TabStop = false;
             this.dataGridView7.Text = "dataGridView7";
@@ -575,7 +596,7 @@
             this.dataGridView8.AllowUserToDeleteRows = false;
             this.dataGridView8.AllowUserToResizeColumns = false;
             this.dataGridView8.AllowUserToResizeRows = false;
-            this.dataGridView8.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.dataGridView8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView8.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView8.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView8.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -584,7 +605,7 @@
             this.dataGridView8.ColumnHeadersVisible = false;
             this.dataGridView8.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView8.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView8.Location = new System.Drawing.Point(1053, 142);
+            this.dataGridView8.Location = new System.Drawing.Point(1418, 11);
             this.dataGridView8.MultiSelect = false;
             this.dataGridView8.Name = "dataGridView8";
             this.dataGridView8.ReadOnly = true;
@@ -593,7 +614,7 @@
             this.dataGridView8.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView8.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.dataGridView8.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView8.Size = new System.Drawing.Size(139, 216);
+            this.dataGridView8.Size = new System.Drawing.Size(195, 237);
             this.dataGridView8.TabIndex = 6;
             this.dataGridView8.TabStop = false;
             this.dataGridView8.Text = "dataGridView8";
@@ -605,11 +626,12 @@
             // 
             // label7
             // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(70, 95);
+            this.label7.Location = new System.Drawing.Point(91, 50);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 26);
             this.label7.TabIndex = 10;
@@ -617,11 +639,12 @@
             // 
             // label8
             // 
+            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(184, 94);
+            this.label8.Location = new System.Drawing.Point(265, 49);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(135, 26);
             this.label8.TabIndex = 10;
@@ -629,11 +652,12 @@
             // 
             // label9
             // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(328, 94);
+            this.label9.Location = new System.Drawing.Point(466, 49);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(136, 26);
             this.label9.TabIndex = 10;
@@ -641,11 +665,12 @@
             // 
             // label10
             // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(494, 94);
+            this.label10.Location = new System.Drawing.Point(690, 50);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 26);
             this.label10.TabIndex = 10;
@@ -653,11 +678,12 @@
             // 
             // label11
             // 
+            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label11.ForeColor = System.Drawing.Color.White;
-            this.label11.Location = new System.Drawing.Point(611, 94);
+            this.label11.Location = new System.Drawing.Point(858, 49);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(152, 26);
             this.label11.TabIndex = 10;
@@ -665,11 +691,12 @@
             // 
             // label12
             // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label12.ForeColor = System.Drawing.Color.White;
-            this.label12.Location = new System.Drawing.Point(769, 94);
+            this.label12.Location = new System.Drawing.Point(1074, 50);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(124, 26);
             this.label12.TabIndex = 10;
@@ -677,11 +704,12 @@
             // 
             // label13
             // 
+            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(915, 94);
+            this.label13.Location = new System.Drawing.Point(1275, 49);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(124, 26);
             this.label13.TabIndex = 10;
@@ -689,11 +717,12 @@
             // 
             // label14
             // 
+            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(1081, 94);
+            this.label14.Location = new System.Drawing.Point(1494, 49);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(76, 26);
             this.label14.TabIndex = 10;
@@ -709,7 +738,7 @@
             this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
-            this.control_users_panel.Location = new System.Drawing.Point(12, 430);
+            this.control_users_panel.Location = new System.Drawing.Point(122, 10);
             this.control_users_panel.Name = "control_users_panel";
             this.control_users_panel.Size = new System.Drawing.Size(330, 135);
             this.control_users_panel.TabIndex = 12;
@@ -776,7 +805,7 @@
             this.New_user_form.Controls.Add(this.label15);
             this.New_user_form.Controls.Add(this.label22);
             this.New_user_form.Controls.Add(this.add_new_user_button);
-            this.New_user_form.Location = new System.Drawing.Point(627, 545);
+            this.New_user_form.Location = new System.Drawing.Point(630, 386);
             this.New_user_form.Name = "New_user_form";
             this.New_user_form.Size = new System.Drawing.Size(442, 523);
             this.New_user_form.TabIndex = 13;
@@ -1007,7 +1036,7 @@
             // 
             this.panel_connect_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.panel_connect_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel_connect_1.Location = new System.Drawing.Point(934, 381);
+            this.panel_connect_1.Location = new System.Drawing.Point(1414, 372);
             this.panel_connect_1.Name = "panel_connect_1";
             this.panel_connect_1.Size = new System.Drawing.Size(442, 45);
             this.panel_connect_1.TabIndex = 13;
@@ -1023,7 +1052,7 @@
             this.panel_for_table_users.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel_for_table_users.Controls.Add(this.table_users);
-            this.panel_for_table_users.Location = new System.Drawing.Point(921, 428);
+            this.panel_for_table_users.Location = new System.Drawing.Point(1476, 419);
             this.panel_for_table_users.Name = "panel_for_table_users";
             this.panel_for_table_users.Size = new System.Drawing.Size(271, 47);
             this.panel_for_table_users.TabIndex = 13;
@@ -1080,7 +1109,7 @@
             this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.admin_pass_enter.Controls.Add(this.paas);
             this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
-            this.admin_pass_enter.Location = new System.Drawing.Point(925, 481);
+            this.admin_pass_enter.Location = new System.Drawing.Point(1078, 393);
             this.admin_pass_enter.Name = "admin_pass_enter";
             this.admin_pass_enter.Size = new System.Drawing.Size(330, 86);
             this.admin_pass_enter.TabIndex = 14;
@@ -1104,9 +1133,10 @@
             // 
             // butn_close2
             // 
+            this.butn_close2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_close2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_close2.Image = ((System.Drawing.Image)(resources.GetObject("butn_close2.Image")));
-            this.butn_close2.Location = new System.Drawing.Point(1204, 0);
+            this.butn_close2.Location = new System.Drawing.Point(1631, 0);
             this.butn_close2.Name = "butn_close2";
             this.butn_close2.Size = new System.Drawing.Size(34, 22);
             this.butn_close2.TabIndex = 0;
@@ -1117,11 +1147,11 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1200, 53);
+            this.pictureBox1.Location = new System.Drawing.Point(1626, 0);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1133,7 +1163,7 @@
             // panel_connect_2
             // 
             this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(1199, 433);
+            this.panel_connect_2.Location = new System.Drawing.Point(1431, 423);
             this.panel_connect_2.Name = "panel_connect_2";
             this.panel_connect_2.Size = new System.Drawing.Size(39, 39);
             this.panel_connect_2.TabIndex = 13;
@@ -1141,11 +1171,11 @@
             // 
             // reload_tables
             // 
-            this.reload_tables.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.reload_tables.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.reload_tables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.reload_tables.Cursor = System.Windows.Forms.Cursors.Hand;
             this.reload_tables.Image = ((System.Drawing.Image)(resources.GetObject("reload_tables.Image")));
-            this.reload_tables.Location = new System.Drawing.Point(1200, 53);
+            this.reload_tables.Location = new System.Drawing.Point(1626, 0);
             this.reload_tables.Name = "reload_tables";
             this.reload_tables.Size = new System.Drawing.Size(38, 36);
             this.reload_tables.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1177,7 +1207,7 @@
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
             this.task_form.Controls.Add(this.pictureBox2);
-            this.task_form.Location = new System.Drawing.Point(393, 170);
+            this.task_form.Location = new System.Drawing.Point(835, 6);
             this.task_form.Name = "task_form";
             this.task_form.Size = new System.Drawing.Size(381, 369);
             this.task_form.TabIndex = 9;
@@ -1430,7 +1460,7 @@
             this.Del_user_form.Controls.Add(this.border_background_login_user);
             this.Del_user_form.Controls.Add(this.label26);
             this.Del_user_form.Controls.Add(this.del_user_button);
-            this.Del_user_form.Location = new System.Drawing.Point(276, 567);
+            this.Del_user_form.Location = new System.Drawing.Point(279, 408);
             this.Del_user_form.Name = "Del_user_form";
             this.Del_user_form.Size = new System.Drawing.Size(442, 446);
             this.Del_user_form.TabIndex = 14;
@@ -1609,7 +1639,7 @@
             this.panelCT.Controls.Add(this.label20);
             this.panelCT.Controls.Add(this.border_background_panel);
             this.panelCT.Controls.Add(this.label19);
-            this.panelCT.Location = new System.Drawing.Point(20, 587);
+            this.panelCT.Location = new System.Drawing.Point(31, 579);
             this.panelCT.Name = "panelCT";
             this.panelCT.Size = new System.Drawing.Size(444, 577);
             this.panelCT.TabIndex = 14;
@@ -1907,54 +1937,82 @@
             this.textBox7.Size = new System.Drawing.Size(371, 26);
             this.textBox7.TabIndex = 4;
             // 
+            // background_form
+            // 
+            this.background_form.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.background_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.background_form.Controls.Add(this.control_users_panel);
+            this.background_form.Controls.Add(this.task_form);
+            this.background_form.Controls.Add(this.panel2);
+            this.background_form.Controls.Add(this.reload_tables);
+            this.background_form.Controls.Add(this.panelCT);
+            this.background_form.Controls.Add(this.label7);
+            this.background_form.Controls.Add(this.label14);
+            this.background_form.Controls.Add(this.label8);
+            this.background_form.Controls.Add(this.label13);
+            this.background_form.Controls.Add(this.label9);
+            this.background_form.Controls.Add(this.label12);
+            this.background_form.Controls.Add(this.label10);
+            this.background_form.Controls.Add(this.label11);
+            this.background_form.Controls.Add(this.pictureBox1);
+            this.background_form.Location = new System.Drawing.Point(0, 52);
+            this.background_form.Name = "background_form";
+            this.background_form.Size = new System.Drawing.Size(1664, 615);
+            this.background_form.TabIndex = 15;
+            // 
+            // panel2
+            // 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.New_user_form);
+            this.panel2.Controls.Add(this.dataGridView1);
+            this.panel2.Controls.Add(this.Del_user_form);
+            this.panel2.Controls.Add(this.dataGridView2);
+            this.panel2.Controls.Add(this.panel_connect_2);
+            this.panel2.Controls.Add(this.dataGridView3);
+            this.panel2.Controls.Add(this.dataGridView8);
+            this.panel2.Controls.Add(this.dataGridView7);
+            this.panel2.Controls.Add(this.dataGridView6);
+            this.panel2.Controls.Add(this.dataGridView5);
+            this.panel2.Controls.Add(this.admin_pass_enter);
+            this.panel2.Controls.Add(this.dataGridView4);
+            this.panel2.Controls.Add(this.panel_for_table_users);
+            this.panel2.Controls.Add(this.panel_connect_1);
+            this.panel2.Location = new System.Drawing.Point(20, 88);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1624, 478);
+            this.panel2.TabIndex = 12;
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1238, 629);
-            this.Controls.Add(this.New_user_form);
-            this.Controls.Add(this.Del_user_form);
-            this.Controls.Add(this.panelCT);
-            this.Controls.Add(this.panel_connect_2);
+            this.ClientSize = new System.Drawing.Size(1664, 666);
+            this.Controls.Add(this.background_form);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.control_users_panel);
-            this.Controls.Add(this.task_form);
-            this.Controls.Add(this.admin_pass_enter);
-            this.Controls.Add(this.panel_for_table_users);
-            this.Controls.Add(this.panel_connect_1);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.dataGridView8);
-            this.Controls.Add(this.dataGridView7);
-            this.Controls.Add(this.dataGridView6);
-            this.Controls.Add(this.dataGridView5);
-            this.Controls.Add(this.dataGridView4);
-            this.Controls.Add(this.dataGridView3);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.butn_minus2);
             this.Controls.Add(this.butn_minus);
             this.Controls.Add(this.butn_plus2);
+            this.Controls.Add(this.butn_plus);
             this.Controls.Add(this.butn_close2);
             this.Controls.Add(this.butn_close);
-            this.Controls.Add(this.butn_plus);
-            this.Controls.Add(this.reload_tables);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label17);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1212, 629);
             this.Name = "Главная";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.Главная_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Главная_MouseDown);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).EndInit();
@@ -2013,6 +2071,10 @@
             this.border_background_panel.ResumeLayout(false);
             this.background_textbox_panel.ResumeLayout(false);
             this.background_textbox_panel.PerformLayout();
+            this.background_form.ResumeLayout(false);
+            this.background_form.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2142,5 +2204,7 @@
         private System.Windows.Forms.Label archive_button;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Panel background_form;
+        private Scrum.DoubleBufferedPanel panel2;
     }
 }

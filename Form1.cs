@@ -12,8 +12,14 @@ using NPOI.SS.Formula.Functions;
 
 namespace Scrum
 {
+
     public partial class Start : Form
     {
+        public bool max_size_from = false; // развернута форма или нет
+
+        public int W = 0; // сохранить ширину окна для свернуть-развернуть
+        public int H = 0; // сохранить высоту окна для свернуть-развернуть
+
         public Start()
         {
             InitializeComponent();
@@ -217,7 +223,23 @@ namespace Scrum
 
         private void butn_plus2_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            if (max_size_from == false)
+            {
+                W = this.Size.Width;
+                H = this.Size.Height;
+                var rectangle = Screen.FromControl(this).Bounds;
+                this.FormBorderStyle = FormBorderStyle.None;
+                Size = new Size(rectangle.Width, rectangle.Height);
+                Location = new Point(0, 0);
+                Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
+                this.Size = new Size(workingRectangle.Width, workingRectangle.Height);
+                max_size_from = true;
+            }
+            else
+            {
+                this.Size = new Size(W, H);
+                max_size_from = false;
+            }
         }
 
         private void butn_minus2_Click(object sender, EventArgs e)

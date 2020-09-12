@@ -18,13 +18,19 @@ namespace Scrum
     {
         //////////////////PUBLIC ПЕРЕМЕННЫЕ////////////////
 
-        public int ID_Main;
         public bool clc = false; // если нажали на таблицу - перемещение таска к концу мышки
         public bool clcU = false; // если нажали на добавить пользователя
         public bool clcUd = false; // если нажали на удалить пользователя
         public bool clcUs = false; // если нажали на все пользователи
+
+        public int ID_Main;
         public string C; // Значение, что находится в выбираемой ячейке
         public int stage_t; // стадия на которой находится выбранный таск
+
+        public bool max_size_from = false; // развернута форма или нет
+
+        public int W = 0; // сохранить ширину окна для свернуть-развернуть
+        public int H = 0; // сохранить высоту окна для свернуть-развернуть
 
         ///////Переменные для добавления файла в БД//////
         public string PathToFile;
@@ -67,6 +73,7 @@ namespace Scrum
         {
             InitializeComponent();
             panel1.Select();
+            panel2 = new DoubleBufferedPanel();
             loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
             ID_Main = id;
             #region Зашел админ или кто
@@ -98,6 +105,7 @@ namespace Scrum
             ToolTip t2 = new ToolTip();
             t.SetToolTip(reload_tables, "Обновить");
             t2.SetToolTip(AddFTask, "Прикрепить файл");
+
         }
 
         #region Graphics рисуем линии на панелях
@@ -153,10 +161,17 @@ namespace Scrum
 
         private void Главная_MouseDown(object sender, MouseEventArgs e) // перемещение окна
         {
-            panel1.Select();
-            base.Capture = false;
-            Message m = Message.Create(base.Handle, 161, new IntPtr(2), IntPtr.Zero);
-            this.WndProc(ref m);
+            if (max_size_from == false)
+            {
+                panel1.Select();
+                base.Capture = false;
+                Message m = Message.Create(base.Handle, 161, new IntPtr(2), IntPtr.Zero);
+                this.WndProc(ref m);
+            }
+        }
+        private void Главная_Load(object sender, EventArgs e)
+        {
+            //this.Size = new Size(background_form.Width, background_form.Location.Y + background_form.Height);
         }
         private void task_form_VisibleChanged(object sender, EventArgs e)
         {
@@ -2226,9 +2241,24 @@ namespace Scrum
         }
         private void butn_plus2_Click(object sender, EventArgs e)
         {
-            WindowState = FormWindowState.Maximized;
+            if (max_size_from == false)
+            {
+                W = this.Size.Width;
+                H = this.Size.Height;
+                var rectangle = Screen.FromControl(this).Bounds;
+                this.FormBorderStyle = FormBorderStyle.None;
+                Size = new Size(rectangle.Width, rectangle.Height);
+                Location = new Point(0, 0);
+                Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
+                this.Size = new Size(workingRectangle.Width, workingRectangle.Height);
+                max_size_from = true;
+            }
+            else
+            {
+                this.Size = new Size(W, H);
+                max_size_from = false;
+            }
         }
-
         private void butn_minus2_Click(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Minimized;
@@ -2321,8 +2351,9 @@ namespace Scrum
 
 
 
+
         #endregion
 
-        
     }
+    
 }

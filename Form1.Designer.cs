@@ -64,7 +64,6 @@
             // 
             // Name1
             // 
-            this.Name1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Name1.AutoSize = true;
             this.Name1.BackColor = System.Drawing.Color.Transparent;
             this.Name1.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -96,7 +95,7 @@
             // 
             // butn_plus2
             // 
-            this.butn_plus2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.butn_plus2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_plus2.BackColor = System.Drawing.Color.Transparent;
             this.butn_plus2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_plus2.BackgroundImage")));
             this.butn_plus2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -111,7 +110,7 @@
             // 
             // butn_minus2
             // 
-            this.butn_minus2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.butn_minus2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_minus2.BackColor = System.Drawing.Color.Transparent;
             this.butn_minus2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_minus2.BackgroundImage")));
             this.butn_minus2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -126,6 +125,7 @@
             // 
             // butn_minus
             // 
+            this.butn_minus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_minus.BackColor = System.Drawing.Color.Transparent;
             this.butn_minus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_minus.BackgroundImage")));
             this.butn_minus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -138,6 +138,7 @@
             // 
             // butn_plus
             // 
+            this.butn_plus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_plus.BackColor = System.Drawing.Color.Transparent;
             this.butn_plus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_plus.BackgroundImage")));
             this.butn_plus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -150,7 +151,7 @@
             // 
             // butn_close2
             // 
-            this.butn_close2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.butn_close2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_close2.BackColor = System.Drawing.Color.Transparent;
             this.butn_close2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_close2.BackgroundImage")));
             this.butn_close2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -165,6 +166,7 @@
             // 
             // butn_close
             // 
+            this.butn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_close.BackColor = System.Drawing.Color.Transparent;
             this.butn_close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_close.BackgroundImage")));
             this.butn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -195,6 +197,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.Логин);
@@ -323,6 +326,7 @@
             this.Controls.Add(this.butn_plus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.butn_close);
+            this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(730, 610);
             this.Name = "Start";
