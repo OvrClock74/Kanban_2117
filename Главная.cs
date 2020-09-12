@@ -31,6 +31,10 @@ namespace Scrum
 
         public int W = 0; // сохранить ширину окна для свернуть-развернуть
         public int H = 0; // сохранить высоту окна для свернуть-развернуть
+        public int size_all_table_before_max = 0; // размеры таблиц до развертывания окна, чтоб можно было восстановить их размер
+        public int location_panel2; // расположение panel2 по Х, потому что он не хочет динамически в коде присваивать значение
+
+        public int[,] arr = new int[8,2]; // массив для сохранения локации по Х и ширины столбцов перед развертыванием окна
 
         ///////Переменные для добавления файла в БД//////
         public string PathToFile;
@@ -73,6 +77,7 @@ namespace Scrum
         {
             InitializeComponent();
             panel1.Select();
+            location_panel2 = panel2.Location.X; // расположение panel2 по Х, потому что он не хочет динамически в коде присваивать значение
             panel2 = new DoubleBufferedPanel();
             loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
             ID_Main = id;
@@ -105,7 +110,7 @@ namespace Scrum
             ToolTip t2 = new ToolTip();
             t.SetToolTip(reload_tables, "Обновить");
             t2.SetToolTip(AddFTask, "Прикрепить файл");
-
+            
         }
 
         #region Graphics рисуем линии на панелях
@@ -500,6 +505,7 @@ namespace Scrum
             AddFTask.Visible = true;
         }
         #endregion
+
         private void AddFTask_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
         {
             if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
@@ -2243,8 +2249,37 @@ namespace Scrum
         {
             if (max_size_from == false)
             {
+                double koef = (double) dataGridView1.Width / background_form.Width;
+
                 W = this.Size.Width;
                 H = this.Size.Height;
+                size_all_table_before_max = dataGridView1.Size.Width;
+                #region arr[, ]
+                arr[0, 0] = dataGridView1.Location.X;
+                arr[0, 1] = label7.Location.X;
+                //
+                arr[1, 0] = dataGridView2.Location.X ;
+                arr[1, 1] = label8.Location.X;
+                //
+                arr[2, 0] = dataGridView3.Location.X;
+                arr[2, 1] = label9.Location.X;
+                //
+                arr[3, 0] = dataGridView4.Location.X;
+                arr[3, 1] = label10.Location.X;
+                //
+                arr[4, 0] = dataGridView5.Location.X;
+                arr[4, 1] = label11.Location.X;
+                //
+                arr[5, 0] = dataGridView6.Location.X;
+                arr[5, 1] = label12.Location.X;
+                //
+                arr[6, 0] = dataGridView7.Location.X;
+                arr[6, 1] = label13.Location.X;
+                //
+                arr[7, 0] = dataGridView8.Location.X;
+                arr[7, 1] = label14.Location.X;
+                #endregion
+
                 var rectangle = Screen.FromControl(this).Bounds;
                 this.FormBorderStyle = FormBorderStyle.None;
                 Size = new Size(rectangle.Width, rectangle.Height);
@@ -2252,10 +2287,69 @@ namespace Scrum
                 Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
                 this.Size = new Size(workingRectangle.Width, workingRectangle.Height);
                 max_size_from = true;
+
+                dataGridView1.Width = (int)(background_form.Width * koef);
+                dataGridView2.Width = dataGridView1.Width;
+                dataGridView3.Width = dataGridView1.Width;
+                dataGridView4.Width = dataGridView1.Width;
+                dataGridView5.Width = dataGridView1.Width;
+                dataGridView6.Width = dataGridView1.Width;
+                dataGridView7.Width = dataGridView1.Width;
+                dataGridView8.Width = dataGridView1.Width;
+
+                int размер_панели_с_таблицами = background_form.Width - location_panel2 * 2;
+                double расстояние = ((double)((double)размер_панели_с_таблицами / 8) - dataGridView1.Width) / 2; // между таблицами расстояние
+                double отступ_внутри = (размер_панели_с_таблицами -(расстояние * 7 + dataGridView1.Width * 8))/2; // отступ перед первым столбцом
+
+                dataGridView1.Location = new Point((int)отступ_внутри, 11); // начальная точка
+                dataGridView2.Location = new Point(dataGridView1.Location.X + dataGridView1.Width + (int)расстояние, 11); // 6 пикселей - расстояние между таблицами
+                dataGridView3.Location = new Point(dataGridView2.Location.X + dataGridView1.Width + (int)расстояние, 11);
+                dataGridView4.Location = new Point(dataGridView3.Location.X + dataGridView1.Width + (int)расстояние, 11);
+                dataGridView5.Location = new Point(dataGridView4.Location.X + dataGridView1.Width + (int)расстояние, 11);
+                dataGridView6.Location = new Point(dataGridView5.Location.X + dataGridView1.Width + (int)расстояние, 11);
+                dataGridView7.Location = new Point(dataGridView6.Location.X + dataGridView1.Width + (int)расстояние, 11);
+                dataGridView8.Location = new Point(dataGridView7.Location.X + dataGridView1.Width + (int)расстояние, 11);
+
+                label7.Location = new Point(location_panel2 + dataGridView1.Location.X + dataGridView1.Width / 2 - label7.Width / 2, label7.Location.Y);
+                label8.Location = new Point(location_panel2 + dataGridView2.Location.X + dataGridView1.Width / 2 - label8.Width / 2, label7.Location.Y);
+                label9.Location = new Point(location_panel2 + dataGridView3.Location.X + dataGridView1.Width / 2 - label9.Width / 2, label7.Location.Y);
+                label10.Location = new Point(location_panel2 + dataGridView4.Location.X + dataGridView1.Width / 2 - label10.Width / 2, label7.Location.Y);
+                label11.Location = new Point(location_panel2 + dataGridView5.Location.X + dataGridView1.Width / 2 - label11.Width / 2, label7.Location.Y);
+                label12.Location = new Point(location_panel2 + dataGridView6.Location.X + dataGridView1.Width / 2 - label12.Width / 2, label7.Location.Y);
+                label13.Location = new Point(location_panel2 + dataGridView7.Location.X + dataGridView1.Width / 2 - label13.Width / 2, label7.Location.Y);
+                label14.Location = new Point(location_panel2 + dataGridView8.Location.X + dataGridView1.Width / 2 - label14.Width / 2, label7.Location.Y);
             }
             else
             {
                 this.Size = new Size(W, H);
+
+                dataGridView1.Width = size_all_table_before_max;
+                dataGridView2.Width = size_all_table_before_max;
+                dataGridView3.Width = size_all_table_before_max;
+                dataGridView4.Width = size_all_table_before_max;
+                dataGridView5.Width = size_all_table_before_max;
+                dataGridView6.Width = size_all_table_before_max;
+                dataGridView7.Width = size_all_table_before_max;
+                dataGridView8.Width = size_all_table_before_max;
+
+                dataGridView1.Location = new Point(arr[0, 0], 11); 
+                dataGridView2.Location = new Point(arr[1, 0], 11); // 6 пикселей - расстояние между таблицами
+                dataGridView3.Location = new Point(arr[2, 0], 11);
+                dataGridView4.Location = new Point(arr[3, 0], 11);
+                dataGridView5.Location = new Point(arr[4, 0], 11);
+                dataGridView6.Location = new Point(arr[5, 0], 11);
+                dataGridView7.Location = new Point(arr[6, 0], 11);
+                dataGridView8.Location = new Point(arr[7, 0], 11);
+
+                label7.Location = new Point(arr[0, 1], label7.Location.Y);
+                label8.Location = new Point(arr[1, 1], label7.Location.Y);
+                label9.Location = new Point(arr[2, 1], label7.Location.Y);
+                label10.Location = new Point(arr[3, 1], label7.Location.Y);
+                label11.Location = new Point(arr[4, 1], label7.Location.Y);
+                label12.Location = new Point(arr[5, 1], label7.Location.Y);
+                label13.Location = new Point(arr[6, 1], label7.Location.Y);
+                label14.Location = new Point(arr[7, 1], label7.Location.Y);
+                
                 max_size_from = false;
             }
         }

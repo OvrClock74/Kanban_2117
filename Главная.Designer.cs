@@ -365,7 +365,7 @@ namespace Scrum
             this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView1.Location = new System.Drawing.Point(11, 11);
             this.dataGridView1.MultiSelect = false;
@@ -399,7 +399,7 @@ namespace Scrum
             this.dataGridView2.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView2.ColumnHeadersVisible = false;
-            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView2.Location = new System.Drawing.Point(212, 11);
             this.dataGridView2.MultiSelect = false;
@@ -433,7 +433,7 @@ namespace Scrum
             this.dataGridView3.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView3.ColumnHeadersVisible = false;
-            this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView3.Location = new System.Drawing.Point(413, 11);
             this.dataGridView3.MultiSelect = false;
@@ -467,7 +467,7 @@ namespace Scrum
             this.dataGridView4.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView4.ColumnHeadersVisible = false;
-            this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView4.Location = new System.Drawing.Point(614, 11);
             this.dataGridView4.MultiSelect = false;
@@ -501,7 +501,7 @@ namespace Scrum
             this.dataGridView5.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView5.ColumnHeadersVisible = false;
-            this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView5.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView5.Location = new System.Drawing.Point(815, 11);
             this.dataGridView5.MultiSelect = false;
@@ -569,7 +569,7 @@ namespace Scrum
             this.dataGridView7.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView7.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView7.ColumnHeadersVisible = false;
-            this.dataGridView7.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView7.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView7.Location = new System.Drawing.Point(1217, 11);
             this.dataGridView7.MultiSelect = false;
@@ -603,7 +603,7 @@ namespace Scrum
             this.dataGridView8.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView8.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView8.ColumnHeadersVisible = false;
-            this.dataGridView8.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView8.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView8.Location = new System.Drawing.Point(1418, 11);
             this.dataGridView8.MultiSelect = false;
@@ -626,7 +626,7 @@ namespace Scrum
             // 
             // label7
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label7.AutoSize = true;
             this.label7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.label7.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -639,7 +639,7 @@ namespace Scrum
             // 
             // label8
             // 
-            this.label8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label8.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -652,7 +652,7 @@ namespace Scrum
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -665,7 +665,7 @@ namespace Scrum
             // 
             // label10
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label10.AutoSize = true;
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -678,7 +678,7 @@ namespace Scrum
             // 
             // label11
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label11.AutoSize = true;
             this.label11.BackColor = System.Drawing.Color.Transparent;
             this.label11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -691,7 +691,7 @@ namespace Scrum
             // 
             // label12
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label12.AutoSize = true;
             this.label12.BackColor = System.Drawing.Color.Transparent;
             this.label12.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -704,7 +704,7 @@ namespace Scrum
             // 
             // label13
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -717,7 +717,7 @@ namespace Scrum
             // 
             // label14
             // 
-            this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label14.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label14.AutoSize = true;
             this.label14.BackColor = System.Drawing.Color.Transparent;
             this.label14.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
@@ -738,7 +738,7 @@ namespace Scrum
             this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
-            this.control_users_panel.Location = new System.Drawing.Point(122, 10);
+            this.control_users_panel.Location = new System.Drawing.Point(969, 579);
             this.control_users_panel.Name = "control_users_panel";
             this.control_users_panel.Size = new System.Drawing.Size(330, 135);
             this.control_users_panel.TabIndex = 12;
@@ -1207,7 +1207,7 @@ namespace Scrum
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
             this.task_form.Controls.Add(this.pictureBox2);
-            this.task_form.Location = new System.Drawing.Point(835, 6);
+            this.task_form.Location = new System.Drawing.Point(524, 285);
             this.task_form.Name = "task_form";
             this.task_form.Size = new System.Drawing.Size(381, 369);
             this.task_form.TabIndex = 9;
@@ -1944,7 +1944,6 @@ namespace Scrum
             | System.Windows.Forms.AnchorStyles.Right)));
             this.background_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.background_form.Controls.Add(this.control_users_panel);
-            this.background_form.Controls.Add(this.task_form);
             this.background_form.Controls.Add(this.panel2);
             this.background_form.Controls.Add(this.reload_tables);
             this.background_form.Controls.Add(this.panelCT);
@@ -1971,6 +1970,7 @@ namespace Scrum
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.New_user_form);
+            this.panel2.Controls.Add(this.task_form);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.Del_user_form);
             this.panel2.Controls.Add(this.dataGridView2);
