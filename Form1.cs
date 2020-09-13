@@ -128,7 +128,8 @@ namespace Scrum
                 Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
                 Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
                 int id = (int)Totalf.ExecuteScalar();
-                Главная obj = new Главная(id); // передача id в форму Главная
+                string user_name = textBox1.Text.Trim();
+                Главная obj = new Главная(id, user_name); // передача id в форму Главная
                 Hide();
                 obj.Show();
             }
@@ -152,9 +153,9 @@ namespace Scrum
             {
                 Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
                 Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
-                Totalf.ExecuteNonQuery();
                 int id = (int)Totalf.ExecuteScalar();
-                Главная obj = new Главная(id); // передача id в форму Главная
+                string user_name = textBox1.Text.Trim();
+                Главная obj = new Главная(id, user_name); // передача id в форму Главная
                 Hide();
                 obj.Show();
             }
@@ -248,6 +249,5 @@ namespace Scrum
         }
         #endregion
 
-        
     }
 }

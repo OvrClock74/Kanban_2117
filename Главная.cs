@@ -35,6 +35,7 @@ namespace Scrum
         public int H_max_for_tables = 0; // сохранить высоту столбцов перед тем как развернуть
         public int size_all_table_before_max = 0; // размеры таблиц до развертывания окна, чтоб можно было восстановить их размер
         public int location_panel2; // расположение panel2 по Х, потому что он не хочет динамически в коде присваивать значение
+        public int location_panel2_2;
 
         public int[,] arr = new int[8,2]; // массив для сохранения локации по Х и ширины столбцов перед развертыванием окна
 
@@ -75,11 +76,12 @@ namespace Scrum
         #endregion
         ///////////////////////////////////////////////////
 
-        public Главная(int id)
+        public Главная(int id, string user_name)
         {
             InitializeComponent();
             panel1.Select();
             location_panel2 = panel2.Location.X; // расположение panel2 по Х, потому что он не хочет динамически в коде присваивать значение
+            location_panel2_2 = panel2.Location.Y;
             panel2 = new DoubleBufferedPanel();
             loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
             ID_Main = id;
@@ -94,7 +96,6 @@ namespace Scrum
             {
                 CreateTaskB.Visible = true;
                 users_button.Visible = false;
-                archive_button.Location = new Point(CreateTaskB.Width, 0);
             }
             else if (access_now_user == 0) 
             {
@@ -112,7 +113,7 @@ namespace Scrum
             ToolTip t2 = new ToolTip();
             t.SetToolTip(reload_tables, "Обновить");
             t2.SetToolTip(AddFTask, "Прикрепить файл");
-            
+            активный_пользователь.Text = user_name;
         }
 
         #region Graphics рисуем линии на панелях
@@ -552,8 +553,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView1.Location.Y);
-                task_form.Left = (e.X + +dataGridView1.Location.X);
+                task_form.Top = (e.Y + dataGridView1.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView1.Location.X + location_panel2);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -586,8 +587,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView2.Location.Y);
-                task_form.Left = (e.X + +dataGridView2.Location.X);
+                task_form.Top = (e.Y + dataGridView2.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView2.Location.X + location_panel2);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -620,8 +621,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView3.Location.Y);
-                task_form.Left = (e.X + +dataGridView3.Location.X);
+                task_form.Top = (e.Y + dataGridView3.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView3.Location.X + location_panel2);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -653,8 +654,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView4.Location.Y);
-                task_form.Left = (e.X + +dataGridView4.Location.X);
+                task_form.Top = (e.Y + dataGridView4.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView4.Location.X + location_panel2);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -686,8 +687,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView5.Location.Y);
-                task_form.Left = (e.X + +dataGridView5.Location.X);
+                task_form.Top = (e.Y + dataGridView5.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView5.Location.X + location_panel2);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -719,8 +720,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView6.Location.Y);
-                task_form.Left = (e.X + +dataGridView6.Location.X);
+                task_form.Top = (e.Y + dataGridView6.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView6.Location.X + location_panel2);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -752,8 +753,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView7.Location.Y);
-                task_form.Left = (e.X + +dataGridView7.Location.X);
+                task_form.Top = (e.Y + dataGridView7.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = ((int)(e.X + dataGridView7.Location.X + location_panel2 - task_form.Width / 1.3));
                 task_form.Visible = true;
                 clc = false;
             }
@@ -785,8 +786,8 @@ namespace Scrum
         {
             if (clc == true)
             {
-                task_form.Top = (e.Y + dataGridView8.Location.Y);
-                task_form.Left = (e.X + +dataGridView8.Location.X);
+                task_form.Top = (e.Y + dataGridView8.Location.Y + background_form.Location.Y + location_panel2_2);
+                task_form.Left = (e.X + dataGridView8.Location.X + location_panel2 - task_form.Width);
                 task_form.Visible = true;
                 clc = false;
             }
@@ -1876,6 +1877,7 @@ namespace Scrum
         }
         #endregion
         /////////////////////////////////////////////////////////////////////////////////////////////
+        
 
         #region delete_user
         private void delete_user_MouseDown(object sender, MouseEventArgs e)
@@ -2438,10 +2440,10 @@ namespace Scrum
         {
             panel1.Select();
         }
-
-
-
-
+        private void Del_user_form_MouseDown(object sender, MouseEventArgs e)
+        {
+            panel1.Select();
+        }
         #endregion
 
         #region archive_button
@@ -2493,7 +2495,6 @@ namespace Scrum
 
 
         #endregion
-
     }
     
 }

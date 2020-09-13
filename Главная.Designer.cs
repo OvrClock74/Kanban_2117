@@ -157,6 +157,8 @@ namespace Scrum
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.background_form = new System.Windows.Forms.Panel();
+            this.label38 = new System.Windows.Forms.Label();
+            this.активный_пользователь = new System.Windows.Forms.Label();
             this.panel2 = new Scrum.DoubleBufferedPanel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
@@ -746,7 +748,7 @@ namespace Scrum
             this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
-            this.control_users_panel.Location = new System.Drawing.Point(1003, 260);
+            this.control_users_panel.Location = new System.Drawing.Point(608, 15);
             this.control_users_panel.Name = "control_users_panel";
             this.control_users_panel.Size = new System.Drawing.Size(330, 135);
             this.control_users_panel.TabIndex = 12;
@@ -813,7 +815,7 @@ namespace Scrum
             this.New_user_form.Controls.Add(this.label15);
             this.New_user_form.Controls.Add(this.label22);
             this.New_user_form.Controls.Add(this.add_new_user_button);
-            this.New_user_form.Location = new System.Drawing.Point(630, 386);
+            this.New_user_form.Location = new System.Drawing.Point(134, 12);
             this.New_user_form.Name = "New_user_form";
             this.New_user_form.Size = new System.Drawing.Size(442, 523);
             this.New_user_form.TabIndex = 13;
@@ -1044,7 +1046,7 @@ namespace Scrum
             // 
             this.panel_connect_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.panel_connect_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel_connect_1.Location = new System.Drawing.Point(1414, 372);
+            this.panel_connect_1.Location = new System.Drawing.Point(957, 15);
             this.panel_connect_1.Name = "panel_connect_1";
             this.panel_connect_1.Size = new System.Drawing.Size(442, 45);
             this.panel_connect_1.TabIndex = 13;
@@ -1060,7 +1062,7 @@ namespace Scrum
             this.panel_for_table_users.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel_for_table_users.Controls.Add(this.table_users);
-            this.panel_for_table_users.Location = new System.Drawing.Point(1476, 419);
+            this.panel_for_table_users.Location = new System.Drawing.Point(1016, 7);
             this.panel_for_table_users.Name = "panel_for_table_users";
             this.panel_for_table_users.Size = new System.Drawing.Size(271, 47);
             this.panel_for_table_users.TabIndex = 13;
@@ -1117,7 +1119,7 @@ namespace Scrum
             this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.admin_pass_enter.Controls.Add(this.paas);
             this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
-            this.admin_pass_enter.Location = new System.Drawing.Point(1078, 393);
+            this.admin_pass_enter.Location = new System.Drawing.Point(621, 7);
             this.admin_pass_enter.Name = "admin_pass_enter";
             this.admin_pass_enter.Size = new System.Drawing.Size(330, 86);
             this.admin_pass_enter.TabIndex = 14;
@@ -1171,7 +1173,7 @@ namespace Scrum
             // panel_connect_2
             // 
             this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(1431, 423);
+            this.panel_connect_2.Location = new System.Drawing.Point(971, 7);
             this.panel_connect_2.Name = "panel_connect_2";
             this.panel_connect_2.Size = new System.Drawing.Size(39, 39);
             this.panel_connect_2.TabIndex = 13;
@@ -1215,7 +1217,7 @@ namespace Scrum
             this.task_form.Controls.Add(this.label3);
             this.task_form.Controls.Add(this.label4);
             this.task_form.Controls.Add(this.pictureBox2);
-            this.task_form.Location = new System.Drawing.Point(524, 285);
+            this.task_form.Location = new System.Drawing.Point(1124, 0);
             this.task_form.Name = "task_form";
             this.task_form.Size = new System.Drawing.Size(381, 369);
             this.task_form.TabIndex = 9;
@@ -1468,13 +1470,14 @@ namespace Scrum
             this.Del_user_form.Controls.Add(this.border_background_login_user);
             this.Del_user_form.Controls.Add(this.label26);
             this.Del_user_form.Controls.Add(this.del_user_button);
-            this.Del_user_form.Location = new System.Drawing.Point(279, 408);
+            this.Del_user_form.Location = new System.Drawing.Point(124, 16);
             this.Del_user_form.Name = "Del_user_form";
             this.Del_user_form.Size = new System.Drawing.Size(442, 446);
             this.Del_user_form.TabIndex = 14;
             this.Del_user_form.Visible = false;
             this.Del_user_form.VisibleChanged += new System.EventHandler(this.Del_user_form_VisibleChanged);
             this.Del_user_form.Paint += new System.Windows.Forms.PaintEventHandler(this.Del_user_form_Paint);
+            this.Del_user_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Del_user_form_MouseDown);
             // 
             // otmena_udaleniya
             // 
@@ -1647,7 +1650,7 @@ namespace Scrum
             this.panelCT.Controls.Add(this.label20);
             this.panelCT.Controls.Add(this.border_background_panel);
             this.panelCT.Controls.Add(this.label19);
-            this.panelCT.Location = new System.Drawing.Point(1016, 1);
+            this.panelCT.Location = new System.Drawing.Point(152, 0);
             this.panelCT.Name = "panelCT";
             this.panelCT.Size = new System.Drawing.Size(444, 577);
             this.panelCT.TabIndex = 14;
@@ -1951,6 +1954,8 @@ namespace Scrum
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.background_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.background_form.Controls.Add(this.label38);
+            this.background_form.Controls.Add(this.активный_пользователь);
             this.background_form.Controls.Add(this.panel2);
             this.background_form.Controls.Add(this.reload_tables);
             this.background_form.Controls.Add(this.label7);
@@ -1967,6 +1972,30 @@ namespace Scrum
             this.background_form.Size = new System.Drawing.Size(1664, 615);
             this.background_form.TabIndex = 15;
             // 
+            // label38
+            // 
+            this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.label38.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label38.Location = new System.Drawing.Point(2, 592);
+            this.label38.Name = "label38";
+            this.label38.Size = new System.Drawing.Size(116, 23);
+            this.label38.TabIndex = 13;
+            this.label38.Text = "1.0.0";
+            this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // активный_пользователь
+            // 
+            this.активный_пользователь.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.активный_пользователь.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.активный_пользователь.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.активный_пользователь.Location = new System.Drawing.Point(1202, 592);
+            this.активный_пользователь.Name = "активный_пользователь";
+            this.активный_пользователь.Size = new System.Drawing.Size(463, 23);
+            this.активный_пользователь.TabIndex = 13;
+            this.активный_пользователь.Text = "your_name";
+            this.активный_пользователь.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // panel2
             // 
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1975,22 +2004,14 @@ namespace Scrum
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.control_users_panel);
-            this.panel2.Controls.Add(this.New_user_form);
-            this.panel2.Controls.Add(this.task_form);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Controls.Add(this.Del_user_form);
             this.panel2.Controls.Add(this.dataGridView2);
-            this.panel2.Controls.Add(this.panel_connect_2);
             this.panel2.Controls.Add(this.dataGridView3);
             this.panel2.Controls.Add(this.dataGridView8);
             this.panel2.Controls.Add(this.dataGridView7);
             this.panel2.Controls.Add(this.dataGridView6);
             this.panel2.Controls.Add(this.dataGridView5);
-            this.panel2.Controls.Add(this.admin_pass_enter);
             this.panel2.Controls.Add(this.dataGridView4);
-            this.panel2.Controls.Add(this.panel_for_table_users);
-            this.panel2.Controls.Add(this.panel_connect_1);
             this.panel2.Location = new System.Drawing.Point(20, 88);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1624, 505);
@@ -2003,6 +2024,15 @@ namespace Scrum
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 666);
+            this.Controls.Add(this.task_form);
+            this.Controls.Add(this.panel_for_table_users);
+            this.Controls.Add(this.panel_connect_1);
+            this.Controls.Add(this.panel_connect_2);
+            this.Controls.Add(this.admin_pass_enter);
+            this.Controls.Add(this.Del_user_form);
+            this.Controls.Add(this.panelCT);
+            this.Controls.Add(this.New_user_form);
+            this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.background_form);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.butn_minus2);
@@ -2012,7 +2042,6 @@ namespace Scrum
             this.Controls.Add(this.butn_close2);
             this.Controls.Add(this.butn_close);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.panelCT);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1212, 629);
@@ -2082,7 +2111,6 @@ namespace Scrum
             this.background_form.ResumeLayout(false);
             this.background_form.PerformLayout();
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2214,5 +2242,7 @@ namespace Scrum
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel background_form;
         private Scrum.DoubleBufferedPanel panel2;
+        private Label активный_пользователь;
+        private Label label38;
     }
 }
