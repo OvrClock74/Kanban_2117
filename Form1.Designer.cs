@@ -99,7 +99,7 @@
             this.butn_plus2.BackColor = System.Drawing.Color.Transparent;
             this.butn_plus2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_plus2.BackgroundImage")));
             this.butn_plus2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.butn_plus2.Location = new System.Drawing.Point(664, 0);
+            this.butn_plus2.Location = new System.Drawing.Point(662, 0);
             this.butn_plus2.Name = "butn_plus2";
             this.butn_plus2.Size = new System.Drawing.Size(34, 22);
             this.butn_plus2.TabIndex = 6;
@@ -114,7 +114,7 @@
             this.butn_minus2.BackColor = System.Drawing.Color.Transparent;
             this.butn_minus2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_minus2.BackgroundImage")));
             this.butn_minus2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.butn_minus2.Location = new System.Drawing.Point(630, 0);
+            this.butn_minus2.Location = new System.Drawing.Point(628, 0);
             this.butn_minus2.Name = "butn_minus2";
             this.butn_minus2.Size = new System.Drawing.Size(34, 22);
             this.butn_minus2.TabIndex = 6;
@@ -129,7 +129,7 @@
             this.butn_minus.BackColor = System.Drawing.Color.Transparent;
             this.butn_minus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_minus.BackgroundImage")));
             this.butn_minus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.butn_minus.Location = new System.Drawing.Point(630, 0);
+            this.butn_minus.Location = new System.Drawing.Point(628, 0);
             this.butn_minus.Name = "butn_minus";
             this.butn_minus.Size = new System.Drawing.Size(34, 22);
             this.butn_minus.TabIndex = 6;
@@ -142,7 +142,7 @@
             this.butn_plus.BackColor = System.Drawing.Color.Transparent;
             this.butn_plus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_plus.BackgroundImage")));
             this.butn_plus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.butn_plus.Location = new System.Drawing.Point(664, 0);
+            this.butn_plus.Location = new System.Drawing.Point(662, 0);
             this.butn_plus.Name = "butn_plus";
             this.butn_plus.Size = new System.Drawing.Size(34, 22);
             this.butn_plus.TabIndex = 6;
@@ -318,14 +318,14 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(730, 610);
+            this.Controls.Add(this.butn_minus2);
             this.Controls.Add(this.butn_close2);
             this.Controls.Add(this.Name1);
-            this.Controls.Add(this.butn_plus2);
-            this.Controls.Add(this.butn_minus2);
             this.Controls.Add(this.butn_minus);
-            this.Controls.Add(this.butn_plus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.butn_close);
+            this.Controls.Add(this.butn_plus2);
+            this.Controls.Add(this.butn_plus);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(730, 610);

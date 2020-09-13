@@ -11,6 +11,7 @@ using NpgsqlTypes;
 using System.IO;
 using System.Media;
 using System.Globalization;
+using System.Threading;
 
 namespace Scrum
 {
@@ -107,12 +108,11 @@ namespace Scrum
                 CreateTaskB.Visible = false;
                 users_button.Visible = false;
                 archive_button.Location = new Point(0, 0);
+                archive_button.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
             }
             #endregion
             ToolTip t = new ToolTip(); // всплывающая подсказкa
-            ToolTip t2 = new ToolTip();
             t.SetToolTip(reload_tables, "Обновить");
-            t2.SetToolTip(AddFTask, "Прикрепить файл");
             активный_пользователь.Text = user_name;
         }
 
@@ -176,14 +176,6 @@ namespace Scrum
                 Message m = Message.Create(base.Handle, 161, new IntPtr(2), IntPtr.Zero);
                 this.WndProc(ref m);
             }
-        }
-        private void Главная_Load(object sender, EventArgs e)
-        {
-            //this.Size = new Size(background_form.Width, background_form.Location.Y + background_form.Height);
-        }
-        private void task_form_VisibleChanged(object sender, EventArgs e)
-        {
-            task_form.BringToFront(); // Таск на переднем плане
         }
 
         #region Загрузка таблиц
@@ -272,7 +264,7 @@ namespace Scrum
         #endregion
 
         #region reload_tables - Обновить
-        private void reload_tables_Click(object sender, EventArgs e) // кнопка обновить таблицы
+        public void reload_tables_Click(object sender, EventArgs e) // кнопка обновить таблицы
         {
             loadTables(ds1, dt1, dataGridView1,
              ds2, dt2, dataGridView2,
@@ -293,7 +285,7 @@ namespace Scrum
         }
         #endregion
 
-        #region Загрузка и выгрузка файлов в и из БД
+        #region databaseFilePut - Загрузка файлов в и из БД
         public static void databaseFilePut(int id_T, string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
         {
             byte[] file;
@@ -318,226 +310,7 @@ namespace Scrum
             }
             con.Close();
         }
-
-        public static void databaseFileRead(int IdInCell, string varPathToNewLocation) // выгрузка любых файлов из БД
-        {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-            using (var sqlQuery = new NpgsqlCommand(@"SELECT file_content FROM files WHERE id_f = @f_id", con))
-            {
-                sqlQuery.Parameters.AddWithValue("@f_id", IdInCell);
-                using (NpgsqlDataReader dr = sqlQuery.ExecuteReader(System.Data.CommandBehavior.Default))
-                {
-                    if (dr.Read())
-                    {
-                        byte[] fileData = (byte[])dr.GetValue(0);
-                        using (FileStream fs = new FileStream(varPathToNewLocation, FileMode.Create, FileAccess.ReadWrite))
-                        {
-                            using (BinaryWriter bw = new BinaryWriter(fs))
-                            {
-                                bw.Write(fileData);
-                                bw.Close();
-                            }
-                        }
-                    }
-                    dr.Close();
-                }
-            }
-            con.Close();
-        }
         #endregion
-
-        private void dataGridView_Task_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) // ЗАГРУЗИТЬ ФАЙЛ
-        {
-            Int32 file_id;
-            string file_type;
-            C = (string)dataGridView_Task.Rows[e.RowIndex].Cells[0].Value;
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_f, type_file FROM files WHERE name_file = @name_F", con); // ID заявки которую выбрали 
-            Totalf.Parameters.AddWithValue("@name_F", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    file_id = Convert.ToInt32(reader["id_f"]);
-                    file_type = Convert.ToString(reader["type_file"]);
-                    reader.Close();
-                    Stream myStream;
-                    SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = "c:\\";
-                    saveFileDialog1.Title = "Сохранить как...";
-                    saveFileDialog1.FileName = C;
-                    saveFileDialog1.Filter = "Files (*" + file_type + ")|*" + file_type;
-                    saveFileDialog1.FilterIndex = 1;
-                    saveFileDialog1.RestoreDirectory = true;
-                    if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-                    {
-                        if ((myStream = saveFileDialog1.OpenFile()) != null)
-                        {
-                            string path = Path.GetFullPath(saveFileDialog1.FileName);
-                            myStream.Close();
-                            databaseFileRead(file_id, path);
-                        }
-                    }
-                }
-            }
-            con.Close();
-        }
-
-        #region dataGridView_Task
-        private void dataGridView_Task_CellMouseEnter(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_Task.CurrentCell = dataGridView_Task.Rows[e.RowIndex].Cells[0];
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
-        }
-        private void dataGridView_Task_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
-        {
-            dataGridView_Task.CurrentCell = dataGridView_Task.Rows[e.RowIndex].Cells[0];
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView_Task.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
-        }
-        private void dataGridView_Task_Paint(object sender, PaintEventArgs e)
-        {
-            dataGridView_Task.DefaultCellStyle.Font = new Font("Calibri", 13);
-            dataGridView_Task.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView_Task.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
-            dataGridView_Task.DefaultCellStyle.BackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
-            dataGridView_Task.DefaultCellStyle.ForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек 
-            int height = 0;
-            foreach (DataGridViewRow dr in dataGridView_Task.Rows)
-            {
-                height += dr.Height;
-            }
-            int Y = dataGridView_Task.Height;
-
-            dataGridView_Task.Height = height + 3;
-
-            background_textbox_panel.Height = dataGridView_Task.Height;
-
-            task_form.Height = dataGridView_Task.Location.Y + dataGridView_Task.Height
-                + label16.Height + label16.Height / 2;
-        }
-        #endregion
-
-        void task_filling(string name_stage)
-        {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
-            {
-                if (reader.Read())
-                {
-                    label2.Text = C; // название
-
-                    if (reader["autor"] is DBNull)
-                    {
-                        label3.Text = "!пользователь удалён!";
-                    }
-                    else
-                    {
-                        NpgsqlConnection con2 = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-                        con2.Open();
-                        NpgsqlCommand loginA = new NpgsqlCommand("SELECT login FROM users WHERE id_u = @id", con2); // логин вместо id
-                        loginA.Parameters.AddWithValue("@id", Convert.ToInt32(reader["autor"]));
-                        NpgsqlDataReader reader2;
-                        using (reader2 = loginA.ExecuteReader())
-                        {
-                            if (reader2.Read())
-                            {
-                                label3.Text = String.Format("{0}", reader2["login"]); ;
-                            }
-                            reader2.Close();
-                        }
-                        con2.Close();
-                    }
-
-                    DateTime date = Convert.ToDateTime(reader["date_create"]);
-                    label4.Text = String.Format("{0}", date.ToShortDateString());
-                    date = Convert.ToDateTime(reader["date_complete"]);
-                    label33.Text = String.Format("{0}", date.ToShortDateString());
-
-                    int i = Convert.ToInt32(reader["cost_t"]);
-                    label5.Text = i.ToString("C0", new System.Globalization.CultureInfo("ru-RU"));
-                    if ((bool)reader["payment"])
-                    {
-                        label6.ForeColor = Color.FromArgb(67, 181, 129);
-                        label6.Text = "Оплачено";
-                    }
-                    else
-                    {
-                        label6.ForeColor = Color.FromArgb(209, 73, 73);
-                        label6.Text = "Не оплачено";
-                    }
-
-                    label16.Text = name_stage;
-                }
-                reader.Close();
-            }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
-        }
-
-        #region AddFTask видимость
-        private void AddFTask_MouseLeave(object sender, EventArgs e)
-        {
-            AddFTask.Visible = false;
-        }
-
-        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
-        {
-            AddFTask.Visible = true;
-        }
-        #endregion
-
-        private void AddFTask_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
-        {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            PathToFile = openFileDialog1.FileName; // получаем путь к выбранному файлу
-            TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
-            name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
-
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf.ExecuteScalar());
-            databaseFilePut(new_task_id, name_fillee, TypeFile, PathToFile); // databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД 
-
-            //////////////////////////////////////////////ОБНОВЛЕНИЕ ТАБЛИЦЫ С ПРИКРЕПЛЕННЫМИ ФАЙЛАМИ////////////////////////////////////////////////////////////
-            NpgsqlDataReader reader;
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView_Task.DataSource = dt;
-            reader.Close();
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            
-            con.Close();
-            MessageBox.Show("Файл успешно загружен");
-        }
 
         #region Таски из таблиц
         #region Таск из таблицы 1
@@ -546,18 +319,8 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 1;
-            task_filling("На согласование");
-        }
-
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView1.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView1.Location.X + location_panel2);
-                task_form.Visible = true;
-                clc = false;
-            }
+            Task_form frm = new Task_form(C, "На согласование", stage_t, ID_Main);
+            frm.Show();
         }
 
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
@@ -580,18 +343,8 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView2.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 2;
-            task_filling("На утверждение");
-        }
-
-        private void dataGridView2_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView2.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView2.Location.X + location_panel2);
-                task_form.Visible = true;
-                clc = false;
-            }
+            Task_form frm = new Task_form(C, "На утверждение", stage_t, ID_Main);
+            frm.Show();
         }
 
         private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
@@ -614,19 +367,10 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView3.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 3;
-            task_filling("В работу");
+            Task_form frm = new Task_form(C, "В работу", stage_t, ID_Main);
+            frm.Show();
         }
 
-        private void dataGridView3_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView3.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView3.Location.X + location_panel2);
-                task_form.Visible = true;
-                clc = false;
-            }
-        }
         private void dataGridView3_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[0];
@@ -647,19 +391,10 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView4.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 4;
-            task_filling("На формирование");
+            Task_form frm = new Task_form(C, "На формирование", stage_t, ID_Main);
+            frm.Show();
         }
 
-        private void dataGridView4_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView4.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView4.Location.X + location_panel2);
-                task_form.Visible = true;
-                clc = false;
-            }
-        }
         private void dataGridView4_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView4.CurrentCell = dataGridView4.Rows[e.RowIndex].Cells[0];
@@ -680,19 +415,10 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView5.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 5;
-            task_filling("На заключение");
+            Task_form frm = new Task_form(C, "На заключение", stage_t, ID_Main);
+            frm.Show();
         }
 
-        private void dataGridView5_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView5.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView5.Location.X + location_panel2);
-                task_form.Visible = true;
-                clc = false;
-            }
-        }
         private void dataGridView5_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView5.CurrentCell = dataGridView5.Rows[e.RowIndex].Cells[0];
@@ -713,19 +439,10 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView6.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 6;
-            task_filling("На исполнение");
+            Task_form frm = new Task_form(C, "На исполнение", stage_t, ID_Main);
+            frm.Show();
         }
 
-        private void dataGridView6_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView6.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView6.Location.X + location_panel2);
-                task_form.Visible = true;
-                clc = false;
-            }
-        }
         private void dataGridView6_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView6.CurrentCell = dataGridView6.Rows[e.RowIndex].Cells[0];
@@ -746,19 +463,10 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView7.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 7;
-            task_filling("На оплату");
+            Task_form frm = new Task_form(C, "На оплату", stage_t, ID_Main);
+            frm.Show();
         }
 
-        private void dataGridView7_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView7.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = ((int)(e.X + dataGridView7.Location.X + location_panel2 - task_form.Width / 1.3));
-                task_form.Visible = true;
-                clc = false;
-            }
-        }
         private void dataGridView7_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView7.CurrentCell = dataGridView7.Rows[e.RowIndex].Cells[0];
@@ -779,19 +487,10 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView8.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 8;
-            task_filling("В архив");
+            Task_form frm = new Task_form(C, "В архив", stage_t, ID_Main);
+            frm.Show();
         }
 
-        private void dataGridView8_MouseClick(object sender, MouseEventArgs e)
-        {
-            if (clc == true)
-            {
-                task_form.Top = (e.Y + dataGridView8.Location.Y + background_form.Location.Y + location_panel2_2);
-                task_form.Left = (e.X + dataGridView8.Location.X + location_panel2 - task_form.Width);
-                task_form.Visible = true;
-                clc = false;
-            }
-        }
         private void dataGridView8_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView8.CurrentCell = dataGridView8.Rows[e.RowIndex].Cells[0];
@@ -925,43 +624,6 @@ namespace Scrum
                 height += dr.Height;
             }
             dataGridView8.Height = height + 4;
-        }
-        #endregion
-
-        #region Крестик на таске
-        private void label1_Click(object sender, EventArgs e)
-        {
-            task_form.Visible = false;
-            clc = false;
-        }
-
-        private void label1_MouseEnter(object sender, EventArgs e)
-        {
-            close_task.BackColor = Color.FromArgb(187, 66,67);
-        }
-
-        private void label1_MouseLeave(object sender, EventArgs e)
-        {
-            close_task.BackColor = Color.FromArgb(209, 73, 73);
-        }
-        #endregion
-
-        #region Перемещение таска
-        int deltaX = 0;
-        int deltaY = 0;
-        private void task_form_MouseDown(object sender, MouseEventArgs e)
-        {
-            deltaX = e.X;
-            deltaY = e.Y;
-        }
-
-        private void task_form_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left) // или любую другую, какая удобнее
-            {
-                Point pos = new Point(Cursor.Position.X - deltaX, Cursor.Position.Y - deltaY);
-                task_form.Location = PointToClient(pos);
-            }
         }
         #endregion
 
@@ -1308,120 +970,6 @@ namespace Scrum
         }
         #endregion
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-        #region Кнопка Переместить_таск на следующую стадию
-        #region Цвет кнопки Переместить таск
-        private void label16_MouseMove(object sender, MouseEventArgs e)
-        {
-            label16.BackColor = Color.FromArgb(109, 122, 193);
-        }
-        private void label16_MouseLeave(object sender, EventArgs e)
-        {
-            label16.BackColor = Color.FromArgb(120, 136, 214);
-        }
-        private void label16_MouseDown(object sender, MouseEventArgs e)
-        {
-            label16.BackColor = Color.FromArgb(97, 110, 171);
-        }
-        #endregion
-
-        #region Переместить таск
-        private void label16_Click(object sender, EventArgs e) // переместить таск
-        {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
-            con.Open();
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
-            if ((stage_t == 1) || (stage_t == 7))
-            {
-                NpgsqlCommand da3 = new NpgsqlCommand("moving_task_2", con) //moving_task_2(idt integer, auser integer, now_stage_task integer)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                try
-                {
-                    da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                    da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                    da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                    string returnedValue = da3.ExecuteScalar().ToString();
-                    task_form.Visible = false;
-                    loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
-                    MessageBox.Show(returnedValue);
-                }
-                catch (NpgsqlException ex)
-                {
-                    if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
-                    {
-                        task_form.Visible = false;
-                        loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
-                        MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.");
-                    }    
-                    else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                        MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\nОбратитесь к администратору.");
-                }
-            }
-            else if ((stage_t == 2) || (stage_t == 3) || (stage_t == 4) || (stage_t == 5) || (stage_t == 6))
-            {
-                NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con) //moving_task_2(idt integer, auser integer, now_stage_task integer)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                try
-                {
-                    da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                    da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                    da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                    string returnedValue = da3.ExecuteScalar().ToString();
-                    task_form.Visible = false;
-                    loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
-                    MessageBox.Show(returnedValue);
-                }
-                catch (NpgsqlException ex)
-                {
-                    if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
-                    {
-                        task_form.Visible = false;
-                        loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
-                        MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.");
-                    }
-                    else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                        MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\nОбратитесь к администратору.");
-                }
-            }
-            else if (stage_t == 8)
-            {
-                NpgsqlCommand da3 = new NpgsqlCommand("moving_task_3", con) //moving_task_2(idt integer, auser integer, now_stage_task integer)
-                {
-                    CommandType = CommandType.StoredProcedure
-                };
-                try
-                {
-                    da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                    da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                    da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                    string returnedValue = da3.ExecuteScalar().ToString();
-                    task_form.Visible = false;
-                    loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
-                    MessageBox.Show(returnedValue);
-                }
-                catch (NpgsqlException ex)
-                {
-                    if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
-                    {
-                        task_form.Visible = false;
-                        loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
-                        MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.");
-                    }
-                    else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                        MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\nОбратитесь к администратору.");
-                }
-            }
-            else MessageBox.Show("Ошибка!\nОбратитесь к администратору.");
-            con.Close();
-        }
-        #endregion
-        #endregion
 
         ////////////////////////////////////////////////////УПРАВЛЕНИЕ ПОЛЬЗОВАТЕЛЯМИ//////////////////////////////////////////////
         #region Управление пользователями
@@ -2453,7 +2001,6 @@ namespace Scrum
             FormCollection fc = Application.OpenForms;
             foreach (Form frm in fc) // открыта уже форма или нет, чтоб повторно не открывалась
             {
-                //iterate through
                 if (frm.Name == "Archive_tasks")
                 {
                     check_open = false;
@@ -2463,7 +2010,7 @@ namespace Scrum
                     check_open = true;
                 }
             }
-            if(check_open == true)
+            if (check_open == true)
             {
                 Archive_tasks obj1 = new Archive_tasks();
                 obj1.Show();
