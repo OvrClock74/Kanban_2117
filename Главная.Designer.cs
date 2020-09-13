@@ -368,6 +368,7 @@ namespace Scrum
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView1.Location = new System.Drawing.Point(11, 11);
+            this.dataGridView1.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
@@ -402,6 +403,7 @@ namespace Scrum
             this.dataGridView2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView2.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView2.Location = new System.Drawing.Point(212, 11);
+            this.dataGridView2.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
@@ -436,6 +438,7 @@ namespace Scrum
             this.dataGridView3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView3.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView3.Location = new System.Drawing.Point(413, 11);
+            this.dataGridView3.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView3.MultiSelect = false;
             this.dataGridView3.Name = "dataGridView3";
             this.dataGridView3.ReadOnly = true;
@@ -470,6 +473,7 @@ namespace Scrum
             this.dataGridView4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView4.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView4.Location = new System.Drawing.Point(614, 11);
+            this.dataGridView4.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView4.MultiSelect = false;
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.ReadOnly = true;
@@ -504,6 +508,7 @@ namespace Scrum
             this.dataGridView5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView5.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView5.Location = new System.Drawing.Point(815, 11);
+            this.dataGridView5.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView5.MultiSelect = false;
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.ReadOnly = true;
@@ -538,6 +543,7 @@ namespace Scrum
             this.dataGridView6.Cursor = System.Windows.Forms.Cursors.Default;
             this.dataGridView6.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView6.Location = new System.Drawing.Point(1016, 11);
+            this.dataGridView6.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView6.MultiSelect = false;
             this.dataGridView6.Name = "dataGridView6";
             this.dataGridView6.ReadOnly = true;
@@ -572,6 +578,7 @@ namespace Scrum
             this.dataGridView7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView7.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView7.Location = new System.Drawing.Point(1217, 11);
+            this.dataGridView7.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView7.MultiSelect = false;
             this.dataGridView7.Name = "dataGridView7";
             this.dataGridView7.ReadOnly = true;
@@ -606,6 +613,7 @@ namespace Scrum
             this.dataGridView8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView8.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView8.Location = new System.Drawing.Point(1418, 11);
+            this.dataGridView8.MaximumSize = new System.Drawing.Size(195, 494);
             this.dataGridView8.MultiSelect = false;
             this.dataGridView8.Name = "dataGridView8";
             this.dataGridView8.ReadOnly = true;
@@ -738,7 +746,7 @@ namespace Scrum
             this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
-            this.control_users_panel.Location = new System.Drawing.Point(969, 579);
+            this.control_users_panel.Location = new System.Drawing.Point(1003, 260);
             this.control_users_panel.Name = "control_users_panel";
             this.control_users_panel.Size = new System.Drawing.Size(330, 135);
             this.control_users_panel.TabIndex = 12;
@@ -1639,7 +1647,7 @@ namespace Scrum
             this.panelCT.Controls.Add(this.label20);
             this.panelCT.Controls.Add(this.border_background_panel);
             this.panelCT.Controls.Add(this.label19);
-            this.panelCT.Location = new System.Drawing.Point(31, 579);
+            this.panelCT.Location = new System.Drawing.Point(1016, 1);
             this.panelCT.Name = "panelCT";
             this.panelCT.Size = new System.Drawing.Size(444, 577);
             this.panelCT.TabIndex = 14;
@@ -1943,10 +1951,8 @@ namespace Scrum
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.background_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
-            this.background_form.Controls.Add(this.control_users_panel);
             this.background_form.Controls.Add(this.panel2);
             this.background_form.Controls.Add(this.reload_tables);
-            this.background_form.Controls.Add(this.panelCT);
             this.background_form.Controls.Add(this.label7);
             this.background_form.Controls.Add(this.label14);
             this.background_form.Controls.Add(this.label8);
@@ -1969,6 +1975,7 @@ namespace Scrum
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.control_users_panel);
             this.panel2.Controls.Add(this.New_user_form);
             this.panel2.Controls.Add(this.task_form);
             this.panel2.Controls.Add(this.dataGridView1);
@@ -1986,7 +1993,7 @@ namespace Scrum
             this.panel2.Controls.Add(this.panel_connect_1);
             this.panel2.Location = new System.Drawing.Point(20, 88);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1624, 478);
+            this.panel2.Size = new System.Drawing.Size(1624, 505);
             this.panel2.TabIndex = 12;
             // 
             // Главная
@@ -2005,6 +2012,7 @@ namespace Scrum
             this.Controls.Add(this.butn_close2);
             this.Controls.Add(this.butn_close);
             this.Controls.Add(this.label17);
+            this.Controls.Add(this.panelCT);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1212, 629);

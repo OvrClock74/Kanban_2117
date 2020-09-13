@@ -31,6 +31,8 @@ namespace Scrum
 
         public int W = 0; // сохранить ширину окна для свернуть-развернуть
         public int H = 0; // сохранить высоту окна для свернуть-развернуть
+        public int W_max_for_tables = 0; // сохранить ширину столбцов перед тем как развернуть
+        public int H_max_for_tables = 0; // сохранить высоту столбцов перед тем как развернуть
         public int size_all_table_before_max = 0; // размеры таблиц до развертывания окна, чтоб можно было восстановить их размер
         public int location_panel2; // расположение panel2 по Х, потому что он не хочет динамически в коде присваивать значение
 
@@ -2253,6 +2255,8 @@ namespace Scrum
 
                 W = this.Size.Width;
                 H = this.Size.Height;
+                W_max_for_tables = dataGridView1.MaximumSize.Width;
+                H_max_for_tables = dataGridView1.MaximumSize.Height;
                 size_all_table_before_max = dataGridView1.Size.Width;
                 #region arr[, ]
                 arr[0, 0] = dataGridView1.Location.X;
@@ -2280,6 +2284,9 @@ namespace Scrum
                 arr[7, 1] = label14.Location.X;
                 #endregion
 
+                //
+                // Maximazed
+                //
                 var rectangle = Screen.FromControl(this).Bounds;
                 this.FormBorderStyle = FormBorderStyle.None;
                 Size = new Size(rectangle.Width, rectangle.Height);
@@ -2287,7 +2294,20 @@ namespace Scrum
                 Rectangle workingRectangle = Screen.PrimaryScreen.WorkingArea;
                 this.Size = new Size(workingRectangle.Width, workingRectangle.Height);
                 max_size_from = true;
-
+                //
+                // MaximumSize unlimited
+                //
+                dataGridView1.MaximumSize = new Size(5000, 5000);
+                dataGridView2.MaximumSize = new Size(5000, 5000);
+                dataGridView3.MaximumSize = new Size(5000, 5000);
+                dataGridView4.MaximumSize = new Size(5000, 5000);
+                dataGridView5.MaximumSize = new Size(5000, 5000);
+                dataGridView6.MaximumSize = new Size(5000, 5000);
+                dataGridView7.MaximumSize = new Size(5000, 5000);
+                dataGridView8.MaximumSize = new Size(5000, 5000);
+                //
+                // Width
+                //
                 dataGridView1.Width = (int)(background_form.Width * koef);
                 dataGridView2.Width = dataGridView1.Width;
                 dataGridView3.Width = dataGridView1.Width;
@@ -2296,11 +2316,15 @@ namespace Scrum
                 dataGridView6.Width = dataGridView1.Width;
                 dataGridView7.Width = dataGridView1.Width;
                 dataGridView8.Width = dataGridView1.Width;
-
+                //
+                // Переменные / коэффициенты
+                //
                 int размер_панели_с_таблицами = background_form.Width - location_panel2 * 2;
                 double расстояние = ((double)((double)размер_панели_с_таблицами / 8) - dataGridView1.Width) / 2; // между таблицами расстояние
                 double отступ_внутри = (размер_панели_с_таблицами -(расстояние * 7 + dataGridView1.Width * 8))/2; // отступ перед первым столбцом
-
+                //
+                // dataGridView.Location
+                //
                 dataGridView1.Location = new Point((int)отступ_внутри, 11); // начальная точка
                 dataGridView2.Location = new Point(dataGridView1.Location.X + dataGridView1.Width + (int)расстояние, 11); // 6 пикселей - расстояние между таблицами
                 dataGridView3.Location = new Point(dataGridView2.Location.X + dataGridView1.Width + (int)расстояние, 11);
@@ -2309,7 +2333,9 @@ namespace Scrum
                 dataGridView6.Location = new Point(dataGridView5.Location.X + dataGridView1.Width + (int)расстояние, 11);
                 dataGridView7.Location = new Point(dataGridView6.Location.X + dataGridView1.Width + (int)расстояние, 11);
                 dataGridView8.Location = new Point(dataGridView7.Location.X + dataGridView1.Width + (int)расстояние, 11);
-
+                //
+                // label.Location
+                //
                 label7.Location = new Point(location_panel2 + dataGridView1.Location.X + dataGridView1.Width / 2 - label7.Width / 2, label7.Location.Y);
                 label8.Location = new Point(location_panel2 + dataGridView2.Location.X + dataGridView1.Width / 2 - label8.Width / 2, label7.Location.Y);
                 label9.Location = new Point(location_panel2 + dataGridView3.Location.X + dataGridView1.Width / 2 - label9.Width / 2, label7.Location.Y);
@@ -2318,6 +2344,17 @@ namespace Scrum
                 label12.Location = new Point(location_panel2 + dataGridView6.Location.X + dataGridView1.Width / 2 - label12.Width / 2, label7.Location.Y);
                 label13.Location = new Point(location_panel2 + dataGridView7.Location.X + dataGridView1.Width / 2 - label13.Width / 2, label7.Location.Y);
                 label14.Location = new Point(location_panel2 + dataGridView8.Location.X + dataGridView1.Width / 2 - label14.Width / 2, label7.Location.Y);
+                //
+                // MaximumSize
+                //
+                dataGridView1.MaximumSize = new Size(dataGridView1.Width, this.Height - location_panel2 - 44); // 44 = 22 снизу - 11*2
+                dataGridView2.MaximumSize = new Size(dataGridView2.Width, this.Height - location_panel2 - 44);
+                dataGridView3.MaximumSize = new Size(dataGridView3.Width, this.Height - location_panel2 - 44);
+                dataGridView4.MaximumSize = new Size(dataGridView4.Width, this.Height - location_panel2 - 44);
+                dataGridView5.MaximumSize = new Size(dataGridView5.Width, this.Height - location_panel2 - 44);
+                dataGridView6.MaximumSize = new Size(dataGridView6.Width, this.Height - location_panel2 - 44);
+                dataGridView7.MaximumSize = new Size(dataGridView7.Width, this.Height - location_panel2 - 44);
+                dataGridView8.MaximumSize = new Size(dataGridView8.Width, this.Height - location_panel2 - 44);
             }
             else
             {
@@ -2332,8 +2369,8 @@ namespace Scrum
                 dataGridView7.Width = size_all_table_before_max;
                 dataGridView8.Width = size_all_table_before_max;
 
-                dataGridView1.Location = new Point(arr[0, 0], 11); 
-                dataGridView2.Location = new Point(arr[1, 0], 11); // 6 пикселей - расстояние между таблицами
+                dataGridView1.Location = new Point(arr[0, 0], 11); // 6 пикселей - расстояние между таблицами
+                dataGridView2.Location = new Point(arr[1, 0], 11); 
                 dataGridView3.Location = new Point(arr[2, 0], 11);
                 dataGridView4.Location = new Point(arr[3, 0], 11);
                 dataGridView5.Location = new Point(arr[4, 0], 11);
@@ -2349,7 +2386,16 @@ namespace Scrum
                 label12.Location = new Point(arr[5, 1], label7.Location.Y);
                 label13.Location = new Point(arr[6, 1], label7.Location.Y);
                 label14.Location = new Point(arr[7, 1], label7.Location.Y);
-                
+
+                dataGridView1.MaximumSize = new Size(W_max_for_tables, H_max_for_tables); 
+                dataGridView2.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+                dataGridView3.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+                dataGridView4.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+                dataGridView5.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+                dataGridView6.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+                dataGridView7.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+                dataGridView8.MaximumSize = new Size(W_max_for_tables, H_max_for_tables);
+
                 max_size_from = false;
             }
         }
