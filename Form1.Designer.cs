@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Start));
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.Name1 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.butn_plus2 = new System.Windows.Forms.PictureBox();
             this.butn_minus2 = new System.Windows.Forms.PictureBox();
@@ -49,6 +48,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.border_background_panel = new System.Windows.Forms.Panel();
             this.background_textbox_panel = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
@@ -60,20 +60,8 @@
             this.background_textbox_panel2.SuspendLayout();
             this.border_background_panel.SuspendLayout();
             this.background_textbox_panel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Name1
-            // 
-            this.Name1.AutoSize = true;
-            this.Name1.BackColor = System.Drawing.Color.Transparent;
-            this.Name1.Font = new System.Drawing.Font("Segoe Print", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.Name1.ForeColor = System.Drawing.Color.White;
-            this.Name1.Location = new System.Drawing.Point(1, 0);
-            this.Name1.Name = "Name1";
-            this.Name1.Size = new System.Drawing.Size(148, 85);
-            this.Name1.TabIndex = 2;
-            this.Name1.Text = "Desk";
-            this.Name1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Name1_MouseDown);
             // 
             // textBox2
             // 
@@ -310,6 +298,17 @@
             this.background_textbox_panel.Size = new System.Drawing.Size(350, 37);
             this.background_textbox_panel.TabIndex = 4;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Location = new System.Drawing.Point(-40, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(395, 94);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -320,14 +319,15 @@
             this.ClientSize = new System.Drawing.Size(730, 610);
             this.Controls.Add(this.butn_minus2);
             this.Controls.Add(this.butn_close2);
-            this.Controls.Add(this.Name1);
             this.Controls.Add(this.butn_minus);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.butn_close);
             this.Controls.Add(this.butn_plus2);
             this.Controls.Add(this.butn_plus);
+            this.Controls.Add(this.pictureBox1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(730, 610);
             this.Name = "Start";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -348,15 +348,14 @@
             this.border_background_panel.ResumeLayout(false);
             this.background_textbox_panel.ResumeLayout(false);
             this.background_textbox_panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.ColorDialog colorDialog1;
-        private System.Windows.Forms.Label Name1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label Вход;
         private System.Windows.Forms.PictureBox butn_close;
@@ -375,6 +374,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Логин;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

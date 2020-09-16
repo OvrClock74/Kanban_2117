@@ -1146,7 +1146,7 @@ namespace Scrum
                 add_user.ForeColor = Color.FromArgb(255, 255, 255);
 
                 clcU = true;
-                New_user_form.Location = new Point(control_users_panel.Location.X - 5 - New_user_form.Width, control_users_panel.Location.Y);
+                New_user_form.Location = new Point(control_users_panel.Location.X - 5 - New_user_form.Width, control_users_panel.Location.Y + add_user.Location.Y);
                 panel_connect_1.Location = New_user_form.Location;
                 panel_connect_1.Width = control_users_panel.Location.X - New_user_form.Location.X + add_user.Location.X + 2;
                 panel_connect_1.BringToFront(); // на переднем плане
@@ -1380,13 +1380,13 @@ namespace Scrum
                         int access = 4;
                         switch (new_access_for_user.Text)
                         {
-                            case "Истец":
+                            case "Завхоз":
                                 access = 1;
                                 break;
-                            case "Оператор":
+                            case "Контрактник":
                                 access = 2;
                                 break;
-                            case "Бухгалтерия":
+                            case "Бухгалтер":
                                 access = 3;
                                 break;
                         }
@@ -1722,6 +1722,7 @@ namespace Scrum
                 show_user.BackColor = Color.FromArgb(41, 43, 47);
                 show_user.ForeColor = Color.FromArgb(255, 255, 255);
 
+                panel1.Select();
                 clcUs = true;
                 admin_pass_enter.Location = new Point(control_users_panel.Location.X, control_users_panel.Location.Y + control_users_panel.Height);
                 admin_pass_enter.BringToFront();
@@ -1782,6 +1783,8 @@ namespace Scrum
                 if (check_open == true)
                 {
                     paas.Text = "";
+                    panel1.Select();
+                    admin_pass_enter.Visible = false;
                     TableAllUsers obj2 = new TableAllUsers(ID_Main); // передача id в форму Главная
                     obj2.Show();
                 } 

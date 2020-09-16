@@ -245,7 +245,7 @@ namespace Scrum
             MessageBox.Show("Файл успешно загружен");
         }
 
-        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) // ЗАГРУЗИТЬ ФАЙЛ
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e) // ЗАГРУЗИТЬ ФАЙЛ (на комп)
         {
             Int32 file_id;
             string file_type;
@@ -437,5 +437,6 @@ namespace Scrum
         #endregion
 
         #endregion
+
     }
 }

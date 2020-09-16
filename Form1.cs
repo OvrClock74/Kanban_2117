@@ -24,7 +24,7 @@ namespace Scrum
         {
             InitializeComponent();
             Show();
-            Name1.Select();
+            panel1.Select();
         }
         private void Start_Load(object sender, EventArgs e)
         {
@@ -135,6 +135,8 @@ namespace Scrum
             }
             catch (NpgsqlException)
             {
+                textBox1.Text = "";
+                textBox2.Text = "";
                 MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.");
             }
             con.Close();
@@ -161,6 +163,8 @@ namespace Scrum
             }
             catch (NpgsqlException)
             {
+                textBox1.Text = "";
+                textBox2.Text = "";
                 MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.");
             }
             con.Close();

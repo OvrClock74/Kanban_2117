@@ -39,13 +39,11 @@ namespace Scrum
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Главная));
             this.panel1 = new System.Windows.Forms.Panel();
             this.archive_button = new System.Windows.Forms.Label();
             this.users_button = new System.Windows.Forms.Label();
             this.CreateTaskB = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
             this.butn_minus2 = new System.Windows.Forms.PictureBox();
             this.butn_minus = new System.Windows.Forms.PictureBox();
             this.butn_plus2 = new System.Windows.Forms.PictureBox();
@@ -143,7 +141,7 @@ namespace Scrum
             this.label38 = new System.Windows.Forms.Label();
             this.активный_пользователь = new System.Windows.Forms.Label();
             this.panel2 = new Scrum.DoubleBufferedPanel();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
@@ -186,6 +184,7 @@ namespace Scrum
             this.background_textbox_panel.SuspendLayout();
             this.background_form.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -255,18 +254,6 @@ namespace Scrum
             this.CreateTaskB.MouseDown += new System.Windows.Forms.MouseEventHandler(this.CreateTaskB_MouseDown);
             this.CreateTaskB.MouseLeave += new System.EventHandler(this.CreateTaskB_MouseLeave);
             this.CreateTaskB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.CreateTaskB_MouseMove);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.BackColor = System.Drawing.Color.Transparent;
-            this.label17.Font = new System.Drawing.Font("Segoe Print", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label17.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(105)))), ((int)(((byte)(110)))));
-            this.label17.Location = new System.Drawing.Point(-4, -7);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(122, 33);
-            this.label17.TabIndex = 2;
-            this.label17.Text = "Desk Name";
             // 
             // butn_minus2
             // 
@@ -515,7 +502,7 @@ namespace Scrum
             this.dataGridView6.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             this.dataGridView6.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView6.ColumnHeadersVisible = false;
-            this.dataGridView6.Cursor = System.Windows.Forms.Cursors.Default;
+            this.dataGridView6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataGridView6.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.dataGridView6.Location = new System.Drawing.Point(1016, 11);
             this.dataGridView6.MaximumSize = new System.Drawing.Size(195, 494);
@@ -864,9 +851,9 @@ namespace Scrum
             this.comboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
-            "Истец",
-            "Бухгалтерия",
-            "Оператор"});
+            "Завхоз",
+            "Контрактник",
+            "Бухгалтер"});
             this.comboBox1.Location = new System.Drawing.Point(1, 1);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(397, 37);
@@ -1177,7 +1164,7 @@ namespace Scrum
             this.Del_user_form.Controls.Add(this.border_background_login_user);
             this.Del_user_form.Controls.Add(this.label26);
             this.Del_user_form.Controls.Add(this.del_user_button);
-            this.Del_user_form.Location = new System.Drawing.Point(124, 16);
+            this.Del_user_form.Location = new System.Drawing.Point(96, 15);
             this.Del_user_form.Name = "Del_user_form";
             this.Del_user_form.Size = new System.Drawing.Size(442, 446);
             this.Del_user_form.TabIndex = 14;
@@ -1726,6 +1713,17 @@ namespace Scrum
             this.panel2.Size = new System.Drawing.Size(1624, 505);
             this.panel2.TabIndex = 12;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox2.Location = new System.Drawing.Point(-22, -5);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(190, 39);
+            this.pictureBox2.TabIndex = 7;
+            this.pictureBox2.TabStop = false;
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1733,13 +1731,13 @@ namespace Scrum
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 666);
+            this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
             this.Controls.Add(this.admin_pass_enter);
             this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.panelCT);
-            this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.background_form);
             this.Controls.Add(this.panel1);
@@ -1749,9 +1747,10 @@ namespace Scrum
             this.Controls.Add(this.butn_plus);
             this.Controls.Add(this.butn_close2);
             this.Controls.Add(this.butn_close);
-            this.Controls.Add(this.label17);
+            this.Controls.Add(this.pictureBox2);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1212, 629);
             this.Name = "Главная";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1811,6 +1810,7 @@ namespace Scrum
             this.background_form.ResumeLayout(false);
             this.background_form.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1839,7 +1839,6 @@ namespace Scrum
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.Label users_button;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel control_users_panel;
         private System.Windows.Forms.Label delete_user;
         private System.Windows.Forms.Label add_user;
@@ -1926,6 +1925,6 @@ namespace Scrum
         private Scrum.DoubleBufferedPanel panel2;
         private Label активный_пользователь;
         private Label label38;
-        private Timer timer1;
+        private PictureBox pictureBox2;
     }
 }

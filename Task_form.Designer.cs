@@ -37,7 +37,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.AddFTask = new System.Windows.Forms.PictureBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -45,19 +44,21 @@
             this.label14 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.AddFTask = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.close_task = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.close_task)).BeginInit();
             this.SuspendLayout();
@@ -149,7 +150,6 @@
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(80)))), ((int)(((byte)(85)))));
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.AddFTask);
             this.panel2.Controls.Add(this.label18);
             this.panel2.Controls.Add(this.label17);
             this.panel2.Controls.Add(this.label16);
@@ -157,32 +157,19 @@
             this.panel2.Controls.Add(this.label14);
             this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.label11);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.AddFTask);
+            this.panel2.Controls.Add(this.pictureBox2);
             this.panel2.Location = new System.Drawing.Point(0, 22);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(381, 347);
             this.panel2.TabIndex = 9;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.task_form_Paint);
-            // 
-            // AddFTask
-            // 
-            this.AddFTask.BackColor = System.Drawing.Color.Transparent;
-            this.AddFTask.Image = ((System.Drawing.Image)(resources.GetObject("AddFTask.Image")));
-            this.AddFTask.Location = new System.Drawing.Point(329, 256);
-            this.AddFTask.Name = "AddFTask";
-            this.AddFTask.Size = new System.Drawing.Size(31, 31);
-            this.AddFTask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.AddFTask.TabIndex = 18;
-            this.AddFTask.TabStop = false;
-            this.AddFTask.Visible = false;
-            this.AddFTask.Click += new System.EventHandler(this.AddFTask_Click);
-            this.AddFTask.MouseLeave += new System.EventHandler(this.AddFTask_MouseLeave);
             // 
             // label18
             // 
@@ -292,20 +279,6 @@
             this.label13.MouseLeave += new System.EventHandler(this.label16_MouseLeave);
             this.label13.MouseMove += new System.Windows.Forms.MouseEventHandler(this.label16_MouseMove);
             // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(329, 256);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 13;
-            this.pictureBox2.TabStop = false;
-            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
@@ -378,6 +351,35 @@
             this.label7.TabIndex = 17;
             this.label7.Text = "ПРИКРЕПЛЁННЫЕ ФАЙЛЫ";
             // 
+            // AddFTask
+            // 
+            this.AddFTask.BackColor = System.Drawing.Color.Transparent;
+            this.AddFTask.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.AddFTask.Image = ((System.Drawing.Image)(resources.GetObject("AddFTask.Image")));
+            this.AddFTask.Location = new System.Drawing.Point(329, 256);
+            this.AddFTask.Name = "AddFTask";
+            this.AddFTask.Size = new System.Drawing.Size(31, 31);
+            this.AddFTask.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.AddFTask.TabIndex = 18;
+            this.AddFTask.TabStop = false;
+            this.AddFTask.Visible = false;
+            this.AddFTask.Click += new System.EventHandler(this.AddFTask_Click);
+            this.AddFTask.MouseLeave += new System.EventHandler(this.AddFTask_MouseLeave);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pictureBox2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(329, 256);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(31, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 13;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox2_MouseMove);
+            // 
             // close_task
             // 
             this.close_task.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(209)))), ((int)(((byte)(73)))), ((int)(((byte)(73)))));
@@ -392,10 +394,6 @@
             this.close_task.MouseEnter += new System.EventHandler(this.label1_MouseEnter);
             this.close_task.MouseLeave += new System.EventHandler(this.label1_MouseLeave);
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // Task_form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -405,15 +403,17 @@
             this.Controls.Add(this.close_task);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Task_form";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.TopMost = true;
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Task_form_MouseDown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddFTask)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.close_task)).EndInit();
             this.ResumeLayout(false);
@@ -447,5 +447,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
