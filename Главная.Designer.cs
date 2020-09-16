@@ -637,7 +637,7 @@ namespace Scrum
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(690, 50);
+            this.label10.Location = new System.Drawing.Point(685, 50);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(91, 26);
             this.label10.TabIndex = 10;

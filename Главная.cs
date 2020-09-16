@@ -26,7 +26,7 @@ namespace Scrum
 
         public int ID_Main;
         public int access_user; // доступ залогиневшегося юзера
-        public string C; // Значение, что находится в выбираемой ячейке
+        public string C; // значение, что находится в выбираемой ячейке
         public int stage_t; // стадия на которой находится выбранный таск
 
         public bool max_size_from = false; // развернута форма или нет
@@ -741,7 +741,13 @@ namespace Scrum
             if (Срок_исполнения.MaskFull)
             if (!e.IsValidInput)
             {
-                MessageBox.Show("Неверный формат даты!\nПроверьте вводимую дату.");
+                    DialogResult result = MessageBox.Show(
+                           "Неверный формат даты!\nПроверьте вводимую дату.",
+                           "Ошибка!",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error,
+                           MessageBoxDefaultButton.Button1,
+                           MessageBoxOptions.DefaultDesktopOnly);
                 Срок_исполнения.Text = "";
             }
             else
@@ -749,7 +755,13 @@ namespace Scrum
                 DateTime userDate = (DateTime)e.ReturnValue;
                 if (userDate < DateTime.Now)
                 {
-                    MessageBox.Show("Срок исполнения меньше или равен сегодняшней дате!\nПроверьте вводимую дату.");
+                        DialogResult result = MessageBox.Show(
+                          "Срок исполнения меньше или равен сегодняшней дате!\nПроверьте вводимую дату.",
+                          "Ошибка!",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error,
+                          MessageBoxDefaultButton.Button1,
+                          MessageBoxOptions.DefaultDesktopOnly);
                     Срок_исполнения.Text = "";
                 }
             }
@@ -765,6 +777,10 @@ namespace Scrum
         {
             clcT2 = true;
             border_background_panel2.BackColor = Color.FromArgb(120, 136, 214);
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                Срок_исполнения.Select(0, 0);
+            });
         }
         private void Срок_исполнения_Leave(object sender, EventArgs e)
         {
@@ -917,8 +933,14 @@ namespace Scrum
                  da2.Parameters.AddWithValue("@name_T", namT.Text);
                  if (da2.ExecuteScalar() != null)
                  {
-                    MessageBox.Show("Данное имя заявки уже существует!");
-                 }
+                    DialogResult result = MessageBox.Show(
+                          "Данное имя заявки уже существует!\nПожалуйста, придумайте новое название.",
+                          "Ошибка!",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error,
+                          MessageBoxDefaultButton.Button1,
+                          MessageBoxOptions.DefaultDesktopOnly);
+                }
 
                  else 
                  {
@@ -1366,7 +1388,13 @@ namespace Scrum
                 da2.Parameters.AddWithValue("@logn", login_user.Text);
                 if (da2.ExecuteScalar() != null)
                 {
-                    MessageBox.Show("Введённый логин уже существует!\nПросмотрите таблицу всех пользователей.");
+                    DialogResult result = MessageBox.Show(
+                          "Введённый логин уже существует!\nПросмотрите таблицу всех пользователей.",
+                          "Ошибка!",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error,
+                          MessageBoxDefaultButton.Button1,
+                          MessageBoxOptions.DefaultDesktopOnly);
                 }
 
                 else
@@ -1617,10 +1645,33 @@ namespace Scrum
 
                     if (da2.ExecuteScalar() == null)
                     {
-                        MessageBox.Show("Введённого пользователя не существует!\nПросмотрите таблицу всех пользователей.");
+                    DialogResult result = MessageBox.Show(
+                          "Введённого пользователя не существует!\nПросмотрите таблицу всех пользователей.",
+                          "Ошибка!",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error,
+                          MessageBoxDefaultButton.Button1,
+                          MessageBoxOptions.DefaultDesktopOnly);
                     }
                     else
                     {
+                        NpgsqlCommand da4 = new NpgsqlCommand("select login from users where (id_u = @id) and (pass = @pass) and (acces = 0)", con); // получаем уровень доступа
+                        da4.Parameters.Add("@pass", NpgsqlDbType.Varchar, 250).Value = paas.Text;
+                        da4.Parameters.Add("@id", NpgsqlDbType.Integer).Value = ID_Main;
+                        if (da4.ExecuteScalar() == null)
+                        {
+                        admin_pass.Text = "";
+                        border_background_admin_pass.BackColor = Color.FromArgb(209, 73, 73);
+                        DialogResult result = MessageBox.Show(
+                          "Неверный пароль!\nПовторите попытку.",
+                          "Ошибка!",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error,
+                          MessageBoxDefaultButton.Button1,
+                          MessageBoxOptions.DefaultDesktopOnly);
+                        }
+                        else
+                        {
                         DialogResult result = MessageBox.Show(
                             "Удаление пользователя - необратимый процесс! Это приведет к потере автора у задач, созданных им.\n\nВы уверены?\n\n",
                             "Внимание!",
@@ -1628,8 +1679,8 @@ namespace Scrum
                             MessageBoxIcon.Warning,
                             MessageBoxDefaultButton.Button2,
                             MessageBoxOptions.DefaultDesktopOnly);
-                        if (result == DialogResult.OK)
-                        {
+                            if (result == DialogResult.OK)
+                            {
                             int id_User = (int)da2.ExecuteScalar(); // если введенный логин существует, то берём его айди
                             NpgsqlCommand da3 = new NpgsqlCommand("del_usr", con) //del_usr(id integer, auser integer)
                             {
@@ -1652,6 +1703,7 @@ namespace Scrum
                                     MessageBox.Show("Нет прав на удаление пользователей!");
                             }
                             con.Close();
+                            }
                         }
                     }
                 }
@@ -1764,7 +1816,13 @@ namespace Scrum
             da2.Parameters.Add("@id", NpgsqlDbType.Integer).Value = ID_Main;
             if (da2.ExecuteScalar() == null)
             {
-                MessageBox.Show("Неверный пароль!\nПовторите попытку.");
+                DialogResult result = MessageBox.Show(
+                          "Неверный пароль!\nПовторите попытку.",
+                          "Ошибка!",
+                          MessageBoxButtons.OK,
+                          MessageBoxIcon.Error,
+                          MessageBoxDefaultButton.Button1,
+                          MessageBoxOptions.DefaultDesktopOnly);
             }
             else
             {
@@ -2048,5 +2106,4 @@ namespace Scrum
 
         #endregion
     }
-    
 }

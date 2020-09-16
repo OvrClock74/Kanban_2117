@@ -49,6 +49,7 @@
             this.border_background_panel = new System.Windows.Forms.Panel();
             this.background_textbox_panel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
@@ -309,6 +310,19 @@
             this.pictureBox1.TabIndex = 8;
             this.pictureBox1.TabStop = false;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label3.Location = new System.Drawing.Point(1, 589);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(116, 23);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "1.0.0";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // Start
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -317,6 +331,7 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(730, 610);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.butn_minus2);
             this.Controls.Add(this.butn_close2);
             this.Controls.Add(this.butn_minus);
@@ -375,6 +390,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label Логин;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label3;
     }
 }
 
