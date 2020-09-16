@@ -16,6 +16,9 @@ namespace Scrum
         public string C;
         public int stage_t;
         public int ID_Main;
+        public int access_user; 
+
+        public ToolTip t1 = new ToolTip();
 
         ///////Переменные для добавления файла в БД//////
         public string PathToFile;
@@ -23,13 +26,14 @@ namespace Scrum
         public string TypeFile;
         public string name_fillee;
 
-        public Task_form(string C1, string name_stage, int stage_t1, int ID_Main1)
+        public Task_form(string C1, string name_stage, int stage_t1, int ID_Main1, int acces)
         {
             InitializeComponent();
             C = C1; // название задачи
             stage_t = stage_t1; // стадия на которой она находится
             ID_Main = ID_Main1; // ID пользователя
-
+            access_user = acces; // доступ залогиневшегося юзера
+            
             #region Вывод
             NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
             con.Open();
@@ -73,13 +77,35 @@ namespace Scrum
                     label16.Text = i.ToString("C0", new System.Globalization.CultureInfo("ru-RU"));
                     if ((bool)reader["payment"])
                     {
-                        label14.ForeColor = Color.FromArgb(67, 181, 129);
-                        label14.Text = "Оплачено";
+                        if (access_user == 3 || access_user == 0)
+                        {
+                            checkBox1.Visible = true;
+                            label14.Visible = false;
+                            checkBox1.ForeColor = Color.FromArgb(67, 181, 129);
+                            checkBox1.Text = "Оплачено";
+                            t1.SetToolTip(checkBox1, "Отменить оплату");
+                        }
+                        else
+                        {
+                            label14.ForeColor = Color.FromArgb(67, 181, 129);
+                            label14.Text = "Оплачено";
+                        }
                     }
                     else
                     {
-                        label14.ForeColor = Color.FromArgb(209, 73, 73);
-                        label14.Text = "Не оплачено";
+                        if (access_user == 3 || access_user == 0)
+                        {
+                            checkBox1.Visible = true;
+                            label14.Visible = false;
+                            checkBox1.ForeColor = Color.FromArgb(209, 73, 73);
+                            checkBox1.Text = "Не оплачено";
+                            t1.SetToolTip(checkBox1, "Оплатить");
+                        }
+                        else
+                        {
+                            label14.ForeColor = Color.FromArgb(209, 73, 73);
+                            label14.Text = "Не оплачено";
+                        }
                     }
 
                     label13.Text = name_stage;
@@ -353,8 +379,7 @@ namespace Scrum
                     da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
                     da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
                     string returnedValue = da3.ExecuteScalar().ToString();
-                    Главная Glav = new Главная(0, "ds");
-                    Glav.reload_tables_Click(sender, e); // обновление таблиц
+                    (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
                     MessageBox.Show(returnedValue);
                     Close();
                 }
@@ -362,8 +387,7 @@ namespace Scrum
                 {
                     if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
                     {
-                        Главная Glav = new Главная(0, "ds");
-                        Glav.reload_tables_Click(sender, e);
+                        (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
                         MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.");
                         Close();
                     }
@@ -383,8 +407,7 @@ namespace Scrum
                     da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
                     da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
                     string returnedValue = da3.ExecuteScalar().ToString();
-                    Главная Glav = new Главная(0, "ds");
-                    Glav.reload_tables_Click(sender, e);
+                    (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
                     MessageBox.Show(returnedValue);
                     Close();
                 }
@@ -392,8 +415,7 @@ namespace Scrum
                 {
                     if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
                     {
-                        Главная Glav = new Главная(0, "ds");
-                        Glav.reload_tables_Click(sender, e);
+                        (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
                         MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.");
                         Close();
                     }
@@ -412,18 +434,30 @@ namespace Scrum
                     da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
                     da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
                     da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                    string returnedValue = da3.ExecuteScalar().ToString();
-                    Главная Glav = new Главная(0, "ds");
-                    Glav.reload_tables_Click(sender, e);
-                    MessageBox.Show(returnedValue);
-                    Close();
+
+                    if (checkBox1.Checked == false)
+                    {
+                        DialogResult result = MessageBox.Show(
+                           "Оплата не проведена! Вы не можете отправить задачу в архив, пока она имеет статус «Не оплачено‎».",
+                           "Ошибка!",
+                           MessageBoxButtons.OK,
+                           MessageBoxIcon.Error,
+                           MessageBoxDefaultButton.Button1,
+                           MessageBoxOptions.DefaultDesktopOnly);
+                    }
+                    else
+                    {
+                        string returnedValue = da3.ExecuteScalar().ToString();
+                        (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
+                        MessageBox.Show(returnedValue);
+                        Close();
+                    }
                 }
                 catch (NpgsqlException ex)
                 {
                     if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
                     {
-                        Главная Glav = new Главная(0, "ds");
-                        Glav.reload_tables_Click(sender, e);
+                        (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
                         MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.");
                         Close();
                     }
@@ -438,5 +472,56 @@ namespace Scrum
 
         #endregion
 
+        private void checkBox1_Click(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true) // специально инверсия
+            {
+                DialogResult result = MessageBox.Show(
+                           "Подтвердить проведение оплаты?",
+                           "Внимание",
+                           MessageBoxButtons.YesNo,
+                           MessageBoxIcon.Information,
+                           MessageBoxDefaultButton.Button2,
+                           MessageBoxOptions.DefaultDesktopOnly);
+                if (result == DialogResult.Yes)
+                {
+                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                    con.Open();
+                    NpgsqlCommand Totalf = new NpgsqlCommand("update tasks set payment = true where name_t = @name_T", con);
+                    Totalf.Parameters.AddWithValue("@name_T", C);
+                    Totalf.ExecuteNonQuery();
+                    con.Close();
+
+                    checkBox1.ForeColor = Color.FromArgb(67, 181, 129);
+                    checkBox1.Text = "Оплачено";
+                    t1.SetToolTip(checkBox1, "Отменить оплату");
+                }
+                else checkBox1.Checked = false;
+            }
+            else
+            {
+                DialogResult result = MessageBox.Show(
+                           "Отменить оплату?",
+                           "Внимание",
+                           MessageBoxButtons.YesNo,
+                           MessageBoxIcon.Information,
+                           MessageBoxDefaultButton.Button2,
+                           MessageBoxOptions.DefaultDesktopOnly);
+                if (result == DialogResult.Yes)
+                {
+                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                    con.Open();
+                    NpgsqlCommand Totalf = new NpgsqlCommand("update tasks set payment = false where name_t = @name_T", con);
+                    Totalf.Parameters.AddWithValue("@name_T", C);
+                    Totalf.ExecuteNonQuery();
+                    con.Close();
+
+                    checkBox1.ForeColor = Color.FromArgb(209, 73, 73);
+                    checkBox1.Text = "Не оплачено";
+                    t1.SetToolTip(checkBox1, "Оплатить");
+                }
+                else checkBox1.Checked = true;
+            }
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace Scrum
         public bool clcUs = false; // если нажали на все пользователи
 
         public int ID_Main;
+        public int access_user; // доступ залогиневшегося юзера
         public string C; // Значение, что находится в выбираемой ячейке
         public int stage_t; // стадия на которой находится выбранный таск
 
@@ -92,6 +93,7 @@ namespace Scrum
             NpgsqlCommand da2 = new NpgsqlCommand("select acces from users where id_u = @id", con); // получаем уровень доступа
             da2.Parameters.AddWithValue("@id", ID_Main);
             Int32 access_now_user = Convert.ToInt32(da2.ExecuteScalar());
+            access_user = access_now_user;
             con.Close();
             if ((access_now_user == 1))
             {
@@ -319,7 +321,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 1;
-            Task_form frm = new Task_form(C, "На согласование", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "На согласование", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -343,7 +345,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView2.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 2;
-            Task_form frm = new Task_form(C, "На утверждение", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "На утверждение", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -367,7 +369,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView3.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 3;
-            Task_form frm = new Task_form(C, "В работу", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "В работу", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -391,7 +393,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView4.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 4;
-            Task_form frm = new Task_form(C, "На формирование", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "На формирование", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -415,7 +417,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView5.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 5;
-            Task_form frm = new Task_form(C, "На заключение", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "На заключение", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -439,7 +441,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView6.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 6;
-            Task_form frm = new Task_form(C, "На исполнение", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "На исполнение", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -463,7 +465,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView7.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 7;
-            Task_form frm = new Task_form(C, "На оплату", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "На оплату", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
@@ -487,7 +489,7 @@ namespace Scrum
             clc = true;
             C = (string)dataGridView8.Rows[e.RowIndex].Cells[0].Value; // Значение, что находится в выбираемой ячейке
             stage_t = 8;
-            Task_form frm = new Task_form(C, "В архив", stage_t, ID_Main);
+            Task_form frm = new Task_form(C, "В архив", stage_t, ID_Main, access_user);
             frm.Show();
         }
 
