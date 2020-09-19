@@ -88,6 +88,7 @@
             this.butn_plus2.BackColor = System.Drawing.Color.Transparent;
             this.butn_plus2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_plus2.BackgroundImage")));
             this.butn_plus2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.butn_plus2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_plus2.Location = new System.Drawing.Point(662, 0);
             this.butn_plus2.Name = "butn_plus2";
             this.butn_plus2.Size = new System.Drawing.Size(34, 22);
@@ -103,6 +104,7 @@
             this.butn_minus2.BackColor = System.Drawing.Color.Transparent;
             this.butn_minus2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_minus2.BackgroundImage")));
             this.butn_minus2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.butn_minus2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_minus2.Location = new System.Drawing.Point(628, 0);
             this.butn_minus2.Name = "butn_minus2";
             this.butn_minus2.Size = new System.Drawing.Size(34, 22);
@@ -118,6 +120,7 @@
             this.butn_minus.BackColor = System.Drawing.Color.Transparent;
             this.butn_minus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_minus.BackgroundImage")));
             this.butn_minus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.butn_minus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_minus.Location = new System.Drawing.Point(628, 0);
             this.butn_minus.Name = "butn_minus";
             this.butn_minus.Size = new System.Drawing.Size(34, 22);
@@ -131,6 +134,7 @@
             this.butn_plus.BackColor = System.Drawing.Color.Transparent;
             this.butn_plus.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_plus.BackgroundImage")));
             this.butn_plus.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.butn_plus.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_plus.Location = new System.Drawing.Point(662, 0);
             this.butn_plus.Name = "butn_plus";
             this.butn_plus.Size = new System.Drawing.Size(34, 22);
@@ -144,6 +148,7 @@
             this.butn_close2.BackColor = System.Drawing.Color.Transparent;
             this.butn_close2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_close2.BackgroundImage")));
             this.butn_close2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.butn_close2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_close2.Location = new System.Drawing.Point(696, 0);
             this.butn_close2.Name = "butn_close2";
             this.butn_close2.Size = new System.Drawing.Size(34, 22);
@@ -159,6 +164,7 @@
             this.butn_close.BackColor = System.Drawing.Color.Transparent;
             this.butn_close.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("butn_close.BackgroundImage")));
             this.butn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.butn_close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_close.Location = new System.Drawing.Point(696, 0);
             this.butn_close.Name = "butn_close";
             this.butn_close.Size = new System.Drawing.Size(34, 22);
@@ -170,6 +176,7 @@
             // 
             this.Вход.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Вход.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
+            this.Вход.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Вход.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Вход.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Вход.ForeColor = System.Drawing.Color.White;

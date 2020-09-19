@@ -732,7 +732,7 @@ namespace Scrum
             this.delete_user.Cursor = System.Windows.Forms.Cursors.Hand;
             this.delete_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.delete_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
-            this.delete_user.Location = new System.Drawing.Point(0, 44);
+            this.delete_user.Location = new System.Drawing.Point(0, 45);
             this.delete_user.Name = "delete_user";
             this.delete_user.Size = new System.Drawing.Size(330, 45);
             this.delete_user.TabIndex = 13;

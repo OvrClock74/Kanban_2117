@@ -290,7 +290,7 @@ namespace Scrum
                     reader.Close();
                     Stream myStream;
                     SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-                    saveFileDialog1.InitialDirectory = "c:\\";
+                    saveFileDialog1.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
                     saveFileDialog1.Title = "Сохранить как...";
                     saveFileDialog1.FileName = C2;
                     saveFileDialog1.Filter = "Files (*" + file_type + ")|*" + file_type;
