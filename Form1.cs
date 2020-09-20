@@ -116,35 +116,7 @@ namespace Scrum
         #region Авторизация на кнопку
         private void Вход_Click(object sender, EventArgs e) // Авторизация
         {
-            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
-            using NpgsqlConnection con = new NpgsqlConnection(cs);
-            con.Open();
-            NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
-            {
-                CommandType = CommandType.StoredProcedure
-            };
-            try
-            {
-                Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
-                Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
-                int id = (int)Totalf.ExecuteScalar();
-                string user_name = textBox1.Text.Trim();
-                Главная obj = new Главная(id, user_name); // передача id в форму Главная
-                Hide();
-                obj.Show();
-            }
-            catch (NpgsqlException)
-            {
-                textBox1.Text = "";
-                textBox2.Text = "";
-                MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.");
-            }
-            con.Close();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+            var cs = "Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm";
             using NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("login", con)

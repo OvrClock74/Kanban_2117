@@ -88,7 +88,7 @@ namespace Scrum
             loadTables(ds1, dt1, dataGridView1, ds2, dt2, dataGridView2, ds3, dt3, dataGridView3, ds4, dt4, dataGridView4, ds5, dt5, dataGridView5, ds6, dt6, dataGridView6, ds7, dt7, dataGridView7, ds8, dt8, dataGridView8);
             ID_Main = id;
             #region Зашел админ или кто
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlCommand da2 = new NpgsqlCommand("select acces from users where id_u = @id", con); // получаем уровень доступа
             da2.Parameters.AddWithValue("@id", ID_Main);
@@ -191,7 +191,7 @@ namespace Scrum
             DataSet ds7, DataTable dt7, DataGridView dataGridView7,
             DataSet ds8, DataTable dt8, DataGridView dataGridView8)
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
 
             #region Заполнение таблиц данными 
@@ -299,7 +299,7 @@ namespace Scrum
                 }
             }
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             using (var sqlWrite = new NpgsqlCommand("add_fille", con)) //public.add_fille(id_task integer, name_f character varying, type_f character varying, file_c bytea)
             {
@@ -926,7 +926,7 @@ namespace Scrum
             panel1.Select();
             if ((namT.Text != "")  && (textBox1.Text != "") && (Срок_исполнения.MaskFull) && (AddF.Text != "Прикрепить файл"))
             {
-                 NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                 NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
                  con.Open();
 
                  NpgsqlCommand da2 = new NpgsqlCommand("select null from tasks where name_t = @name_T", con); // уникально ли имя
@@ -1201,7 +1201,7 @@ namespace Scrum
             clcT2_1 = true;
             border_background_new_id_for_user.BackColor = Color.FromArgb(120, 136, 214);
             //////////////////////////////////////////ТАБЛИЦА ВСЕХ ЮЗЕРОВ//////////////////////////////////////////////
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlDataReader reader;
             NpgsqlCommand daT = new NpgsqlCommand("Select * from all_users_without_pass(@auser)", con);
@@ -1380,7 +1380,7 @@ namespace Scrum
             panel1.Select();
             if ((new_id_for_user.Text != "") && (new_pass_for_user.Text != "") && (new_access_for_user.Text != ""))
             {
-                NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
                 con.Open();
 
 
@@ -1550,7 +1550,7 @@ namespace Scrum
             clcT3_1 = true;
             border_background_login_user.BackColor = Color.FromArgb(120, 136, 214);
             //////////////////////////////////////////ТАБЛИЦА ВСЕХ ЮЗЕРОВ//////////////////////////////////////////////
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlDataReader reader;
             NpgsqlCommand daT = new NpgsqlCommand("Select * from all_users_without_pass(@auser)", con);
@@ -1637,7 +1637,7 @@ namespace Scrum
                 panel1.Select();
                 if ((login_user.Text != "") && (admin_pass.Text != ""))
                 {
-                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                    NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
                     con.Open();
 
                     NpgsqlCommand da2 = new NpgsqlCommand("select id_u from users where login = @logn", con); // уникально ли имя
@@ -1656,7 +1656,7 @@ namespace Scrum
                     else
                     {
                         NpgsqlCommand da4 = new NpgsqlCommand("select login from users where (id_u = @id) and (pass = @pass) and (acces = 0)", con); // получаем уровень доступа
-                        da4.Parameters.Add("@pass", NpgsqlDbType.Varchar, 250).Value = paas.Text;
+                        da4.Parameters.Add("@pass", NpgsqlDbType.Varchar, 250).Value = admin_pass.Text;
                         da4.Parameters.Add("@id", NpgsqlDbType.Integer).Value = ID_Main;
                         if (da4.ExecuteScalar() == null)
                         {
@@ -1809,7 +1809,7 @@ namespace Scrum
 
         private void button_for_pass_admin_Click(object sender, EventArgs e)
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlCommand da2 = new NpgsqlCommand("select login from users where (id_u = @id) and (pass = @pass) and (acces = 0)", con); // получаем уровень доступа
             da2.Parameters.Add("@pass", NpgsqlDbType.Varchar, 250).Value = paas.Text;

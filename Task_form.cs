@@ -24,7 +24,7 @@ namespace Scrum
         public string PathToFile;
         public string filename;
         public string TypeFile;
-        public string name_fillee;
+        public string name_fillee; 
 
         public Task_form(string C1, string name_stage, int stage_t1, int ID_Main1, int acces)
         {
@@ -33,9 +33,8 @@ namespace Scrum
             stage_t = stage_t1; // стадия на которой она находится
             ID_Main = ID_Main1; // ID пользователя
             access_user = acces; // доступ залогиневшегося юзера
-            
             #region Вывод
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
             Totalf.Parameters.AddWithValue("@name_T", C);
@@ -52,7 +51,7 @@ namespace Scrum
                     }
                     else
                     {
-                        NpgsqlConnection con2 = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                        NpgsqlConnection con2 = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
                         con2.Open();
                         NpgsqlCommand loginA = new NpgsqlCommand("SELECT login FROM users WHERE id_u = @id", con2); // логин вместо id
                         loginA.Parameters.AddWithValue("@id", Convert.ToInt32(reader["autor"]));
@@ -170,7 +169,7 @@ namespace Scrum
                 }
             }
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             using (var sqlWrite = new NpgsqlCommand("add_fille", con)) //public.add_fille(id_task integer, name_f character varying, type_f character varying, file_c bytea)
             {
@@ -186,7 +185,7 @@ namespace Scrum
 
         public static void databaseFileRead(int IdInCell, string varPathToNewLocation) // выгрузка любых файлов из БД
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             using (var sqlQuery = new NpgsqlCommand(@"SELECT file_content FROM files WHERE id_f = @f_id", con))
             {
@@ -249,7 +248,7 @@ namespace Scrum
             TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
             name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
             Totalf.Parameters.AddWithValue("@name_T", C);
@@ -276,7 +275,7 @@ namespace Scrum
             Int32 file_id;
             string file_type;
             string C2 = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_f, type_file FROM files WHERE name_file = @name_F", con); // ID заявки которую выбрали 
             Totalf.Parameters.AddWithValue("@name_F", C2);
@@ -362,7 +361,7 @@ namespace Scrum
         #region Переместить таск
         private void label16_Click(object sender, EventArgs e) // переместить таск
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
             con.Open();
             NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
             Totalf2.Parameters.AddWithValue("@name_T", C);
@@ -485,7 +484,7 @@ namespace Scrum
                            MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.Yes)
                 {
-                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                    NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
                     con.Open();
                     NpgsqlCommand Totalf = new NpgsqlCommand("update tasks set payment = true where name_t = @name_T", con);
                     Totalf.Parameters.AddWithValue("@name_T", C);
@@ -509,7 +508,7 @@ namespace Scrum
                            MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.Yes)
                 {
-                    NpgsqlConnection con = new NpgsqlConnection("Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk");
+                    NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
                     con.Open();
                     NpgsqlCommand Totalf = new NpgsqlCommand("update tasks set payment = false where name_t = @name_T", con);
                     Totalf.Parameters.AddWithValue("@name_T", C);
