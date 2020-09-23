@@ -1732,12 +1732,12 @@ namespace Scrum
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 666);
-            this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
             this.Controls.Add(this.admin_pass_enter);
+            this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.panelCT);
             this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.background_form);
