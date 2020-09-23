@@ -1058,6 +1058,7 @@ namespace Scrum
             // 
             this.button_for_pass_admin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button_for_pass_admin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
+            this.button_for_pass_admin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button_for_pass_admin.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.button_for_pass_admin.ForeColor = System.Drawing.Color.White;
             this.button_for_pass_admin.Location = new System.Drawing.Point(-1, 43);

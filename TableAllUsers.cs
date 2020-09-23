@@ -14,11 +14,12 @@ namespace Scrum
     {
         public bool closing = false;
         public int ID_for_show_users;
+        public string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
         public TableAllUsers(int id)
         {
             InitializeComponent();
             ID_for_show_users = id;
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+            NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlDataReader reader;
             NpgsqlCommand daT = new NpgsqlCommand("Select * from all_users_show(@auser)", con); // all_users_show(auser integer)

@@ -19,7 +19,7 @@ namespace Scrum
 
         public int W = 0; // сохранить ширину окна для свернуть-развернуть
         public int H = 0; // сохранить высоту окна для свернуть-развернуть
-
+        public static string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
         public Start()
         {
             InitializeComponent();
@@ -116,7 +116,7 @@ namespace Scrum
         #region Авторизация на кнопку
         private void Вход_Click(object sender, EventArgs e) // Авторизация
         {
-            var cs = "Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm";
+            //var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
             using NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("login", con)

@@ -24,8 +24,9 @@ namespace Scrum
         public string PathToFile;
         public string filename;
         public string TypeFile;
-        public string name_fillee; 
+        public string name_fillee;
 
+        public static string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
         public Task_form(string C1, string name_stage, int stage_t1, int ID_Main1, int acces)
         {
             InitializeComponent();
@@ -33,100 +34,117 @@ namespace Scrum
             stage_t = stage_t1; // стадия на которой она находится
             ID_Main = ID_Main1; // ID пользователя
             access_user = acces; // доступ залогиневшегося юзера
-            #region Вывод
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
-            con.Open();
-            NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
-            Totalf.Parameters.AddWithValue("@name_T", C);
-            NpgsqlDataReader reader;
-            using (reader = Totalf.ExecuteReader())
+            try
             {
-                if (reader.Read())
+                #region Вывод
+                NpgsqlConnection con = new NpgsqlConnection(cs);
+                con.Open();
+                NpgsqlCommand Totalf = new NpgsqlCommand("SELECT autor, date_create, date_complete, payment, cost_t FROM tasks WHERE name_t = @name_T", con);
+                Totalf.Parameters.AddWithValue("@name_T", C);
+                NpgsqlDataReader reader;
+                using (reader = Totalf.ExecuteReader())
                 {
-                    label15.Text = C; // название
+                    if (reader.Read())
+                    {
+                        label15.Text = C; // название
 
-                    if (reader["autor"] is DBNull)
-                    {
-                        label17.Text = "!пользователь удалён!";
-                    }
-                    else
-                    {
-                        NpgsqlConnection con2 = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
-                        con2.Open();
-                        NpgsqlCommand loginA = new NpgsqlCommand("SELECT login FROM users WHERE id_u = @id", con2); // логин вместо id
-                        loginA.Parameters.AddWithValue("@id", Convert.ToInt32(reader["autor"]));
-                        NpgsqlDataReader reader2;
-                        using (reader2 = loginA.ExecuteReader())
+                        if (reader["autor"] is DBNull)
                         {
-                            if (reader2.Read())
+                            label17.Text = "!пользователь удалён!";
+                        }
+                        else
+                        {
+                            NpgsqlConnection con2 = new NpgsqlConnection(cs);
+                            con2.Open();
+                            NpgsqlCommand loginA = new NpgsqlCommand("SELECT login FROM users WHERE id_u = @id", con2); // логин вместо id
+                            loginA.Parameters.AddWithValue("@id", Convert.ToInt32(reader["autor"]));
+                            NpgsqlDataReader reader2;
+                            using (reader2 = loginA.ExecuteReader())
                             {
-                                label17.Text = String.Format("{0}", reader2["login"]); ;
+                                if (reader2.Read())
+                                {
+                                    label17.Text = String.Format("{0}", reader2["login"]); ;
+                                }
+                                reader2.Close();
                             }
-                            reader2.Close();
+                            con2.Close();
                         }
-                        con2.Close();
-                    }
 
-                    DateTime date = Convert.ToDateTime(reader["date_create"]);
-                    label18.Text = String.Format("{0}", date.ToShortDateString());
-                    date = Convert.ToDateTime(reader["date_complete"]);
-                    label11.Text = String.Format("{0}", date.ToShortDateString());
+                        DateTime date = Convert.ToDateTime(reader["date_create"]);
+                        label18.Text = String.Format("{0}", date.ToShortDateString());
+                        date = Convert.ToDateTime(reader["date_complete"]);
+                        label11.Text = String.Format("{0}", date.ToShortDateString());
 
-                    int i = Convert.ToInt32(reader["cost_t"]);
-                    label16.Text = i.ToString("C0", new System.Globalization.CultureInfo("ru-RU"));
-                    if ((bool)reader["payment"])
-                    {
-                        if (access_user == 3 || access_user == 0)
+                        int i = Convert.ToInt32(reader["cost_t"]);
+                        label16.Text = i.ToString("C0", new System.Globalization.CultureInfo("ru-RU"));
+                        if ((bool)reader["payment"])
                         {
-                            checkBox1.Visible = true;
-                            label14.Visible = false;
-                            checkBox1.ForeColor = Color.FromArgb(67, 181, 129);
-                            checkBox1.Text = "Оплачено";
-                            t1.SetToolTip(checkBox1, "Отменить оплату");
+                            if (access_user == 3 || access_user == 0)
+                            {
+                                checkBox1.Location = new Point(checkBox1.Location.X + 26, checkBox1.Location.Y);
+                                label14.Visible = false;
+                                checkBox1.ForeColor = Color.FromArgb(67, 181, 129);
+                                checkBox1.Text = "Оплачено";
+                                checkBox1.Checked = true;
+                                checkBox1.Visible = true;
+                                t1.SetToolTip(checkBox1, "Отменить оплату");
+                            }
+                            else
+                            {
+                                label14.ForeColor = Color.FromArgb(67, 181, 129);
+                                label14.Text = "Оплачено";
+                            }
                         }
                         else
                         {
-                            label14.ForeColor = Color.FromArgb(67, 181, 129);
-                            label14.Text = "Оплачено";
+                            if (access_user == 3 || access_user == 0)
+                            {
+                                checkBox1.Visible = true;
+                                label14.Visible = false;
+                                checkBox1.ForeColor = Color.FromArgb(209, 73, 73);
+                                checkBox1.Text = "Не оплачено";
+                                t1.SetToolTip(checkBox1, "Оплатить");
+                            }
+                            else
+                            {
+                                label14.ForeColor = Color.FromArgb(209, 73, 73);
+                                label14.Text = "Не оплачено";
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (access_user == 3 || access_user == 0)
-                        {
-                            checkBox1.Visible = true;
-                            label14.Visible = false;
-                            checkBox1.ForeColor = Color.FromArgb(209, 73, 73);
-                            checkBox1.Text = "Не оплачено";
-                            t1.SetToolTip(checkBox1, "Оплатить");
-                        }
-                        else
-                        {
-                            label14.ForeColor = Color.FromArgb(209, 73, 73);
-                            label14.Text = "Не оплачено";
-                        }
-                    }
 
-                    label13.Text = name_stage;
+                        label13.Text = name_stage;
+                    }
+                    reader.Close();
                 }
+                //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
+                NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
+                Totalf2.Parameters.AddWithValue("@name_T", C);
+                Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
+
+                NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
+                daT.Parameters.AddWithValue("@idtask", new_task_id);
+
+                DataTable dt = new DataTable();
+                reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
+                dt.Load(reader);
+                dataGridView1.DataSource = dt;
                 reader.Close();
+                /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                con.Close();
+                #endregion
             }
-            //////////////////////////////////////////////КАКИЕ ФАЙЛЫ ПРИКРЕПЛЕНЫ////////////////////////////////////////////////////////////
-            NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
-            Totalf2.Parameters.AddWithValue("@name_T", C);
-            Int32 new_task_id = Convert.ToInt32(Totalf2.ExecuteScalar());
+            catch (NpgsqlException)
+            {
+                DialogResult result = MessageBox.Show(
+                         "В данный момент невозможно просматривать больше задач.\nПовторите попытку позже.",
+                         "Ошибка!",
+                         MessageBoxButtons.OK,
+                         MessageBoxIcon.Error,
+                         MessageBoxDefaultButton.Button1,
+                         MessageBoxOptions.DefaultDesktopOnly);
+            }
 
-            NpgsqlCommand daT = new NpgsqlCommand("SELECT name_file FROM files WHERE taskid = @idtask", con);
-            daT.Parameters.AddWithValue("@idtask", new_task_id);
-
-            DataTable dt = new DataTable();
-            reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
-            dt.Load(reader);
-            dataGridView1.DataSource = dt;
-            reader.Close();
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            con.Close();
-            #endregion
+            
 
             ToolTip t = new ToolTip();
             t.SetToolTip(AddFTask, "Прикрепить файл");
@@ -169,7 +187,7 @@ namespace Scrum
                 }
             }
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+            NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             using (var sqlWrite = new NpgsqlCommand("add_fille", con)) //public.add_fille(id_task integer, name_f character varying, type_f character varying, file_c bytea)
             {
@@ -185,7 +203,7 @@ namespace Scrum
 
         public static void databaseFileRead(int IdInCell, string varPathToNewLocation) // выгрузка любых файлов из БД
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+            NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             using (var sqlQuery = new NpgsqlCommand(@"SELECT file_content FROM files WHERE id_f = @f_id", con))
             {
@@ -248,7 +266,7 @@ namespace Scrum
             TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
             name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
 
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+            NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
             Totalf.Parameters.AddWithValue("@name_T", C);
@@ -275,7 +293,7 @@ namespace Scrum
             Int32 file_id;
             string file_type;
             string C2 = (string)dataGridView1.Rows[e.RowIndex].Cells[0].Value;
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+            NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("SELECT id_f, type_file FROM files WHERE name_file = @name_F", con); // ID заявки которую выбрали 
             Totalf.Parameters.AddWithValue("@name_F", C2);
@@ -361,7 +379,7 @@ namespace Scrum
         #region Переместить таск
         private void label16_Click(object sender, EventArgs e) // переместить таск
         {
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+            NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf2 = new NpgsqlCommand("SELECT id_t FROM tasks WHERE name_t = @name_T", con); // ID заявки которую выбрали 
             Totalf2.Parameters.AddWithValue("@name_T", C);
@@ -484,7 +502,7 @@ namespace Scrum
                            MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.Yes)
                 {
-                    NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+                    NpgsqlConnection con = new NpgsqlConnection(cs);
                     con.Open();
                     NpgsqlCommand Totalf = new NpgsqlCommand("update tasks set payment = true where name_t = @name_T", con);
                     Totalf.Parameters.AddWithValue("@name_T", C);
@@ -492,6 +510,7 @@ namespace Scrum
                     con.Close();
 
                     checkBox1.ForeColor = Color.FromArgb(67, 181, 129);
+                    checkBox1.Location = new Point(checkBox1.Location.X + 26, checkBox1.Location.Y);
                     checkBox1.Text = "Оплачено";
                     t1.SetToolTip(checkBox1, "Отменить оплату");
                 }
@@ -508,7 +527,7 @@ namespace Scrum
                            MessageBoxOptions.DefaultDesktopOnly);
                 if (result == DialogResult.Yes)
                 {
-                    NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=qynafvcm;Password=RyfeKiIzGjJWfRNT9578fc7B9NUUYH1y;Database=qynafvcm");
+                    NpgsqlConnection con = new NpgsqlConnection(cs);
                     con.Open();
                     NpgsqlCommand Totalf = new NpgsqlCommand("update tasks set payment = false where name_t = @name_T", con);
                     Totalf.Parameters.AddWithValue("@name_T", C);
@@ -516,6 +535,7 @@ namespace Scrum
                     con.Close();
 
                     checkBox1.ForeColor = Color.FromArgb(209, 73, 73);
+                    checkBox1.Location = new Point(checkBox1.Location.X - 26, checkBox1.Location.Y);
                     checkBox1.Text = "Не оплачено";
                     t1.SetToolTip(checkBox1, "Оплатить");
                 }
