@@ -126,7 +126,7 @@ namespace Scrum
             using (Graphics g = e.Graphics)
             {
                 var p = new Pen(Color.FromArgb(63, 64, 68), 1);
-                g.DrawLine(p, new Point(22, 471), new Point(421, 471)); // разница 26 пикселей
+                g.DrawLine(p, new Point(10, 787), new Point(734, 787)); // разница 26 пикселей
                 p.Dispose();
                 g.Dispose(); // очищаем память
             }
@@ -285,33 +285,6 @@ namespace Scrum
         private void reload_tables_MouseLeave(object sender, EventArgs e)
         {
             reload_tables.Visible = false; ;
-        }
-        #endregion
-
-        #region databaseFilePut - Загрузка файлов в и из БД
-        public static void databaseFilePut(int id_T, string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
-        {
-            byte[] file;
-            using (var stream = new FileStream(varFilePath, FileMode.Open, FileAccess.Read))
-            {
-                using (var reader = new BinaryReader(stream))
-                {
-                    file = reader.ReadBytes((int)stream.Length);
-                }
-            }
-
-            NpgsqlConnection con = new NpgsqlConnection(cs);
-            con.Open();
-            using (var sqlWrite = new NpgsqlCommand("add_fille", con)) //public.add_fille(id_task integer, name_f character varying, type_f character varying, file_c bytea)
-            {
-                sqlWrite.CommandType = CommandType.StoredProcedure;
-                sqlWrite.Parameters.Add("id_task", NpgsqlTypes.NpgsqlDbType.Integer, file.Length).Value = id_T;
-                sqlWrite.Parameters.Add("name_f", NpgsqlTypes.NpgsqlDbType.Varchar, file.Length).Value = name_fille;
-                sqlWrite.Parameters.Add("type_f", NpgsqlTypes.NpgsqlDbType.Varchar, file.Length).Value = type_fille;
-                sqlWrite.Parameters.Add("file_c", NpgsqlTypes.NpgsqlDbType.Bytea, file.Length).Value = file;
-                sqlWrite.ExecuteNonQuery();
-            }
-            con.Close();
         }
         #endregion
 
@@ -636,6 +609,7 @@ namespace Scrum
             border_background_new_id_for_user.BackColor = Color.FromArgb(36, 36, 39);
             border_background_new_pass_for_user.BackColor = Color.FromArgb(36, 36, 39);
             border_background_new_access_for_user.BackColor = Color.FromArgb(36, 36, 39);
+            panel14.BackColor = Color.FromArgb(36, 36, 39);
         }
 
         private void Del_user_form_VisibleChanged(object sender, EventArgs e)
@@ -649,6 +623,11 @@ namespace Scrum
             border_background_panel.BackColor = Color.FromArgb(36, 36, 39);
             border_background_panel2.BackColor = Color.FromArgb(36, 36, 39);
             border_background_panel3.BackColor = Color.FromArgb(36, 36, 39);
+            panel8.BackColor = Color.FromArgb(36, 36, 39);
+            panel3.BackColor = Color.FromArgb(36, 36, 39);
+            panel6.BackColor = Color.FromArgb(36, 36, 39);
+            panel10.BackColor = Color.FromArgb(36, 36, 39);
+            panel12.BackColor = Color.FromArgb(36, 36, 39);
         }
         #endregion
 
@@ -707,11 +686,16 @@ namespace Scrum
         }
         #endregion
 
-        #region namT, Срок_исполнения, textBox1
-        /////////////////////////////////////////////////namT.Заголовок/////////////////////////////////////////////////////
+        #region namT, Срок_исполнения, textBox1 и все остальные строки в Добавить Заявку
         public bool clcT1 = false; // если пишем текст в создании новой заявки
         public bool clcT2 = false;
         public bool clcT3 = false;
+        public bool clcT4 = false;
+        public bool clcT5 = false;
+        public bool clcT6 = false;
+        public bool clcT7 = false;
+        public bool clcT8 = false;
+        /////////////////////////////////////////////////namT.Заголовок/////////////////////////////////////////////////////
         private void namT_Enter(object sender, EventArgs e)
         {
             clcT1 = true;
@@ -845,39 +829,139 @@ namespace Scrum
                 textBox1.ScrollToCaret();
             }
         }
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        #endregion
-
-        #region Цвет кнопки ПрикрепитьФайл
-        private void AddF_MouseMove(object sender, MouseEventArgs e)
+        /////////////////////////////////////////////////textbox8.Прошу вас обеспечить/////////////////////////////////////////////////////
+        private void textbox8_Enter(object sender, EventArgs e)
         {
-            AddF.BackColor = Color.FromArgb(109,122,193); 
+            clcT4 = true;
+            panel8.BackColor = Color.FromArgb(120, 136, 214);
         }
-        private void AddF_MouseLeave(object sender, EventArgs e)
+        private void textbox8_Leave(object sender, EventArgs e)
         {
-            AddF.BackColor = Color.FromArgb(120,136,214); 
+            clcT4 = false;
+            panel8.BackColor = Color.FromArgb(36, 36, 39);
+            textBox8.Text = textBox8.Text.TrimStart(); // удаляем пробелы
+            textBox8.Text = textBox8.Text.TrimEnd();
         }
-
-        private void AddF_MouseDown(object sender, MouseEventArgs e)
+        private void textbox8_MouseMove(object sender, MouseEventArgs e)
         {
-            AddF.BackColor = Color.FromArgb(97, 110, 171);
+            if (panel8.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT4 == false)
+                    panel8.BackColor = Color.Black;
         }
-        #endregion
-
-        private void AddF_Click(object sender, EventArgs e) // СОХРАНИТЬ ФАЙЛ
+        private void textbox8_MouseLeave(object sender, EventArgs e)
         {
-            if (openFileDialog1.ShowDialog() == DialogResult.Cancel)
-                return;
-            PathToFile = openFileDialog1.FileName; // получаем путь к выбранному файлу
-            TypeFile = Path.GetExtension(PathToFile); // тип выбранного файла
-            name_fillee = Path.GetFileNameWithoutExtension(openFileDialog1.FileName); // только имя выбранного файла
-            if (name_fillee != "" && name_fillee != null)
+            if (panel8.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT4 == false)
+                    panel8.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        /////////////////////////////////////////////////textBox9.Предмет закупки/////////////////////////////////////////////////////
+        private void textBox9_Enter(object sender, EventArgs e)
+        {
+            clcT5 = true;
+            panel3.BackColor = Color.FromArgb(120, 136, 214);
+        }
+        private void textBox9_Leave(object sender, EventArgs e)
+        {
+            clcT5 = false;
+            panel3.BackColor = Color.FromArgb(36, 36, 39);
+            textBox9.Text = textBox9.Text.TrimStart(); // удаляем пробелы
+            textBox9.Text = textBox9.Text.TrimEnd();
+        }
+        private void textBox9_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (panel3.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT5 == false)
+                    panel3.BackColor = Color.Black;
+        }
+        private void textBox9_MouseLeave(object sender, EventArgs e)
+        {
+            if (panel3.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT5 == false)
+                    panel3.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        /////////////////////////////////////////////////textBox10.Цель закупки/////////////////////////////////////////////////////
+        private void textBox10_Enter(object sender, EventArgs e)
+        {
+            clcT6 = true;
+            panel6.BackColor = Color.FromArgb(120, 136, 214);
+        }
+        private void textBox10_Leave(object sender, EventArgs e)
+        {
+            clcT6 = false;
+            panel6.BackColor = Color.FromArgb(36, 36, 39);
+            textBox10.Text = textBox10.Text.TrimStart(); // удаляем пробелы
+            textBox10.Text = textBox10.Text.TrimEnd();
+        }
+        private void textBox10_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (panel6.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT6 == false)
+                    panel6.BackColor = Color.Black;
+        }
+        private void textBox10_MouseLeave(object sender, EventArgs e)
+        {
+            if (panel6.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT6 == false)
+                    panel6.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        /////////////////////////////////////////////////maskedTextBox1.Контактные данные/////////////////////////////////////////////////////
+        private void maskedTextBox1_Enter(object sender, EventArgs e)
+        {
+            clcT7 = true;
+            panel10.BackColor = Color.FromArgb(120, 136, 214);
+        }
+        private void maskedTextBox1_Leave(object sender, EventArgs e)
+        {
+            clcT7 = false;
+            panel10.BackColor = Color.FromArgb(36, 36, 39);
+            maskedTextBox1.Text = maskedTextBox1.Text.TrimStart(); // удаляем пробелы
+            maskedTextBox1.Text = maskedTextBox1.Text.TrimEnd();
+        }
+        private void maskedTextBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (panel10.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT7 == false)
+                    panel10.BackColor = Color.Black;
+        }
+        private void maskedTextBox1_MouseLeave(object sender, EventArgs e)
+        {
+            if (panel10.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT7 == false)
+                    panel10.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        /////////////////////////////////////////////////textBox12.Перечень товара Работы Услуг закупки/////////////////////////////////////////////////////
+        private void textBox12_Enter(object sender, EventArgs e)
+        {
+            clcT8 = true;
+            panel12.BackColor = Color.FromArgb(120, 136, 214);
+        }
+        private void textBox12_Leave(object sender, EventArgs e)
+        {
+            clcT8 = false;
+            panel12.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        private void textBox12_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (panel12.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT8 == false)
+                    panel12.BackColor = Color.Black;
+        }
+        private void textBox12_MouseLeave(object sender, EventArgs e)
+        {
+            if (panel12.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT8 == false)
+                    panel12.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
             {
-                AddF.Text = Path.GetFileName(openFileDialog1.FileName);
-                AddF.ForeColor = Color.FromArgb(185, 186, 189);
-                AddF.BackColor = Color.FromArgb(114, 128, 198);
+                e.Handled = true;
+                SystemSounds.Beep.Play();
             }
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        #endregion
 
         #region Цвета кнопок Отмена и Добавить
         private void OtmenaB_MouseMove(object sender, MouseEventArgs e)
@@ -910,22 +994,17 @@ namespace Scrum
         private void OtmenaB_Click(object sender, EventArgs e) // Кнопка Отмена
         {
             panelCT.Visible = false;
-            //border_background_panel.BackColor = 
             CreateTaskB.BackColor = Color.FromArgb(32, 34, 37);
             CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
-            panelCT.Visible = false;
             namT.Text = "";
             Срок_исполнения.Text = "";
             textBox1.Text = "";
-            AddF.Text = "Прикрепить файл";
-            AddF.ForeColor = Color.FromArgb(219,220,221); // белый текст
-            AddF.BackColor = Color.FromArgb(120, 136, 214); // фиолетовый фон
         }
 
         private void EnterB_Click(object sender, EventArgs e) // добавить задачу
         {
             panel1.Select();
-            if ((namT.Text != "")  && (textBox1.Text != "") && (Срок_исполнения.MaskFull) && (AddF.Text != "Прикрепить файл"))
+            if ((namT.Text != "") && (textBox8.Text != "") && (textBox9.Text != "") && (textBox10.Text != "") && (Срок_исполнения.MaskFull) && (textBox1.Text != "") && (maskedTextBox1.MaskFull) && (textBox12.Text != ""))
             {
                  NpgsqlConnection con = new NpgsqlConnection(cs);
                  con.Open();
@@ -941,11 +1020,11 @@ namespace Scrum
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
-                }
+                 }
 
                  else 
                  {
-                    NpgsqlCommand da3 = new NpgsqlCommand("create_task", con) //create_task(namet varchar, auser integer, datCmplt date, costT int)
+                    NpgsqlCommand da3 = new NpgsqlCommand("create_task", con) //create_task(namet character varying, auser integer, datcmplt character varying, costt integer, proshuobesp character varying, predmzak character varying, purposezak character varying, telnumber character varying, listzak character varying)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
@@ -956,17 +1035,19 @@ namespace Scrum
                         da3.Parameters.Add("datcmplt", NpgsqlDbType.Varchar, 250).Value = Convert.ToString(Срок_исполнения.Text);
                         textBox1.Text = textBox1.Text.Trim(new char [] {'\u20BD'});
                         da3.Parameters.Add("costt", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox1.Text);
+                        da3.Parameters.Add("proshuobesp", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
+                        da3.Parameters.Add("predmzak", NpgsqlDbType.Varchar, 250).Value = textBox9.Text;
+                        da3.Parameters.Add("purposezak", NpgsqlDbType.Varchar, 250).Value = textBox10.Text;
+                        da3.Parameters.Add("telnumber", NpgsqlDbType.Varchar, 250).Value = maskedTextBox1.Text;
+                        da3.Parameters.Add("listzak", NpgsqlDbType.Varchar, 250).Value = textBox12.Text;
                         Int32 new_task_id = Convert.ToInt32(da3.ExecuteScalar());
                         if (new_task_id != -1) // на всякий случай проверяем добавлена ли задача 
                         {
-                            databaseFilePut(new_task_id, name_fillee, TypeFile, PathToFile); // databaseFilePut(int id_T , string name_fille, string type_fille, string varFilePath) // загрузка любых файлов в БД
-
-                            OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
-
-                            reload_tables_Click(sender, e);
                             MessageBox.Show("Заявка добавлена!");
                         }
                         else MessageBox.Show("Заявка не добавлена!");
+                        OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
+                        reload_tables_Click(sender, e);
                     }
                     catch (NpgsqlException ex) 
                     {
@@ -975,7 +1056,7 @@ namespace Scrum
                         else MessageBox.Show("Непредвиденная ошибка!");
                     }
                     con.Close();
-                }    
+                 }    
             }
             else
             {
@@ -983,7 +1064,18 @@ namespace Scrum
                 {
                     border_background_panel.BackColor = Color.FromArgb(209,73,73);
                 }
-
+                if ((textBox8.Text == ""))
+                {
+                    panel8.BackColor = Color.FromArgb(209, 73, 73);
+                }
+                if ((textBox9.Text == ""))
+                {
+                    panel3.BackColor = Color.FromArgb(209, 73, 73);
+                }
+                if ((textBox10.Text == ""))
+                {
+                    panel6.BackColor = Color.FromArgb(209, 73, 73);
+                }
                 if (!Срок_исполнения.MaskFull)
                 {
                     border_background_panel2.BackColor = Color.FromArgb(209, 73, 73);
@@ -991,6 +1083,14 @@ namespace Scrum
                 if ((textBox1.Text == ""))
                 {
                     border_background_panel3.BackColor = Color.FromArgb(209, 73, 73);
+                }
+                if (!maskedTextBox1.MaskFull)
+                {
+                    panel10.BackColor = Color.FromArgb(209, 73, 73);
+                }
+                if ((textBox12.Text == ""))
+                {
+                    panel12.BackColor = Color.FromArgb(209, 73, 73);
                 }
             }
         }
@@ -1044,6 +1144,7 @@ namespace Scrum
         {
             new_id_for_user.Text = "";
             new_pass_for_user.Text = "";
+            new_fio_for_user.Text = "";
             new_access_for_user.Text = "";
 
             add_user.BackColor = Color.FromArgb(51, 52, 57); 
@@ -1190,6 +1291,7 @@ namespace Scrum
         public bool clcT2_1 = false; 
         public bool clcT2_2 = false;
         public bool clcT2_3 = false;
+        public bool clcT2_4 = false;
         //
         #region new_id_for_user
         private void new_id_for_user_MouseMove(object sender, MouseEventArgs e)
@@ -1219,11 +1321,11 @@ namespace Scrum
             {
                 string str = table_users.Columns[i].HeaderText;
                 if (str == "logn")
-                {
                     table_users.Columns[i].HeaderText = "Логин";
-                }
                 else if (str == "accs")
                     table_users.Columns[i].HeaderText = "Доступ";
+                else if (str == "fioo")
+                    table_users.Columns[i].HeaderText = "ФИО";
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
@@ -1307,6 +1409,33 @@ namespace Scrum
         }
         #endregion
 
+        #region new_pass_for_user
+        private void new_fio_for_user_Enter(object sender, EventArgs e)
+        {
+            clcT2_4 = true;
+            panel14.BackColor = Color.FromArgb(120, 136, 214);
+        }
+        private void new_fio_for_user_Leave(object sender, EventArgs e)
+        {
+            clcT2_4 = false;
+            panel14.BackColor = Color.FromArgb(36, 36, 39);
+            new_fio_for_user.Text = new_fio_for_user.Text.TrimStart(); // удаляем пробелы
+            new_fio_for_user.Text = new_fio_for_user.Text.TrimEnd();
+        }
+        private void new_fio_for_user_MouseLeave(object sender, EventArgs e)
+        {
+            if (panel14.BackColor != Color.FromArgb(209, 73, 73))
+                if (clcT2_4 == false)
+                    panel14.BackColor = Color.FromArgb(36, 36, 39);
+        }
+        private void new_fio_for_user_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (panel14.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
+                if (clcT2_4 == false)
+                    panel14.BackColor = Color.Black;
+        }
+        #endregion
+
         #region new_access_for_user
         private void new_access_for_user_Leave(object sender, EventArgs e)
         {
@@ -1380,12 +1509,10 @@ namespace Scrum
         private void label23_Click(object sender, EventArgs e) // ДОБАВИТЬ НОВОГО ПОЛЬЗОВАТЕЛЯ
         {
             panel1.Select();
-            if ((new_id_for_user.Text != "") && (new_pass_for_user.Text != "") && (new_access_for_user.Text != ""))
+            if ((new_id_for_user.Text != "") && (new_pass_for_user.Text != "") && (new_fio_for_user.Text != "") && (new_access_for_user.Text != ""))
             {
                 NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
-
-
                 NpgsqlCommand da2 = new NpgsqlCommand("select id_u from users where login = @logn", con); // уникально ли имя
                 da2.Parameters.AddWithValue("@logn", login_user.Text);
                 if (da2.ExecuteScalar() != null)
@@ -1398,10 +1525,9 @@ namespace Scrum
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
                 }
-
                 else
                 {
-                    NpgsqlCommand da3 = new NpgsqlCommand("add_usr", con) //add_usr(logn character varying, pas character varying, aces integer, auser integer)
+                    NpgsqlCommand da3 = new NpgsqlCommand("add_usr", con) //add_usr(logn character varying, pas character varying, aces integer, auser integer, in_fio character varying)
                     {
                         CommandType = CommandType.StoredProcedure
                     };
@@ -1409,6 +1535,7 @@ namespace Scrum
                     {
                         da3.Parameters.Add("logn", NpgsqlDbType.Varchar, 250).Value = new_id_for_user.Text;
                         da3.Parameters.Add("pas", NpgsqlDbType.Varchar, 250).Value = new_pass_for_user.Text;
+                        da3.Parameters.Add("in_fio", NpgsqlDbType.Varchar, 250).Value = new_fio_for_user.Text;
                         int access = 4;
                         switch (new_access_for_user.Text)
                         {
@@ -1448,6 +1575,10 @@ namespace Scrum
                 if (new_pass_for_user.Text == "")
                 {
                     border_background_new_pass_for_user.BackColor = Color.FromArgb(209, 73, 73);
+                }
+                if (new_fio_for_user.Text == "")
+                {
+                    panel14.BackColor = Color.FromArgb(209, 73, 73);
                 }
                 if (new_access_for_user.Text == "")
                 {
@@ -2106,5 +2237,7 @@ namespace Scrum
 
 
         #endregion
+
+        
     }
 }

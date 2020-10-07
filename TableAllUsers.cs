@@ -40,6 +40,8 @@ namespace Scrum
                     dataGridView1.Columns[i].HeaderText = "Уровень доступа";
                 else if (str == "pas")
                     dataGridView1.Columns[i].HeaderText = "Пароль";
+                else if (str == "fioo")
+                    dataGridView1.Columns[i].HeaderText = "ФИО";
             }
         }
 

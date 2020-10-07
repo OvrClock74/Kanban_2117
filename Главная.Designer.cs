@@ -114,9 +114,28 @@ namespace Scrum
             this.label26 = new System.Windows.Forms.Label();
             this.del_user_button = new System.Windows.Forms.Label();
             this.panelCT = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.textBox12 = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.panel10 = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.textBox8 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.textBox10 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.textBox9 = new System.Windows.Forms.TextBox();
             this.OtmenaB = new System.Windows.Forms.Label();
             this.EnterB = new System.Windows.Forms.Label();
-            this.AddF = new System.Windows.Forms.Label();
             this.border_background_panel3 = new System.Windows.Forms.Panel();
             this.background_textbox_panel3 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -142,6 +161,11 @@ namespace Scrum
             this.активный_пользователь = new System.Windows.Forms.Label();
             this.panel2 = new Scrum.DoubleBufferedPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.textBox11 = new System.Windows.Forms.TextBox();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.new_fio_for_user = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
@@ -176,6 +200,16 @@ namespace Scrum
             this.border_background_login_user.SuspendLayout();
             this.background_login_user.SuspendLayout();
             this.panelCT.SuspendLayout();
+            this.panel12.SuspendLayout();
+            this.panel11.SuspendLayout();
+            this.panel10.SuspendLayout();
+            this.panel9.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.border_background_panel3.SuspendLayout();
             this.background_textbox_panel3.SuspendLayout();
             this.border_background_panel2.SuspendLayout();
@@ -185,6 +219,8 @@ namespace Scrum
             this.background_form.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.panel13.SuspendLayout();
+            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -325,7 +361,6 @@ namespace Scrum
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -359,7 +394,6 @@ namespace Scrum
             this.dataGridView2.AllowUserToDeleteRows = false;
             this.dataGridView2.AllowUserToResizeColumns = false;
             this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView2.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -393,7 +427,6 @@ namespace Scrum
             this.dataGridView3.AllowUserToDeleteRows = false;
             this.dataGridView3.AllowUserToResizeColumns = false;
             this.dataGridView3.AllowUserToResizeRows = false;
-            this.dataGridView3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView3.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView3.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -427,7 +460,6 @@ namespace Scrum
             this.dataGridView4.AllowUserToDeleteRows = false;
             this.dataGridView4.AllowUserToResizeColumns = false;
             this.dataGridView4.AllowUserToResizeRows = false;
-            this.dataGridView4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView4.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView4.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -461,7 +493,6 @@ namespace Scrum
             this.dataGridView5.AllowUserToDeleteRows = false;
             this.dataGridView5.AllowUserToResizeColumns = false;
             this.dataGridView5.AllowUserToResizeRows = false;
-            this.dataGridView5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView5.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView5.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView5.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -495,7 +526,6 @@ namespace Scrum
             this.dataGridView6.AllowUserToDeleteRows = false;
             this.dataGridView6.AllowUserToResizeColumns = false;
             this.dataGridView6.AllowUserToResizeRows = false;
-            this.dataGridView6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView6.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView6.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView6.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -529,7 +559,6 @@ namespace Scrum
             this.dataGridView7.AllowUserToDeleteRows = false;
             this.dataGridView7.AllowUserToResizeColumns = false;
             this.dataGridView7.AllowUserToResizeRows = false;
-            this.dataGridView7.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView7.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView7.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView7.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -563,7 +592,6 @@ namespace Scrum
             this.dataGridView8.AllowUserToDeleteRows = false;
             this.dataGridView8.AllowUserToResizeColumns = false;
             this.dataGridView8.AllowUserToResizeRows = false;
-            this.dataGridView8.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dataGridView8.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView8.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dataGridView8.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
@@ -705,7 +733,7 @@ namespace Scrum
             this.control_users_panel.Controls.Add(this.show_user);
             this.control_users_panel.Controls.Add(this.delete_user);
             this.control_users_panel.Controls.Add(this.add_user);
-            this.control_users_panel.Location = new System.Drawing.Point(608, 15);
+            this.control_users_panel.Location = new System.Drawing.Point(1102, 17);
             this.control_users_panel.Name = "control_users_panel";
             this.control_users_panel.Size = new System.Drawing.Size(330, 135);
             this.control_users_panel.TabIndex = 12;
@@ -762,6 +790,8 @@ namespace Scrum
             // New_user_form
             // 
             this.New_user_form.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            this.New_user_form.Controls.Add(this.panel14);
+            this.New_user_form.Controls.Add(this.label6);
             this.New_user_form.Controls.Add(this.label32);
             this.New_user_form.Controls.Add(this.label31);
             this.New_user_form.Controls.Add(this.border_background_new_access_for_user);
@@ -774,7 +804,7 @@ namespace Scrum
             this.New_user_form.Controls.Add(this.add_new_user_button);
             this.New_user_form.Location = new System.Drawing.Point(134, 12);
             this.New_user_form.Name = "New_user_form";
-            this.New_user_form.Size = new System.Drawing.Size(442, 523);
+            this.New_user_form.Size = new System.Drawing.Size(442, 622);
             this.New_user_form.TabIndex = 13;
             this.New_user_form.Visible = false;
             this.New_user_form.VisibleChanged += new System.EventHandler(this.New_user_form_VisibleChanged);
@@ -808,7 +838,7 @@ namespace Scrum
             this.border_background_new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
             this.border_background_new_access_for_user.Controls.Add(this.background_access_for_user);
             this.border_background_new_access_for_user.Controls.Add(this.comboBox1);
-            this.border_background_new_access_for_user.Location = new System.Drawing.Point(22, 366);
+            this.border_background_new_access_for_user.Location = new System.Drawing.Point(22, 465);
             this.border_background_new_access_for_user.Name = "border_background_new_access_for_user";
             this.border_background_new_access_for_user.Size = new System.Drawing.Size(399, 39);
             this.border_background_new_access_for_user.TabIndex = 5;
@@ -869,7 +899,7 @@ namespace Scrum
             this.label25.AutoSize = true;
             this.label25.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label25.Location = new System.Drawing.Point(18, 339);
+            this.label25.Location = new System.Drawing.Point(18, 438);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(130, 18);
             this.label25.TabIndex = 6;
@@ -972,7 +1002,7 @@ namespace Scrum
             this.label22.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label22.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label22.ForeColor = System.Drawing.Color.White;
-            this.label22.Location = new System.Drawing.Point(70, 473);
+            this.label22.Location = new System.Drawing.Point(70, 572);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(73, 23);
             this.label22.TabIndex = 0;
@@ -988,7 +1018,7 @@ namespace Scrum
             this.add_new_user_button.Cursor = System.Windows.Forms.Cursors.Hand;
             this.add_new_user_button.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.add_new_user_button.ForeColor = System.Drawing.Color.White;
-            this.add_new_user_button.Location = new System.Drawing.Point(266, 466);
+            this.add_new_user_button.Location = new System.Drawing.Point(266, 565);
             this.add_new_user_button.Name = "add_new_user_button";
             this.add_new_user_button.Size = new System.Drawing.Size(126, 37);
             this.add_new_user_button.TabIndex = 1;
@@ -1003,7 +1033,7 @@ namespace Scrum
             // 
             this.panel_connect_1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(43)))), ((int)(((byte)(47)))));
             this.panel_connect_1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panel_connect_1.Location = new System.Drawing.Point(957, 15);
+            this.panel_connect_1.Location = new System.Drawing.Point(1429, 15);
             this.panel_connect_1.Name = "panel_connect_1";
             this.panel_connect_1.Size = new System.Drawing.Size(442, 45);
             this.panel_connect_1.TabIndex = 13;
@@ -1019,7 +1049,7 @@ namespace Scrum
             this.panel_for_table_users.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.panel_for_table_users.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel_for_table_users.Controls.Add(this.table_users);
-            this.panel_for_table_users.Location = new System.Drawing.Point(1016, 7);
+            this.panel_for_table_users.Location = new System.Drawing.Point(1488, 7);
             this.panel_for_table_users.Name = "panel_for_table_users";
             this.panel_for_table_users.Size = new System.Drawing.Size(271, 47);
             this.panel_for_table_users.TabIndex = 13;
@@ -1077,7 +1107,7 @@ namespace Scrum
             this.admin_pass_enter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
             this.admin_pass_enter.Controls.Add(this.paas);
             this.admin_pass_enter.Controls.Add(this.button_for_pass_admin);
-            this.admin_pass_enter.Location = new System.Drawing.Point(621, 7);
+            this.admin_pass_enter.Location = new System.Drawing.Point(1115, 9);
             this.admin_pass_enter.Name = "admin_pass_enter";
             this.admin_pass_enter.Size = new System.Drawing.Size(330, 86);
             this.admin_pass_enter.TabIndex = 14;
@@ -1119,7 +1149,7 @@ namespace Scrum
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1626, 0);
+            this.pictureBox1.Location = new System.Drawing.Point(1626, 8);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 36);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1131,7 +1161,7 @@ namespace Scrum
             // panel_connect_2
             // 
             this.panel_connect_2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.panel_connect_2.Location = new System.Drawing.Point(971, 7);
+            this.panel_connect_2.Location = new System.Drawing.Point(1443, 7);
             this.panel_connect_2.Name = "panel_connect_2";
             this.panel_connect_2.Size = new System.Drawing.Size(39, 39);
             this.panel_connect_2.TabIndex = 13;
@@ -1143,7 +1173,7 @@ namespace Scrum
             this.reload_tables.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.reload_tables.Cursor = System.Windows.Forms.Cursors.Hand;
             this.reload_tables.Image = ((System.Drawing.Image)(resources.GetObject("reload_tables.Image")));
-            this.reload_tables.Location = new System.Drawing.Point(1626, 0);
+            this.reload_tables.Location = new System.Drawing.Point(1626, 8);
             this.reload_tables.Name = "reload_tables";
             this.reload_tables.Size = new System.Drawing.Size(38, 36);
             this.reload_tables.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1334,9 +1364,18 @@ namespace Scrum
             // panelCT
             // 
             this.panelCT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(52)))), ((int)(((byte)(57)))));
+            this.panelCT.Controls.Add(this.panel12);
+            this.panelCT.Controls.Add(this.label5);
+            this.panelCT.Controls.Add(this.panel10);
+            this.panelCT.Controls.Add(this.label4);
+            this.panelCT.Controls.Add(this.panel8);
+            this.panelCT.Controls.Add(this.label3);
+            this.panelCT.Controls.Add(this.label1);
+            this.panelCT.Controls.Add(this.panel6);
+            this.panelCT.Controls.Add(this.label2);
+            this.panelCT.Controls.Add(this.panel3);
             this.panelCT.Controls.Add(this.OtmenaB);
             this.panelCT.Controls.Add(this.EnterB);
-            this.panelCT.Controls.Add(this.AddF);
             this.panelCT.Controls.Add(this.border_background_panel3);
             this.panelCT.Controls.Add(this.label24);
             this.panelCT.Controls.Add(this.border_background_panel2);
@@ -1345,14 +1384,241 @@ namespace Scrum
             this.panelCT.Controls.Add(this.label20);
             this.panelCT.Controls.Add(this.border_background_panel);
             this.panelCT.Controls.Add(this.label19);
-            this.panelCT.Location = new System.Drawing.Point(152, 0);
+            this.panelCT.Location = new System.Drawing.Point(174, 7);
             this.panelCT.Name = "panelCT";
-            this.panelCT.Size = new System.Drawing.Size(444, 577);
+            this.panelCT.Size = new System.Drawing.Size(744, 849);
             this.panelCT.TabIndex = 14;
             this.panelCT.Visible = false;
             this.panelCT.VisibleChanged += new System.EventHandler(this.panelCT_VisibleChanged);
             this.panelCT.Paint += new System.Windows.Forms.PaintEventHandler(this.panelCT_Paint);
             this.panelCT.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelCT_MouseDown);
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel12.Controls.Add(this.panel11);
+            this.panel12.Location = new System.Drawing.Point(20, 641);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(700, 113);
+            this.panel12.TabIndex = 10;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel11.Controls.Add(this.textBox12);
+            this.panel11.Location = new System.Drawing.Point(1, 1);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(698, 111);
+            this.panel11.TabIndex = 0;
+            // 
+            // textBox12
+            // 
+            this.textBox12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox12.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox12.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox12.Location = new System.Drawing.Point(9, 4);
+            this.textBox12.MaxLength = 171;
+            this.textBox12.Multiline = true;
+            this.textBox12.Name = "textBox12";
+            this.textBox12.Size = new System.Drawing.Size(678, 103);
+            this.textBox12.TabIndex = 0;
+            this.textBox12.Enter += new System.EventHandler(this.textBox12_Enter);
+            this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
+            this.textBox12.Leave += new System.EventHandler(this.textBox12_Leave);
+            this.textBox12.MouseLeave += new System.EventHandler(this.textBox12_MouseLeave);
+            this.textBox12.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox12_MouseMove);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label5.Location = new System.Drawing.Point(16, 618);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(303, 18);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "ПЕРЕЧЕНЬ ТОВАРА / РАБОТЫ / УСЛУГ ЗАКУПКИ";
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel10.Controls.Add(this.panel9);
+            this.panel10.Location = new System.Drawing.Point(20, 565);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(700, 39);
+            this.panel10.TabIndex = 10;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel9.Controls.Add(this.maskedTextBox1);
+            this.panel9.Location = new System.Drawing.Point(1, 1);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(698, 37);
+            this.panel9.TabIndex = 0;
+            // 
+            // maskedTextBox1
+            // 
+            this.maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maskedTextBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.maskedTextBox1.Location = new System.Drawing.Point(15, 4);
+            this.maskedTextBox1.Mask = "+7 (999) 000-00-00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(672, 29);
+            this.maskedTextBox1.TabIndex = 0;
+            this.maskedTextBox1.Enter += new System.EventHandler(this.maskedTextBox1_Enter);
+            this.maskedTextBox1.Leave += new System.EventHandler(this.maskedTextBox1_Leave);
+            this.maskedTextBox1.MouseLeave += new System.EventHandler(this.maskedTextBox1_MouseLeave);
+            this.maskedTextBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.maskedTextBox1_MouseMove);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label4.Location = new System.Drawing.Point(16, 542);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(152, 18);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "КОНТАКТНЫЕ ДАННЫЕ";
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel8.Controls.Add(this.panel7);
+            this.panel8.Location = new System.Drawing.Point(20, 170);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(700, 39);
+            this.panel8.TabIndex = 10;
+            // 
+            // panel7
+            // 
+            this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel7.Controls.Add(this.textBox8);
+            this.panel7.Location = new System.Drawing.Point(1, 1);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(698, 37);
+            this.panel7.TabIndex = 0;
+            // 
+            // textBox8
+            // 
+            this.textBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox8.Location = new System.Drawing.Point(15, 4);
+            this.textBox8.MaxLength = 57;
+            this.textBox8.Name = "textBox8";
+            this.textBox8.Size = new System.Drawing.Size(672, 29);
+            this.textBox8.TabIndex = 0;
+            this.textBox8.Enter += new System.EventHandler(this.textbox8_Enter);
+            this.textBox8.Leave += new System.EventHandler(this.textbox8_Leave);
+            this.textBox8.MouseLeave += new System.EventHandler(this.textbox8_MouseLeave);
+            this.textBox8.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textbox8_MouseMove);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label3.Location = new System.Drawing.Point(16, 147);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 18);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "ПРОШУ ВАС ОБЕСПЕЧИТЬ";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label1.Location = new System.Drawing.Point(16, 228);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(131, 18);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "ПРЕДМЕТ ЗАКУПКИ";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Location = new System.Drawing.Point(20, 329);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(700, 39);
+            this.panel6.TabIndex = 10;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel5.Controls.Add(this.textBox10);
+            this.panel5.Location = new System.Drawing.Point(1, 1);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(698, 37);
+            this.panel5.TabIndex = 0;
+            // 
+            // textBox10
+            // 
+            this.textBox10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox10.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox10.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox10.Location = new System.Drawing.Point(15, 4);
+            this.textBox10.MaxLength = 57;
+            this.textBox10.Name = "textBox10";
+            this.textBox10.Size = new System.Drawing.Size(672, 29);
+            this.textBox10.TabIndex = 0;
+            this.textBox10.Enter += new System.EventHandler(this.textBox10_Enter);
+            this.textBox10.Leave += new System.EventHandler(this.textBox10_Leave);
+            this.textBox10.MouseLeave += new System.EventHandler(this.textBox10_MouseLeave);
+            this.textBox10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox10_MouseMove);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label2.Location = new System.Drawing.Point(16, 306);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(104, 18);
+            this.label2.TabIndex = 6;
+            this.label2.Text = "ЦЕЛЬ ЗАКУПКИ";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Location = new System.Drawing.Point(20, 251);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(700, 39);
+            this.panel3.TabIndex = 10;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel4.Controls.Add(this.textBox9);
+            this.panel4.Location = new System.Drawing.Point(1, 1);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(698, 37);
+            this.panel4.TabIndex = 0;
+            // 
+            // textBox9
+            // 
+            this.textBox9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox9.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox9.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox9.Location = new System.Drawing.Point(15, 4);
+            this.textBox9.MaxLength = 57;
+            this.textBox9.Name = "textBox9";
+            this.textBox9.Size = new System.Drawing.Size(672, 29);
+            this.textBox9.TabIndex = 0;
+            this.textBox9.Enter += new System.EventHandler(this.textBox9_Enter);
+            this.textBox9.Leave += new System.EventHandler(this.textBox9_Leave);
+            this.textBox9.MouseLeave += new System.EventHandler(this.textBox9_MouseLeave);
+            this.textBox9.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox9_MouseMove);
             // 
             // OtmenaB
             // 
@@ -1360,7 +1626,7 @@ namespace Scrum
             this.OtmenaB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.OtmenaB.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.OtmenaB.ForeColor = System.Drawing.Color.White;
-            this.OtmenaB.Location = new System.Drawing.Point(70, 504);
+            this.OtmenaB.Location = new System.Drawing.Point(138, 807);
             this.OtmenaB.Name = "OtmenaB";
             this.OtmenaB.Size = new System.Drawing.Size(73, 23);
             this.OtmenaB.TabIndex = 9;
@@ -1375,9 +1641,9 @@ namespace Scrum
             this.EnterB.Cursor = System.Windows.Forms.Cursors.Hand;
             this.EnterB.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.EnterB.ForeColor = System.Drawing.Color.White;
-            this.EnterB.Location = new System.Drawing.Point(264, 497);
+            this.EnterB.Location = new System.Drawing.Point(456, 800);
             this.EnterB.Name = "EnterB";
-            this.EnterB.Size = new System.Drawing.Size(126, 37);
+            this.EnterB.Size = new System.Drawing.Size(204, 37);
             this.EnterB.TabIndex = 8;
             this.EnterB.Text = "Принять";
             this.EnterB.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -1386,32 +1652,13 @@ namespace Scrum
             this.EnterB.MouseLeave += new System.EventHandler(this.EnterB_MouseLeave);
             this.EnterB.MouseMove += new System.Windows.Forms.MouseEventHandler(this.EnterB_MouseMove);
             // 
-            // AddF
-            // 
-            this.AddF.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.AddF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.AddF.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.AddF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.AddF.Font = new System.Drawing.Font("Calibri", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.AddF.ForeColor = System.Drawing.Color.White;
-            this.AddF.Location = new System.Drawing.Point(23, 387);
-            this.AddF.Name = "AddF";
-            this.AddF.Size = new System.Drawing.Size(399, 39);
-            this.AddF.TabIndex = 3;
-            this.AddF.Text = "Прикрепить файл";
-            this.AddF.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.AddF.Click += new System.EventHandler(this.AddF_Click);
-            this.AddF.MouseDown += new System.Windows.Forms.MouseEventHandler(this.AddF_MouseDown);
-            this.AddF.MouseLeave += new System.EventHandler(this.AddF_MouseLeave);
-            this.AddF.MouseMove += new System.Windows.Forms.MouseEventHandler(this.AddF_MouseMove);
-            // 
             // border_background_panel3
             // 
             this.border_background_panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
             this.border_background_panel3.Controls.Add(this.background_textbox_panel3);
-            this.border_background_panel3.Location = new System.Drawing.Point(22, 312);
+            this.border_background_panel3.Location = new System.Drawing.Point(20, 488);
             this.border_background_panel3.Name = "border_background_panel3";
-            this.border_background_panel3.Size = new System.Drawing.Size(399, 39);
+            this.border_background_panel3.Size = new System.Drawing.Size(700, 39);
             this.border_background_panel3.TabIndex = 5;
             // 
             // background_textbox_panel3
@@ -1420,7 +1667,7 @@ namespace Scrum
             this.background_textbox_panel3.Controls.Add(this.textBox1);
             this.background_textbox_panel3.Location = new System.Drawing.Point(1, 1);
             this.background_textbox_panel3.Name = "background_textbox_panel3";
-            this.background_textbox_panel3.Size = new System.Drawing.Size(397, 37);
+            this.background_textbox_panel3.Size = new System.Drawing.Size(698, 37);
             this.background_textbox_panel3.TabIndex = 4;
             // 
             // textBox1
@@ -1428,12 +1675,12 @@ namespace Scrum
             this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.textBox1.Location = new System.Drawing.Point(15, 6);
-            this.textBox1.MaxLength = 22;
+            this.textBox1.Location = new System.Drawing.Point(15, 4);
+            this.textBox1.MaxLength = 54;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(371, 26);
+            this.textBox1.Size = new System.Drawing.Size(672, 29);
             this.textBox1.TabIndex = 3;
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
@@ -1446,19 +1693,19 @@ namespace Scrum
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label24.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label24.Location = new System.Drawing.Point(18, 283);
+            this.label24.Location = new System.Drawing.Point(16, 465);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(89, 18);
+            this.label24.Size = new System.Drawing.Size(221, 18);
             this.label24.TabIndex = 6;
-            this.label24.Text = "СТОИМОСТЬ";
+            this.label24.Text = "ПРИБЛИЗИТЕЛЬНАЯ СТОИМОСТЬ";
             // 
             // border_background_panel2
             // 
             this.border_background_panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
             this.border_background_panel2.Controls.Add(this.background_textbox_panel2);
-            this.border_background_panel2.Location = new System.Drawing.Point(22, 216);
+            this.border_background_panel2.Location = new System.Drawing.Point(20, 407);
             this.border_background_panel2.Name = "border_background_panel2";
-            this.border_background_panel2.Size = new System.Drawing.Size(399, 39);
+            this.border_background_panel2.Size = new System.Drawing.Size(700, 39);
             this.border_background_panel2.TabIndex = 5;
             // 
             // background_textbox_panel2
@@ -1467,19 +1714,19 @@ namespace Scrum
             this.background_textbox_panel2.Controls.Add(this.Срок_исполнения);
             this.background_textbox_panel2.Location = new System.Drawing.Point(1, 1);
             this.background_textbox_panel2.Name = "background_textbox_panel2";
-            this.background_textbox_panel2.Size = new System.Drawing.Size(397, 37);
+            this.background_textbox_panel2.Size = new System.Drawing.Size(698, 37);
             this.background_textbox_panel2.TabIndex = 4;
             // 
             // Срок_исполнения
             // 
             this.Срок_исполнения.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.Срок_исполнения.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Срок_исполнения.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.Срок_исполнения.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Срок_исполнения.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.Срок_исполнения.Location = new System.Drawing.Point(15, 4);
             this.Срок_исполнения.Mask = "00/00/0000";
             this.Срок_исполнения.Name = "Срок_исполнения";
-            this.Срок_исполнения.Size = new System.Drawing.Size(371, 26);
+            this.Срок_исполнения.Size = new System.Drawing.Size(672, 29);
             this.Срок_исполнения.TabIndex = 2;
             this.Срок_исполнения.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.Срок_исполнения_TypeValidationCompleted);
             this.Срок_исполнения.Enter += new System.EventHandler(this.Срок_исполнения_Enter);
@@ -1492,7 +1739,7 @@ namespace Scrum
             this.label23.AutoSize = true;
             this.label23.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label23.Location = new System.Drawing.Point(18, 187);
+            this.label23.Location = new System.Drawing.Point(16, 384);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(135, 18);
             this.label23.TabIndex = 6;
@@ -1503,7 +1750,7 @@ namespace Scrum
             this.label21.AutoSize = true;
             this.label21.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label21.ForeColor = System.Drawing.Color.White;
-            this.label21.Location = new System.Drawing.Point(127, 38);
+            this.label21.Location = new System.Drawing.Point(278, 36);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(189, 26);
             this.label21.TabIndex = 7;
@@ -1514,7 +1761,7 @@ namespace Scrum
             this.label20.AutoSize = true;
             this.label20.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label20.ForeColor = System.Drawing.Color.White;
-            this.label20.Location = new System.Drawing.Point(109, 15);
+            this.label20.Location = new System.Drawing.Point(259, 13);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(227, 26);
             this.label20.TabIndex = 7;
@@ -1524,9 +1771,9 @@ namespace Scrum
             // 
             this.border_background_panel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
             this.border_background_panel.Controls.Add(this.background_textbox_panel);
-            this.border_background_panel.Location = new System.Drawing.Point(22, 118);
+            this.border_background_panel.Location = new System.Drawing.Point(20, 89);
             this.border_background_panel.Name = "border_background_panel";
-            this.border_background_panel.Size = new System.Drawing.Size(399, 39);
+            this.border_background_panel.Size = new System.Drawing.Size(700, 39);
             this.border_background_panel.TabIndex = 5;
             // 
             // background_textbox_panel
@@ -1535,7 +1782,7 @@ namespace Scrum
             this.background_textbox_panel.Controls.Add(this.namT);
             this.background_textbox_panel.Location = new System.Drawing.Point(1, 1);
             this.background_textbox_panel.Name = "background_textbox_panel";
-            this.background_textbox_panel.Size = new System.Drawing.Size(397, 37);
+            this.background_textbox_panel.Size = new System.Drawing.Size(698, 37);
             this.background_textbox_panel.TabIndex = 4;
             // 
             // namT
@@ -1545,10 +1792,10 @@ namespace Scrum
             this.namT.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.namT.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.namT.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.namT.Location = new System.Drawing.Point(6, 4);
-            this.namT.MaxLength = 32;
+            this.namT.Location = new System.Drawing.Point(15, 4);
+            this.namT.MaxLength = 29;
             this.namT.Name = "namT";
-            this.namT.Size = new System.Drawing.Size(386, 29);
+            this.namT.Size = new System.Drawing.Size(672, 29);
             this.namT.TabIndex = 1;
             this.namT.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.namT.Enter += new System.EventHandler(this.namT_Enter);
@@ -1561,11 +1808,11 @@ namespace Scrum
             this.label19.AutoSize = true;
             this.label19.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label19.Location = new System.Drawing.Point(18, 89);
+            this.label19.Location = new System.Drawing.Point(16, 66);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(85, 18);
+            this.label19.Size = new System.Drawing.Size(76, 18);
             this.label19.TabIndex = 6;
-            this.label19.Text = "ЗАГОЛОВОК";
+            this.label19.Text = "НАЗВАНИЕ";
             // 
             // textBox4
             // 
@@ -1664,7 +1911,7 @@ namespace Scrum
             this.background_form.Controls.Add(this.pictureBox1);
             this.background_form.Location = new System.Drawing.Point(0, 52);
             this.background_form.Name = "background_form";
-            this.background_form.Size = new System.Drawing.Size(1664, 615);
+            this.background_form.Size = new System.Drawing.Size(1664, 858);
             this.background_form.TabIndex = 15;
             // 
             // label38
@@ -1673,7 +1920,7 @@ namespace Scrum
             this.label38.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.label38.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label38.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label38.Location = new System.Drawing.Point(2, 592);
+            this.label38.Location = new System.Drawing.Point(2, 835);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(116, 23);
             this.label38.TabIndex = 13;
@@ -1686,7 +1933,7 @@ namespace Scrum
             this.активный_пользователь.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
             this.активный_пользователь.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.активный_пользователь.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.активный_пользователь.Location = new System.Drawing.Point(1202, 592);
+            this.активный_пользователь.Location = new System.Drawing.Point(1202, 835);
             this.активный_пользователь.Name = "активный_пользователь";
             this.активный_пользователь.Size = new System.Drawing.Size(463, 23);
             this.активный_пользователь.TabIndex = 13;
@@ -1711,7 +1958,7 @@ namespace Scrum
             this.panel2.Controls.Add(this.dataGridView4);
             this.panel2.Location = new System.Drawing.Point(20, 88);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1624, 505);
+            this.panel2.Size = new System.Drawing.Size(1624, 748);
             this.panel2.TabIndex = 12;
             // 
             // pictureBox2
@@ -1725,20 +1972,76 @@ namespace Scrum
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label6.Location = new System.Drawing.Point(18, 339);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 18);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "ФАМИЛИЯ И.О.";
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel13.Controls.Add(this.new_fio_for_user);
+            this.panel13.Location = new System.Drawing.Point(1, 1);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(397, 37);
+            this.panel13.TabIndex = 4;
+            // 
+            // textBox11
+            // 
+            this.textBox11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.textBox11.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox11.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.textBox11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.textBox11.Location = new System.Drawing.Point(15, 6);
+            this.textBox11.MaxLength = 32;
+            this.textBox11.Name = "textBox11";
+            this.textBox11.Size = new System.Drawing.Size(371, 26);
+            this.textBox11.TabIndex = 5;
+            // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel14.Controls.Add(this.panel13);
+            this.panel14.Location = new System.Drawing.Point(22, 366);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(399, 39);
+            this.panel14.TabIndex = 5;
+            // 
+            // new_fio_for_user
+            // 
+            this.new_fio_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.new_fio_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.new_fio_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_fio_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.new_fio_for_user.Location = new System.Drawing.Point(15, 6);
+            this.new_fio_for_user.Name = "new_fio_for_user";
+            this.new_fio_for_user.Size = new System.Drawing.Size(371, 26);
+            this.new_fio_for_user.TabIndex = 0;
+            this.new_fio_for_user.Enter += new System.EventHandler(this.new_fio_for_user_Enter);
+            this.new_fio_for_user.Leave += new System.EventHandler(this.new_fio_for_user_Leave);
+            this.new_fio_for_user.MouseLeave += new System.EventHandler(this.new_fio_for_user_MouseLeave);
+            this.new_fio_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_fio_for_user_MouseMove);
+            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1664, 666);
+            this.ClientSize = new System.Drawing.Size(1664, 909);
             this.Controls.Add(this.New_user_form);
+            this.Controls.Add(this.panelCT);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
             this.Controls.Add(this.admin_pass_enter);
             this.Controls.Add(this.Del_user_form);
-            this.Controls.Add(this.panelCT);
             this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.background_form);
             this.Controls.Add(this.panel1);
@@ -1755,6 +2058,7 @@ namespace Scrum
             this.MinimumSize = new System.Drawing.Size(1212, 629);
             this.Name = "Главная";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "1";
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Главная_MouseDown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).EndInit();
@@ -1799,6 +2103,21 @@ namespace Scrum
             this.background_login_user.PerformLayout();
             this.panelCT.ResumeLayout(false);
             this.panelCT.PerformLayout();
+            this.panel12.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
+            this.panel11.PerformLayout();
+            this.panel10.ResumeLayout(false);
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.border_background_panel3.ResumeLayout(false);
             this.background_textbox_panel3.ResumeLayout(false);
             this.background_textbox_panel3.PerformLayout();
@@ -1812,6 +2131,9 @@ namespace Scrum
             this.background_form.PerformLayout();
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
+            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1851,13 +2173,9 @@ namespace Scrum
         private System.Windows.Forms.TextBox new_pass_for_user;
         private System.Windows.Forms.Panel panel_for_table_users;
         private System.Windows.Forms.DataGridView table_users;
-        private System.Windows.Forms.Label del_u;
-        private System.Windows.Forms.Label ewq;
         private System.Windows.Forms.Label show_user;
         private System.Windows.Forms.Label button_for_pass_admin;
-        private System.Windows.Forms.TextBox pass;
         private System.Windows.Forms.Panel admin_pass_enter;
-        private System.Windows.Forms.TextBox p;
         private System.Windows.Forms.TextBox paas;
         private System.Windows.Forms.PictureBox butn_close;
         private System.Windows.Forms.PictureBox butn_minus2;
@@ -1888,7 +2206,6 @@ namespace Scrum
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.MaskedTextBox Срок_исполнения;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label AddF;
         private System.Windows.Forms.Label EnterB;
         private System.Windows.Forms.Label OtmenaB;
         private System.Windows.Forms.Panel background_id_for_user;
@@ -1908,8 +2225,6 @@ namespace Scrum
         private System.Windows.Forms.Panel background_login_user;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.Panel border_background_admin_pass;
@@ -1927,5 +2242,31 @@ namespace Scrum
         private Label активный_пользователь;
         private Label label38;
         private PictureBox pictureBox2;
+        private Panel panel3;
+        private Panel panel4;
+        private Label label1;
+        private Panel panel6;
+        private Panel panel5;
+        private Label label2;
+        private Panel panel10;
+        private Panel panel9;
+        private Label label4;
+        private Panel panel8;
+        private Panel panel7;
+        private Label label3;
+        private Panel panel12;
+        private Panel panel11;
+        private Label label5;
+        private TextBox textBox8;
+        private TextBox textBox9;
+        private TextBox textBox10;
+        private TextBox textBox12;
+        private MaskedTextBox maskedTextBox1;
+        private Label label6;
+        private Panel panel14;
+        private Panel panel13;
+        private TextBox textBox13;
+        private TextBox textBox11;
+        private TextBox new_fio_for_user;
     }
 }
