@@ -137,7 +137,7 @@ namespace Scrum
             using (Graphics g = e.Graphics)
             {
                 var p = new Pen(Color.FromArgb(63, 64, 68), 1);
-                g.DrawLine(p, new Point(22, 440), new Point(421, 440));
+                g.DrawLine(p, new Point(22, 539), new Point(421, 539));
                 p.Dispose();
                 g.Dispose(); // очищаем память
             }
@@ -153,18 +153,14 @@ namespace Scrum
                 g.Dispose(); // очищаем память
             }
         }
-        private void task_form_Paint(object sender, PaintEventArgs e)
+        private void background_form_Paint(object sender, PaintEventArgs e)
         {
             base.OnPaint(e);
             using (Graphics g = e.Graphics)
             {
-                var p = new Pen(Color.FromArgb(63, 64, 68), 1);
-                var p2 = new Pen(Color.FromArgb(115, 117, 125), 1);
-                g.DrawLine(p2, new Point(9, 70), new Point(371, 70));
-                g.DrawLine(p, new Point(18, 167), new Point(362, 167));
-                g.DrawLine(p, new Point(18, 236), new Point(362, 236));
+                var p = new Pen(Color.FromArgb(12, 14, 17), 1);
+                g.DrawLine(p, new Point(0, 0), new Point(1664, 0));
                 p.Dispose();
-                p2.Dispose();
                 g.Dispose(); // очищаем память
             }
         }
@@ -194,70 +190,77 @@ namespace Scrum
         {
             NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
-
             #region Заполнение таблиц данными 
             //////////////////////////////////////////////////ТАБЛИЦА 1/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da1 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 1", con);
+            NpgsqlDataAdapter da1 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 1 ORDER BY date_create", con);
             ds1.Reset();
             da1.Fill(ds1);
             dt1 = ds1.Tables[0];
             dataGridView1.DataSource = dt1;
+            dataGridView1.Columns[1].Visible = false;
             dataGridView1.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 2/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da2 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 2", con);
+            NpgsqlDataAdapter da2 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 2 ORDER BY date_complete", con);
             ds2.Reset();
             da2.Fill(ds2);
             dt2 = ds2.Tables[0];
             dataGridView2.DataSource = dt2;
+            dataGridView2.Columns[1].Visible = false;
             dataGridView2.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView2.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 3/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da3 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 3", con);
+            NpgsqlDataAdapter da3 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 3 ORDER BY date_complete", con);
             ds3.Reset();
             da3.Fill(ds3);
             dt3 = ds3.Tables[0];
             dataGridView3.DataSource = dt3;
+            dataGridView3.Columns[1].Visible = false;
             dataGridView3.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView3.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 4/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da4 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 4", con);
+            NpgsqlDataAdapter da4 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 4 ORDER BY date_complete", con);
             ds4.Reset();
             da4.Fill(ds4);
             dt4 = ds4.Tables[0];
             dataGridView4.DataSource = dt4;
+            dataGridView4.Columns[1].Visible = false;
             dataGridView4.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView4.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 5/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da5 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 5", con);
+            NpgsqlDataAdapter da5 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 5 ORDER BY date_complete", con);
             ds5.Reset();
             da5.Fill(ds5);
             dt5 = ds5.Tables[0];
             dataGridView5.DataSource = dt5;
+            dataGridView5.Columns[1].Visible = false;
             dataGridView5.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView5.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 6/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da6 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 6", con);
+            NpgsqlDataAdapter da6 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 6 ORDER BY date_complete", con);
             ds6.Reset();
             da6.Fill(ds6);
             dt6 = ds6.Tables[0];
             dataGridView6.DataSource = dt6;
+            dataGridView6.Columns[1].Visible = false;
             dataGridView6.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView6.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 7/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da7 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 7", con);
+            NpgsqlDataAdapter da7 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 7 ORDER BY date_complete", con);
             ds7.Reset();
             da7.Fill(ds7);
             dt7 = ds7.Tables[0];
             dataGridView7.DataSource = dt7;
+            dataGridView7.Columns[1].Visible = false;
             dataGridView7.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView7.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             //////////////////////////////////////////////////ТАБЛИЦА 8/////////////////////////////////////////////////////////////////////
-            NpgsqlDataAdapter da8 = new NpgsqlDataAdapter("SELECT name_t FROM tasks WHERE stage = 8", con);
+            NpgsqlDataAdapter da8 = new NpgsqlDataAdapter("SELECT name_t, date_complete FROM tasks WHERE stage = 8 ORDER BY date_complete", con);
             ds8.Reset();
             da8.Fill(ds8);
             dt8 = ds8.Tables[0];
             dataGridView8.DataSource = dt8;
+            dataGridView8.Columns[1].Visible = false;
             dataGridView8.DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); //цвет не выбранных ячеек 
             dataGridView8.DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);//цвет шрифта на не выбранных ячеек
             #endregion
@@ -302,13 +305,13 @@ namespace Scrum
         private void dataGridView1_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
+            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
             dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
         }
         private void dataGridView1_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.CurrentCell = dataGridView1.Rows[e.RowIndex].Cells[0];
-            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
+            dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
             dataGridView1.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
         }
         #endregion
@@ -326,14 +329,40 @@ namespace Scrum
         private void dataGridView2_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[0];
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView2.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView2.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView2_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView2.CurrentCell = dataGridView2.Rows[e.RowIndex].Cells[0];
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView2.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView2.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView2.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
 
@@ -350,17 +379,43 @@ namespace Scrum
         private void dataGridView3_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[0];
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView3_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView3.CurrentCell = dataGridView3.Rows[e.RowIndex].Cells[0];
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView3.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView3.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
-
+        
         #region Таск из таблицы 4
         private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -374,14 +429,40 @@ namespace Scrum
         private void dataGridView4_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView4.CurrentCell = dataGridView4.Rows[e.RowIndex].Cells[0];
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView4.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView4.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView4_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView4.CurrentCell = dataGridView4.Rows[e.RowIndex].Cells[0];
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView4.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView4.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView4.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
 
@@ -398,14 +479,40 @@ namespace Scrum
         private void dataGridView5_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView5.CurrentCell = dataGridView5.Rows[e.RowIndex].Cells[0];
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView5.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView5.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView5_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView5.CurrentCell = dataGridView5.Rows[e.RowIndex].Cells[0];
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView5.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView5.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView5.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
 
@@ -422,14 +529,40 @@ namespace Scrum
         private void dataGridView6_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView6.CurrentCell = dataGridView6.Rows[e.RowIndex].Cells[0];
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView6.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView6.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView6_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView6.CurrentCell = dataGridView6.Rows[e.RowIndex].Cells[0];
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView6.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView6.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView6.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
 
@@ -446,14 +579,40 @@ namespace Scrum
         private void dataGridView7_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView7.CurrentCell = dataGridView7.Rows[e.RowIndex].Cells[0];
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView7.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView7.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView7_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView7.CurrentCell = dataGridView7.Rows[e.RowIndex].Cells[0];
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView7.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView7.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView7.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
 
@@ -470,14 +629,40 @@ namespace Scrum
         private void dataGridView8_CellMouseEnter(object sender, DataGridViewCellEventArgs e) //ИЗМЕНЕНИЕ ЦВЕТА ПРИ НАВЕДЕНИИ
         {
             dataGridView8.CurrentCell = dataGridView8.Rows[e.RowIndex].Cells[0];
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214);
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            if (dataGridView8.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно красному
+            {
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(187, 66, 67); // темный красный
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else if (dataGridView8.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно желтому
+            {
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(204, 147, 60); // темный желтый
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
+            else
+            {
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(120, 136, 214); // фиолетовый
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void dataGridView8_CellMouseLeave(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView8.CurrentCell = dataGridView8.Rows[e.RowIndex].Cells[0];
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53);
-            dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            if (dataGridView8.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(240, 71, 71)) // если равно темно красному
+            {
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71); // красный
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
+            else if (dataGridView8.Rows[e.RowIndex].DefaultCellStyle.BackColor == Color.FromArgb(250, 166, 26)) // если равно темно желтому
+            {
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26); // желтый
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242);
+            }
+            else
+            {
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionBackColor = Color.FromArgb(47, 49, 53); // серый
+                dataGridView8.Rows[e.RowIndex].DefaultCellStyle.SelectionForeColor = Color.FromArgb(219, 220, 221);
+            }
         }
         #endregion
         #endregion 
@@ -507,6 +692,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView2.Rows)
             {
+                DateTime t = (DateTime)dataGridView2.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView2.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView2.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView2.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView2.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView2.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView2.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView2.Height = height + 4;
@@ -522,6 +721,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView3.Rows)
             {
+                DateTime t = (DateTime)dataGridView3.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView3.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView3.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView3.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView3.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView3.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView3.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView3.Height = height + 4;
@@ -537,6 +750,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView4.Rows)
             {
+                DateTime t = (DateTime)dataGridView4.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView4.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView4.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView4.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView4.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView4.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView4.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView4.Height = height + 4;
@@ -552,6 +779,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView5.Rows)
             {
+                DateTime t = (DateTime)dataGridView5.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView5.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView5.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView5.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView5.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView5.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView5.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView5.Height = height + 4;
@@ -567,6 +808,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView6.Rows)
             {
+                DateTime t = (DateTime)dataGridView6.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView6.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView6.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView6.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView6.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView6.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView6.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView6.Height = height + 4;
@@ -582,6 +837,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView7.Rows)
             {
+                DateTime t = (DateTime)dataGridView7.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView7.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView7.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView7.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView7.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView7.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView7.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView7.Height = height + 4;
@@ -597,6 +866,20 @@ namespace Scrum
             int height = 0;
             foreach (DataGridViewRow dr in dataGridView8.Rows)
             {
+                DateTime t = (DateTime)dataGridView8.Rows[dr.Index].Cells[1].Value;
+                TimeSpan diff1 = t.Subtract(DateTime.Now); // красный или желтый цвет при истечении срока
+                if (diff1.TotalDays <= 7.0)
+                {
+                    dataGridView8.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(240, 71, 71);
+                    dataGridView8.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(240, 71, 71);
+                }
+                else if (diff1.TotalDays <= 30)
+                {
+                    dataGridView8.Rows[dr.Index].DefaultCellStyle.BackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView8.Rows[dr.Index].DefaultCellStyle.SelectionBackColor = Color.FromArgb(250, 166, 26);
+                    dataGridView8.Rows[dr.Index].DefaultCellStyle.SelectionForeColor = Color.FromArgb(240, 240, 242); // серый чуть светлее чем обычно
+                    dataGridView8.Rows[dr.Index].DefaultCellStyle.ForeColor = Color.FromArgb(255, 255, 255);
+                }
                 height += dr.Height;
             }
             dataGridView8.Height = height + 4;
@@ -1329,7 +1612,7 @@ namespace Scrum
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
             
-            panel_connect_2.Location = new Point(border_background_new_id_for_user.Location.X + border_background_new_id_for_user.Width - 3, New_user_form.Location.Y + border_background_new_id_for_user.Location.Y );
+            panel_connect_2.Location = new Point(border_background_new_id_for_user.Location.X + border_background_new_id_for_user.Width + 297, New_user_form.Location.Y + border_background_new_id_for_user.Location.Y );
             panel_connect_2.BringToFront(); // на переднем плане
             panel_for_table_users.BringToFront();
             panel_for_table_users.Location = new Point(panel_connect_2.Location.X + panel_connect_2.Width, panel_connect_2.Location.Y);
@@ -1437,18 +1720,15 @@ namespace Scrum
         #endregion
 
         #region new_access_for_user
-        private void new_access_for_user_Leave(object sender, EventArgs e)
-        {
-            clcT2_3 = false;
-            border_background_new_access_for_user.BackColor = Color.FromArgb(36, 36, 39);
-            new_access_for_user.Text = new_access_for_user.Text.TrimStart(); // удаляем пробелы
-            new_access_for_user.Text = new_access_for_user.Text.TrimEnd();
-        }
         private void new_access_for_user_MouseMove(object sender, MouseEventArgs e)
         {
             if (border_background_new_access_for_user.BackColor != Color.FromArgb(209, 73, 73)) // проверка на красный цвет должна быть везде
                 if (clcT2_3 == false)
                     border_background_new_access_for_user.BackColor = Color.Black;
+        }
+        private void new_access_for_user_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
         }
         private void new_access_for_user_MouseLeave(object sender, EventArgs e)
         {
@@ -1456,11 +1736,15 @@ namespace Scrum
                 if (clcT2_3 == false)
                     border_background_new_access_for_user.BackColor = Color.FromArgb(36, 36, 39);
         }
-        private void new_access_for_user_Enter(object sender, EventArgs e)
+        private void new_access_for_user_Click(object sender, EventArgs e)
         {
             clcT2_3 = true;
             border_background_new_access_for_user.BackColor = Color.FromArgb(120, 136, 214);
-            comboBox1_DropDown(sender, e);
+            comboBox1.Select();
+        }
+        private void comboBox1_Enter(object sender, EventArgs e)
+        {
+            comboBox1.DroppedDown = true;
         }
         private void comboBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1536,7 +1820,7 @@ namespace Scrum
                         da3.Parameters.Add("logn", NpgsqlDbType.Varchar, 250).Value = new_id_for_user.Text;
                         da3.Parameters.Add("pas", NpgsqlDbType.Varchar, 250).Value = new_pass_for_user.Text;
                         da3.Parameters.Add("in_fio", NpgsqlDbType.Varchar, 250).Value = new_fio_for_user.Text;
-                        int access = 4;
+                        int access = 6;
                         switch (new_access_for_user.Text)
                         {
                             case "Завхоз":
@@ -1548,6 +1832,9 @@ namespace Scrum
                             case "Бухгалтер":
                                 access = 3;
                                 break;
+                            case "Зам. директора":
+                                access = 5;
+                            break;
                         }
                         da3.Parameters.Add("aces", NpgsqlDbType.Integer).Value = access;
                         da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
@@ -1707,7 +1994,7 @@ namespace Scrum
             }
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-            panel_connect_2.Location = new Point(border_background_login_user.Location.X + border_background_login_user.Width - 3, Del_user_form.Location.Y + border_background_login_user.Location.Y);
+            panel_connect_2.Location = new Point(border_background_login_user.Location.X + border_background_login_user.Width + 297, Del_user_form.Location.Y + border_background_login_user.Location.Y);
             panel_connect_2.BringToFront(); // на переднем плане
             panel_for_table_users.BringToFront();
             panel_for_table_users.Location = new Point(panel_connect_2.Location.X + panel_connect_2.Width, panel_connect_2.Location.Y);
@@ -2229,11 +2516,6 @@ namespace Scrum
             archive_button.BackColor = Color.FromArgb(58, 60, 65);
             archive_button.ForeColor = Color.FromArgb(255, 255, 255);
         }
-
-
-
-
-
 
 
         #endregion

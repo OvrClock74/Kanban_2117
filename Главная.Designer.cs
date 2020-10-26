@@ -49,7 +49,6 @@ namespace Scrum
             this.butn_plus2 = new System.Windows.Forms.PictureBox();
             this.butn_plus = new System.Windows.Forms.PictureBox();
             this.butn_close = new System.Windows.Forms.PictureBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
@@ -72,6 +71,10 @@ namespace Scrum
             this.delete_user = new System.Windows.Forms.Label();
             this.add_user = new System.Windows.Forms.Label();
             this.New_user_form = new System.Windows.Forms.Panel();
+            this.panel14 = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.new_fio_for_user = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.border_background_new_access_for_user = new System.Windows.Forms.Panel();
@@ -160,19 +163,15 @@ namespace Scrum
             this.label38 = new System.Windows.Forms.Label();
             this.активный_пользователь = new System.Windows.Forms.Label();
             this.panel2 = new Scrum.DoubleBufferedPanel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel13 = new System.Windows.Forms.Panel();
             this.textBox11 = new System.Windows.Forms.TextBox();
-            this.panel14 = new System.Windows.Forms.Panel();
-            this.new_fio_for_user = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_minus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_close)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
@@ -182,6 +181,8 @@ namespace Scrum
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView8)).BeginInit();
             this.control_users_panel.SuspendLayout();
             this.New_user_form.SuspendLayout();
+            this.panel14.SuspendLayout();
+            this.panel13.SuspendLayout();
             this.border_background_new_access_for_user.SuspendLayout();
             this.background_access_for_user.SuspendLayout();
             this.border_background_new_pass_for_user.SuspendLayout();
@@ -218,9 +219,8 @@ namespace Scrum
             this.background_textbox_panel.SuspendLayout();
             this.background_form.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            this.panel13.SuspendLayout();
-            this.panel14.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -262,7 +262,7 @@ namespace Scrum
             this.users_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.users_button.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.users_button.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
-            this.users_button.Location = new System.Drawing.Point(444, 0);
+            this.users_button.Location = new System.Drawing.Point(744, 0);
             this.users_button.Name = "users_button";
             this.users_button.Size = new System.Drawing.Size(330, 30);
             this.users_button.TabIndex = 11;
@@ -282,7 +282,7 @@ namespace Scrum
             this.CreateTaskB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
             this.CreateTaskB.Location = new System.Drawing.Point(0, 0);
             this.CreateTaskB.Name = "CreateTaskB";
-            this.CreateTaskB.Size = new System.Drawing.Size(444, 30);
+            this.CreateTaskB.Size = new System.Drawing.Size(744, 30);
             this.CreateTaskB.TabIndex = 11;
             this.CreateTaskB.Text = "    Создать заявку";
             this.CreateTaskB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -354,39 +354,6 @@ namespace Scrum
             this.butn_close.TabIndex = 0;
             this.butn_close.TabStop = false;
             this.butn_close.MouseMove += new System.Windows.Forms.MouseEventHandler(this.butn_close_MouseMove);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
-            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.ColumnHeadersVisible = false;
-            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
-            this.dataGridView1.Location = new System.Drawing.Point(11, 11);
-            this.dataGridView1.MaximumSize = new System.Drawing.Size(195, 494);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(195, 237);
-            this.dataGridView1.TabIndex = 6;
-            this.dataGridView1.TabStop = false;
-            this.dataGridView1.Text = "dataGridView1";
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
-            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
-            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseLeave);
-            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
             // 
             // dataGridView2
             // 
@@ -811,6 +778,50 @@ namespace Scrum
             this.New_user_form.Paint += new System.Windows.Forms.PaintEventHandler(this.New_user_form_Paint);
             this.New_user_form.MouseDown += new System.Windows.Forms.MouseEventHandler(this.New_user_form_MouseDown);
             // 
+            // panel14
+            // 
+            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
+            this.panel14.Controls.Add(this.panel13);
+            this.panel14.Location = new System.Drawing.Point(22, 366);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(399, 39);
+            this.panel14.TabIndex = 5;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.panel13.Controls.Add(this.new_fio_for_user);
+            this.panel13.Location = new System.Drawing.Point(1, 1);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(397, 37);
+            this.panel13.TabIndex = 4;
+            // 
+            // new_fio_for_user
+            // 
+            this.new_fio_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.new_fio_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.new_fio_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.new_fio_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.new_fio_for_user.Location = new System.Drawing.Point(15, 6);
+            this.new_fio_for_user.Name = "new_fio_for_user";
+            this.new_fio_for_user.Size = new System.Drawing.Size(371, 26);
+            this.new_fio_for_user.TabIndex = 0;
+            this.new_fio_for_user.Enter += new System.EventHandler(this.new_fio_for_user_Enter);
+            this.new_fio_for_user.Leave += new System.EventHandler(this.new_fio_for_user_Leave);
+            this.new_fio_for_user.MouseLeave += new System.EventHandler(this.new_fio_for_user_MouseLeave);
+            this.new_fio_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_fio_for_user_MouseMove);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
+            this.label6.Location = new System.Drawing.Point(18, 339);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(109, 18);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "ФАМИЛИЯ И.О.";
+            // 
             // label32
             // 
             this.label32.AutoSize = true;
@@ -860,6 +871,7 @@ namespace Scrum
             "Оператор"});
             this.new_access_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.new_access_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.new_access_for_user.Cursor = System.Windows.Forms.Cursors.Hand;
             this.new_access_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.new_access_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.new_access_for_user.Location = new System.Drawing.Point(15, 6);
@@ -867,8 +879,8 @@ namespace Scrum
             this.new_access_for_user.Name = "new_access_for_user";
             this.new_access_for_user.Size = new System.Drawing.Size(362, 26);
             this.new_access_for_user.TabIndex = 6;
-            this.new_access_for_user.Enter += new System.EventHandler(this.new_access_for_user_Enter);
-            this.new_access_for_user.Leave += new System.EventHandler(this.new_access_for_user_Leave);
+            this.new_access_for_user.Click += new System.EventHandler(this.new_access_for_user_Click);
+            this.new_access_for_user.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.new_access_for_user_KeyPress);
             this.new_access_for_user.MouseLeave += new System.EventHandler(this.new_access_for_user_MouseLeave);
             this.new_access_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_access_for_user_MouseMove);
             // 
@@ -883,7 +895,8 @@ namespace Scrum
             this.comboBox1.Items.AddRange(new object[] {
             "Завхоз",
             "Контрактник",
-            "Бухгалтер"});
+            "Бухгалтер",
+            "Зам. директора"});
             this.comboBox1.Location = new System.Drawing.Point(1, 1);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(397, 37);
@@ -891,6 +904,7 @@ namespace Scrum
             this.comboBox1.DropDown += new System.EventHandler(this.comboBox1_DropDown);
             this.comboBox1.DropDownClosed += new System.EventHandler(this.comboBox1_DropDownClosed);
             this.comboBox1.TextChanged += new System.EventHandler(this.comboBox1_TextChanged);
+            this.comboBox1.Enter += new System.EventHandler(this.comboBox1_Enter);
             this.comboBox1.MouseLeave += new System.EventHandler(this.comboBox1_MouseLeave);
             this.comboBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.comboBox1_MouseMove);
             // 
@@ -1071,7 +1085,7 @@ namespace Scrum
             this.table_users.EnableHeadersVisualStyles = false;
             this.table_users.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.table_users.Location = new System.Drawing.Point(4, 4);
-            this.table_users.MaximumSize = new System.Drawing.Size(400, 315);
+            this.table_users.MaximumSize = new System.Drawing.Size(400, 480);
             this.table_users.MultiSelect = false;
             this.table_users.Name = "table_users";
             this.table_users.ReadOnly = true;
@@ -1913,6 +1927,7 @@ namespace Scrum
             this.background_form.Name = "background_form";
             this.background_form.Size = new System.Drawing.Size(1664, 858);
             this.background_form.TabIndex = 15;
+            this.background_form.Paint += new System.Windows.Forms.PaintEventHandler(this.background_form_Paint);
             // 
             // label38
             // 
@@ -1924,7 +1939,7 @@ namespace Scrum
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(116, 23);
             this.label38.TabIndex = 13;
-            this.label38.Text = "1.0.0";
+            this.label38.Text = "1.0.1";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // активный_пользователь
@@ -1961,6 +1976,39 @@ namespace Scrum
             this.panel2.Size = new System.Drawing.Size(1624, 748);
             this.panel2.TabIndex = 12;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(60)))), ((int)(((byte)(65)))));
+            this.dataGridView1.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.ColumnHeadersVisible = false;
+            this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
+            this.dataGridView1.Location = new System.Drawing.Point(11, 11);
+            this.dataGridView1.MaximumSize = new System.Drawing.Size(195, 494);
+            this.dataGridView1.MultiSelect = false;
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+            this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.None;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(195, 237);
+            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.TabStop = false;
+            this.dataGridView1.Text = "dataGridView1";
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
+            this.dataGridView1.CellMouseLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseLeave);
+            this.dataGridView1.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dataGridView1_DataBindingComplete);
+            // 
             // pictureBox2
             // 
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
@@ -1971,26 +2019,6 @@ namespace Scrum
             this.pictureBox2.Size = new System.Drawing.Size(190, 39);
             this.pictureBox2.TabIndex = 7;
             this.pictureBox2.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Calibri", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
-            this.label6.Location = new System.Drawing.Point(18, 339);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(109, 18);
-            this.label6.TabIndex = 16;
-            this.label6.Text = "ФАМИЛИЯ И.О.";
-            // 
-            // panel13
-            // 
-            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
-            this.panel13.Controls.Add(this.new_fio_for_user);
-            this.panel13.Location = new System.Drawing.Point(1, 1);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(397, 37);
-            this.panel13.TabIndex = 4;
             // 
             // textBox11
             // 
@@ -2004,30 +2032,6 @@ namespace Scrum
             this.textBox11.Size = new System.Drawing.Size(371, 26);
             this.textBox11.TabIndex = 5;
             // 
-            // panel14
-            // 
-            this.panel14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(39)))));
-            this.panel14.Controls.Add(this.panel13);
-            this.panel14.Location = new System.Drawing.Point(22, 366);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(399, 39);
-            this.panel14.TabIndex = 5;
-            // 
-            // new_fio_for_user
-            // 
-            this.new_fio_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
-            this.new_fio_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.new_fio_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_fio_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.new_fio_for_user.Location = new System.Drawing.Point(15, 6);
-            this.new_fio_for_user.Name = "new_fio_for_user";
-            this.new_fio_for_user.Size = new System.Drawing.Size(371, 26);
-            this.new_fio_for_user.TabIndex = 0;
-            this.new_fio_for_user.Enter += new System.EventHandler(this.new_fio_for_user_Enter);
-            this.new_fio_for_user.Leave += new System.EventHandler(this.new_fio_for_user_Leave);
-            this.new_fio_for_user.MouseLeave += new System.EventHandler(this.new_fio_for_user_MouseLeave);
-            this.new_fio_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_fio_for_user_MouseMove);
-            // 
             // Главная
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -2035,8 +2039,8 @@ namespace Scrum
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 909);
-            this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.panelCT);
+            this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
@@ -2066,7 +2070,6 @@ namespace Scrum
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_plus)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.butn_close)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
@@ -2077,6 +2080,9 @@ namespace Scrum
             this.control_users_panel.ResumeLayout(false);
             this.New_user_form.ResumeLayout(false);
             this.New_user_form.PerformLayout();
+            this.panel14.ResumeLayout(false);
+            this.panel13.ResumeLayout(false);
+            this.panel13.PerformLayout();
             this.border_background_new_access_for_user.ResumeLayout(false);
             this.background_access_for_user.ResumeLayout(false);
             this.background_access_for_user.PerformLayout();
@@ -2130,10 +2136,8 @@ namespace Scrum
             this.background_form.ResumeLayout(false);
             this.background_form.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            this.panel13.ResumeLayout(false);
-            this.panel13.PerformLayout();
-            this.panel14.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -8,8 +8,27 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core.dll">
+      <Guid>2df8d04c-5bfa-101b-bde5-00aa0044de52</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>8</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Word.dll">
+      <Guid>00020905-0000-0000-c000-000000000046</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>7</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="DocumentFormat.OpenXml" Version="2.11.3" />
-    <PackageReference Include="Npgsql" Version="4.1.4" />
+    <PackageReference Include="Npgsql" Version="4.1.5" />
     <PackageReference Include="NPOI" Version="2.5.1" />
     <PackageReference Include="Xamarin.Forms" Version="4.8.0.1364" />
   </ItemGroup>
