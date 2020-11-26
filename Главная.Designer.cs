@@ -235,6 +235,7 @@ namespace Scrum
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1664, 30);
             this.panel1.TabIndex = 5;
+            this.panel1.Click += new System.EventHandler(this.panel1_Click);
             // 
             // archive_button
             // 
@@ -805,7 +806,7 @@ namespace Scrum
             this.new_fio_for_user.Location = new System.Drawing.Point(15, 6);
             this.new_fio_for_user.Name = "new_fio_for_user";
             this.new_fio_for_user.Size = new System.Drawing.Size(371, 26);
-            this.new_fio_for_user.TabIndex = 0;
+            this.new_fio_for_user.TabIndex = 6;
             this.new_fio_for_user.Enter += new System.EventHandler(this.new_fio_for_user_Enter);
             this.new_fio_for_user.Leave += new System.EventHandler(this.new_fio_for_user_Leave);
             this.new_fio_for_user.MouseLeave += new System.EventHandler(this.new_fio_for_user_MouseLeave);
@@ -878,7 +879,7 @@ namespace Scrum
             this.new_access_for_user.MaxLength = 22;
             this.new_access_for_user.Name = "new_access_for_user";
             this.new_access_for_user.Size = new System.Drawing.Size(362, 26);
-            this.new_access_for_user.TabIndex = 6;
+            this.new_access_for_user.TabIndex = 7;
             this.new_access_for_user.Click += new System.EventHandler(this.new_access_for_user_Click);
             this.new_access_for_user.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.new_access_for_user_KeyPress);
             this.new_access_for_user.MouseLeave += new System.EventHandler(this.new_access_for_user_MouseLeave);
@@ -1436,7 +1437,7 @@ namespace Scrum
             this.textBox12.Multiline = true;
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(678, 103);
-            this.textBox12.TabIndex = 0;
+            this.textBox12.TabIndex = 8;
             this.textBox12.Enter += new System.EventHandler(this.textBox12_Enter);
             this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             this.textBox12.Leave += new System.EventHandler(this.textBox12_Leave);
@@ -1482,7 +1483,7 @@ namespace Scrum
             this.maskedTextBox1.Mask = "+7 (999) 000-00-00";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(672, 29);
-            this.maskedTextBox1.TabIndex = 0;
+            this.maskedTextBox1.TabIndex = 7;
             this.maskedTextBox1.Enter += new System.EventHandler(this.maskedTextBox1_Enter);
             this.maskedTextBox1.Leave += new System.EventHandler(this.maskedTextBox1_Leave);
             this.maskedTextBox1.MouseLeave += new System.EventHandler(this.maskedTextBox1_MouseLeave);
@@ -1527,7 +1528,7 @@ namespace Scrum
             this.textBox8.MaxLength = 57;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(672, 29);
-            this.textBox8.TabIndex = 0;
+            this.textBox8.TabIndex = 2;
             this.textBox8.Enter += new System.EventHandler(this.textbox8_Enter);
             this.textBox8.Leave += new System.EventHandler(this.textbox8_Leave);
             this.textBox8.MouseLeave += new System.EventHandler(this.textbox8_MouseLeave);
@@ -1583,7 +1584,7 @@ namespace Scrum
             this.textBox10.MaxLength = 57;
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new System.Drawing.Size(672, 29);
-            this.textBox10.TabIndex = 0;
+            this.textBox10.TabIndex = 4;
             this.textBox10.Enter += new System.EventHandler(this.textBox10_Enter);
             this.textBox10.Leave += new System.EventHandler(this.textBox10_Leave);
             this.textBox10.MouseLeave += new System.EventHandler(this.textBox10_MouseLeave);
@@ -1628,7 +1629,7 @@ namespace Scrum
             this.textBox9.MaxLength = 57;
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new System.Drawing.Size(672, 29);
-            this.textBox9.TabIndex = 0;
+            this.textBox9.TabIndex = 3;
             this.textBox9.Enter += new System.EventHandler(this.textBox9_Enter);
             this.textBox9.Leave += new System.EventHandler(this.textBox9_Leave);
             this.textBox9.MouseLeave += new System.EventHandler(this.textBox9_MouseLeave);
@@ -1695,7 +1696,7 @@ namespace Scrum
             this.textBox1.MaxLength = 54;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(672, 29);
-            this.textBox1.TabIndex = 3;
+            this.textBox1.TabIndex = 6;
             this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
             this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
@@ -1741,7 +1742,7 @@ namespace Scrum
             this.Срок_исполнения.Mask = "00/00/0000";
             this.Срок_исполнения.Name = "Срок_исполнения";
             this.Срок_исполнения.Size = new System.Drawing.Size(672, 29);
-            this.Срок_исполнения.TabIndex = 2;
+            this.Срок_исполнения.TabIndex = 5;
             this.Срок_исполнения.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.Срок_исполнения_TypeValidationCompleted);
             this.Срок_исполнения.Enter += new System.EventHandler(this.Срок_исполнения_Enter);
             this.Срок_исполнения.Leave += new System.EventHandler(this.Срок_исполнения_Leave);
@@ -1913,7 +1914,6 @@ namespace Scrum
             this.background_form.Controls.Add(this.label38);
             this.background_form.Controls.Add(this.активный_пользователь);
             this.background_form.Controls.Add(this.panel2);
-            this.background_form.Controls.Add(this.reload_tables);
             this.background_form.Controls.Add(this.label7);
             this.background_form.Controls.Add(this.label14);
             this.background_form.Controls.Add(this.label8);
@@ -1922,11 +1922,13 @@ namespace Scrum
             this.background_form.Controls.Add(this.label12);
             this.background_form.Controls.Add(this.label10);
             this.background_form.Controls.Add(this.label11);
+            this.background_form.Controls.Add(this.reload_tables);
             this.background_form.Controls.Add(this.pictureBox1);
             this.background_form.Location = new System.Drawing.Point(0, 52);
             this.background_form.Name = "background_form";
             this.background_form.Size = new System.Drawing.Size(1664, 858);
             this.background_form.TabIndex = 15;
+            this.background_form.Click += new System.EventHandler(this.background_form_Click);
             this.background_form.Paint += new System.Windows.Forms.PaintEventHandler(this.background_form_Paint);
             // 
             // label38
@@ -1960,6 +1962,7 @@ namespace Scrum
             this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel2.AutoScroll = true;
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
@@ -1975,6 +1978,7 @@ namespace Scrum
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1624, 748);
             this.panel2.TabIndex = 12;
+            this.panel2.Click += new System.EventHandler(this.panel2_Click);
             // 
             // dataGridView1
             // 
@@ -2039,8 +2043,8 @@ namespace Scrum
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 909);
-            this.Controls.Add(this.panelCT);
             this.Controls.Add(this.New_user_form);
+            this.Controls.Add(this.panelCT);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
@@ -2269,7 +2273,6 @@ namespace Scrum
         private Label label6;
         private Panel panel14;
         private Panel panel13;
-        private TextBox textBox13;
         private TextBox textBox11;
         private TextBox new_fio_for_user;
     }

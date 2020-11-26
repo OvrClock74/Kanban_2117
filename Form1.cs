@@ -1,14 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Npgsql;
 using System.Windows.Forms;
-using NPOI.SS.Formula.Functions;
 
 namespace Scrum
 {
@@ -19,7 +13,8 @@ namespace Scrum
 
         public int W = 0; // сохранить ширину окна для свернуть-развернуть
         public int H = 0; // сохранить высоту окна для свернуть-развернуть
-        public static string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+        //public static string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk"; 
+        public static string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
         public Start()
         {
             InitializeComponent();
@@ -116,7 +111,6 @@ namespace Scrum
         #region Авторизация на кнопку
         private void Вход_Click(object sender, EventArgs e) // Авторизация
         {
-            //var cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
             using NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
             NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
@@ -128,6 +122,7 @@ namespace Scrum
                 Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
                 Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
                 int id = (int)Totalf.ExecuteScalar();
+                con.Close();
                 string user_name = textBox1.Text.Trim();
                 Главная obj = new Главная(id, user_name); // передача id в форму Главная
                 Hide();
@@ -135,11 +130,10 @@ namespace Scrum
             }
             catch (NpgsqlException)
             {
-                textBox1.Text = "";
+                con.Close();
                 textBox2.Text = "";
-                MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.");
+                MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
             }
-            con.Close();
         }
         #endregion
 
@@ -225,5 +219,10 @@ namespace Scrum
         }
         #endregion
 
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            (Application.OpenForms["Start"] as Start).Вход_Click(sender, e);
+        }
     }
 }

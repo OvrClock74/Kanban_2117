@@ -14,7 +14,7 @@ namespace Scrum
     {
         public bool closing = false;
         public int ID_for_show_users;
-        public string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+        public string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
         public TableAllUsers(int id)
         {
             InitializeComponent();

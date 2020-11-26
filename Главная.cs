@@ -1,17 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Text;
 using Npgsql;
 using System.Windows.Forms;
-using NPOI.Util;
 using NpgsqlTypes;
-using System.IO;
 using System.Media;
-using System.Globalization;
-using System.Threading;
 
 namespace Scrum
 {
@@ -28,7 +21,6 @@ namespace Scrum
         public int access_user; // доступ залогиневшегося юзера
         public string C; // значение, что находится в выбираемой ячейке
         public int stage_t; // стадия на которой находится выбранный таск
-
         public bool max_size_from = false; // развернута форма или нет
 
         public int W = 0; // сохранить ширину окна для свернуть-развернуть
@@ -78,7 +70,7 @@ namespace Scrum
         #endregion
         ///////////////////////////////////////////////////
 
-        public static string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk";
+        public static string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
         public Главная(int id, string user_name)
         {
             InitializeComponent();
@@ -681,6 +673,7 @@ namespace Scrum
                 height += dr.Height;
             }
             dataGridView1.Height = height + 3;
+
         }
         private void dataGridView2_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -925,8 +918,12 @@ namespace Scrum
                 clcUs = false;
                 paas.Text = "";
                 admin_pass_enter.Visible = false;
+                show_user.BackColor = Color.FromArgb(51, 52, 57);
+                show_user.ForeColor = Color.FromArgb(185, 186, 189);
             }
             control_users_panel.Visible = false;
+            users_button.BackColor = Color.FromArgb(32, 34, 37);
+            users_button.ForeColor = Color.FromArgb(185, 186, 189);
             //
             if (panelCT.Visible == false)
             {
@@ -945,11 +942,8 @@ namespace Scrum
         #region Цвет кнопки CreateTaskB
         private void CreateTaskB_MouseMove(object sender, MouseEventArgs e)
         {
-            if (panelCT.Visible == false)
-            {
                 CreateTaskB.BackColor = Color.FromArgb(56, 58, 63);
                 CreateTaskB.ForeColor = Color.FromArgb(219, 220, 221);
-            }
         }
         private void CreateTaskB_MouseLeave(object sender, EventArgs e)
         {
@@ -958,14 +952,16 @@ namespace Scrum
                 CreateTaskB.BackColor = Color.FromArgb(32, 34, 37);
                 CreateTaskB.ForeColor = Color.FromArgb(185, 186, 189);
             }
+            else
+            {
+                CreateTaskB.BackColor = Color.FromArgb(45, 47, 51);
+                CreateTaskB.ForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void CreateTaskB_MouseDown(object sender, MouseEventArgs e)
         {
-            if (panelCT.Visible == false)
-            {
                 CreateTaskB.BackColor = Color.FromArgb(58, 60, 65);
                 CreateTaskB.ForeColor = Color.FromArgb(255, 255, 255);
-            }
         }
         #endregion
 
@@ -1071,6 +1067,7 @@ namespace Scrum
         {
             clcT3 = true;
             border_background_panel3.BackColor = Color.FromArgb(120, 136, 214);
+            if (textBox1.Text == "")
             textBox1.Text = "\u20BD"; 
         }
         private void textBox1_Leave(object sender, EventArgs e)
@@ -1098,7 +1095,7 @@ namespace Scrum
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e) // только цифры
         {
             char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 127 && number != 8)
+            if (!Char.IsDigit(number) && number != 8)
             {
                 e.Handled = true;
                 SystemSounds.Beep.Play();
@@ -1282,6 +1279,11 @@ namespace Scrum
             namT.Text = "";
             Срок_исполнения.Text = "";
             textBox1.Text = "";
+            textBox8.Text = "";
+            textBox9.Text = "";
+            textBox10.Text = "";
+            maskedTextBox1.Text = "";
+            textBox12.Text = "";
         }
 
         private void EnterB_Click(object sender, EventArgs e) // добавить задачу
@@ -1296,15 +1298,16 @@ namespace Scrum
                  da2.Parameters.AddWithValue("@name_T", namT.Text);
                  if (da2.ExecuteScalar() != null)
                  {
-                    DialogResult result = MessageBox.Show(
-                          "Данное имя заявки уже существует!\nПожалуйста, придумайте новое название.",
+                    con.Close();
+                    border_background_panel.BackColor = Color.FromArgb(209, 73, 73);
+                    MessageBox.Show(
+                          "Заявка с введённым именем уже существует и в данный момент находится на рассмотрении!\nПожалуйста, придумайте новое название.",
                           "Ошибка!",
                           MessageBoxButtons.OK,
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
                  }
-
                  else 
                  {
                     NpgsqlCommand da3 = new NpgsqlCommand("create_task", con) //create_task(namet character varying, auser integer, datcmplt character varying, costt integer, proshuobesp character varying, predmzak character varying, purposezak character varying, telnumber character varying, listzak character varying)
@@ -1324,19 +1327,22 @@ namespace Scrum
                         da3.Parameters.Add("telnumber", NpgsqlDbType.Varchar, 250).Value = maskedTextBox1.Text;
                         da3.Parameters.Add("listzak", NpgsqlDbType.Varchar, 250).Value = textBox12.Text;
                         Int32 new_task_id = Convert.ToInt32(da3.ExecuteScalar());
+                        con.Close();
                         if (new_task_id != -1) // на всякий случай проверяем добавлена ли задача 
                         {
-                            MessageBox.Show("Заявка добавлена!");
+                            MessageBox.Show("Заявка добавлена!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         }
-                        else MessageBox.Show("Заявка не добавлена!");
+                        else MessageBox.Show("Заявка не добавлена!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
                         reload_tables_Click(sender, e);
                     }
                     catch (NpgsqlException ex) 
                     {
+                        con.Close();
                         if (Convert.ToString(ex.Message) == "P0001: Нет разрешения на добавление задач.")
-                            MessageBox.Show("Нет разрешения на добавление задач!");
-                        else MessageBox.Show("Непредвиденная ошибка!");
+                            MessageBox.Show("Нет разрешения на добавление задач!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        else 
+                            MessageBox.Show("Непредвиденная ошибка!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     con.Close();
                  }    
@@ -1451,12 +1457,8 @@ namespace Scrum
         #region users_button Управление пользователями
         private void users_button_MouseMove(object sender, MouseEventArgs e)
         {
-            if (control_users_panel.Visible == false)
-            {
                 users_button.BackColor = Color.FromArgb(56, 58, 63);
                 users_button.ForeColor = Color.FromArgb(219, 220, 221);
-            }
-            
         }
         private void users_button_MouseLeave(object sender, EventArgs e)
         {
@@ -1465,23 +1467,24 @@ namespace Scrum
                 users_button.BackColor = Color.FromArgb(32, 34, 37);
                 users_button.ForeColor = Color.FromArgb(185, 186, 189);
             }
-            
+            else
+            {
+                users_button.BackColor = Color.FromArgb(45, 47, 51);
+                users_button.ForeColor = Color.FromArgb(255, 255, 255);
+            }
         }
         private void users_button_MouseDown(object sender, MouseEventArgs e)
         {
-            if (control_users_panel.Visible == false)
-            {
                 users_button.BackColor = Color.FromArgb(58, 60, 65);
                 users_button.ForeColor = Color.FromArgb(255, 255, 255);
-            }
-            
         }
         private void users_button_Click(object sender, EventArgs e)
         {
             OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
             if (control_users_panel.Visible == false)
             {
-                users_button.BackColor = Color.FromArgb(32, 34, 37);
+                users_button.ForeColor = Color.FromArgb(255, 255, 255);
+                users_button.BackColor = Color.FromArgb(45, 47, 51);
                 control_users_panel.Location = new Point(users_button.Location.X, panel1.Location.Y + users_button.Height);
                 control_users_panel.Visible = true;
             }
@@ -1493,6 +1496,8 @@ namespace Scrum
                     clcUs = false;
                     paas.Text = "";
                     admin_pass_enter.Visible = false;
+                    show_user.BackColor = Color.FromArgb(51, 52, 57);
+                    show_user.ForeColor = Color.FromArgb(185, 186, 189);
                 }
                 control_users_panel.Visible = false;
             }
@@ -1801,6 +1806,7 @@ namespace Scrum
                 da2.Parameters.AddWithValue("@logn", login_user.Text);
                 if (da2.ExecuteScalar() != null)
                 {
+                    con.Close();
                     DialogResult result = MessageBox.Show(
                           "Введённый логин уже существует!\nПросмотрите таблицу всех пользователей.",
                           "Ошибка!",
@@ -1843,14 +1849,16 @@ namespace Scrum
                         //////////////////////////////КАК КНОПКА НАЗАД/////////////////////////////////
                         label22_Click(sender, e);
                         ///////////////////////////////////////////////////////////////////////////////
-                        MessageBox.Show("Пользователь добавлен!");
+                        con.Close();
+                        MessageBox.Show("Пользователь добавлен!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
                     catch (NpgsqlException ex)
                     {
+                        con.Close();
                         if (Convert.ToString(ex.Message) == "P0001: Нельзя добавить пользователя!")
-                            MessageBox.Show("Нет прав на добавление пользователей!");
+                            MessageBox.Show("Нет прав на добавление пользователей!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        else MessageBox.Show("Неизвестная ошибка!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                     }
-                    con.Close();
                 }
             }
             else
@@ -2065,6 +2073,7 @@ namespace Scrum
 
                     if (da2.ExecuteScalar() == null)
                     {
+                    con.Close();
                     DialogResult result = MessageBox.Show(
                           "Введённого пользователя не существует!\nПросмотрите таблицу всех пользователей.",
                           "Ошибка!",
@@ -2082,6 +2091,7 @@ namespace Scrum
                         {
                         admin_pass.Text = "";
                         border_background_admin_pass.BackColor = Color.FromArgb(209, 73, 73);
+                        con.Close();
                         DialogResult result = MessageBox.Show(
                           "Неверный пароль!\nПовторите попытку.",
                           "Ошибка!",
@@ -2101,7 +2111,7 @@ namespace Scrum
                             MessageBoxOptions.DefaultDesktopOnly);
                             if (result == DialogResult.OK)
                             {
-                            int id_User = (int)da2.ExecuteScalar(); // если введенный логин существует, то берём его айди
+                            Int64 id_User = (Int64)da2.ExecuteScalar(); // если введенный логин существует, то берём его айди
                             NpgsqlCommand da3 = new NpgsqlCommand("del_usr", con) //del_usr(id integer, auser integer)
                             {
                                 CommandType = CommandType.StoredProcedure
@@ -2115,12 +2125,14 @@ namespace Scrum
                                 //////////////////////////////КАК КНОПКА НАЗАД/////////////////////////////////
                                 label22_Click(sender, e);
                                 ///////////////////////////////////////////////////////////////////////////////
-                                MessageBox.Show("Пользователь удален!");
+                                con.Close();
+                                MessageBox.Show("Пользователь удален!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                             }
                             catch (NpgsqlException ex)
                             {
+                                con.Close();
                                 if (Convert.ToString(ex.Message) == "P0001: Удалить нельзя")
-                                    MessageBox.Show("Нет прав на удаление пользователей!");
+                                    MessageBox.Show("Нет прав на удаление пользователей!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                             }
                             con.Close();
                             }
@@ -2235,6 +2247,7 @@ namespace Scrum
             da2.Parameters.Add("@id", NpgsqlDbType.Integer).Value = ID_Main;
             if (da2.ExecuteScalar() == null)
             {
+                con.Close();
                 DialogResult result = MessageBox.Show(
                           "Неверный пароль!\nПовторите попытку.",
                           "Ошибка!",
@@ -2245,6 +2258,7 @@ namespace Scrum
             }
             else
             {
+                con.Close();
                 bool check_open = false;
                 FormCollection fc = Application.OpenForms;
                 foreach (Form frm in fc) // открыта уже форма или нет, чтоб повторно не открывалась
@@ -2266,13 +2280,15 @@ namespace Scrum
                     admin_pass_enter.Visible = false;
                     TableAllUsers obj2 = new TableAllUsers(ID_Main); // передача id в форму Главная
                     obj2.Show();
+                    clcUs = false;
+                    show_user.BackColor = Color.FromArgb(51, 52, 57);
+                    show_user.ForeColor = Color.FromArgb(185, 186, 189);
                 } 
             }
-            con.Close();
         }
         #endregion
         #endregion
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         #region кнопки Закрыть, развернуть, свернуть
         private void butn_close2_Click(object sender, EventArgs e)
@@ -2518,8 +2534,54 @@ namespace Scrum
         }
 
 
+
         #endregion
 
-        
+        #region При клике на пустое место скрывать открытые окна
+        private void panel1_Click(object sender, EventArgs e)
+        {
+            control_users_panel.Visible = false;
+            panelCT.Visible = false;
+            OtmenaB_Click(sender, e);
+            label22_Click(sender, e);
+            clcUs = false;
+            paas.Text = "";
+            admin_pass_enter.Visible = false;
+            show_user.BackColor = Color.FromArgb(51, 52, 57);
+            show_user.ForeColor = Color.FromArgb(185, 186, 189);
+            users_button.BackColor = Color.FromArgb(32, 34, 37);
+            users_button.ForeColor = Color.FromArgb(185, 186, 189);
+        }
+
+        private void background_form_Click(object sender, EventArgs e)
+        {
+            control_users_panel.Visible = false;
+            panelCT.Visible = false;
+            OtmenaB_Click(sender, e);
+            label22_Click(sender, e);
+            clcUs = false;
+            paas.Text = "";
+            admin_pass_enter.Visible = false;
+            show_user.BackColor = Color.FromArgb(51, 52, 57);
+            show_user.ForeColor = Color.FromArgb(185, 186, 189);
+            users_button.BackColor = Color.FromArgb(32, 34, 37);
+            users_button.ForeColor = Color.FromArgb(185, 186, 189);
+        }
+
+        private void panel2_Click(object sender, EventArgs e)
+        {
+            control_users_panel.Visible = false;
+            panelCT.Visible = false;
+            OtmenaB_Click(sender, e);
+            label22_Click(sender, e);
+            clcUs = false;
+            paas.Text = "";
+            admin_pass_enter.Visible = false;
+            show_user.BackColor = Color.FromArgb(51, 52, 57);
+            show_user.ForeColor = Color.FromArgb(185, 186, 189);
+            users_button.BackColor = Color.FromArgb(32, 34, 37);
+            users_button.ForeColor = Color.FromArgb(185, 186, 189);
+        }
+        #endregion
     }
 }

@@ -78,6 +78,7 @@
             this.textBox2.Size = new System.Drawing.Size(333, 29);
             this.textBox2.TabIndex = 2;
             this.textBox2.Enter += new System.EventHandler(this.textBox2_Enter);
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
             this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             this.textBox2.MouseLeave += new System.EventHandler(this.textBox2_MouseLeave);
             this.textBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox2_MouseMove);
