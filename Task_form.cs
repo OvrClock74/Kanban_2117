@@ -18,6 +18,7 @@ namespace Scrum
         public int access_user; // доступ залогиневшегося юзера
         public bool trig = false; // чтобы в первый раз не была красная граница у доп строчек для доп контента
         public bool into = false; // чтобы при первом открытии таблицы пользователей не была выделена ячейка
+        public Int64 id_isp; // ID выбранного исполнитлея (в тот момент, когда нажали по таблице всех исполнителей)
 
         public ToolTip t1 = new ToolTip();
 
@@ -25,23 +26,22 @@ namespace Scrum
         public Task_form(string C1, string name_stage, int stage_t1, int ID_Main1, int acces)
         {
             InitializeComponent();
-            C = C1; 
-            stage_t = stage_t1; 
-            ID_Main = ID_Main1; 
-            access_user = acces; 
-            if (stage_t == 1 && (access_user == 0 || access_user == 1))
-                print_btn.Visible = true; // если первая стадия и админ или завхоз, то есть кнопка PDF
-            if (access_user == 0)
-                deleteTaskB.Visible = true; // если админ, то есть кнопка УДАЛИТЬ ТАСК
+            C = C1;
+            stage_t = stage_t1;
+            ID_Main = ID_Main1;
+            access_user = acces;
+            if (stage_t == 1 && (access_user == 0 || access_user == 1 || access_user == 4 || access_user == 5))
+                print_btn.Visible = true; // если первая стадия и админ или завхоз или директор или зам директора, то есть кнопка PDF
+            if (access_user == 0 || access_user == 4 || access_user == 5)
+                deleteTaskB.Visible = true; // если админ или директор или зам директора, то есть кнопка УДАЛИТЬ ТАСК
             try
             {
                 #region Вывод
                 NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
-                NpgsqlCommand Totalf = new NpgsqlCommand("SELECT (SELECT fio FROM users WHERE id_u = (SELECT autor FROM tasks where name_t = @taskname)), " +
-                    "date_create, date_complete, payment, cost_t, proshu_obesp, predm_zak, purpose_zak, tel_number, list_zak," +
-                    " link_zak, link_kon, registry_num, sum_t, date_duration, ispolnitel " +
-                    "FROM tasks WHERE name_t = @taskname", con);
+                NpgsqlCommand Totalf = new NpgsqlCommand("SELECT (SELECT fio FROM users WHERE id_u = (SELECT autor FROM tasks where name_t = @taskname)), date_create, date_complete, " +
+                    "payment, cost_t, proshu_obesp, predm_zak, purpose_zak, tel_number, list_zak, link_zak, link_kon, registry_num, sum_t, date_duration, fio as fioisp " +
+                    "FROM tasks join users on id_u = tasks.ispolnitel WHERE name_t = @taskname ", con);
                 Totalf.Parameters.AddWithValue("@taskname", C);
                 NpgsqlDataReader reader;
                 using (reader = Totalf.ExecuteReader())
@@ -70,7 +70,7 @@ namespace Scrum
                             linkLabel1.Text = String.Format("{0}", reader["link_kon"]);
 
                         label33.Text = String.Format("{0}", reader["registry_num"]);
-                        label24.Text = String.Format("{0}", reader["ispolnitel"]);
+                        label24.Text = String.Format("{0}", reader["fioisp"]);
 
                         // даты
                         DateTime date = Convert.ToDateTime(reader["date_create"]);
@@ -326,35 +326,51 @@ namespace Scrum
             // 1 и 7 СТАДИИ
             if ((stage_t == 1 || stage_t == 7) && (access_user == 1 || access_user == 0))
             {
-                NpgsqlCommand da3 = new NpgsqlCommand("moving_task_2", con) //moving_task_2(idt integer, auser integer, now_stage_task integer)
+
+                NpgsqlCommand NM = new NpgsqlCommand("SELECT id_u FROM users WHERE id_u = (SELECT autor FROM tasks where name_t = @taskname)", con);
+                NM.Parameters.AddWithValue("@taskname", C);
+                Int32 id_u = Convert.ToInt32(NM.ExecuteScalar());
+
+                // если перемещает тот завхоз, который создал заявку
+                if ((id_u == ID_Main) || access_user == 0)
                 {
-                    CommandType = CommandType.StoredProcedure
-                };
-                try
-                {
-                    da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                    da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                    da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                    string returnedValue = da3.ExecuteScalar().ToString();
-                    con.Close();
-                    (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                    MessageBox.Show(returnedValue);
-                    Close();
-                }
-                catch (NpgsqlException ex)
-                {
-                    con.Close();
-                    if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+                    NpgsqlCommand da3 = new NpgsqlCommand("moving_task_2", con) //moving_task_2(idt integer, auser integer, now_stage_task integer)
                     {
+                        CommandType = CommandType.StoredProcedure
+                    };
+                    try
+                    {
+                        da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
+                        da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
+                        da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
+                        string returnedValue = da3.ExecuteScalar().ToString();
+                        con.Close();
                         (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                        MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        MessageBox.Show(returnedValue);
                         Close();
                     }
-                    else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                        MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
-                    else
-                        MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    catch (NpgsqlException ex)
+                    {
+                        con.Close();
+                        if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+                        {
+                            (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
+                            MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            Close();
+                        }
+                        else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                            MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                        else
+                            MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    }
                 }
+                else
+                {
+                    con.Close();
+                    MessageBox.Show("Не вы являетесь создателем данной заявки!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
+
+
             }
             // 2 СТАДИЯ
             else if (stage_t == 2 && (access_user == 4 || access_user == 5 || access_user == 0))
@@ -414,7 +430,7 @@ namespace Scrum
                             //
                             NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET ispolnitel = @isp WHERE id_t = @idt", con);
                             Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            Totalf.Parameters.Add("@isp", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
+                            Totalf.Parameters.Add("@isp", NpgsqlDbType.Integer).Value = id_isp;
                             Totalf.ExecuteNonQuery();
                             //
                             con.Close();
@@ -447,178 +463,218 @@ namespace Scrum
             // 4 СТАДИЯ
             else if (stage_t == 4 && (access_user == 2 || access_user == 0))
             {
-                panel1.Size = new Size(740, 55);
-                panel1.Location = new Point(0, 562);
-                panel1.Visible = true;
-                label13.Text = "Подтвердить";
-                textBox8.PlaceholderText = "Ссылка на закупку";
-                textBox8.Text = textBox8.Text.Trim();
-                if (trig != false) // если это не первое нажатие, то выполнять всё снизу
-                    if (textBox8.Text != "")
-                    {
 
-                        NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con)
+                NpgsqlCommand ispS = new NpgsqlCommand("SELECT ispolnitel FROM tasks WHERE name_t = @taskname", con);
+                ispS.Parameters.AddWithValue("@taskname", C);
+                Int32 id_isp = Convert.ToInt32(ispS.ExecuteScalar());
+
+                // если перемещает тот исполнитель, которого назначили на эту заявку
+                if ((id_isp == ID_Main) || access_user == 0)
+                {
+                    panel1.Size = new Size(740, 55);
+                    panel1.Location = new Point(0, 562);
+                    panel1.Visible = true;
+                    label13.Text = "Подтвердить";
+                    textBox8.PlaceholderText = "Ссылка на закупку";
+                    textBox8.Text = textBox8.Text.Trim();
+                    if (trig != false) // если это не первое нажатие, то выполнять всё снизу
+                        if (textBox8.Text != "")
                         {
-                            CommandType = CommandType.StoredProcedure
-                        };
-                        try
-                        {
-                            da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                            da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                            string returnedValue = da3.ExecuteScalar().ToString();
-                            // Выскакивающая строка добавляется в бд
-                            NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET link_zak = @link WHERE id_t = @idt", con);
-                            Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            Totalf.Parameters.Add("@link", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
-                            Totalf.ExecuteNonQuery();
-                            //
-                            con.Close();
-                            (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                            MessageBox.Show(returnedValue);
-                            Close();
-                        }
-                        catch (NpgsqlException ex)
-                        {
-                            con.Close();
-                            if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+
+                            NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con)
                             {
+                                CommandType = CommandType.StoredProcedure
+                            };
+                            try
+                            {
+                                da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
+                                da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
+                                da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
+                                string returnedValue = da3.ExecuteScalar().ToString();
+                                // Выскакивающая строка добавляется в бд
+                                NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET link_zak = @link WHERE id_t = @idt", con);
+                                Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
+                                Totalf.Parameters.Add("@link", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
+                                Totalf.ExecuteNonQuery();
+                                //
+                                con.Close();
                                 (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                                MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                MessageBox.Show(returnedValue);
                                 Close();
                             }
-                            else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                                MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
-                            else
-                                MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            catch (NpgsqlException ex)
+                            {
+                                con.Close();
+                                if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+                                {
+                                    (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
+                                    MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    Close();
+                                }
+                                else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                                    MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                else
+                                    MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            }
                         }
-                    }
-                    else
-                    {
-                        panel4.BackColor = Color.FromArgb(209, 73, 73);
-                        SystemSounds.Beep.Play();
-                    }
-                trig = true;
+                        else
+                        {
+                            panel4.BackColor = Color.FromArgb(209, 73, 73);
+                            SystemSounds.Beep.Play();
+                        }
+                    trig = true;
+                }
+                else
+                {
+                    con.Close();
+                    MessageBox.Show("Не вы назначены исполнителем!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
             }
             // 5 СТАДИЯ
             else if (stage_t == 5 && (access_user == 2 || access_user == 0))
             {
-                panel1.Size = new Size(740, 153);
-                panel1.Location = new Point(0, 528);
-                panel1.Visible = true;
-                label13.Text = "Подтвердить";
-                textBox8.PlaceholderText = "Ссылка на контракт";
-                textBox8.Text = textBox8.Text.Trim();
-                textBox10.Text = textBox10.Text.Trim();
-                textBox11.Text = textBox11.Text.Trim();
-                if (trig != false) // если это не первое нажатие, то выполнять всё снизу
-                    if ((textBox8.Text != "") && (textBox10.Text != "") && (textBox11.Text != ""))
-                    {
+                NpgsqlCommand ispS = new NpgsqlCommand("SELECT ispolnitel FROM tasks WHERE name_t = @taskname", con);
+                ispS.Parameters.AddWithValue("@taskname", C);
+                Int32 id_isp = Convert.ToInt32(ispS.ExecuteScalar());
 
-                        NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con)
+                // если перемещает тот исполнитель, которого назначили на эту заявку
+                if ((id_isp == ID_Main) || access_user == 0)
+                {
+                    panel1.Size = new Size(740, 153);
+                    panel1.Location = new Point(0, 528);
+                    panel1.Visible = true;
+                    label13.Text = "Подтвердить";
+                    textBox8.PlaceholderText = "Ссылка на контракт";
+                    textBox8.Text = textBox8.Text.Trim();
+                    textBox10.Text = textBox10.Text.Trim();
+                    textBox11.Text = textBox11.Text.Trim();
+                    if (trig != false) // если это не первое нажатие, то выполнять всё снизу
+                        if ((textBox8.Text != "") && (textBox10.Text != "") && (textBox11.Text != ""))
                         {
-                            CommandType = CommandType.StoredProcedure
-                        };
-                        try
-                        {
-                            da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                            da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                            string returnedValue = da3.ExecuteScalar().ToString();
-                            // Выскакивающая строка добавляется в бд
-                            NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET link_kon = @link, registry_num = @reg, sum_t = @sm WHERE id_t = @idt", con);
-                            Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            Totalf.Parameters.Add("@link", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
-                            Totalf.Parameters.Add("@reg", NpgsqlDbType.Varchar, 250).Value = textBox10.Text;
-                            Totalf.Parameters.Add("@sm", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox11.Text.Trim(new char[] { '\u20BD' }));
-                            Totalf.ExecuteNonQuery();
-                            //
-                            con.Close();
-                            (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                            MessageBox.Show(returnedValue);
-                            Close();
-                        }
-                        catch (NpgsqlException ex)
-                        {
-                            con.Close();
-                            if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+
+                            NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con)
                             {
+                                CommandType = CommandType.StoredProcedure
+                            };
+                            try
+                            {
+                                da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
+                                da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
+                                da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
+                                string returnedValue = da3.ExecuteScalar().ToString();
+                                // Выскакивающая строка добавляется в бд
+                                NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET link_kon = @link, registry_num = @reg, sum_t = @sm WHERE id_t = @idt", con);
+                                Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
+                                Totalf.Parameters.Add("@link", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
+                                Totalf.Parameters.Add("@reg", NpgsqlDbType.Varchar, 250).Value = textBox10.Text;
+                                Totalf.Parameters.Add("@sm", NpgsqlDbType.Integer).Value = Convert.ToInt32(textBox11.Text.Trim(new char[] { '\u20BD' }));
+                                Totalf.ExecuteNonQuery();
+                                //
+                                con.Close();
                                 (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                                MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                MessageBox.Show(returnedValue);
                                 Close();
                             }
-                            else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                                MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
-                            else
-                                MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            catch (NpgsqlException ex)
+                            {
+                                con.Close();
+                                if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+                                {
+                                    (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
+                                    MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    Close();
+                                }
+                                else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                                    MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                else
+                                    MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            }
                         }
-                    }
-                    else
-                    {
-                        if (textBox8.Text == "")
-                            panel4.BackColor = Color.FromArgb(209, 73, 73);
-                        if (textBox10.Text == "")
-                            panel6.BackColor = Color.FromArgb(209, 73, 73);
-                        if (textBox11.Text == "")
-                            panel8.BackColor = Color.FromArgb(209, 73, 73);
-                        SystemSounds.Beep.Play();
-                    }
-                trig = true;
+                        else
+                        {
+                            if (textBox8.Text == "")
+                                panel4.BackColor = Color.FromArgb(209, 73, 73);
+                            if (textBox10.Text == "")
+                                panel6.BackColor = Color.FromArgb(209, 73, 73);
+                            if (textBox11.Text == "")
+                                panel8.BackColor = Color.FromArgb(209, 73, 73);
+                            SystemSounds.Beep.Play();
+                        }
+                    trig = true;
+                }
+                else
+                {
+                    con.Close();
+                    MessageBox.Show("Не вы назначены исполнителем!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                } 
             }
             // 6 СТАДИЯ
             else if (stage_t == 6 && (access_user == 2 || access_user == 0))
             {
-                panel1.Size = new Size(740, 55);
-                panel1.Location = new Point(0, 690);
-                panel1.Visible = true;
-                label13.Text = "Подтвердить";
-                textBox8.PlaceholderText = "Срок действия контракта";
-                textBox8.Text = textBox8.Text.Trim();
-                if (trig != false) // если это не первое нажатие, то выполнять всё снизу
-                    if (textBox8.Text != "")
-                    {
-                        NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con)
+                NpgsqlCommand ispS = new NpgsqlCommand("SELECT ispolnitel FROM tasks WHERE name_t = @taskname", con);
+                ispS.Parameters.AddWithValue("@taskname", C);
+                Int32 id_isp = Convert.ToInt32(ispS.ExecuteScalar());
+
+                // если перемещает тот исполнитель, которого назначили на эту заявку
+                if ((id_isp == ID_Main) || access_user == 0)
+                {
+                    panel1.Size = new Size(740, 55);
+                    panel1.Location = new Point(0, 690);
+                    panel1.Visible = true;
+                    label13.Text = "Подтвердить";
+                    textBox8.PlaceholderText = "Срок действия контракта";
+                    textBox8.Text = textBox8.Text.Trim();
+                    if (trig != false) // если это не первое нажатие, то выполнять всё снизу
+                        if (textBox8.Text != "")
                         {
-                            CommandType = CommandType.StoredProcedure
-                        };
-                        try
-                        {
-                            da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
-                            da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
-                            string returnedValue = da3.ExecuteScalar().ToString();
-                            // Выскакивающая строка добавляется в бд
-                            NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET date_duration = @dt WHERE id_t = @idt", con);
-                            Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
-                            Totalf.Parameters.Add("@dt", NpgsqlDbType.Date).Value = Convert.ToDateTime(textBox8.Text);
-                            Totalf.ExecuteNonQuery();
-                            //
-                            con.Close();
-                            (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                            MessageBox.Show(returnedValue);
-                            Close();
-                        }
-                        catch (NpgsqlException ex)
-                        {
-                            con.Close();
-                            if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+                            NpgsqlCommand da3 = new NpgsqlCommand("moving_task_1", con)
                             {
+                                CommandType = CommandType.StoredProcedure
+                            };
+                            try
+                            {
+                                da3.Parameters.Add("idt", NpgsqlDbType.Integer).Value = new_task_id;
+                                da3.Parameters.Add("auser", NpgsqlDbType.Integer).Value = ID_Main;
+                                da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
+                                string returnedValue = da3.ExecuteScalar().ToString();
+                                // Выскакивающая строка добавляется в бд
+                                NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET date_duration = @dt WHERE id_t = @idt", con);
+                                Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
+                                Totalf.Parameters.Add("@dt", NpgsqlDbType.Date).Value = Convert.ToDateTime(textBox8.Text);
+                                Totalf.ExecuteNonQuery();
+                                //
+                                con.Close();
                                 (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
-                                MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                MessageBox.Show(returnedValue);
                                 Close();
                             }
-                            else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
-                                MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
-                            else
-                                MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            catch (NpgsqlException ex)
+                            {
+                                con.Close();
+                                if (Convert.ToString(ex.Message) == "P0001: Информация устарела! Пожалуйста, обновите таблицы.")
+                                {
+                                    (Application.OpenForms["Главная"] as Главная).reload_tables_Click(sender, e); // вызов метода из другой формы
+                                    MessageBox.Show("Информация устарела!\nТаблицы обновлены в соответствии с текущим статусом заявок.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    Close();
+                                }
+                                else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                                    MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                else
+                                    MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            }
                         }
-                    }
-                    else
-                    {
-                        panel4.BackColor = Color.FromArgb(209, 73, 73);
-                        SystemSounds.Beep.Play();
-                    }
-                trig = true;
+                        else
+                        {
+                            panel4.BackColor = Color.FromArgb(209, 73, 73);
+                            SystemSounds.Beep.Play();
+                        }
+                    trig = true;
+                }
+                else
+                {
+                    con.Close();
+                    MessageBox.Show("Не вы назначены исполнителем!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                } 
             }
             // 8 СТАДИЯ
             else if (stage_t == 8 && (access_user == 3 || access_user == 0))
@@ -672,7 +728,7 @@ namespace Scrum
             {
                 con.Close();
                 MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
-            }    
+            }
             con.Close();
         }
         #endregion
@@ -755,6 +811,7 @@ namespace Scrum
                 //////////////////////////////////////////ТАБЛИЦА ВСЕХ ЮЗЕРОВ//////////////////////////////////////////////
                 NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
+
                 NpgsqlDataReader reader;
                 NpgsqlCommand daT = new NpgsqlCommand("Select * from users_ispolniteli(@auser)", con);
                 daT.Parameters.Add("@auser", NpgsqlDbType.Integer).Value = ID_Main;
@@ -762,7 +819,9 @@ namespace Scrum
                 reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
                 dt.Load(reader);
                 table_users.DataSource = dt;
+                table_users.Columns[2].Visible = false;
                 reader.Close();
+
                 con.Close();
                 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 panel11.BringToFront();
@@ -1036,7 +1095,7 @@ namespace Scrum
             }
             table_users.Height = height;
             if (into == false)
-            this.table_users.ClearSelection();
+                this.table_users.ClearSelection();
             into = true;
             panel11.Location = new Point(21, panel1.Location.Y + 8 - panel11.Height);
         }
@@ -1044,6 +1103,7 @@ namespace Scrum
         private void table_users_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             textBox8.Text = (string)table_users.Rows[e.RowIndex].Cells[0].Value;
+            id_isp = (Int64)table_users.Rows[e.RowIndex].Cells[2].Value;
             panel11.Visible = false;
         }
         #endregion
@@ -1159,7 +1219,7 @@ namespace Scrum
         }
 
         #region deleteTaskB Удаление таска
-        private void deleteTaskB_Click(object sender, EventArgs e) 
+        private void deleteTaskB_Click(object sender, EventArgs e)
         {
             DialogResult result = MessageBox.Show(
                             "Удаление заявки - необратимый процесс! Данная заявка удалится без возможности восстановления.\n\nВы уверены?\n\n",
