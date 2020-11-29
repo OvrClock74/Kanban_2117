@@ -16,8 +16,7 @@ namespace Scrum
             NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf");
             con.Open();
             NpgsqlDataReader reader;
-            NpgsqlCommand daT = new NpgsqlCommand("Select date_archiving, name_t, registry_num, link_kon, (select login from users where id_u = autor), ispolnitel," +
-                " sum_t, date_create, date_complete, date_duration from tasks_archive ORDER BY date_archiving DESC", con); // DESC - сортировка по убыванию
+            NpgsqlCommand daT = new NpgsqlCommand("Select date_archiving, name_t, registry_num, link_kon, (select login from users where id_u = autor), fio, sum_t, date_create, date_complete, date_duration from tasks_archive join users on id_u = tasks_archive.ispolnitel ORDER BY date_archiving DESC", con); // DESC - сортировка по убыванию
             DataTable dt = new DataTable();  
             reader = daT.ExecuteReader(CommandBehavior.CloseConnection);
             dt.Load(reader);
@@ -38,7 +37,7 @@ namespace Scrum
                     dataGridView1.Columns[i].HeaderText = "Ссылка контракта";
                 else if (str == "login")
                     dataGridView1.Columns[i].HeaderText = "Добавил";
-                else if (str == "ispolnitel")
+                else if (str == "fio")
                     dataGridView1.Columns[i].HeaderText = "Исполнитель";
                 else if (str == "sum_t")
                     dataGridView1.Columns[i].HeaderText = "Сумма";

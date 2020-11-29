@@ -45,7 +45,7 @@
             this.Пароль = new System.Windows.Forms.Label();
             this.border_background_panel2 = new System.Windows.Forms.Panel();
             this.background_textbox_panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.border_background_panel = new System.Windows.Forms.Panel();
             this.background_textbox_panel = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -210,25 +210,25 @@
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Calibri", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
-            this.label2.Location = new System.Drawing.Point(41, 76);
+            this.label2.Location = new System.Drawing.Point(0, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(340, 24);
+            this.label2.Size = new System.Drawing.Size(416, 52);
             this.label2.TabIndex = 8;
             this.label2.Text = "Авторизируйтесь, чтобы продолжить";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Calibri", 18.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(107, 37);
+            this.label1.Location = new System.Drawing.Point(0, 37);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 31);
+            this.label1.Size = new System.Drawing.Size(416, 31);
             this.label1.TabIndex = 7;
             this.label1.Text = "С возвращением!";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Логин
             // 
@@ -264,30 +264,28 @@
             // background_textbox_panel2
             // 
             this.background_textbox_panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
-            this.background_textbox_panel2.Controls.Add(this.textBox1);
+            this.background_textbox_panel2.Controls.Add(this.maskedTextBox1);
             this.background_textbox_panel2.Location = new System.Drawing.Point(1, 1);
             this.background_textbox_panel2.Name = "background_textbox_panel2";
             this.background_textbox_panel2.Size = new System.Drawing.Size(350, 37);
             this.background_textbox_panel2.TabIndex = 4;
             // 
-            // textBox1
+            // maskedTextBox1
             // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.textBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.textBox1.Location = new System.Drawing.Point(15, 4);
-            this.textBox1.MaxLength = 64;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(333, 29);
-            this.textBox1.TabIndex = 2;
-            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
-            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
-            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
-            this.textBox1.MouseLeave += new System.EventHandler(this.textBox1_MouseLeave);
-            this.textBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseMove);
+            this.maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(53)))), ((int)(((byte)(54)))), ((int)(((byte)(60)))));
+            this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maskedTextBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.maskedTextBox1.Location = new System.Drawing.Point(15, 4);
+            this.maskedTextBox1.Mask = "+7 (999) 000-00-00";
+            this.maskedTextBox1.Name = "maskedTextBox1";
+            this.maskedTextBox1.Size = new System.Drawing.Size(333, 29);
+            this.maskedTextBox1.TabIndex = 9;
+            this.maskedTextBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.maskedTextBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
+            this.maskedTextBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.maskedTextBox1.MouseLeave += new System.EventHandler(this.textBox1_MouseLeave);
+            this.maskedTextBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox1_MouseMove);
             // 
             // border_background_panel
             // 
@@ -328,7 +326,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(116, 23);
             this.label3.TabIndex = 13;
-            this.label3.Text = "1.0.1";
+            this.label3.Text = "1.0.2";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // Start
@@ -388,7 +386,6 @@
         private System.Windows.Forms.PictureBox butn_plus2;
         private System.Windows.Forms.PictureBox butn_close2;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Panel border_background_panel;
         private System.Windows.Forms.Panel background_textbox_panel;
         private System.Windows.Forms.Panel border_background_panel2;
@@ -399,6 +396,7 @@
         private System.Windows.Forms.Label Логин;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.MaskedTextBox maskedTextBox1;
     }
 }
 

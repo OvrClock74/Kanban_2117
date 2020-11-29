@@ -1041,6 +1041,7 @@ namespace Scrum
         {
             clcT2 = true;
             border_background_panel2.BackColor = Color.FromArgb(120, 136, 214);
+            Срок_исполнения.ForeColor = Color.FromArgb(219, 220, 221);
             this.BeginInvoke((MethodInvoker)delegate ()
             {
                 Срок_исполнения.Select(0, 0);
@@ -1055,6 +1056,7 @@ namespace Scrum
             else Срок_исполнения.ValidatingType = typeof(DateTime);
             clcT2 = false;
             border_background_panel2.BackColor = Color.FromArgb(36, 36, 39);
+            Срок_исполнения.ForeColor = Color.FromArgb(185, 186, 189);
         }
         private void Срок_исполнения_MouseMove(object sender, MouseEventArgs e)
         {
@@ -1189,11 +1191,18 @@ namespace Scrum
         {
             clcT7 = true;
             panel10.BackColor = Color.FromArgb(120, 136, 214);
+            maskedTextBox1.ForeColor = Color.FromArgb(219, 220, 221);
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                maskedTextBox1.Select(4, 0);
+            });
         }
         private void maskedTextBox1_Leave(object sender, EventArgs e)
         {
             clcT7 = false;
             panel10.BackColor = Color.FromArgb(36, 36, 39);
+            if (!maskedTextBox1.MaskFull)
+                maskedTextBox1.ForeColor = Color.FromArgb(185, 186, 189);
             maskedTextBox1.Text = maskedTextBox1.Text.TrimStart(); // удаляем пробелы
             maskedTextBox1.Text = maskedTextBox1.Text.TrimEnd();
         }
@@ -1431,7 +1440,7 @@ namespace Scrum
         }
         private void label22_Click(object sender, EventArgs e)
         {
-            new_id_for_user.Text = "";
+            maskedTextBox2.Text = "";
             new_pass_for_user.Text = "";
             new_fio_for_user.Text = "";
             new_access_for_user.Text = "";
@@ -1441,7 +1450,7 @@ namespace Scrum
             New_user_form.Visible = false;
             clcU = false;
             //////////////////////////////////////////////////////////////////////////////
-            login_user.Text = "";
+            maskedTextBox3.Text = "";
             admin_pass.Text = "";
 
             delete_user.BackColor = Color.FromArgb(51, 52, 57); 
@@ -1592,6 +1601,11 @@ namespace Scrum
         {
             clcT2_1 = true;
             border_background_new_id_for_user.BackColor = Color.FromArgb(120, 136, 214);
+            maskedTextBox2.ForeColor = Color.FromArgb(219, 220, 221);
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                maskedTextBox2.Select(4, 0);
+            });
             //////////////////////////////////////////ТАБЛИЦА ВСЕХ ЮЗЕРОВ//////////////////////////////////////////////
             NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
@@ -1657,8 +1671,9 @@ namespace Scrum
         {
             clcT2_1 = false;
             border_background_new_id_for_user.BackColor = Color.FromArgb(36, 36, 39);
-            new_id_for_user.Text = new_id_for_user.Text.TrimStart(); // удаляем пробелы
-            new_id_for_user.Text = new_id_for_user.Text.TrimEnd();
+            if (!maskedTextBox2.MaskFull)
+                maskedTextBox2.ForeColor = Color.FromArgb(185, 186, 189); 
+            maskedTextBox2.Text = maskedTextBox2.Text.Trim(); // удаляем пробелы
                 panel_connect_2.Visible = false;
                 panel_for_table_users.Visible = false;
         }
@@ -1798,12 +1813,12 @@ namespace Scrum
         private void label23_Click(object sender, EventArgs e) // ДОБАВИТЬ НОВОГО ПОЛЬЗОВАТЕЛЯ
         {
             panel1.Select();
-            if ((new_id_for_user.Text != "") && (new_pass_for_user.Text != "") && (new_fio_for_user.Text != "") && (new_access_for_user.Text != ""))
+            if ((maskedTextBox2.MaskFull) && (new_pass_for_user.Text != "") && (new_fio_for_user.Text != "") && (new_access_for_user.Text != ""))
             {
                 NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
                 NpgsqlCommand da2 = new NpgsqlCommand("select id_u from users where login = @logn", con); // уникально ли имя
-                da2.Parameters.AddWithValue("@logn", login_user.Text);
+                da2.Parameters.AddWithValue("@logn", maskedTextBox2.Text);
                 if (da2.ExecuteScalar() != null)
                 {
                     con.Close();
@@ -1823,7 +1838,7 @@ namespace Scrum
                     };
                     try
                     {
-                        da3.Parameters.Add("logn", NpgsqlDbType.Varchar, 250).Value = new_id_for_user.Text;
+                        da3.Parameters.Add("logn", NpgsqlDbType.Varchar, 250).Value = maskedTextBox2.Text;
                         da3.Parameters.Add("pas", NpgsqlDbType.Varchar, 250).Value = new_pass_for_user.Text;
                         da3.Parameters.Add("in_fio", NpgsqlDbType.Varchar, 250).Value = new_fio_for_user.Text;
                         int access = 6;
@@ -1863,7 +1878,7 @@ namespace Scrum
             }
             else
             {
-                if (new_id_for_user.Text == "")
+                if (!maskedTextBox2.MaskFull)
                 {
                     border_background_new_id_for_user.BackColor = Color.FromArgb(209, 73, 73);
                 }
@@ -1977,6 +1992,11 @@ namespace Scrum
         {
             clcT3_1 = true;
             border_background_login_user.BackColor = Color.FromArgb(120, 136, 214);
+            maskedTextBox3.ForeColor = Color.FromArgb(219, 220, 221);
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                maskedTextBox3.Select(4, 0);
+            });
             //////////////////////////////////////////ТАБЛИЦА ВСЕХ ЮЗЕРОВ//////////////////////////////////////////////
             NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
@@ -2013,8 +2033,9 @@ namespace Scrum
         {
             clcT3_1 = false;
             border_background_login_user.BackColor = Color.FromArgb(36, 36, 39);
-            login_user.Text = login_user.Text.TrimStart(); // удаляем пробелы
-            login_user.Text = login_user.Text.TrimEnd();
+            if (!maskedTextBox3.MaskFull)
+                maskedTextBox3.ForeColor = Color.FromArgb(185, 186, 189);
+            maskedTextBox3.Text = maskedTextBox3.Text.Trim(); // удаляем пробелы
             panel_connect_2.Visible = false;
             panel_for_table_users.Visible = false;
         }
@@ -2063,13 +2084,13 @@ namespace Scrum
         private void del_user_button_Click(object sender, EventArgs e) // УДАЛИТЬ ПОЛЬЗОВАТЕЛЯ
         {
                 panel1.Select();
-                if ((login_user.Text != "") && (admin_pass.Text != ""))
+                if ((maskedTextBox3.MaskFull) && (admin_pass.Text != ""))
                 {
                     NpgsqlConnection con = new NpgsqlConnection(cs);
                     con.Open();
 
                     NpgsqlCommand da2 = new NpgsqlCommand("select id_u from users where login = @logn", con); // уникально ли имя
-                    da2.Parameters.AddWithValue("@logn", login_user.Text);
+                    da2.Parameters.AddWithValue("@logn", maskedTextBox3.Text);
 
                     if (da2.ExecuteScalar() == null)
                     {
@@ -2141,7 +2162,7 @@ namespace Scrum
                 }
                 else
                 {
-                    if (login_user.Text == "")
+                    if (!maskedTextBox3.MaskFull)
                     {
                         border_background_login_user.BackColor = Color.FromArgb(209, 73, 73);
                     }

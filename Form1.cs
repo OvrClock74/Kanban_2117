@@ -13,6 +13,7 @@ namespace Scrum
 
         public int W = 0; // сохранить ширину окна для свернуть-развернуть
         public int H = 0; // сохранить высоту окна для свернуть-развернуть
+        public bool tecW = false; // проводятся ли технические работы
         //public static string cs = "Host=localhost;Username=postgres;Password=ybccfy;Database=scrumdesk"; 
         public static string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
         public Start()
@@ -24,7 +25,6 @@ namespace Scrum
         private void Start_Load(object sender, EventArgs e)
         {
             ActiveControl = null;
-           
         }
 
         #region ТекстБокс ЛОГИН и ПАРОЛЬ
@@ -37,6 +37,11 @@ namespace Scrum
         {
             clcT1 = true;
             border_background_panel2.BackColor = Color.FromArgb(120, 136, 214);
+            maskedTextBox1.ForeColor = Color.FromArgb(219, 220, 221);
+            this.BeginInvoke((MethodInvoker)delegate ()
+            {
+                maskedTextBox1.Select(4, 0);
+            });
         }
         private void textBox1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -52,8 +57,9 @@ namespace Scrum
         {
             clcT1 = false;
             border_background_panel2.BackColor = Color.FromArgb(40, 41, 44);
-            textBox1.Text = textBox1.Text.TrimStart(); // удаляем пробелы
-            textBox1.Text = textBox1.Text.TrimEnd();
+            if (!maskedTextBox1.MaskFull)
+                maskedTextBox1.ForeColor = Color.FromArgb(185, 186, 189);
+            maskedTextBox1.Text = maskedTextBox1.Text.Trim(); // удаляем пробелы
         }
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
@@ -94,17 +100,20 @@ namespace Scrum
         #region Цвет кнопки ВХОД
         private void Вход_MouseMove(object sender, MouseEventArgs e)
         {
+            if (tecW != true)
             Вход.BackColor = Color.FromArgb(109,122,193);
         }
 
         private void Вход_MouseLeave(object sender, EventArgs e)
         {
-            Вход.BackColor = Color.FromArgb(120,136,214);
+            if (tecW != true)
+                Вход.BackColor = Color.FromArgb(120,136,214);
         }
 
         private void Вход_MouseDown(object sender, MouseEventArgs e)
         {
-            Вход.BackColor = Color.FromArgb(97,110,171);
+            if (tecW != true)
+                Вход.BackColor = Color.FromArgb(97,110,171);
         }
         #endregion
 
@@ -113,26 +122,46 @@ namespace Scrum
         {
             using NpgsqlConnection con = new NpgsqlConnection(cs);
             con.Open();
-            NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
+
+            NpgsqlCommand tec_works = new NpgsqlCommand("select working from tec_work", con);
+            bool works = (bool)tec_works.ExecuteScalar();
+            if (works == false)
             {
-                CommandType = CommandType.StoredProcedure
-            };
-            try
-            {
-                Totalf.Parameters.AddWithValue("logn", textBox1.Text.Trim());
-                Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
-                int id = (int)Totalf.ExecuteScalar();
-                con.Close();
-                string user_name = textBox1.Text.Trim();
-                Главная obj = new Главная(id, user_name); // передача id в форму Главная
-                Hide();
-                obj.Show();
+                NpgsqlCommand Totalf = new NpgsqlCommand("login", con)
+                {
+                    CommandType = CommandType.StoredProcedure
+                };
+                try
+                {
+                    Totalf.Parameters.AddWithValue("logn", maskedTextBox1.Text);
+                    Totalf.Parameters.AddWithValue("pas", textBox2.Text.Trim());
+                    int id = (int)Totalf.ExecuteScalar();
+                    con.Close();
+                    string user_name = maskedTextBox1.Text;
+                    Главная obj = new Главная(id, user_name); // передача id в форму Главная
+                    Hide();
+                    obj.Show();
+                }
+                catch (NpgsqlException)
+                {
+                    con.Close();
+                    textBox2.Text = "";
+                    MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                }
             }
-            catch (NpgsqlException)
+            else
             {
                 con.Close();
-                textBox2.Text = "";
-                MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                tecW = true;
+                label1.Text = "!ВНИМАНИЕ!";
+                label2.Text = "НА СЕРВЕРЕ ПРОВОДЯТСЯ\nТЕХНИЧЕСКИЕ РАБОТЫ";
+                maskedTextBox1.Enabled = false;
+                textBox2.Enabled = false;
+                label1.ForeColor = Color.Red;
+                label2.ForeColor = Color.Red;
+                Вход.BackColor = Color.FromArgb(67,80,141) ;
+                Вход.ForeColor = Color.FromArgb(142, 145, 150);
+                Вход.Enabled = false;
             }
         }
         #endregion

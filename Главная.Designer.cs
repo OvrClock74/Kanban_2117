@@ -88,7 +88,7 @@ namespace Scrum
             this.label18 = new System.Windows.Forms.Label();
             this.border_background_new_id_for_user = new System.Windows.Forms.Panel();
             this.background_id_for_user = new System.Windows.Forms.Panel();
-            this.new_id_for_user = new System.Windows.Forms.TextBox();
+            this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.add_new_user_button = new System.Windows.Forms.Label();
@@ -113,7 +113,7 @@ namespace Scrum
             this.label27 = new System.Windows.Forms.Label();
             this.border_background_login_user = new System.Windows.Forms.Panel();
             this.background_login_user = new System.Windows.Forms.Panel();
-            this.login_user = new System.Windows.Forms.TextBox();
+            this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.del_user_button = new System.Windows.Forms.Label();
             this.panelCT = new System.Windows.Forms.Panel();
@@ -297,7 +297,7 @@ namespace Scrum
             this.butn_minus2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_minus2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_minus2.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus2.Image")));
-            this.butn_minus2.Location = new System.Drawing.Point(1564, 0);
+            this.butn_minus2.Location = new System.Drawing.Point(1563, 0);
             this.butn_minus2.Name = "butn_minus2";
             this.butn_minus2.Size = new System.Drawing.Size(34, 22);
             this.butn_minus2.TabIndex = 4;
@@ -311,7 +311,7 @@ namespace Scrum
             this.butn_minus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_minus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_minus.Image = ((System.Drawing.Image)(resources.GetObject("butn_minus.Image")));
-            this.butn_minus.Location = new System.Drawing.Point(1564, 0);
+            this.butn_minus.Location = new System.Drawing.Point(1563, 0);
             this.butn_minus.Name = "butn_minus";
             this.butn_minus.Size = new System.Drawing.Size(34, 22);
             this.butn_minus.TabIndex = 3;
@@ -323,7 +323,7 @@ namespace Scrum
             this.butn_plus2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_plus2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_plus2.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus2.Image")));
-            this.butn_plus2.Location = new System.Drawing.Point(1597, 0);
+            this.butn_plus2.Location = new System.Drawing.Point(1596, 0);
             this.butn_plus2.Name = "butn_plus2";
             this.butn_plus2.Size = new System.Drawing.Size(34, 22);
             this.butn_plus2.TabIndex = 2;
@@ -337,7 +337,7 @@ namespace Scrum
             this.butn_plus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_plus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_plus.Image = ((System.Drawing.Image)(resources.GetObject("butn_plus.Image")));
-            this.butn_plus.Location = new System.Drawing.Point(1597, 0);
+            this.butn_plus.Location = new System.Drawing.Point(1596, 0);
             this.butn_plus.Name = "butn_plus";
             this.butn_plus.Size = new System.Drawing.Size(34, 22);
             this.butn_plus.TabIndex = 1;
@@ -349,7 +349,7 @@ namespace Scrum
             this.butn_close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_close.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.butn_close.Image = ((System.Drawing.Image)(resources.GetObject("butn_close.Image")));
-            this.butn_close.Location = new System.Drawing.Point(1631, 0);
+            this.butn_close.Location = new System.Drawing.Point(1630, 0);
             this.butn_close.Name = "butn_close";
             this.butn_close.Size = new System.Drawing.Size(34, 22);
             this.butn_close.TabIndex = 0;
@@ -977,27 +977,27 @@ namespace Scrum
             // background_id_for_user
             // 
             this.background_id_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
-            this.background_id_for_user.Controls.Add(this.new_id_for_user);
+            this.background_id_for_user.Controls.Add(this.maskedTextBox2);
             this.background_id_for_user.Location = new System.Drawing.Point(1, 1);
             this.background_id_for_user.Name = "background_id_for_user";
             this.background_id_for_user.Size = new System.Drawing.Size(397, 37);
             this.background_id_for_user.TabIndex = 4;
             // 
-            // new_id_for_user
+            // maskedTextBox2
             // 
-            this.new_id_for_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
-            this.new_id_for_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.new_id_for_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.new_id_for_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.new_id_for_user.Location = new System.Drawing.Point(15, 6);
-            this.new_id_for_user.MaxLength = 64;
-            this.new_id_for_user.Name = "new_id_for_user";
-            this.new_id_for_user.Size = new System.Drawing.Size(371, 26);
-            this.new_id_for_user.TabIndex = 4;
-            this.new_id_for_user.Enter += new System.EventHandler(this.new_id_for_user_Enter);
-            this.new_id_for_user.Leave += new System.EventHandler(this.new_id_for_user_Leave);
-            this.new_id_for_user.MouseLeave += new System.EventHandler(this.new_id_for_user_MouseLeave);
-            this.new_id_for_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_id_for_user_MouseMove);
+            this.maskedTextBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maskedTextBox2.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.maskedTextBox2.Location = new System.Drawing.Point(15, 4);
+            this.maskedTextBox2.Mask = "+7 (999) 000-00-00";
+            this.maskedTextBox2.Name = "maskedTextBox2";
+            this.maskedTextBox2.Size = new System.Drawing.Size(371, 29);
+            this.maskedTextBox2.TabIndex = 17;
+            this.maskedTextBox2.Enter += new System.EventHandler(this.new_id_for_user_Enter);
+            this.maskedTextBox2.Leave += new System.EventHandler(this.new_id_for_user_Leave);
+            this.maskedTextBox2.MouseLeave += new System.EventHandler(this.new_id_for_user_MouseLeave);
+            this.maskedTextBox2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.new_id_for_user_MouseMove);
             // 
             // label15
             // 
@@ -1149,7 +1149,7 @@ namespace Scrum
             this.butn_close2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.butn_close2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.butn_close2.Image = ((System.Drawing.Image)(resources.GetObject("butn_close2.Image")));
-            this.butn_close2.Location = new System.Drawing.Point(1631, 0);
+            this.butn_close2.Location = new System.Drawing.Point(1630, 0);
             this.butn_close2.Name = "butn_close2";
             this.butn_close2.Size = new System.Drawing.Size(34, 22);
             this.butn_close2.TabIndex = 0;
@@ -1325,27 +1325,27 @@ namespace Scrum
             // background_login_user
             // 
             this.background_login_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
-            this.background_login_user.Controls.Add(this.login_user);
+            this.background_login_user.Controls.Add(this.maskedTextBox3);
             this.background_login_user.Location = new System.Drawing.Point(1, 1);
             this.background_login_user.Name = "background_login_user";
             this.background_login_user.Size = new System.Drawing.Size(397, 37);
             this.background_login_user.TabIndex = 4;
             // 
-            // login_user
+            // maskedTextBox3
             // 
-            this.login_user.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
-            this.login_user.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.login_user.Font = new System.Drawing.Font("Calibri", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.login_user.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.login_user.Location = new System.Drawing.Point(15, 6);
-            this.login_user.MaxLength = 64;
-            this.login_user.Name = "login_user";
-            this.login_user.Size = new System.Drawing.Size(371, 26);
-            this.login_user.TabIndex = 7;
-            this.login_user.Enter += new System.EventHandler(this.login_user_Enter);
-            this.login_user.Leave += new System.EventHandler(this.login_user_Leave);
-            this.login_user.MouseLeave += new System.EventHandler(this.login_user_MouseLeave);
-            this.login_user.MouseMove += new System.Windows.Forms.MouseEventHandler(this.login_user_MouseMove);
+            this.maskedTextBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
+            this.maskedTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.maskedTextBox3.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.maskedTextBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
+            this.maskedTextBox3.Location = new System.Drawing.Point(15, 4);
+            this.maskedTextBox3.Mask = "+7 (999) 000-00-00";
+            this.maskedTextBox3.Name = "maskedTextBox3";
+            this.maskedTextBox3.Size = new System.Drawing.Size(371, 29);
+            this.maskedTextBox3.TabIndex = 15;
+            this.maskedTextBox3.Enter += new System.EventHandler(this.login_user_Enter);
+            this.maskedTextBox3.Leave += new System.EventHandler(this.login_user_Leave);
+            this.maskedTextBox3.MouseLeave += new System.EventHandler(this.login_user_MouseLeave);
+            this.maskedTextBox3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.login_user_MouseMove);
             // 
             // label26
             // 
@@ -1478,7 +1478,7 @@ namespace Scrum
             this.maskedTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.maskedTextBox1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.maskedTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
             this.maskedTextBox1.Location = new System.Drawing.Point(15, 4);
             this.maskedTextBox1.Mask = "+7 (999) 000-00-00";
             this.maskedTextBox1.Name = "maskedTextBox1";
@@ -1737,7 +1737,7 @@ namespace Scrum
             this.Срок_исполнения.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(49)))), ((int)(((byte)(53)))));
             this.Срок_исполнения.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Срок_исполнения.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Срок_исполнения.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.Срок_исполнения.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(186)))), ((int)(((byte)(189)))));
             this.Срок_исполнения.Location = new System.Drawing.Point(15, 4);
             this.Срок_исполнения.Mask = "00/00/0000";
             this.Срок_исполнения.Name = "Срок_исполнения";
@@ -1941,7 +1941,7 @@ namespace Scrum
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(116, 23);
             this.label38.TabIndex = 13;
-            this.label38.Text = "1.0.1";
+            this.label38.Text = "1.0.2";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // активный_пользователь
@@ -2043,13 +2043,13 @@ namespace Scrum
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(12)))), ((int)(((byte)(14)))), ((int)(((byte)(17)))));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1664, 909);
+            this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.New_user_form);
             this.Controls.Add(this.panelCT);
             this.Controls.Add(this.panel_for_table_users);
             this.Controls.Add(this.panel_connect_1);
             this.Controls.Add(this.panel_connect_2);
             this.Controls.Add(this.admin_pass_enter);
-            this.Controls.Add(this.Del_user_form);
             this.Controls.Add(this.control_users_panel);
             this.Controls.Add(this.background_form);
             this.Controls.Add(this.panel1);
@@ -2176,7 +2176,6 @@ namespace Scrum
         private System.Windows.Forms.Panel New_user_form;
         private System.Windows.Forms.Panel panel_connect_1;
         private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.TextBox new_id_for_user;
         private System.Windows.Forms.Label add_new_user_button;
         private System.Windows.Forms.TextBox new_pass_for_user;
         private System.Windows.Forms.Panel panel_for_table_users;
@@ -2197,7 +2196,6 @@ namespace Scrum
         private System.Windows.Forms.Panel Del_user_form;
         private System.Windows.Forms.Label del_user_button;
         private System.Windows.Forms.TextBox admin_pass;
-        private System.Windows.Forms.TextBox login_user;
         private System.Windows.Forms.Panel panelCT;
         private System.Windows.Forms.Panel background_textbox_panel;
         private System.Windows.Forms.Panel border_background_panel;
@@ -2275,5 +2273,7 @@ namespace Scrum
         private Panel panel13;
         private TextBox textBox11;
         private TextBox new_fio_for_user;
+        private MaskedTextBox maskedTextBox2;
+        private MaskedTextBox maskedTextBox3;
     }
 }
