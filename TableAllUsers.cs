@@ -55,23 +55,6 @@ namespace Scrum
             this.dataGridView1.DefaultCellStyle.SelectionForeColor = Color.FromArgb(255, 255, 255);//выбранная ячейка текст
         }
 
-        private void TableAllUsers_Leave(object sender, EventArgs e) // если убрали фокус с формы
-        {
-            DialogResult result = MessageBox.Show(
-                            "Рекомендуется закрыть окно с таблицей пользователей, так как эта информация может быть использована злоумышленниками! " +
-                            "Даже если Вы уверены, что этим компьютером не будет никто пользоваться в ближайшее время, закройте и при необходимости заново откройте." +
-                            "\n\nЗакрыть?\n\n",
-                            "Внимание!",
-                            MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Warning,
-                            MessageBoxDefaultButton.Button2,
-                            MessageBoxOptions.DefaultDesktopOnly);
-            if (result == DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
-
         private void TableAllUsers_Deactivate(object sender, EventArgs e)
         {
             if (closing == false)
@@ -85,6 +68,7 @@ namespace Scrum
                             MessageBoxIcon.Warning,
                             MessageBoxDefaultButton.Button1,
                             MessageBoxOptions.DefaultDesktopOnly);
+                (Application.OpenForms["Главная"] as Главная).Activate();
                 if (result == DialogResult.Yes)
                 {
                     this.Close();

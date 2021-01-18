@@ -1086,7 +1086,7 @@ namespace Scrum
             this.table_users.EnableHeadersVisualStyles = false;
             this.table_users.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(120)))), ((int)(((byte)(136)))), ((int)(((byte)(214)))));
             this.table_users.Location = new System.Drawing.Point(4, 4);
-            this.table_users.MaximumSize = new System.Drawing.Size(400, 480);
+            this.table_users.MaximumSize = new System.Drawing.Size(500, 590);
             this.table_users.MultiSelect = false;
             this.table_users.Name = "table_users";
             this.table_users.ReadOnly = true;
@@ -1941,7 +1941,7 @@ namespace Scrum
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(116, 23);
             this.label38.TabIndex = 13;
-            this.label38.Text = "1.0.2";
+            this.label38.Text = "1.0.3";
             this.label38.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // активный_пользователь

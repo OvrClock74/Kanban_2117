@@ -39,9 +39,7 @@ namespace Scrum
                 #region Вывод
                 NpgsqlConnection con = new NpgsqlConnection(cs);
                 con.Open();
-                NpgsqlCommand Totalf = new NpgsqlCommand("SELECT (SELECT fio FROM users WHERE id_u = (SELECT autor FROM tasks where name_t = @taskname)), date_create, date_complete, " +
-                    "payment, cost_t, proshu_obesp, predm_zak, purpose_zak, tel_number, list_zak, link_zak, link_kon, registry_num, sum_t, date_duration, fio as fioisp " +
-                    "FROM tasks join users on id_u = tasks.ispolnitel WHERE name_t = @taskname ", con);
+                NpgsqlCommand Totalf = new NpgsqlCommand("SELECT (SELECT fio FROM users WHERE id_u = (SELECT autor FROM tasks where name_t = @taskname)), (SELECT fio as fioisp FROM users WHERE id_u = (SELECT ispolnitel FROM tasks where name_t = @taskname)), date_create, date_complete, payment, cost_t, proshu_obesp, predm_zak, purpose_zak, tel_number, list_zak, link_zak, link_kon, registry_num, sum_t, date_duration FROM tasks WHERE name_t = @taskname", con);
                 Totalf.Parameters.AddWithValue("@taskname", C);
                 NpgsqlDataReader reader;
                 using (reader = Totalf.ExecuteReader())
@@ -251,6 +249,8 @@ namespace Scrum
                          MessageBoxIcon.Error,
                          MessageBoxDefaultButton.Button1,
                          MessageBoxOptions.DefaultDesktopOnly);
+                (Application.OpenForms["Главная"] as Главная).Activate();
+                Application.OpenForms[this.Name].Activate();
             }
 
             ToolTip t = new ToolTip(); // всплывающая подсказкa
@@ -359,9 +359,17 @@ namespace Scrum
                             Close();
                         }
                         else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                        {
                             MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                            (Application.OpenForms["Главная"] as Главная).Activate();
+                            Application.OpenForms[this.Name].Activate();
+                        }    
                         else
+                        {
                             MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                            (Application.OpenForms["Главная"] as Главная).Activate();
+                            Application.OpenForms[this.Name].Activate();
+                        }    
                     }
                 }
                 else
@@ -400,9 +408,17 @@ namespace Scrum
                         Close();
                     }
                     else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                    {
                         MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                        (Application.OpenForms["Главная"] as Главная).Activate();
+                        Application.OpenForms[this.Name].Activate();
+                    }
                     else
+                    {
                         MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        (Application.OpenForms["Главная"] as Главная).Activate();
+                        Application.OpenForms[this.Name].Activate();
+                    }
                 }
             }
             // 3 СТАДИЯ
@@ -448,9 +464,17 @@ namespace Scrum
                                 Close();
                             }
                             else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                            {
                                 MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                (Application.OpenForms["Главная"] as Главная).Activate();
+                                Application.OpenForms[this.Name].Activate();
+                            }
                             else
+                            {
                                 MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                (Application.OpenForms["Главная"] as Главная).Activate();
+                                Application.OpenForms[this.Name].Activate();
+                            }
                         }
                     }
                     else
@@ -512,9 +536,17 @@ namespace Scrum
                                     Close();
                                 }
                                 else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                                {
                                     MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                    (Application.OpenForms["Главная"] as Главная).Activate();
+                                    Application.OpenForms[this.Name].Activate();
+                                }
                                 else
+                                {
                                     MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    (Application.OpenForms["Главная"] as Главная).Activate();
+                                    Application.OpenForms[this.Name].Activate();
+                                }
                             }
                         }
                         else
@@ -542,9 +574,19 @@ namespace Scrum
                 {
                     panel1.Size = new Size(740, 153);
                     panel1.Location = new Point(0, 528);
+
+                    //кнопка addlink для добавления ссылки на файл на компе
+                    panel4.Width = 642;
+                    panel3.Width = 640;
+                    textBox8.Width = 614;
+                    addlink.Location = new Point(681, 8);
+                    addlink.Visible = true;
+                    t1.SetToolTip(addlink, "Добавить путь к файлу");
+                    //
+
                     panel1.Visible = true;
                     label13.Text = "Подтвердить";
-                    textBox8.PlaceholderText = "Ссылка на контракт";
+                    textBox8.PlaceholderText = "Ссылка на контракт или путь к файлу";
                     textBox8.Text = textBox8.Text.Trim();
                     textBox10.Text = textBox10.Text.Trim();
                     textBox11.Text = textBox11.Text.Trim();
@@ -563,7 +605,7 @@ namespace Scrum
                                 da3.Parameters.Add("now_stage_task", NpgsqlDbType.Integer).Value = stage_t;
                                 string returnedValue = da3.ExecuteScalar().ToString();
                                 // Выскакивающая строка добавляется в бд
-                                NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET link_kon = @link, registry_num = @reg, sum_t = @sm WHERE id_t = @idt", con);
+                                NpgsqlCommand Totalf = new NpgsqlCommand("UPDATE tasks SET link_kon = @link, registry_num = @reg, sum_t = @sm WHERE id_t = @idt", con); // registry_num отныне является Исполнителем по контракту
                                 Totalf.Parameters.Add("@idt", NpgsqlDbType.Integer).Value = new_task_id;
                                 Totalf.Parameters.Add("@link", NpgsqlDbType.Varchar, 250).Value = textBox8.Text;
                                 Totalf.Parameters.Add("@reg", NpgsqlDbType.Varchar, 250).Value = textBox10.Text;
@@ -585,9 +627,17 @@ namespace Scrum
                                     Close();
                                 }
                                 else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                                {
                                     MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                    (Application.OpenForms["Главная"] as Главная).Activate();
+                                    Application.OpenForms[this.Name].Activate();
+                                }
                                 else
+                                {
                                     MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    (Application.OpenForms["Главная"] as Главная).Activate();
+                                    Application.OpenForms[this.Name].Activate();
+                                }
                             }
                         }
                         else
@@ -658,9 +708,17 @@ namespace Scrum
                                     Close();
                                 }
                                 else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                                {
                                     MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                                    (Application.OpenForms["Главная"] as Главная).Activate();
+                                    Application.OpenForms[this.Name].Activate();
+                                }
                                 else
+                                {
                                     MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                    (Application.OpenForms["Главная"] as Главная).Activate();
+                                    Application.OpenForms[this.Name].Activate();
+                                }
                             }
                         }
                         else
@@ -699,6 +757,8 @@ namespace Scrum
                            MessageBoxIcon.Error,
                            MessageBoxDefaultButton.Button1,
                            MessageBoxOptions.DefaultDesktopOnly);
+                        (Application.OpenForms["Главная"] as Главная).Activate();
+                        Application.OpenForms[this.Name].Activate();
                     }
                     else
                     {
@@ -719,9 +779,17 @@ namespace Scrum
                         Close();
                     }
                     else if (Convert.ToString(ex.Message) == "P0001: Вы не можете переместить задачу на текущей стадии.")
+                    {
                         MessageBox.Show("Вы не можете переместить задачу на текущей стадии: Недостаточно прав!\n\nОбратитесь к администратору.");
+                        (Application.OpenForms["Главная"] as Главная).Activate();
+                        Application.OpenForms[this.Name].Activate();
+                    }
                     else
+                    {
                         MessageBox.Show("Неизвестная ошибка!\nОбратитесь к администратору.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        (Application.OpenForms["Главная"] as Главная).Activate();
+                        Application.OpenForms[this.Name].Activate();
+                    }
                 }
             }
             else
@@ -746,6 +814,8 @@ namespace Scrum
                            MessageBoxIcon.Information,
                            MessageBoxDefaultButton.Button2,
                            MessageBoxOptions.DefaultDesktopOnly);
+                (Application.OpenForms["Главная"] as Главная).Activate();
+                Application.OpenForms[this.Name].Activate();
                 if (result == DialogResult.Yes)
                 {
                     NpgsqlConnection con = new NpgsqlConnection(cs);
@@ -771,6 +841,8 @@ namespace Scrum
                            MessageBoxIcon.Information,
                            MessageBoxDefaultButton.Button2,
                            MessageBoxOptions.DefaultDesktopOnly);
+                (Application.OpenForms["Главная"] as Главная).Activate();
+                Application.OpenForms[this.Name].Activate();
                 if (result == DialogResult.Yes)
                 {
                     NpgsqlConnection con = new NpgsqlConnection(cs);
@@ -827,6 +899,10 @@ namespace Scrum
                 panel11.BringToFront();
                 panel11.Visible = true;
                 panel11.Location = new Point(21, panel1.Location.Y + 8 - panel11.Height);
+            }
+            if (stage_t == 5)
+            {
+                textBox8.Text = "";
             }
         }
         private void textBox8_MouseDown(object sender, MouseEventArgs e) // на стадии заключения (6-я)
@@ -896,6 +972,8 @@ namespace Scrum
                     panel4.BackColor = Color.FromArgb(209, 73, 73);
                     textBox8.Text = "";
                     maskedTextBox3.Text = "";
+                    (Application.OpenForms["Главная"] as Главная).Activate();
+                    Application.OpenForms[this.Name].Activate();
                 }
                 else
                 {
@@ -912,6 +990,8 @@ namespace Scrum
                         panel4.BackColor = Color.FromArgb(209, 73, 73);
                         textBox8.Text = "";
                         maskedTextBox3.Text = "";
+                        (Application.OpenForms["Главная"] as Главная).Activate();
+                        Application.OpenForms[this.Name].Activate();
                     }
                 }
         }
@@ -1118,16 +1198,6 @@ namespace Scrum
             }
         }
 
-        private void textBox10_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            char number = e.KeyChar;
-            if (!Char.IsDigit(number) && number != 127 && number != 8)
-            {
-                e.Handled = true;
-                SystemSounds.Beep.Play();
-            }
-        }
-
         private void textBox11_KeyPress(object sender, KeyPressEventArgs e)
         {
             char number = e.KeyChar;
@@ -1161,6 +1231,8 @@ namespace Scrum
             catch
             {
                 MessageBox.Show("Ссылка не существует!\nВозможно, допущена ошибка в тексте URL, или данного пути больше нет.\n\nПопробуйте скопировать и вставить ссылку в Вашем браузере.", "Внимание!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                (Application.OpenForms["Главная"] as Главная).Activate();
+                Application.OpenForms[this.Name].Activate();
             }
         }
 
@@ -1250,6 +1322,8 @@ namespace Scrum
                 {
                     con.Close();
                     MessageBox.Show("При удалении произошла ошибка, повторите попытку позже.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    (Application.OpenForms["Главная"] as Главная).Activate();
+                    Application.OpenForms[this.Name].Activate();
                 }
             }
         }
@@ -1266,5 +1340,19 @@ namespace Scrum
             deleteTaskB.Font = new Font(print_btn.Font.Name, 12, FontStyle.Bold | FontStyle.Regular);
         }
         #endregion
+
+        private void addlink_Click(object sender, EventArgs e) // добавление пути к файлу контракта
+        {
+            OpenFileDialog choofdlog = new OpenFileDialog();
+            choofdlog.Filter = "All Files (*.*)|*.*";
+            choofdlog.FilterIndex = 1;
+            
+            string fullPath = "";
+            if (choofdlog.ShowDialog() == DialogResult.OK)
+            {
+                fullPath = choofdlog.FileName;
+            }
+            textBox8.Text = fullPath;
+        }
     }
 }

@@ -44,6 +44,7 @@
             this.table_users = new System.Windows.Forms.DataGridView();
             this.print_btn = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.addlink = new System.Windows.Forms.PictureBox();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.textBox11 = new System.Windows.Forms.TextBox();
@@ -105,6 +106,7 @@
             this.panel11.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.addlink)).BeginInit();
             this.panel8.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -282,6 +284,7 @@
             this.linkLabel1.Font = new System.Drawing.Font("Calibri", 17.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
             this.linkLabel1.Location = new System.Drawing.Point(445, 218);
+            this.linkLabel1.MaximumSize = new System.Drawing.Size(683, 28);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(105, 28);
             this.linkLabel1.TabIndex = 24;
@@ -360,6 +363,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(99)))), ((int)(((byte)(112)))), ((int)(((byte)(183)))));
+            this.panel1.Controls.Add(this.addlink);
             this.panel1.Controls.Add(this.panel8);
             this.panel1.Controls.Add(this.panel6);
             this.panel1.Controls.Add(this.panel4);
@@ -369,6 +373,19 @@
             this.panel1.TabIndex = 22;
             this.panel1.Visible = false;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
+            // 
+            // addlink
+            // 
+            this.addlink.BackColor = System.Drawing.Color.Transparent;
+            this.addlink.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.addlink.Image = ((System.Drawing.Image)(resources.GetObject("addlink.Image")));
+            this.addlink.Location = new System.Drawing.Point(726, 18);
+            this.addlink.Name = "addlink";
+            this.addlink.Size = new System.Drawing.Size(39, 39);
+            this.addlink.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.addlink.TabIndex = 11;
+            this.addlink.TabStop = false;
+            this.addlink.Click += new System.EventHandler(this.addlink_Click);
             // 
             // panel8
             // 
@@ -433,11 +450,10 @@
             this.textBox10.Location = new System.Drawing.Point(13, 4);
             this.textBox10.MaxLength = 57;
             this.textBox10.Name = "textBox10";
-            this.textBox10.PlaceholderText = "Реестровый номер";
+            this.textBox10.PlaceholderText = "Исполнитель по контракту";
             this.textBox10.Size = new System.Drawing.Size(672, 29);
             this.textBox10.TabIndex = 0;
             this.textBox10.Enter += new System.EventHandler(this.textBox10_Enter);
-            this.textBox10.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox10_KeyPress);
             this.textBox10.Leave += new System.EventHandler(this.textBox10_Leave);
             this.textBox10.MouseLeave += new System.EventHandler(this.textBox10_MouseLeave);
             this.textBox10.MouseMove += new System.Windows.Forms.MouseEventHandler(this.textBox10_MouseMove);
@@ -488,7 +504,7 @@
             this.textBox8.Location = new System.Drawing.Point(13, 4);
             this.textBox8.MaxLength = 57;
             this.textBox8.Name = "textBox8";
-            this.textBox8.PlaceholderText = "Ссылка на контракт";
+            this.textBox8.PlaceholderText = "Ссылка на контракт или путь к файлу";
             this.textBox8.Size = new System.Drawing.Size(672, 29);
             this.textBox8.TabIndex = 0;
             this.textBox8.Enter += new System.EventHandler(this.textBox8_Enter);
@@ -571,9 +587,9 @@
             this.label27.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(145)))), ((int)(((byte)(150)))));
             this.label27.Location = new System.Drawing.Point(445, 262);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(143, 18);
+            this.label27.Size = new System.Drawing.Size(202, 18);
             this.label27.TabIndex = 6;
-            this.label27.Text = "РЕЕСТРОВЫЙ НОМЕР";
+            this.label27.Text = "ИСПОЛНИТЕЛЬ ПО КОНТРАКТУ";
             this.label27.Visible = false;
             // 
             // label26
@@ -1072,6 +1088,7 @@
             this.panel11.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.table_users)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.addlink)).EndInit();
             this.panel8.ResumeLayout(false);
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
@@ -1158,5 +1175,6 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.Label deleteTaskB;
+        private System.Windows.Forms.PictureBox addlink;
     }
 }

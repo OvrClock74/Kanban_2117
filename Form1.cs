@@ -147,6 +147,7 @@ namespace Scrum
                     con.Close();
                     textBox2.Text = "";
                     MessageBox.Show("Неверный логин или пароль!\nПовторите попытку входа.", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                    Application.OpenForms[this.Name].Activate();
                 }
             }
             else
@@ -159,7 +160,7 @@ namespace Scrum
                 textBox2.Enabled = false;
                 label1.ForeColor = Color.Red;
                 label2.ForeColor = Color.Red;
-                Вход.BackColor = Color.FromArgb(67,80,141) ;
+                Вход.BackColor = Color.FromArgb(67, 80, 141);
                 Вход.ForeColor = Color.FromArgb(142, 145, 150);
                 Вход.Enabled = false;
             }

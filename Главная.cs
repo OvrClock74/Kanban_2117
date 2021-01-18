@@ -151,7 +151,7 @@ namespace Scrum
             using (Graphics g = e.Graphics)
             {
                 var p = new Pen(Color.FromArgb(12, 14, 17), 1);
-                g.DrawLine(p, new Point(0, 0), new Point(1664, 0));
+                g.DrawLine(p, new Point(0, 0), new Point(this.Width, 0));
                 p.Dispose();
                 g.Dispose(); // очищаем память
             }
@@ -1013,7 +1013,8 @@ namespace Scrum
                            MessageBoxDefaultButton.Button1,
                            MessageBoxOptions.DefaultDesktopOnly);
                 Срок_исполнения.Text = "";
-            }
+                    Application.OpenForms[this.Name].Activate();
+                }
             else
             {
                 DateTime userDate = (DateTime)e.ReturnValue;
@@ -1027,7 +1028,8 @@ namespace Scrum
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
                     Срок_исполнения.Text = "";
-                }
+                        Application.OpenForms[this.Name].Activate();
+                    }
             }
         }
         private void Срок_исполнения_MouseLeave(object sender, EventArgs e)
@@ -1316,7 +1318,8 @@ namespace Scrum
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
-                 }
+                    Application.OpenForms[this.Name].Activate();
+                }
                  else 
                  {
                     NpgsqlCommand da3 = new NpgsqlCommand("create_task", con) //create_task(namet character varying, auser integer, datcmplt character varying, costt integer, proshuobesp character varying, predmzak character varying, purposezak character varying, telnumber character varying, listzak character varying)
@@ -1341,9 +1344,13 @@ namespace Scrum
                         {
                             MessageBox.Show("Заявка добавлена!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         }
-                        else MessageBox.Show("Заявка не добавлена!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        else
+                        {
+                            MessageBox.Show("Заявка не добавлена!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        }
                         OtmenaB_Click(sender, e); //КАК КНОПКА ОТМЕНА
-                        reload_tables_Click(sender, e);
+                        Application.OpenForms[this.Name].Activate();
+                        reload_tables_Click(sender, e); 
                     }
                     catch (NpgsqlException ex) 
                     {
@@ -1352,6 +1359,7 @@ namespace Scrum
                             MessageBox.Show("Нет разрешения на добавление задач!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         else 
                             MessageBox.Show("Непредвиденная ошибка!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        Application.OpenForms[this.Name].Activate();
                     }
                     con.Close();
                  }    
@@ -1658,6 +1666,7 @@ namespace Scrum
                 height += dr.Height;
             }
             table_users.Height = height;
+
             int width = table_users.Location.Y + table_users.ColumnHeadersHeight;
             foreach (DataGridViewColumn dr in table_users.Columns)
             {
@@ -1829,6 +1838,7 @@ namespace Scrum
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
+                    Application.OpenForms[this.Name].Activate();
                 }
                 else
                 {
@@ -1866,6 +1876,7 @@ namespace Scrum
                         ///////////////////////////////////////////////////////////////////////////////
                         con.Close();
                         MessageBox.Show("Пользователь добавлен!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        Application.OpenForms[this.Name].Activate();
                     }
                     catch (NpgsqlException ex)
                     {
@@ -1873,6 +1884,7 @@ namespace Scrum
                         if (Convert.ToString(ex.Message) == "P0001: Нельзя добавить пользователя!")
                             MessageBox.Show("Нет прав на добавление пользователей!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
                         else MessageBox.Show("Неизвестная ошибка!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                        Application.OpenForms[this.Name].Activate();
                     }
                 }
             }
@@ -2102,6 +2114,7 @@ namespace Scrum
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
+                    Application.OpenForms[this.Name].Activate();
                     }
                     else
                     {
@@ -2120,6 +2133,7 @@ namespace Scrum
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
+                        Application.OpenForms[this.Name].Activate();
                         }
                         else
                         {
@@ -2130,6 +2144,7 @@ namespace Scrum
                             MessageBoxIcon.Warning,
                             MessageBoxDefaultButton.Button2,
                             MessageBoxOptions.DefaultDesktopOnly);
+
                             if (result == DialogResult.OK)
                             {
                             Int64 id_User = (Int64)da2.ExecuteScalar(); // если введенный логин существует, то берём его айди
@@ -2148,12 +2163,14 @@ namespace Scrum
                                 ///////////////////////////////////////////////////////////////////////////////
                                 con.Close();
                                 MessageBox.Show("Пользователь удален!", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                Application.OpenForms[this.Name].Activate();
                             }
                             catch (NpgsqlException ex)
                             {
                                 con.Close();
                                 if (Convert.ToString(ex.Message) == "P0001: Удалить нельзя")
                                     MessageBox.Show("Нет прав на удаление пользователей!", "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1, MessageBoxOptions.DefaultDesktopOnly);
+                                Application.OpenForms[this.Name].Activate();
                             }
                             con.Close();
                             }
@@ -2276,6 +2293,7 @@ namespace Scrum
                           MessageBoxIcon.Error,
                           MessageBoxDefaultButton.Button1,
                           MessageBoxOptions.DefaultDesktopOnly);
+                Application.OpenForms[this.Name].Activate();
             }
             else
             {
