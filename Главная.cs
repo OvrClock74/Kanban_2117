@@ -70,7 +70,7 @@ namespace Scrum
         #endregion
         ///////////////////////////////////////////////////
 
-        public static string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
+        public static string cs = "Host=X; Username=X; Password=X";
         public Главная(int id, string user_name)
         {
             InitializeComponent();
