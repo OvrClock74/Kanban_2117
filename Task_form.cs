@@ -22,7 +22,7 @@ namespace Scrum
 
         public ToolTip t1 = new ToolTip();
 
-        public static string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
+        public static string cs = "Host=X; Username=X; Password=X";
         public Task_form(string C1, string name_stage, int stage_t1, int ID_Main1, int acces)
         {
             InitializeComponent();
