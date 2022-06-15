@@ -13,7 +13,7 @@ namespace Scrum
         public Archive_tasks()
         {
             InitializeComponent();
-            NpgsqlConnection con = new NpgsqlConnection("Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf");
+            NpgsqlConnection con = new NpgsqlConnection("Host=X; Username=X; Password=X");
             con.Open();
             NpgsqlDataReader reader;
             NpgsqlCommand daT = new NpgsqlCommand("Select date_archiving, name_t, registry_num, link_kon, (select login from users where id_u = autor), fio, sum_t, date_create, date_complete, date_duration from tasks_archive join users on id_u = tasks_archive.ispolnitel ORDER BY date_archiving DESC", con); // DESC - сортировка по убыванию
