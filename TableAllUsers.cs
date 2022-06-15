@@ -14,7 +14,7 @@ namespace Scrum
     {
         public bool closing = false;
         public int ID_for_show_users;
-        public string cs = "Host=dumbo.db.elephantsql.com;Username=vjstrxrf;Password=p1CHdtbdVOA3VQmrHvhp-NYS43jRaIlU;Database=vjstrxrf";
+        public string cs = "Host=X; Username=X; Password=X";
         public TableAllUsers(int id)
         {
             InitializeComponent();
